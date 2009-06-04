@@ -1,0 +1,12 @@
+#summary Python Torrent Tools.
+
+= Introduction =
+
+PyroScope is a collection of tools for the BitTorrent protocol and especially the rTorrent client.
+
+It offers the following components:
+ * a modern and versatile rTorrent web interface
+ * rTorrent extensions like a queue manager and statistics
+ * command line tools for automation of common tasks, like metafile creation
+
+To get started, see the QuickStartGuide.
