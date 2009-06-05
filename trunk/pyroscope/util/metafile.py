@@ -23,3 +23,19 @@ from pyroscope.util import bencode
 
 LOG = logging.getLogger(__name__)
 
+
+class Metafile(object):
+    """ A torrent metafile.
+    """
+
+    def __init__(self, filename):
+        """ Initialize metafile.
+        """
+        self.filename = filename
+
+
+    def create(self, datapath, comment=None, private=False):
+        """ Create a metafile.
+        """
+        LOG.info("Creating %r for %r..." % (self.filename, datapath))
+

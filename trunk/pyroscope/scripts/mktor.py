@@ -20,6 +20,7 @@
 import logging
 
 from pyroscope.scripts.base import ScriptBase
+from pyroscope.util.metafile import Metafile
 
 LOG = logging.getLogger(__name__)
 
@@ -51,6 +52,10 @@ class MetafileCreator(ScriptBase):
             self.parser.exit()
         elif len(self.args) != 1:
             self.parser.error("Expected exactly one argument, got: %s" % (' '.join(self.args),))
+
+        datapath = self.args[0]
+        metafile = Metafile(self.options.output_filename or (datapath + ".torrent"))
+        metafile.create(datapath, comment=self.options.comment, private=self.options.private)
 
 
 def run(): #pragma: no cover
