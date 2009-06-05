@@ -17,6 +17,8 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
 
+import os
+import sys
 import logging
 
 from pyroscope.scripts.base import ScriptBase
@@ -30,7 +32,7 @@ class MetafileCreator(ScriptBase):
     """
 
     # argument description for the usage information
-    ARGS_HELP = "<dir-or-file>"
+    ARGS_HELP = "<dir-or-file> <tracker-url>"
 
 
     def add_options(self):
@@ -40,6 +42,8 @@ class MetafileCreator(ScriptBase):
             help="Disallow DHT and PEX")
         self.add_value_option("-o", "--output-filename", "PATH",
             help="Optional file name for the metafile")
+        self.add_value_option("-r", "--root-name", "NAME",
+            help="Optional root name (default is basename of the data path)")
         self.add_value_option("--comment", "TEXT",
             help="Optional human-readable comment")
 
@@ -50,12 +54,26 @@ class MetafileCreator(ScriptBase):
         if not self.args:
             self.parser.print_help()
             self.parser.exit()
-        elif len(self.args) != 1:
-            self.parser.error("Expected exactly one argument, got: %s" % (' '.join(self.args),))
+        elif len(self.args) != 2:
+            self.parser.error("Expected exactly two arguments, got: %s" % (' '.join(self.args),))
 
-        datapath = self.args[0]
+        def progress(totalhashed, totalsize):
+            msg = " " * 30
+            if totalhashed < totalsize:
+                msg = "%5.1f%% complete" % (totalhashed * 100.0 / totalsize)
+            sys.stdout.write(msg + " \r")
+            sys.stdout.flush()
+
+        if self.options.quiet:
+            progress = None
+
+        datapath, tracker_url = self.args
+        datapath = datapath.rstrip(os.sep)
         metafile = Metafile(self.options.output_filename or (datapath + ".torrent"))
-        metafile.create(datapath, comment=self.options.comment, private=self.options.private)
+        metafile.create(datapath, tracker_url, progress=progress, 
+            root_name=self.options.root_name, private=self.options.private,
+            comment=self.options.comment, created_by="PyroScope %s" % self.version,
+        )
 
 
 def run(): #pragma: no cover

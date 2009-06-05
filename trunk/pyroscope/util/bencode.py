@@ -167,8 +167,7 @@ def bwrite(stream, obj):
     if not hasattr(stream, "write"):
         stream = handle = open(stream, "wb")
     try:
-        for chunk in Encoder().encode(obj):
-            stream.write()
+        stream.write(bencode(obj))
     finally:
         if handle:
             handle.close()
