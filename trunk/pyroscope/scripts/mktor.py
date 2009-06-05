@@ -35,6 +35,12 @@ class MetafileCreator(ScriptBase):
     def add_options(self):
         """ Add program options.
         """
+        self.add_bool_option("-p", "--private",
+            help="Disallow DHT and PEX")
+        self.add_value_option("-o", "--output-filename", "PATH",
+            help="Optional file name for the metafile")
+        self.add_value_option("--comment", "TEXT",
+            help="Optional human-readable comment")
 
 
     def mainloop(self):
