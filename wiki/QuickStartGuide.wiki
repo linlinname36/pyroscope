@@ -5,9 +5,20 @@
 Requirements:
  * an existing rTorrent installation
  * Python 2.5 or a higher 2.x version
+ * currently, a proper build environment (see below)
 
 ...
 
 = Details of Installation =
 
-...
+Currently, the only way to install and use the software is from source.
+
+== Package Dependencies ==
+On Debian and Ubuntu, you'll need the folowing packages installed:
+ * `python2.5`
+ * `python-virtualenv`
+ * `python-dev`
+ * `build-essential`
+ * `devtools`
+
+If there are packages missing from that list, leave a comment.
