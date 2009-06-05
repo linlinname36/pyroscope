@@ -68,7 +68,7 @@ class ScriptBase(object):
         self.options = None
         self.parser = OptionParser(
             "%prog [options] " + self.ARGS_HELP + "\n\n"
-            "%prog " + self.version + ", Copyright (c) 2009 by United Internet AG",
+            "%prog " + self.version + ", Copyright (c) 2009 Pyroscope Project",
             version="%prog " + self.version)
 
 
