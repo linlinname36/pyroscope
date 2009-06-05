@@ -9,4 +9,4 @@ It offers the following components:
  * rTorrent extensions like a queue manager and statistics
  * command line tools for automation of common tasks, like metafile creation
 
-To get started, see the QuickStartGuide.
+If you want to get a first impression without installing the software, look at the ScreenShotGallery. To get started after that, see the QuickStartGuide.
