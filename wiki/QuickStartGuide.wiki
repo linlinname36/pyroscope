@@ -5,20 +5,26 @@
 Requirements:
  * an existing rTorrent installation
  * Python 2.5 or a higher 2.x version
- * currently, a proper build environment (see below)
+ * currently, a proper build environment (see below) and a subversion client
 
-...
+Installation:
+{{{
+mkdir -p ~/lib
+svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
+cd ~/lib/pyroscope
+source bootstrap.sh
+}}}
+
 
 = Details of Installation =
 
-Currently, the only way to install and use the software is from source.
+Currently, the only way to install and use the software is from source, as outlined above.
 
 == Package Dependencies ==
-On Debian and Ubuntu, you'll need the folowing packages installed:
- * `python2.5`
- * `python-virtualenv`
- * `python-dev`
- * `build-essential`
- * `devtools`
+On Debian and Ubuntu, you'll need the following packages installed:
+{{{
+aptitude install python2.5 python-virtualenv python-dev
+aptitude install build-essential devtools
+}}}
 
 If there are packages missing from that list, leave a comment.
