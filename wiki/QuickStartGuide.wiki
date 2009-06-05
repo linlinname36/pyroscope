@@ -7,12 +7,20 @@ Requirements:
  * Python 2.5 or a higher 2.x version
  * currently, a proper build environment (see below) and a subversion client
 
-Installation:
+Initial installation:
 {{{
 mkdir -p ~/lib
 svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
 cd ~/lib/pyroscope
 source bootstrap.sh
+}}}
+
+To later update the software, use these commands:
+{{{
+cd ~/lib/pyroscope
+svn update
+source bin/activate
+paver develop -U
 }}}
 
 
