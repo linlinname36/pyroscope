@@ -37,8 +37,11 @@ project = dict(
     name = name,
     version = version,
     packages = find_packages(exclude = ["tests"]),
-    #entry_points = {
-    #},
+    entry_points = {
+        "console_scripts": [
+            "mktor = pyroscope.scripts.mktor:run",
+        ],
+    },
     include_package_data = True,
     #zip_safe = False,
     data_files=[
