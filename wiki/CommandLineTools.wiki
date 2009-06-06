@@ -18,3 +18,31 @@ All commands share some common options:
 As a unique feature, if you want to change the root directory of the torrent to something different than the basename of the data directory, you can do so with the `--root-name` option. This is especially useful if you have hierarchical paths like `documents/2009/myproject/specs` - normally, all the context information but `specs` would be lost on the receiving side.
 
 If you create several torrents on the same data for different trackers, they're automatically enabled for cross-seeding. For the technically inclined, this is done by adding a unique key so that the info hash is always different.
+
+== lstor ==
+`lstor` lists the contents of bittorrent metafiles. The resulting output looks like this:
+{{{
+NAME pavement.torrent
+SIZE 3.6 KiB (0 * 32.0 KiB + 3.6 KiB)
+HASH 2D1A7E443D23907E5118FA4A1065CCA191D62C0B
+URL  http://example.com/
+PRV  NO (DHT/PEX enabled)
+TIME 2009-06-06 00:49:52
+BY   PyroScope 0.1.1
+
+FILE LISTING
+pavement.py                                                             3.6 KiB
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+NAME tests.torrent
+SIZE 2.6 KiB (0 * 32.0 KiB + 2.6 KiB)
+HASH 8E37EB6F4D3807EB26F267D3A9D31C4262530AB2
+URL  http://example.com/
+PRV  YES (DHT/PEX disabled)
+TIME 2009-06-06 00:49:52
+BY   PyroScope 0.1.1
+
+FILE LISTING
+pyroscope tests/
+    test_bencode.py                                                     2.6 KiB
+}}}
