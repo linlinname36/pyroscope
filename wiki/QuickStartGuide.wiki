@@ -1,4 +1,6 @@
 #summary How to get started - installation and first steps.
+#labels installation,configuration
+<wiki:toc max_depth="2" />
 
 = For the Impatient =
 
@@ -15,14 +17,6 @@ cd ~/lib/pyroscope
 source bootstrap.sh
 }}}
 
-To later update the software, use these commands:
-{{{
-cd ~/lib/pyroscope
-svn update
-source bin/activate
-paver develop -U
-}}}
-
 
 = Details of Installation =
 
@@ -36,3 +30,37 @@ aptitude install build-essential devtools
 }}}
 
 If there are packages missing from that list, leave a comment.
+
+== Updating to the Lastest SVN Version ==
+To update the software after initial installation, use these commands:
+{{{
+cd ~/lib/pyroscope
+svn update
+source bin/activate
+paver develop -U
+}}}
+
+
+= Configuration =
+_The file system paths in the following sections have to be adapted to your installation, of course._
+
+== `rTorrent` Configuration ==
+In your `~/.rtorrent.rc` file, add or change these lines:
+{{{
+scgi_local = ~/lib/rtorrent/.scgi_local
+}}}
+Then restart it.
+
+== `PyroScope` Configuration ==
+Create the `~/.pyroscope` directory and ...
+
+== Enabling the Queue Manager ==
+*NOT IMPLEMENTED*
+
+Using `crontab -e`, add the following to your cron schedule:
+{{{
+* * * * *   test -S ~/lib/rtorrent/.scgi_local && ~/lib/pyroscope/bin/pyro-qm
+}}}
+
+== Starting the Web Interface ==
+...
