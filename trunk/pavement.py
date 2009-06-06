@@ -24,6 +24,8 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
 
+import os
+
 from paver.easy import *
 from paver.setuputils import setup
 
@@ -52,7 +54,10 @@ project = dict(
     include_package_data = True,
     zip_safe = False,
     data_files = [
-        ("EGG-INFO", ["README", "LICENSE", "debian/changelog"]),
+        ("EGG-INFO", [
+            "README", "LICENSE", "debian/changelog", 
+            "pyroscope/web/config/paste_deploy_config.ini_tmpl",
+        ]),
     ],
     paster_plugins = ["PasteScript", "Pylons"],
 
@@ -103,6 +108,18 @@ project = dict(
         "Topic :: Utilities",
     ],
 )
+
+
+@task
+@needs("setuptools.command.egg_info")
+def bootstrap():
+    for egg_info in (i[1] for i in project["data_files"] if i[0] == "EGG-INFO").next():
+        args = (
+            "../" + egg_info, 
+            "%s.egg-info/%s" % (project["name"], os.path.basename(egg_info)))
+        if not os.path.exists(args[1]):
+            print "%s <- %s" % args
+            os.symlink(*args)
 
 
 @task

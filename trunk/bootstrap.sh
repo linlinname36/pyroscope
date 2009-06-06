@@ -13,6 +13,7 @@ easy_install -U "yolk>=0.4.1"
 
 # project
 paver develop -U
+paver bootstrap
 
 export DEBFULLNAME=pyroscope
 export DEBEMAIL=pyroscope.project@gmail.com

@@ -12,14 +12,6 @@ INSTALLATION
 
 See the http://code.google.com/p/pyroscope/wiki/QuickStartGuide.
 
-For the web server, make a config file as follows:
-
-    paster make-config pyroscope ~/.pyroscope/web.ini
-
-Tweak the config file as appropriate and then setup the application:
-
-    paster setup-app ~/.pyroscope/web.ini
-
 
 ACKNOWLEDGEMENTS
 
