@@ -17,6 +17,7 @@ cd ~/lib/pyroscope
 source bootstrap.sh
 }}}
 
+After that, the CommandLineTools are available in the `~/lib/pyroscope/bin` directory.
 
 = Details of Installation =
 
