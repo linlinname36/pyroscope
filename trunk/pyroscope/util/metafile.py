@@ -1,5 +1,7 @@
 """ PyroScope - Metafile Support.
 
+    See http://www.bittorrent.org/beps/bep_0003.html
+
     Copyright (c) 2009 The PyroScope Project <pyroscope.project@gmail.com>
 
     This program is free software; you can redistribute it and/or modify
