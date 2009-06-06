@@ -36,7 +36,7 @@ ALLOWED_NAME = re.compile(r"^[^/\\.~][^/\\]*$")
 
 
 def check_info(info):
-    """ Check info dict assertions.
+    """ Validate info dict.
     """
     if not isinstance(info, dict):
         raise ValueError("bad metainfo - not a dictionary")
@@ -93,7 +93,7 @@ def check_info(info):
 
 
 def check_meta(meta):
-    """ Check meta dict assertions.
+    """ Validate meta dict.
     """
     if not isinstance(meta, dict):
         raise ValueError("bad metadata - not a dictionary")
@@ -110,8 +110,8 @@ class Metafile(object):
 
     # Patterns of names to ignore
     IGNORE_GLOB = [
-        "core", "CVS", ".*", "*~", "*.swp",
-        "Thumbs.db", "desktop.ini", "ehthumbs_vista.db",
+        "core", "CVS", ".*", "*~", "*.swp", "*.tmp", "*.bak",
+        "[Tt]humbs.db", "[Dd]esktop.ini", "ehthumbs_vista.db",
     ]
 
 
@@ -126,17 +126,22 @@ class Metafile(object):
     def _scan(self):
         """ Generate paths in "self.datapath".
         """
+        # Directory or single file?
         if os.path.isdir(self.datapath):
+            # Walk the directory tree
             for dirpath, dirnames, filenames in os.walk(self.datapath):
+                # Don't scan blacklisted directories
                 for bad in dirnames[:]:
                     if any(fnmatch.fnmatch(bad, pattern) for pattern in self.IGNORE_GLOB):
                         dirnames.remove(bad)
 
+                # Yield all filenames that aren't blacklisted
                 for filename in filenames:
                     if not any(fnmatch.fnmatch(filename, pattern) for pattern in self.IGNORE_GLOB):
                         #yield os.path.join(dirpath[len(self.datapath)+1:], filename)
                         yield os.path.join(dirpath, filename)
         else:
+            # Yield the filename
             yield self.datapath
 
 
@@ -151,53 +156,71 @@ class Metafile(object):
     def _make_info(self, piece_size, progress):
         """ Create info dict.
         """
-        totalsize = self._calc_size()
-        totalhashed = 0
+        # These collect the file descriptions and piece hashes
         file_list = []
         pieces = []
+
+        # Initialize progress state
+        totalsize = self._calc_size()
+        totalhashed = 0
+
+        # Start a new piece
         sha1 = hashlib.sha1()
         done = 0
  
+        # Hash all files
         for filename in sorted(self._scan()):
+            # Assemble file info
             filesize = os.path.getsize(filename)
             file_list.append({
                 "length": filesize, 
                 "path": filename[len(self.datapath)+1:].replace(os.sep, '/').split('/'),
             })
-            pos = 0
+            
+            # Open file and hash it
+            fileoffset = 0
             handle = open(filename, "rb")
             try:
-                while pos < filesize:
-                    chunk = handle.read(min(filesize - pos, piece_size - done))
+                while fileoffset < filesize:
+                    # Read rest of piece or file, whatever is smaller
+                    chunk = handle.read(min(filesize - fileoffset, piece_size - done))
                     sha1.update(chunk)
-                    pos += len(chunk)
                     done += len(chunk)
+                    fileoffset += len(chunk)
                     totalhashed += len(chunk)
                     
+                    # Piece is done
                     if done == piece_size:
                         pieces.append(sha1.digest())
+                        
+                        # Start a new piece
                         sha1 = hashlib.sha1()
                         done = 0
 
+                    # Report progress
                     if progress:
                         progress(totalhashed, totalsize)
             finally:
                 handle.close()
 
+        # Add hash of partial last piece
         if done > 0:
             pieces.append(sha1.digest())
 
+        # Build the meta dict
         metainfo = {
             "pieces": "".join(pieces),
             "piece length": piece_size, 
             "name": os.path.basename(self.datapath),
         }
-        
+
+        # Handle directory vs. single file        
         if len(file_list) > 1:
             metainfo["files"] = file_list
         else:
             metainfo["length"] = totalsize
 
+        # Return validated info dict
         return check_info(metainfo)
 
 
@@ -233,6 +256,7 @@ class Metafile(object):
 
         #!!! meta["encoding"] = "UTF-8"
 
+        # Return validated meta dict
         return check_meta(meta)
 
 
