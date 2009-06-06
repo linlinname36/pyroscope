@@ -52,8 +52,11 @@ scgi_local = ~/lib/rtorrent/.scgi_local
 }}}
 Then restart it.
 
-== `PyroScope` Configuration ==
+== `PyroScope` Basic Configuration ==
 Create the `~/.pyroscope` directory and ...
+{{{
+mkdir -p ~/.pyroscope/{log,www-data}
+}}}
 
 == Enabling the Queue Manager ==
 *NOT IMPLEMENTED*
@@ -64,4 +67,13 @@ Using `crontab -e`, add the following to your cron schedule:
 }}}
 
 == Starting the Web Interface ==
-...
+To use the web server, you first have to make a config file as follows:
+{{{
+paster make-config pyroscope ~/.pyroscope/web.ini
+}}}
+
+Tweak the config file as appropriate and then start the web server in daemon mode:
+{{{
+paver start
+}}}
+If you did not change the web server parameters, you can now view the start page at http://127.0.0.1:8042/. You can use the `paver status` command to check on the server status, and `paver stop` to stop a running server.
