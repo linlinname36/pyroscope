@@ -141,5 +141,37 @@ def functest():
     sh("bin/lstor build/*.torrent")
 
 
+#
+# Web Server Control
+#
+PASTER_CMD =  " ".join([
+    "paster serve %s",
+    "--pid-file ~/.pyroscope/web.pid",
+    "--log-file ~/.pyroscope/log/web.log",
+    "~/.pyroscope/web.ini",
+])
+
+@task
+def start():
+    """ Start the PRODUCTION web server.
+    """
+    sh("paster setup-app ~/.pyroscope/web.ini")
+    sh(PASTER_CMD % ("--monitor-restart --daemon"))
+
+
+@task
+def stop():
+    """ Start the PRODUCTION web server.
+    """
+    sh(PASTER_CMD % ("--stop-daemon"))
+
+
+@task
+def status():
+    """ Check status of the PRODUCTION web server.
+    """
+    sh(PASTER_CMD % ("--status"))
+
+
 setup(**project)
 

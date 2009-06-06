@@ -10,6 +10,7 @@ easy_install -U "nose>=0.10.3"
 easy_install -U "coverage==2.80"
 easy_install -U "pylint>=0.18.0"
 easy_install -U "yolk>=0.4.1"
+easy_install -U "PasteScript>=1.7.3"
 
 # project
 paver develop -U
