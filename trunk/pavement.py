@@ -64,7 +64,7 @@ project = dict(
 
     # dependencies
     install_requires = [
-        "Pylons>=0.9.7",
+        "Pylons==0.9.7",
     ],
     setup_requires = [
         "PasteScript>=1.7.3",
@@ -117,7 +117,7 @@ def serve():
 @task
 @needs("setuptools.command.build")
 def functest():
-    """ Integration test of the command line tools.
+    """ Functional test of the command line tools.
     """
     sh("bin/mktor -o build/pavement.torrent pavement.py http://example.com/")
     sh("bin/mktor -o build/tests.torrent -x '*.pyc' -r 'pyroscope tests' --private tests/ http://example.com/")
