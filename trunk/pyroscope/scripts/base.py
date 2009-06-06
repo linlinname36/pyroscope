@@ -22,6 +22,7 @@ import os
 import sys
 import time
 import logging
+import textwrap
 import pkg_resources
 from optparse import OptionParser
 from contextlib import closing
@@ -68,7 +69,8 @@ class ScriptBase(object):
         self.options = None
         self.parser = OptionParser(
             "%prog [options] " + self.ARGS_HELP + "\n\n"
-            "%prog " + self.version + ", Copyright (c) 2009 Pyroscope Project",
+            "%prog " + self.version + ", Copyright (c) 2009 Pyroscope Project\n\n"
+            + textwrap.dedent(self.__doc__.rstrip()),
             version="%prog " + self.version)
 
 
