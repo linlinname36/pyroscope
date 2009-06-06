@@ -89,5 +89,15 @@ project = dict(
     ],
 )
 
+
+@task
+@needs("setuptools.command.build")
+def functest():
+    """ Integration test of the command line tools.
+    """
+    sh("bin/mktor -o build/pavement.torrent pavement.py http://example.com/")
+    sh("bin/mktor -o build/tests.torrent -r 'pyroscope tests' --private tests/ http://example.com/")
+
+
 setup(**project)
 
