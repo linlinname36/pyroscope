@@ -1,13 +1,14 @@
 #summary PyroScope CLI Tool Overview.
+<wiki:toc max_depth="2" />
 
 = Common Options =
 
 All commands share some common options:
 {{{
-  --version             show program's version number and exit
-  -h, --help            show this help message and exit
-  -q, --quiet           Omit informational logging
-  -v, --verbose         Increase informational logging
+--version             show program's version number and exit
+-h, --help            show this help message and exit
+-q, --quiet           Omit informational logging
+-v, --verbose         Increase informational logging
 }}}
 
 = Commands =
@@ -26,6 +27,7 @@ NAME pavement.torrent
 SIZE 3.6 KiB (0 * 32.0 KiB + 3.6 KiB)
 HASH 2D1A7E443D23907E5118FA4A1065CCA191D62C0B
 URL  http://example.com/
+
 PRV  NO (DHT/PEX enabled)
 TIME 2009-06-06 00:49:52
 BY   PyroScope 0.1.1
