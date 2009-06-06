@@ -42,7 +42,6 @@ NAME pavement.torrent
 SIZE 3.6 KiB (0 * 32.0 KiB + 3.6 KiB)
 HASH 2D1A7E443D23907E5118FA4A1065CCA191D62C0B
 URL  http://example.com/
-
 PRV  NO (DHT/PEX enabled)
 TIME 2009-06-06 00:49:52
 BY   PyroScope 0.1.1
