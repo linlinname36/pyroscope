@@ -44,6 +44,9 @@ class MetafileCreator(ScriptBase):
             help="Optional file name for the metafile")
         self.add_value_option("-r", "--root-name", "NAME",
             help="Optional root name (default is basename of the data path)")
+        self.add_value_option("-x", "--exclude", "PATTERN",
+            action="append", default=[],
+            help="Exclude files matching a glob pattern from hashing")
         self.add_value_option("--comment", "TEXT",
             help="Optional human-readable comment")
 
@@ -70,6 +73,7 @@ class MetafileCreator(ScriptBase):
         datapath, tracker_url = self.args
         datapath = datapath.rstrip(os.sep)
         metafile = Metafile(self.options.output_filename or (datapath + ".torrent"))
+        metafile.ignore.extend(self.options.exclude)
         metafile.create(datapath, tracker_url, progress=progress, 
             root_name=self.options.root_name, private=self.options.private,
             comment=self.options.comment, created_by="PyroScope %s" % self.version,
