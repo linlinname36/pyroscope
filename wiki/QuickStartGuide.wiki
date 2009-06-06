@@ -32,7 +32,7 @@ aptitude install build-essential devtools
 
 If there are packages missing from that list, leave a comment.
 
-== Updating to the Lastest SVN Version ==
+== Updating to the Latest SVN Version ==
 To update the software after initial installation, use these commands:
 {{{
 cd ~/lib/pyroscope
