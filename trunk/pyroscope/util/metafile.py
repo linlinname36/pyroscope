@@ -1,7 +1,5 @@
 """ PyroScope - Metafile Support.
 
-    See http://www.bittorrent.org/beps/bep_0003.html
-
     Copyright (c) 2009 The PyroScope Project <pyroscope.project@gmail.com>
 
     This program is free software; you can redistribute it and/or modify
@@ -17,8 +15,6 @@
     You should have received a copy of the GNU General Public License along
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
-    Code partially adapted from BitTorrent 3.4.2, (c) by Bram Cohen
 """
 
 import os
@@ -29,7 +25,7 @@ import fnmatch
 import hashlib
 import logging
 
-from pyroscope.util import bencode
+from pyroscope.util import bencode, fmt
 
 LOG = logging.getLogger(__name__)
 ALLOWED_NAME = re.compile(r"^[^/\\.~][^/\\]*$")
@@ -121,6 +117,7 @@ class Metafile(object):
         self.filename = filename
         self.progress = None
         self.datapath = None
+        self.ignore = self.IGNORE_GLOB[:]
 
 
     def _scan(self):
@@ -132,12 +129,12 @@ class Metafile(object):
             for dirpath, dirnames, filenames in os.walk(self.datapath):
                 # Don't scan blacklisted directories
                 for bad in dirnames[:]:
-                    if any(fnmatch.fnmatch(bad, pattern) for pattern in self.IGNORE_GLOB):
+                    if any(fnmatch.fnmatch(bad, pattern) for pattern in self.ignore):
                         dirnames.remove(bad)
 
                 # Yield all filenames that aren't blacklisted
                 for filename in filenames:
-                    if not any(fnmatch.fnmatch(filename, pattern) for pattern in self.IGNORE_GLOB):
+                    if not any(fnmatch.fnmatch(filename, pattern) for pattern in self.ignore):
                         #yield os.path.join(dirpath[len(self.datapath)+1:], filename)
                         yield os.path.join(dirpath, filename)
         else:
@@ -215,7 +212,7 @@ class Metafile(object):
         }
 
         # Handle directory vs. single file        
-        if len(file_list) > 1:
+        if os.path.isdir(self.datapath):
             metainfo["files"] = file_list
         else:
             metainfo["length"] = totalsize
@@ -276,4 +273,68 @@ class Metafile(object):
 
         bencode.bwrite(self.filename, meta)
         return meta
+
+
+    def listing(self):
+        """ List torrent info & contents.
+        """
+        # Assemble data
+        metainfo = bencode.bread(self.filename)
+        announce = metainfo['announce']
+        info = metainfo['info']
+        info_hash = hashlib.sha1(bencode.bencode(info))
+
+        if info.has_key('length'):
+            # Single file
+            total_size = info['length']
+        else:
+            # Directory structure
+            total_size = sum([f['length'] for f in info['files']])
+
+        piece_length = info['piece length']
+        piece_number, last_piece_length = divmod(total_size, piece_length)
+
+        # Build result
+        result = [
+            "NAME %s" % (os.path.basename(self.filename)),
+            "SIZE %s (%i * %s + %s)" % (
+                fmt.human_size(total_size).strip(),
+                piece_number, fmt.human_size(piece_length).strip(),
+                fmt.human_size(last_piece_length).strip(),
+            ),
+            "HASH %s" % (info_hash.hexdigest().upper()),
+            "URL  %s" % announce,
+            "PRV  %s" % ("YES (DHT/PEX disabled)" if info.get("private") else "NO (DHT/PEX enabled)"),
+            "TIME %s" % time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(metainfo["creation date"])),
+        ]
+        
+        for label, key in (("BY  ", "created by"), ("REM ", "comment")):
+            if key in metainfo:
+                result.append("%s %s" % (label, metainfo[key]))
+                
+        result.extend([
+            "",
+            "FILE LISTING",
+        ])
+        if info.has_key('length'):
+            # Single file
+            result.append("%-69s%9s" % (
+                    info['name'],
+                    fmt.human_size(total_size),
+            ))
+        else:
+            # Directory structure
+            result.append("%s/" % info['name'])
+            oldpaths = [None] * 99
+            for entry in info['files']:
+                for idx, item in enumerate(entry['path'][:-1]):
+                    if item != oldpaths[idx]:
+                        result.append("%s%s/" % (' ' * (4*(idx+1)), item))
+                        oldpaths[idx] = item
+                result.append("%-69s%9s" % (
+                    ' ' * (4*len(entry['path'])) + entry['path'][-1],
+                    fmt.human_size(entry['length']),
+                ))
+
+        return result
 
