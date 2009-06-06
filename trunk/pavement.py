@@ -156,7 +156,7 @@ def start():
     """ Start the PRODUCTION web server.
     """
     sh("paster setup-app ~/.pyroscope/web.ini")
-    sh(PASTER_CMD % ("--monitor-restart --daemon"))
+    sh(PASTER_CMD % ("--daemon")) # --monitor-restart makes --stop-daemon fail
 
 
 @task
