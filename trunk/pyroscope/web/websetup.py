@@ -1,4 +1,4 @@
-""" PyroScope - Web Interface.
+""" PyroScope - Setup the Web Application.
 
     Copyright (c) 2009 The PyroScope Project <pyroscope.project@gmail.com>
 
@@ -17,3 +17,12 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
 
+import logging
+
+from pyroscope.web.config.environment import load_environment
+
+log = logging.getLogger(__name__)
+
+def setup_app(command, conf, vars):
+    """Place any commands to setup pyroscope.web here"""
+    load_environment(conf.global_conf, conf.local_conf)

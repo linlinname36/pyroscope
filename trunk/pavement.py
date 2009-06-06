@@ -42,18 +42,32 @@ project = dict(
             "mktor = pyroscope.scripts.mktor:run",
             "lstor = pyroscope.scripts.lstor:run",
         ],
+        "paste.app_factory": [
+            "main = pyroscope.web.config.middleware:make_app",
+        ],
+        "paste.app_install": [
+            "main = pylons.util:PylonsInstaller",
+        ],
     },
     include_package_data = True,
-    #zip_safe = False,
-    data_files=[
+    zip_safe = False,
+    data_files = [
         ("EGG-INFO", ["README", "LICENSE", "debian/changelog"]),
     ],
+    paster_plugins = ["PasteScript", "Pylons"],
+
+    #package_data={"pyroscope.web": ["i18n/*/LC_MESSAGES/*.mo"]},
+    #message_extractors={"pyroscope.web": [
+    #        ("**.py", "python", None),
+    #        ("templates/**.mako", "mako", {"input_encoding": "utf-8"}),
+    #        ("public/**", "ignore", None)]},
 
     # dependencies
     install_requires = [
-        #"PasteScript>=1.6.2",
+        "Pylons>=0.9.7",
     ],
     setup_requires = [
+        "PasteScript>=1.7.3",
     ],
 
     # tests
@@ -75,8 +89,8 @@ project = dict(
         #"Development Status :: 5 - Production/Stable",
         "Environment :: Console",
         "Environment :: Web Environment",
-        #"Framework :: Paste",
-        #"Framework :: Pylons",
+        "Framework :: Paste",
+        "Framework :: Pylons",
         "Intended Audience :: End Users/Desktop",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU General Public License (GPL)",
@@ -89,6 +103,15 @@ project = dict(
         "Topic :: Utilities",
     ],
 )
+
+
+@task
+@needs("setuptools.command.build")
+def serve():
+    """ Start the web server in DEVELOPMENT mode.
+    """
+    sh("bin/paster setup-app development.ini")
+    sh("bin/paster serve --reload --monitor-restart development.ini")
 
 
 @task

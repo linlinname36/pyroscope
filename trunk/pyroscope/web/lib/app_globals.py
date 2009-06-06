@@ -1,4 +1,4 @@
-""" PyroScope - Web Interface.
+""" PyroScope - The application's Globals object.
 
     Copyright (c) 2009 The PyroScope Project <pyroscope.project@gmail.com>
 
@@ -17,3 +17,14 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
 
+class Globals(object):
+    """ Globals acts as a container for objects available throughout the
+        life of the application
+    """
+
+    def __init__(self):
+        """ One instance of Globals is created during application
+            initialization and is available during requests via the
+            'app_globals' variable
+        """
+        

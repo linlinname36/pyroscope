@@ -1,4 +1,4 @@
-""" PyroScope - Web Interface.
+""" PyroScope - Web Model Tests.
 
     Copyright (c) 2009 The PyroScope Project <pyroscope.project@gmail.com>
 

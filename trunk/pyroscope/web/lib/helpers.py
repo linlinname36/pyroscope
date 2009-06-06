@@ -1,4 +1,7 @@
-""" PyroScope - Web Interface.
+""" PyroScope - Web Helper Functions.
+
+    Consists of functions to typically be used within templates, but also
+    available to Controllers. This module is available to templates as 'h'.
 
     Copyright (c) 2009 The PyroScope Project <pyroscope.project@gmail.com>
 
@@ -16,4 +19,5 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
-
+# Import helpers as desired, or define your own, ie:
+#from webhelpers.html.tags import checkbox, password
