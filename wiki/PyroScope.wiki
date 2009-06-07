@@ -1,6 +1,6 @@
 #summary Python Torrent Tools.
 
-= Introduction =
+== Introduction ==
 
 PyroScope is a collection of tools for the BitTorrent protocol and especially the rTorrent client.
 
@@ -10,3 +10,9 @@ It offers the following components:
  * CommandLineTools for automation of common tasks, like metafile creation
 
 If you want to get a first impression without installing the software, look at the ScreenShotGallery. To get started after that, see the QuickStartGuide.
+
+== Project Status ==
+This is the status of various parts of the project:
+|| *Web Interface* || pre-alpha ||
+|| *Queue Manager* || not yet implemented ||
+|| *CLI Tools* || mktor, lstor ||
