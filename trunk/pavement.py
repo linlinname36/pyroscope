@@ -113,13 +113,35 @@ project = dict(
 @task
 @needs("setuptools.command.egg_info")
 def bootstrap():
+    links = []
     for egg_info in (i[1] for i in project["data_files"] if i[0] == "EGG-INFO").next():
-        args = (
+        links.append((
             "../" + egg_info, 
-            "%s.egg-info/%s" % (project["name"], os.path.basename(egg_info)))
-        if not os.path.exists(args[1]):
-            print "%s <- %s" % args
-            os.symlink(*args)
+            "%s.egg-info/%s" % (project["name"], os.path.basename(egg_info))
+        ))
+
+    for link_pair in links:
+        if not os.path.exists(link_pair[1]):
+            print "%s <- %s" % link_pair
+            os.symlink(*link_pair)
+
+
+@task
+@consume_args
+def controller(args):
+    links = [
+        ("web/controllers", "%s/controllers" % project["name"]),
+        ("../tests/web", "%s/tests" % project["name"]),
+    ]
+    for link_pair in links:
+        if not os.path.exists(link_pair[1]):
+            #print "%s <- %s" % link_pair
+            os.symlink(*link_pair)
+    try:
+        sh("paster controller %s" % " ".join(args))
+    finally:
+        for _, link in links:
+            os.remove(link)
 
 
 @task
