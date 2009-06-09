@@ -27,7 +27,7 @@ Currently, the only way to install and use the software is from source, as outli
 On Debian and Ubuntu, you'll need the following packages installed:
 {{{
 aptitude install python2.5 python-virtualenv python-dev
-aptitude install build-essential devtools
+aptitude install inkscape build-essential devtools
 }}}
 
 If there are packages missing from that list, leave a comment.
