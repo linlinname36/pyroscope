@@ -6,8 +6,9 @@
 <html>
   <head>
     <title>${self.page_title()} - PyroScope Web Interface</title>
+    <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/css/default.css">
   </head>
-  <body style="background-color:white">
+  <body>
     <img src="/img/logo-alpha-red.png"/>
     ${self.body()}
   </body>
