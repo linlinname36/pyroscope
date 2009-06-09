@@ -111,7 +111,7 @@ project = dict(
 
 
 @task
-@needs("setuptools.command.egg_info")
+@needs(["setuptools.command.egg_info", "svg2png"])
 def bootstrap():
     links = []
     for egg_info in (i[1] for i in project["data_files"] if i[0] == "EGG-INFO").next():
@@ -124,6 +124,22 @@ def bootstrap():
         if not os.path.exists(link_pair[1]):
             print "%s <- %s" % link_pair
             os.symlink(*link_pair)
+
+
+@task
+def svg2png():
+    """ Convert SVG icons to PNG icons.
+    """
+    size = 22
+    img_path = path("pyroscope/web/public/img")
+    svg_path = img_path / "svg"
+    png_path = img_path / "png" / str(size)
+    png_path.exists() or png_path.makedirs()
+
+    for svg_file in svg_path.files("*.svg"):
+        png_file = png_path / svg_file.namebase + ".png"
+        if not png_file.exists():
+            sh("inkscape -z -e %(png_file)s -w %(size)d -h %(size)d %(svg_file)s" % locals())
 
 
 @task
