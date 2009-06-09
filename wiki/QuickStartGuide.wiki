@@ -39,6 +39,7 @@ cd ~/lib/pyroscope
 svn update
 source bin/activate
 paver develop -U
+paver bootstrap
 }}}
 
 
