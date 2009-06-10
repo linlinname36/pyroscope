@@ -1,4 +1,4 @@
-""" PyroScope - The application's Globals object.
+""" PyroScope - Global Configuration Defaults.
 
     Copyright (c) 2009 The PyroScope Project <pyroscope.project@gmail.com>
 
@@ -17,27 +17,6 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
 
-import logging
+# Path to rTorrent socket
+scgi_url = "~/lib/rtorrent/.scgi/socket"
 
-from pyroscope.engines import rtorrent
-
-LOG = logging.getLogger(__name__)
-
-
-class Globals(object):
-    """ Globals acts as a container for objects available throughout the
-        life of the application
-    """
-
-    def __init__(self):
-        """ One instance of Globals is created during application
-            initialization and is available during requests via the
-            'app_globals' variable
-        """
-        self.engine_id = "Unknown Engine ID"
-        try:
-            proxy = rtorrent.Proxy()
-            self.engine_id = "%s [%s]" % (proxy.id, proxy.version)
-        except Exception, exc:
-            LOG.warning("Cannot determine engine ID (%s)" % exc)
-        

@@ -1,4 +1,4 @@
-""" PyroScope - The application's Globals object.
+""" PyroScope - Generic Objects.
 
     Copyright (c) 2009 The PyroScope Project <pyroscope.project@gmail.com>
 
@@ -17,27 +17,28 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
 
-import logging
-
-from pyroscope.engines import rtorrent
-
-LOG = logging.getLogger(__name__)
-
-
-class Globals(object):
-    """ Globals acts as a container for objects available throughout the
-        life of the application
+class Bunch(dict):
+    """ Generic attribute container that also is a dict.
     """
 
-    def __init__(self):
-        """ One instance of Globals is created during application
-            initialization and is available during requests via the
-            'app_globals' variable
-        """
-        self.engine_id = "Unknown Engine ID"
+    def __getattr__(self, name):
         try:
-            proxy = rtorrent.Proxy()
-            self.engine_id = "%s [%s]" % (proxy.id, proxy.version)
-        except Exception, exc:
-            LOG.warning("Cannot determine engine ID (%s)" % exc)
-        
+            return dict.__getattribute__(self, name)
+        except AttributeError:
+            try:
+                return self[name]
+            except KeyError:
+                raise AttributeError("Bunch has no attribute %r in %s" % (
+                    name, ', '.join(map(repr, self.keys()))
+                ))
+
+
+    def __setattr__(self, name, value):
+        self[name] = value
+
+
+    def __repr__(self):
+        return "Bunch(%s)" % ", ".join(
+            sorted("%s=%r" % attr for attr in self.items())
+        )
+

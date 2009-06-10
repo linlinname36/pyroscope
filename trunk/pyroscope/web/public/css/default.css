@@ -5,6 +5,25 @@ body {
 	color: #000000;
 }
 
+span.topstats {
+    font-family: Verdana, sans-serif;
+    font-size: 0.8em;
+    font-weight: bold;
+    vertical-align: top;
+}
+
+table.grid tr th {
+	background-color: #666666;
+	color: yellow;
+}
+table.grid tr td {
+    border: solid 1px #999999;
+}
+td.monoval {
+    font-family: Lucida Console, Courier, monospace;
+    text-align: right;
+}
+
 /*  topmenu - top-level menu selection
  */
  ul.topmenu {
