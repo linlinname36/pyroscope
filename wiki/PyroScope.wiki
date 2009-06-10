@@ -13,6 +13,6 @@ If you want to get a first impression without installing the software, look at t
 
 == Project Status ==
 This is the status of various parts of the project:
-|| *Web Interface* || pre-alpha ||
+|| *Web Interface* || alpha; active torrents & messages view ||
 || *Queue Manager* || not yet implemented ||
 || *CLI Tools* || mktor, lstor ||
