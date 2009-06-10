@@ -23,8 +23,12 @@
 from pylons.controllers.util import url_for
 #from webhelpers.html.tags import checkbox, password
 
-def icon(name, size=22):
+def icon(name):
     """ Emit image tag for an icon.
     """
+    size = 24
+    if '.' in name:
+        name, size = name.split('.')
+        size = int(size)
     return '<img src="/img/png/%(size)d/%(name)s.png" height="%(size)d" width="%(size)d" />' % locals()
 

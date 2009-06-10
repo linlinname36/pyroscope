@@ -1,7 +1,11 @@
 <%inherit file="/common/pageframe.mako"/>
 <%!
+    import re
     from pyroscope.util import fmt
-    # from pyroscope.web.lib import helpers as h
+    from pyroscope.web.lib import helpers as h
+
+    obfuscate = lambda x: re.sub("[a-z]|[A-Z]+", lambda s: "?" * len(s.group()), x)
+    obfuscate = lambda x: x
     refresh_rate = 10
     page_title = "Torrents"
     page_head = '<meta http-equiv="refresh" content="%d" />' % refresh_rate
@@ -10,32 +14,34 @@
 <table class="grid">
 <tr>
 <th>NAME</th>
-<th>RATE UP</th>
-<th>RATE DN</th>
-<th>XFER UP</th>
-<th>XFER DN</th>
-<th>RATIO</th>
+<th>${"green_up_double.16"|h.icon} RATE</th>
+<th>${"green_down_double.16"|h.icon} RATE</th>
+<th>${"green_up_doc.16"|h.icon} XFER</th>
+<th>${"green_down_doc.16"|h.icon} XFER</th>
+<th>${"ying_yang_rg"|h.icon}</th>
 <th>TRACKER</th>
 </tr>
 % for _, _, item in sorted(c.ordered, reverse=1):
 <tr>
-<td>${item.name}</td>
+<td>${item.name|obfuscate,h}</td>
 <td class="monoval">${item.up_rate_h}</td>
 <td class="monoval">${item.down_rate_h}</td>
 <td class="monoval">${item.up_total_h}</td>
 <td class="monoval">${item.down_total_h}</td>
 <td class="monoval">${"%6.3f" % item.ratio_1}</td>
-<td>${item.domains}</td>
+##<td>${re.sub(item.domains)}</td>
+<td>${item.domains|obfuscate,h}</td>
 </tr>
 % endfor
+<tr>
+<td style="border: 0px"><small><em>Refreshed every ${self.attr.refresh_rate} seconds.</em></small></td>
+<td class="monoval" style="border: 0px">${"green_sigma.16"|h.icon} ${fmt.human_size(c.up_total)}</td>
+<td class="monoval" style="border: 0px">${"green_sigma.16"|h.icon} ${fmt.human_size(c.down_total)}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
 </table>
-
-<br />
-<div>
-<strong>TOTAL:</strong> UP ${fmt.human_size(c.up_total)} / DOWN ${fmt.human_size(c.down_total)}
-</div>
-
-<div><small><em>Refreshed every ${self.attr.refresh_rate} seconds.</em></small></div>
 
 ##            print "  [%d torrents on %d trackers with %.3f total ratio]" % (
 ##                len(self.torrents), len(domains),
@@ -50,9 +56,20 @@
 
 % if c.messages:
 <h1>Tracker messages</h1>
-% endif
 
+<table class="grid">
+<tr>
+<th>NAME</th>
+<th>MESSAGE</th>
+<th>TRACKER</th>
+</tr>
 % for msg in sorted(c.messages):
-<strong>${msg.name|h}</strong> <em>${msg.text|h}</em> @ <tt>${msg.domains|h}</tt><br />
+<tr>
+<td>${msg.name|obfuscate,h}</td>
+<td>${msg.text|h}</td>
+<td>${msg.domains|obfuscate,h}</td>
+</tr>
 % endfor
+</table>
+% endif
 

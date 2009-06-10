@@ -130,16 +130,19 @@ def bootstrap():
 def svg2png():
     """ Convert SVG icons to PNG icons.
     """
-    size = 22
+    sizes = (16, 24)
     img_path = path("pyroscope/web/public/img")
     svg_path = img_path / "svg"
-    png_path = img_path / "png" / str(size)
-    png_path.exists() or png_path.makedirs()
+    svg_files = svg_path.files("*.svg")
+    
+    for size in sizes:
+        png_path = img_path / "png" / str(size)
+        png_path.exists() or png_path.makedirs()
 
-    for svg_file in svg_path.files("*.svg"):
-        png_file = png_path / svg_file.namebase + ".png"
-        if not png_file.exists():
-            sh("inkscape -z -e %(png_file)s -w %(size)d -h %(size)d %(svg_file)s" % locals())
+        for svg_file in svg_files:
+            png_file = png_path / svg_file.namebase + ".png"
+            if not png_file.exists():
+                sh("inkscape -z -e %(png_file)s -w %(size)d -h %(size)d %(svg_file)s" % locals())
 
 
 @task
