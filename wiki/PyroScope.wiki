@@ -9,7 +9,8 @@ It offers the following components:
  * rTorrent extensions like a queue manager and statistics
  * CommandLineTools for automation of common tasks, like metafile creation
 
-If you want to get a first impression without installing the software, look at the ScreenShotGallery. To get started after that, see the QuickStartGuide.
+To get started right away, see the QuickStartGuide.
+If you want to get a first impression without installing the software, look at the ScreenShotGallery.
 
 == Project Status ==
 This is the status of various parts of the project:
