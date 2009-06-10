@@ -12,7 +12,7 @@
     <img src="/img/logo-alpha-red.png"/>
 ##  Top-level menu
     <ul class="topmenu">
-        <li class="topmenu"><a class="topmenu" href="${h.url_for("index")}">Home</a></li>
+        <li class="topmenu"><a class="topmenu" href="${h.url_for(controller="index")}">Home</a></li>
         <li class="topmenu"><a class="topmenu" href="${h.url_for(controller="view", action="active")}">Torrents</a></li>
     </ul>
 ##  Insert body of derived page
