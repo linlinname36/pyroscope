@@ -5,3 +5,32 @@ body {
 	color: #000000;
 }
 
+/*  topmenu - top-level menu selection
+ */
+ ul.topmenu {
+    background-color: #BBBBBB;
+    border: solid 2px #CCCCCC; 
+    padding: .3em;
+ }
+li.topmenu {
+    display: inline;
+    background-color: #DDDDDD;
+    padding: .2em;
+}
+a.topmenu {
+    text-decoration: none;
+}
+a:link.topmenu { 
+    color: #000000;
+}
+a:visited.topmenu { 
+    color: #000000;
+}
+a:hover.topmenu { 
+    color: #990000;
+    background-color: #FFEEEE;
+}
+/*
+a:active.topmenu { 
+    color: #550000;
+}*/

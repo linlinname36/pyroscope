@@ -19,5 +19,12 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
-# Import helpers as desired, or define your own, ie:
+
+from pylons.controllers.util import url_for
 #from webhelpers.html.tags import checkbox, password
+
+def icon(name, size=22):
+    """ Emit image tag for an icon.
+    """
+    return '<img src="/img/png/%(size)d/%(name)s.png" height="%(size)d" width="%(size)d" />' % locals()
+
