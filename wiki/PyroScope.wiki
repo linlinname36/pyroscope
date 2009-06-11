@@ -18,7 +18,7 @@ If you like PyroScope, click on the following button to support it.
 
 == Project Status ==
 This is the status of various parts of the project:
-|| *ohloh.net* || <wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_thin_badge.xml" height="36"  border="0" /> ||
+|| *ohloh.net Statistics* || <wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_thin_badge.xml" height="36"  border="0" /> ||
 || *Web Interface* || alpha; active torrents & messages view ||
 || *Queue Manager* || not yet implemented ||
 || *CLI Tools* || mktor, lstor ||
