@@ -54,7 +54,7 @@ scgi_local = ~/lib/rtorrent/.scgi_local
 Then restart it.
 
 == `PyroScope` Basic Configuration ==
-Create the `~/.pyroscope` directory and ...
+Create the `~/.pyroscope` directory and the necessary sub directories.
 {{{
 mkdir -p ~/.pyroscope/{log,www-data}
 }}}
