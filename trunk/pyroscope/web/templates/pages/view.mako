@@ -5,10 +5,13 @@
     from pylons import tmpl_context as c
     from pyroscope.web.lib import helpers as h
 
+    # XXX Pylons seems to cache the header parts, refresh rate doesn't change always
+    # But then this is a temp. hack anyway.
+    refresh_rate = c.refresh_rate
     obfuscate = lambda x: re.sub("[a-z]|[A-Z]+", lambda s: "?" * len(s.group()), x)
     obfuscate = lambda x: x
     page_title = "Torrents"
-    page_head = '<meta http-equiv="refresh" content="%s" />' % c.refresh_rate
+    page_head = '<meta http-equiv="refresh" content="%s" />' % refresh_rate
 %>
 <h1>Active Torrents</h1>
 <table class="grid">

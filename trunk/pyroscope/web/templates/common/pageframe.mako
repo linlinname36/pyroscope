@@ -2,10 +2,12 @@
 <%!
     page_title = "*** PAGE TITLE NOT SET ***"
     page_head = ""
+    refresh_rate = "60"
 %>
 
 <html>
   <head>
+##  HTML head
     <title>${self.attr.page_title} - PyroScope</title>
 ##    ${h.stylesheet_link_tag( '/style1.css', '/style2.css')}
 ##    ${h.javascript_include_tag( 'jquery.js', 'jquery.debug.js')}
@@ -38,17 +40,17 @@
     <div class="topmenu">
     <ul class="topmenu">
         <li>${"home.24"|h.icon}<a id="topmenu-current" href="${h.url_for(controller='index')}">Home</a></li>
-        <li>${"torrent.24"|h.icon}<a href="${h.url_for(controller='view', action='active')}">Torrents</a></li>
+        <li>${"torrent.24"|h.icon}<a href="${h.url_for(controller='view', action='active')}?refresh=${self.attr.refresh_rate}">Torrents</a></li>
         <li>${"flask.24"|h.icon}<a href="${h.url_for(controller='sandbox')}">Lab</a></li>
         <li>${"help.24"|h.icon}<a href="${h.url_for(controller='help')}">Help</a></li>
     </ul>
     </div>
   </div>
   <div id="bd"><!-- body -->
-##  Insert body of derived page
+##  Body of derived page
     ${self.body()}
-##  ${dir(g)}
   </div>
+##  Footer
   <div id="ft" class="rounded"><!-- footer -->
   <small><strong><em>Powered by:</em></strong></small>
   &#160; <a href="http://www.python.org/">${"python.png Python_Powered 42x40"|h.img}</a>
