@@ -19,6 +19,9 @@ source bootstrap.sh
 
 After that, the CommandLineTools are available in the `~/lib/pyroscope/bin` directory.
 
+If you like PyroScope afte rusing it for a while, click on the following button to support it.
+<wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_users_logo.xml" height="43"  border="0" />
+
 = Details of Installation =
 
 Currently, the only way to install and use the software is from source, as outlined above.
