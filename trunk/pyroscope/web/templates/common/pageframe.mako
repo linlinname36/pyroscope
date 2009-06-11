@@ -39,6 +39,8 @@
     <ul class="topmenu">
         <li>${"home.24"|h.icon}<a id="topmenu-current" href="${h.url_for(controller='index')}">Home</a></li>
         <li>${"torrent.24"|h.icon}<a href="${h.url_for(controller='view', action='active')}">Torrents</a></li>
+        <li>${"flask.24"|h.icon}<a href="${h.url_for(controller='sandbox')}">Lab</a></li>
+        <li>${"help.24"|h.icon}<a href="${h.url_for(controller='help')}">Help</a></li>
     </ul>
     </div>
   </div>
