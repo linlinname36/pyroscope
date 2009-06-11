@@ -1,4 +1,5 @@
 #summary PyroScope CLI Tool Overview.
+#labels cli,shell
 <wiki:toc max_depth="2" />
 
 = Common Options =
