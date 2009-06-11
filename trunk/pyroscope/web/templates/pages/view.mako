@@ -62,9 +62,9 @@
 </tr>
 % for msg in sorted(c.messages):
 <tr>
-<td>${msg.name|obfuscate,h}</td>
-<td>${msg.text|h}</td>
-<td>${msg.domains|obfuscate,h}</td>
+<td>${msg.name|obfuscate}</td>
+<td>${msg.text}</td>
+<td>${msg.domains|obfuscate}</td>
 </tr>
 % endfor
 </table>

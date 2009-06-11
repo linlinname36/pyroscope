@@ -47,3 +47,10 @@ def img(name):
     w, h = size.split("x")
     return '<img src="/img/%(name)s" height="%(h)s" width="%(w)s" %(title)s/>' % locals()
 
+
+def now():
+    """ Return curren time as a string.
+    """
+    import time
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
+

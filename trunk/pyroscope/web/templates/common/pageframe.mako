@@ -20,11 +20,12 @@
 
   <body><div id="doc3" class="yui-t5">
   <div class="header" id="hd"><!-- header -->
-    ##&#160; ${"logo-alpha-red.png PNG 450x100"|h.img}
-    ##&#160; ${"logo.150"|h.icon}
 ##  Logo & Stats
     <span class="logo">${"logo.150"|h.icon}</span>
-    <span class="topstas">${g.engine_id|h}</span>
+    <div class="topstats">
+        ${"console.16"|h.icon} ${g.engine_id}
+        &#160; ${"clock.16"|h.icon} ${h.now()}
+    </div>
 ##  Top-level menu
     <ul class="topmenu">
         <li><a id="topmenu-current" href="${h.url_for(controller="index")}">Home</a></li>
