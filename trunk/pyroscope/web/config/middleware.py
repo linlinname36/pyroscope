@@ -28,6 +28,7 @@ from pylons.wsgiapp import PylonsApp
 from routes.middleware import RoutesMiddleware
 
 from pyroscope.web.config.environment import load_environment
+from pyroscope.util.wsgi import LatencyProfilingMiddleware
 
 
 def make_app(global_conf, full_stack=True, static_files=True, **app_conf):
@@ -65,6 +66,7 @@ def make_app(global_conf, full_stack=True, static_files=True, **app_conf):
     app = CacheMiddleware(app, config)
 
     # CUSTOM MIDDLEWARE HERE (filtered by error handling middlewares)
+    app = LatencyProfilingMiddleware(app, config)
 
     if asbool(full_stack):
         # Handle Python exceptions

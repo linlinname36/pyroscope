@@ -129,6 +129,11 @@ div#ft small {
     /* "powered by" text */
     vertical-align: top;
 }    
+.profilingstats {
+    /* page rendering time */
+    float: right;
+    color: #666666; 
+}
 
 
 /*  data tables (grid)
@@ -157,11 +162,6 @@ td.monoval {
     /* a right-aligned  monospace font value (so pre-formatted values line up) */
     font-family: Lucida Console, Courier, monospace;
     text-align: right;
-}
-.profilingstats {
-    /* Page rendering time */
-    float: right;
-    color: #999999;
 }
 
 
