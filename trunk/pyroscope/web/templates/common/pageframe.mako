@@ -55,6 +55,7 @@
   &#160; <a href="http://www.blueskyonmars.com/projects/paver/">${"paver.png Paver_Powered 76x40"|h.img}</a>
   &#160; <a href="http://www.w3.org/Graphics/SVG/">${"svg.png SVG_Powered 40x40"|h.img}</a>
   &#160; <a href="http://developer.yahoo.com/yui/">${"yui.png YUI_Powered 120x37"|h.img}</a>
+  &#160; <a href="http://en.wikipedia.org/wiki/Caffeine">${"coffee.png Caffeine_Powered 74x40"|h.img}</a>
   </div>
   </div></body>
 </html>
