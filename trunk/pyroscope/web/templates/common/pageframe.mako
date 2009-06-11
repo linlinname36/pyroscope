@@ -38,7 +38,7 @@
 ##  ${dir(g)}
   </div>
   <div class="footer" id="ft"><!-- footer -->
-  <span><em>Powered by:</em></span>
+  <span><small><strong><em>Powered by:</em></strong></small></span>
   &#160; ${"python.png Python_Powered 42x40"|h.img}
   &#160; ${"pylons.png Pylons_Powered 59x40"|h.img}
   &#160; ${"yui.png YUI_Powered 120x37"|h.img}
