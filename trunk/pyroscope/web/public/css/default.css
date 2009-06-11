@@ -190,6 +190,7 @@ table.grid tr th {
 td.monoval {
     /* a right-aligned  monospace font value (so pre-formatted values line up) */
     font-family: Lucida Console, Courier, monospace;
+    font-weight: bolder;
     text-align: right;
 }
 
