@@ -26,11 +26,17 @@ from pylons.controllers.util import url_for
 def icon(name):
     """ Emit image tag for an icon.
     """
+    title = ""
+    if ' ' in name:
+        name, title = name.split(None, 1)
+        title = 'title="%(title)s" alt="%(title)s" ' % locals()
+
     size = 24
     if '.' in name:
         name, size = name.split('.')
         size = int(size)
-    return '<img src="/img/png/%(size)d/%(name)s.png" height="%(size)d" width="%(size)d" />' % locals()
+
+    return '<img src="/img/png/%(size)d/%(name)s.png" height="%(size)d" width="%(size)d" %(title)s/>' % locals()
 
 
 def img(name):

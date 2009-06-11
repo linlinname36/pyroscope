@@ -14,11 +14,11 @@
 <table class="grid">
 <tr>
 <th>${"torrent.16"|h.icon} TORRENT</th>
-<th>${"green_up_double.16"|h.icon} RATE</th>
-<th>${"green_down_double.16"|h.icon} RATE</th>
-<th>${"green_up_doc.16"|h.icon} XFER</th>
-<th>${"green_down_doc.16"|h.icon} XFER</th>
-<th>${"ying_yang_rg"|h.icon}</th>
+<th>${"green_up_double.16 UP"|h.icon} RATE</th>
+<th>${"green_down_double.16 DOWN"|h.icon} RATE</th>
+<th>${"green_up_doc.16 UP"|h.icon} XFER</th>
+<th>${"green_down_doc.16 DOWN"|h.icon} XFER</th>
+<th>${"ying_yang_rg RATIO"|h.icon}</th>
 <th>${"tracker"|h.icon} TRACKER</th>
 </tr>
 % for _, _, item in sorted(c.ordered, reverse=1):
@@ -29,14 +29,13 @@
 <td class="monoval">${item.up_total_h}</td>
 <td class="monoval">${item.down_total_h}</td>
 <td class="monoval">${"%6.3f" % item.ratio_1}</td>
-##<td>${re.sub(item.domains)}</td>
-<td>${item.domains|obfuscate,h}</td>
+<td>${item.domains|obfuscate}</td>
 </tr>
 % endfor
 <tr>
 <td style="border: 0px"><small><em>Refreshed every ${self.attr.refresh_rate} seconds.</em></small></td>
-<td class="monoval" style="border: 0px">${"green_sigma.16"|h.icon} ${fmt.human_size(c.up_total)}</td>
-<td class="monoval" style="border: 0px">${"green_sigma.16"|h.icon} ${fmt.human_size(c.down_total)}</td>
+<td class="monoval" style="border: 0px">${"green_sigma.16 SUM UP"|h.icon} ${fmt.human_size(c.up_total)}</td>
+<td class="monoval" style="border: 0px">${"green_sigma.16 SUM DOWN"|h.icon} ${fmt.human_size(c.down_total)}</td>
 </tr>
 </table>
 

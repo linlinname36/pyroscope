@@ -21,10 +21,10 @@
   <body><div id="doc3" class="yui-t5">
   <div class="header" id="hd"><!-- header -->
 ##  Logo & Stats
-    <span class="logo">${"logo.150"|h.icon}</span>
+    <span class="logo"><a href="http://pyroscope.googlecode.com/">${"logo.150"|h.icon}</a></span>
     <div class="topstats">
-        ${"console.16"|h.icon} ${g.engine_id}
-        &#160; ${"clock.16"|h.icon} ${h.now()}
+        ${"console.16 ENGINE ID"|h.icon} ${g.engine_id}
+        &#160; ${"clock.16 TIME"|h.icon} ${h.now()}
     </div>
 ##  Top-level menu
     <ul class="topmenu">
@@ -39,9 +39,12 @@
   </div>
   <div class="footer" id="ft"><!-- footer -->
   <span><small><strong><em>Powered by:</em></strong></small></span>
-  &#160; ${"python.png Python_Powered 42x40"|h.img}
-  &#160; ${"pylons.png Pylons_Powered 59x40"|h.img}
-  &#160; ${"yui.png YUI_Powered 120x37"|h.img}
+  &#160; <a href="http://www.python.org/">${"python.png Python_Powered 42x40"|h.img}</a>
+  &#160; <a href="http://pylonshq.com/">${"pylons.png Pylons_Powered 59x40"|h.img}</a>
+  &#160; <a href="http://www.linux.org/">${"tux.png GNU/Linux_Powered 40x40"|h.img}</a>
+  &#160; <a href="http://www.blueskyonmars.com/projects/paver/">${"paver.png Paver_Powered 76x40"|h.img}</a>
+  &#160; <a href="http://www.w3.org/Graphics/SVG/">${"svg.png SVG_Powered 40x40"|h.img}</a>
+  &#160; <a href="http://developer.yahoo.com/yui/">${"yui.png YUI_Powered 120x37"|h.img}</a>
   </div>
   </div></body>
 </html>
