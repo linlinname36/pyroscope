@@ -23,11 +23,11 @@ body {
 }
 div#bd div {
     /* div in the main content area */
-    margin-bottom: .8em;
-}
-div#bd div:last {
-    /* last div in the main content area */
-    margin-bottom: .05em;
+        margin-bottom: .8em;
+    }
+    div#bd div:last {
+        /* last div in the main content area */
+        margin-bottom: .05em;
 }
 
 
@@ -46,22 +46,23 @@ div.logo {
 }
 div.topstats {
     /* search, statistics, clock, etc. */
-    width: 100%;
-    font-size: 80%;
-    font-weight: bold;
-}
-div.topstats img {
-    /* icons in the top stats */
-    vertical-align: middle;
-    padding-left: 1.5em;
-}
-div.topstats form {
-    /* the search form */
-    display: inline;
-}
-div.topstats form input {
-    /* the search submit button */
-    vertical-align: middle;
+        width: 100%;
+        font-size: 80%;
+        font-weight: bold;
+    }
+    div.topstats img {
+        /* icons in the top stats */
+        vertical-align: middle;
+        padding-left: 1.5em;
+    }
+    div.topstats form {
+        /* the search form */
+        white-space: nowrap;
+        display: inline;
+    }
+    div.topstats form input {
+        /* the search submit button */
+        vertical-align: middle;
 }
 
 
@@ -69,51 +70,59 @@ div.topstats form input {
  */
 div.topmenu {
     /* tabbed menu in the header */
-    -padding-top: 90px;
-    vertical-align: top;
-}
-ul.topmenu {
-    /* the list of menu items */
-    padding: .3em;
-}
-ul.topmenu li {
-    /* a single menu item */
-    font-size: 125%;
-    display: inline;
-    background-color: #FF3300;
-    padding: .3em;
-}
-ul.topmenu li img {
-    /* the icon in a menu item */
-    margin: .3em;
-    vertical-align: middle;
-}
-ul.topmenu li a {
-    /* the anchor pointing to the action of the menu item */
-    margin: .3em;
-    font-weight: bold;
-    text-decoration: none;
-}
-ul.topmenu li a:link { 
-    /* virginal menu link */
-    color: #FFFFFF;
-}
-ul.topmenu li a:visited { 
-    /* visited menu link */
-    color: #FFFFFF;
-}
-ul.topmenu li a:hover { 
-    /* menu link mouse-over */
-    color: #000000;
-    background-color: #FFFFCC;
-}
-/* default is ok
-ul.topmenu li a:active { 
-    color: #550000;
-}*/
-#xxxtopmenu-current {
-    /* not yet implemented */
-    color: #FFFF99;
+        vertical-align: top;
+    }
+    ul.topmenu {
+        /* the list of menu items */
+        padding: .3em;
+    }
+    ul.topmenu li {
+        /* a single menu item */
+        font-size: 125%;
+        white-space: nowrap;
+        display: inline;
+        background-color: #FF3300;
+        padding: .3em;
+
+        /* button-like */
+        border-top: solid 1px #993300; 
+        border-left: solid 1px #993300; 
+        border-bottom: solid 2px #663300; 
+        border-right: solid 2px #663300; 
+        -webkit-border-radius: 9px;    /* for Safari */
+        -moz-border-radius: 9px;       /* for Firefox */
+    }
+    ul.topmenu li img {
+        /* the icon in a menu item */
+        margin: .3em;
+        vertical-align: middle;
+    }
+    ul.topmenu li a {
+        /* the anchor pointing to the action of the menu item */
+        margin: .3em;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    ul.topmenu li a:link { 
+        /* virginal menu link */
+        color: #FFFFFF;
+    }
+    ul.topmenu li a:visited { 
+        /* visited menu link */
+        color: #FFFFFF;
+    }
+    ul.topmenu li a:hover { 
+        /* menu link mouse-over */
+        color: #000000;
+        background-color: #FFFFCC;
+    }
+    /* default is ok
+    ul.topmenu li a:active { 
+        color: #550000;
+    }*/
+    #xxxtopmenu-current {
+        /* not yet implemented */
+        color: #FFFF99;
 }
 
 
@@ -121,18 +130,31 @@ ul.topmenu li a:active {
  */
 div#ft {
     /* the footer defaults */
-    background-color: #FFFF99;
-    padding: .8em;
-    margin-top: .8em;
-}
-div#ft small {
-    /* "powered by" text */
-    vertical-align: top;
+        background-color: #FFFF99;
+        padding: .8em;
+        margin-top: .8em;
+    }
+    div#ft small {
+        /* "powered by" text */
+        vertical-align: top;
 }    
+.bugreport {
+    /* bug report link */
+        white-space: nowrap;
+        margin-left: 3em;
+    }
+    .bugreport a {
+        text-decoration: none;
+    }
+    .bugreport img {
+        vertical-align: middle;
+}
 .profilingstats {
     /* page rendering time */
+    white-space: nowrap;
     float: right;
     color: #666666; 
+    font-size: 80%;
 }
 
 
@@ -140,23 +162,23 @@ div#ft small {
  */
 table.grid tr th {
     /* data grid table headers */
-    background-color: #666666;
-    color: #FFFF99;
-    padding: .3em;
-    border: 0px;
-    -webkit-border-radius: 5px;    /* for Safari */
-    -moz-border-radius: 5px;       /* for Firefox */
-}
-table.grid tr th img {
-    /* data grid table icons */
-    vertical-align: middle;
-}
-table.grid tr td {
-    /* data grid table data cells */
-    padding: .3em;
-    border: 1px solid #999999;
-    -webkit-border-radius: 5px;    /* for Safari */
-    -moz-border-radius: 5px;       /* for Firefox */
+        background-color: #666666;
+        color: #FFFF99;
+        padding: .3em;
+        border: 0px;
+        -webkit-border-radius: 5px;    /* for Safari */
+        -moz-border-radius: 5px;       /* for Firefox */
+    }
+    table.grid tr th img {
+        /* data grid table icons */
+        vertical-align: middle;
+    }
+    table.grid tr td {
+        /* data grid table data cells */
+        padding: .3em;
+        border: 1px solid #999999;
+        -webkit-border-radius: 5px;    /* for Safari */
+        -moz-border-radius: 5px;       /* for Firefox */
 }
 td.monoval {
     /* a right-aligned  monospace font value (so pre-formatted values line up) */
