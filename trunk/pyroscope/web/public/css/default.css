@@ -16,15 +16,15 @@
  */
 body {
     font-family: Verdana;
-	background-color: #FFFFEE;
-	color: #000000;
+    background-color: #FFFFEE;
+    color: #000000;
 }
 
 
 /*  header
  */
 div#hd {
-	background-color: FFFF99;
+    background-color: FFFF99;
     padding: .2em;
 }
 div.logo {
@@ -33,7 +33,6 @@ div.logo {
     padding-right: 1em;
 }
 div.topstats {
-    height: 20px;
     width: 100%;
     font-size: 80%;
     font-weight: bold;
@@ -83,7 +82,7 @@ ul.topmenu li a:hover {
 /*  footer
  */
 div#ft {
-	background-color: #FFFF99;
+    background-color: #FFFF99;
     padding: .8em;
 }
 div#ft small {
@@ -94,14 +93,21 @@ div#ft small {
 /*  data tables (grid)
  */
 table.grid tr th {
-	background-color: #666666;
-	color: yellow;
+    background-color: #666666;
+    color: #FFFF99;
+    padding: .3em;
+    border: 0px;
+    -webkit-border-radius: 5px;    /* for Safari */
+    -moz-border-radius: 5px;       /* for Firefox */
 }
 table.grid tr th img {
     vertical-align: middle;
 }
 table.grid tr td {
-    border: solid 1px #999999;
+    padding: .3em;
+    border: 1px solid #999999;
+    -webkit-border-radius: 5px;    /* for Safari */
+    -moz-border-radius: 5px;       /* for Firefox */
 }
 td.monoval {
     font-family: Lucida Console, Courier, monospace;

@@ -23,7 +23,7 @@
 </tr>
 % for _, _, item in sorted(c.ordered, reverse=1):
 <tr>
-<td>${item.name|obfuscate,h}</td>
+<td>${item.name|obfuscate}</td>
 <td class="monoval">${item.up_rate_h}</td>
 <td class="monoval">${item.down_rate_h}</td>
 <td class="monoval">${item.up_total_h}</td>
