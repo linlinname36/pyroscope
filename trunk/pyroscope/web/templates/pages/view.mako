@@ -10,16 +10,16 @@
     page_title = "Torrents"
     page_head = '<meta http-equiv="refresh" content="%d" />' % refresh_rate
 %>
-<h1>Active torrents</h1>
+<h1>Active Torrents</h1>
 <table class="grid">
 <tr>
-<th>NAME</th>
+<th>${"torrent.16"|h.icon} TORRENT</th>
 <th>${"green_up_double.16"|h.icon} RATE</th>
 <th>${"green_down_double.16"|h.icon} RATE</th>
 <th>${"green_up_doc.16"|h.icon} XFER</th>
 <th>${"green_down_doc.16"|h.icon} XFER</th>
 <th>${"ying_yang_rg"|h.icon}</th>
-<th>TRACKER</th>
+<th>${"tracker"|h.icon} TRACKER</th>
 </tr>
 % for _, _, item in sorted(c.ordered, reverse=1):
 <tr>
@@ -37,9 +37,6 @@
 <td style="border: 0px"><small><em>Refreshed every ${self.attr.refresh_rate} seconds.</em></small></td>
 <td class="monoval" style="border: 0px">${"green_sigma.16"|h.icon} ${fmt.human_size(c.up_total)}</td>
 <td class="monoval" style="border: 0px">${"green_sigma.16"|h.icon} ${fmt.human_size(c.down_total)}</td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </table>
 
@@ -55,13 +52,13 @@
 ##            )
 
 % if c.messages:
-<h1>Tracker messages</h1>
+<h1>${len(c.messages)} Tracker Message(s)</h1>
 
 <table class="grid">
 <tr>
-<th>NAME</th>
-<th>MESSAGE</th>
-<th>TRACKER</th>
+<th>${"torrent.16"|h.icon} TORRENT</th>
+<th>${"message.16"|h.icon} MESSAGE</th>
+<th>${"tracker"|h.icon} TRACKER</th>
 </tr>
 % for msg in sorted(c.messages):
 <tr>

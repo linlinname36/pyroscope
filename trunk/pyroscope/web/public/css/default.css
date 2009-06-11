@@ -1,10 +1,16 @@
 /* Basic Pyroscope Stylesheet */
 
+/*  global & misc
+ */
 body {
+    font-family: Verdana;
 	background-color: #FFFFFF;
 	color: #000000;
 }
 
+
+/*  header
+ */
 span.topstats {
     font-family: Verdana, sans-serif;
     font-size: 0.8em;
@@ -12,6 +18,20 @@ span.topstats {
     vertical-align: top;
 }
 
+
+/*  footer
+ */
+div.footer {
+	background-color: #F0F0F0;
+    padding: 1em;
+}
+div.footer span {
+    vertical-align: top;
+}    
+
+
+/*  data tables (grid)
+ */
 table.grid tr th {
 	background-color: #666666;
 	color: yellow;
@@ -24,32 +44,36 @@ td.monoval {
     text-align: right;
 }
 
+
 /*  topmenu - top-level menu selection
  */
- ul.topmenu {
+ul.topmenu {
     background-color: #BBBBBB;
     border: solid 2px #CCCCCC; 
     padding: .3em;
- }
-li.topmenu {
+}
+ul.topmenu li {
     display: inline;
     background-color: #DDDDDD;
     padding: .2em;
 }
-a.topmenu {
+ul.topmenu li a {
     text-decoration: none;
 }
-a:link.topmenu { 
+ul.topmenu li a:link { 
     color: #000000;
 }
-a:visited.topmenu { 
+ul.topmenu li a:visited { 
     color: #000000;
 }
-a:hover.topmenu { 
+ul.topmenu li a:hover { 
     color: #990000;
     background-color: #FFEEEE;
 }
-/*
-a:active.topmenu { 
+/* ul.topmenu li a:active { 
     color: #550000;
 }*/
+#topmenu-current {
+    background-color: #FFDDDD;
+}
+
