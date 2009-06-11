@@ -39,6 +39,13 @@ div.topstats {
 }
 div.topstats img {
     vertical-align: middle;
+    padding-left: 1.5em;
+}
+div.topstats form {
+    display: inline;
+}
+div.topstats form input {
+    vertical-align: middle;
 }
 
 
@@ -52,12 +59,17 @@ ul.topmenu {
     padding: .3em;
 }
 ul.topmenu li {
+    font-size: 125%;
     display: inline;
     background-color: #FF3300;
-    padding: .2em;
+    padding: .3em;
+}
+ul.topmenu li img {
+    margin: .3em;
+    vertical-align: middle;
 }
 ul.topmenu li a {
-    padding: .1em;
+    margin: .3em;
     font-weight: bold;
     text-decoration: none;
 }

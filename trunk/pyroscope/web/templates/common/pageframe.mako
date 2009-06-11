@@ -20,17 +20,25 @@
 
   <body><div id="doc3" class="yui-t5">
   <div id="hd" class="rounded"><!-- header -->
-##  Logo & Stats
+##  Logo
     <div class="logo"><a href="http://pyroscope.googlecode.com/">${"logo.150"|h.icon}</a></div>
+##  Search box & stats
     <div class="topstats">
-        ${"console.16 ENGINE ID"|h.icon} ${g.engine_id}
-        &#160; ${"clock.16 TIME"|h.icon} ${h.now()}
+    <form method="GET" action="${h.url_for(controller='search')}">
+      <input type="image" src="/img/png/16/search.png" width="16" height="16" />
+      <input type="text" id="search" name="query" 
+             onfocus="if (this.value == 'Search...') this.value='';" 
+             onblur="if (this.value == '') this.value='Search...';" 
+             value="Search..." size="25" autocomplete="off" />
+    </form>
+    ${"console.16 ENGINE ID"|h.icon} ${g.engine_id}
+    &#160; ${"clock.16 TIME"|h.icon} ${h.now()}
     </div>
 ##  Top-level menu
     <div class="topmenu">
     <ul class="topmenu">
-        <li><a id="topmenu-current" href="${h.url_for(controller="index")}">Home</a></li>
-        <li><a href="${h.url_for(controller="view", action="active")}">Torrents</a></li>
+        <li>${"home.24"|h.icon}<a id="topmenu-current" href="${h.url_for(controller='index')}">Home</a></li>
+        <li>${"torrent.24"|h.icon}<a href="${h.url_for(controller='view', action='active')}">Torrents</a></li>
     </ul>
     </div>
   </div>
