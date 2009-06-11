@@ -141,7 +141,7 @@ def svg2png():
 
         for svg_file in svg_files:
             png_file = png_path / svg_file.namebase + ".png"
-            if not png_file.exists():
+            if not png_file.exists() or png_file.mtime < svg_file.mtime:
                 sh("inkscape -z -e %(png_file)s -w %(size)d -h %(size)d %(svg_file)s" % locals())
 
 
