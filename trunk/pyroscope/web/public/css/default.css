@@ -11,7 +11,14 @@
     -webkit-border-radius: 9px;    /* for Safari */
     -moz-border-radius: 9px;       /* for Firefox */
 }
-
+a.hoverline {
+    /* vanilla link that is only underlined on hover */
+        text-decoration: none;
+    }
+    a.hoverline:hover { 
+        text-decoration: underline;
+    }
+}
 
 /*  global & misc
  */

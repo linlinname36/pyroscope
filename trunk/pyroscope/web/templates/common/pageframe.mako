@@ -60,7 +60,7 @@
   &#160; <a href="http://en.wikipedia.org/wiki/Caffeine">${"coffee.png Caffeine_Powered 74x40"|h.img}</a>
 
   &#160; <span class="bugreport">
-    ${"bug.24"|h.icon} <a href="http://code.google.com/p/pyroscope/issues/entry">Report Bug</a>
+    ${"bug.24"|h.icon} <a class="hoverline" href="http://code.google.com/p/pyroscope/issues/entry">Report Bug</a>
   </span>
   &#160; <span class="profilingstats">Page rendered in <!-- LATENCY_PROFILING_RESULT -->.</span>
   </div>
