@@ -1,5 +1,17 @@
 /* Basic Pyroscope Stylesheet */
 
+/*  generic layoutr classes
+ */
+.rounded {
+    border-top: solid 1px #CCCCCC; 
+    border-left: solid 1px #CCCCCC; 
+    border-bottom: solid 3px #666666; 
+    border-right: solid 3px #666666; 
+    -webkit-border-radius: 9px;    /* for Safari */
+    -moz-border-radius: 9px;       /* for Firefox */
+}
+
+
 /*  global & misc
  */
 body {
@@ -15,7 +27,7 @@ div#hd {
 	background-color: FFFF99;
     padding: .2em;
 }
-span.logo {
+div.logo {
     float: left;
     padding: .2em;
     padding-right: 1em;
@@ -32,12 +44,10 @@ div.topstats img {
 
 
 /*  topmenu - top-level menu selection
-    background-color: #BBBBBB;
-    border: solid 2px #CCCCCC; 
  */
 div.topmenu {
-    padding-top: 90px;
-    vertical-align: bottom;
+    -padding-top: 90px;
+    vertical-align: top;
 }
 ul.topmenu {
     padding: .3em;
@@ -74,9 +84,9 @@ ul.topmenu li a:hover {
  */
 div#ft {
 	background-color: #FFFF99;
-    padding: 1em;
+    padding: .8em;
 }
-div#ft span {
+div#ft small {
     vertical-align: top;
 }    
 

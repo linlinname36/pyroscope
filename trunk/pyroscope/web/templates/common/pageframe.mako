@@ -19,9 +19,9 @@
   </head>
 
   <body><div id="doc3" class="yui-t5">
-  <div id="hd"><!-- header -->
+  <div id="hd" class="rounded"><!-- header -->
 ##  Logo & Stats
-    <span class="logo"><a href="http://pyroscope.googlecode.com/">${"logo.150"|h.icon}</a></span>
+    <div class="logo"><a href="http://pyroscope.googlecode.com/">${"logo.150"|h.icon}</a></div>
     <div class="topstats">
         ${"console.16 ENGINE ID"|h.icon} ${g.engine_id}
         &#160; ${"clock.16 TIME"|h.icon} ${h.now()}
@@ -39,8 +39,8 @@
     ${self.body()}
 ##  ${dir(g)}
   </div>
-  <div id="ft"><!-- footer -->
-  <span><small><strong><em>Powered by:</em></strong></small></span>
+  <div id="ft" class="rounded"><!-- footer -->
+  <small><strong><em>Powered by:</em></strong></small>
   &#160; <a href="http://www.python.org/">${"python.png Python_Powered 42x40"|h.img}</a>
   &#160; <a href="http://pylonshq.com/">${"pylons.png Pylons_Powered 59x40"|h.img}</a>
   &#160; <a href="http://www.linux.org/">${"tux.png GNU/Linux_Powered 40x40"|h.img}</a>
