@@ -95,6 +95,9 @@ class ViewController(BaseController):
         # Build view model
         self._get_active()
         
+        # Set refresh rate
+        c.refresh_rate = request.params.get("refresh", 10)
+        
         # Return a rendered template
         return render("pages/view.mako")
 

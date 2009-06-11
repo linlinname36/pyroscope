@@ -2,13 +2,13 @@
 <%!
     import re
     from pyroscope.util import fmt
+    from pylons import tmpl_context as c
     from pyroscope.web.lib import helpers as h
 
     obfuscate = lambda x: re.sub("[a-z]|[A-Z]+", lambda s: "?" * len(s.group()), x)
     obfuscate = lambda x: x
-    refresh_rate = 10
     page_title = "Torrents"
-    page_head = '<meta http-equiv="refresh" content="%d" />' % refresh_rate
+    page_head = '<meta http-equiv="refresh" content="%s" />' % c.refresh_rate
 %>
 <h1>Active Torrents</h1>
 <table class="grid">
@@ -33,7 +33,14 @@
 </tr>
 % endfor
 <tr>
-<td style="border: 0px"><small><em>Refreshed every ${self.attr.refresh_rate} seconds.</em></small></td>
+<td style="border: 0px"><small><em>Refreshed every ${c.refresh_rate} seconds. [&#160;change to
+% for i in (10, 20, 30, 60,):
+    % if i != int(c.refresh_rate):
+        <a class="hoverline" href="?refresh=${i}">${i}</a>
+    % endif
+% endfor
+]
+</em></small></td>
 <td class="monoval" style="border: 0px">${"green_sigma.16 SUM UP"|h.icon} ${fmt.human_size(c.up_total)}</td>
 <td class="monoval" style="border: 0px">${"green_sigma.16 SUM DOWN"|h.icon} ${fmt.human_size(c.down_total)}</td>
 </tr>
