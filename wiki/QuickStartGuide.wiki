@@ -53,6 +53,8 @@ scgi_local = ~/lib/rtorrent/.scgi_local
 }}}
 Then restart it.
 
+*WARNING:* The xmlrpc libararies on Ubuntu have a bug regarding integer overflows (causing bigger data sizes like those of Linux distribution DVDs to be misreported), see [http://code.google.com/p/rtgui/wiki/CompilingRtorrent this page] for details on how to fix it.
+
 == `PyroScope` Basic Configuration ==
 Create the `~/.pyroscope` directory and the necessary sub directories.
 {{{
