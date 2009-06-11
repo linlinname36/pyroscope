@@ -33,7 +33,7 @@
 </tr>
 % endfor
 <tr>
-<td style="border: 0px"><small><em>Refreshes every ${c.refresh_rate} seconds. [&#160;change to
+<td style="border: 0px"><small><em>Refreshes every <strong>${c.refresh_rate}</strong> seconds. [&#160;change to
 % for i in (10, 20, 30, 60,):
     % if i != int(c.refresh_rate):
         <a class="hoverline" href="?refresh=${i}">${i}</a>
