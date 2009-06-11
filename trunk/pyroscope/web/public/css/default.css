@@ -11,7 +11,7 @@ body {
 
 /*  header
  */
-div.header {
+div#hd {
 	background-color: FFFF99;
     padding: .2em;
 }
@@ -35,6 +35,10 @@ div.topstats img {
     background-color: #BBBBBB;
     border: solid 2px #CCCCCC; 
  */
+div.topmenu {
+    padding-top: 90px;
+    vertical-align: bottom;
+}
 ul.topmenu {
     padding: .3em;
 }
@@ -68,11 +72,11 @@ ul.topmenu li a:hover {
 
 /*  footer
  */
-div.footer {
+div#ft {
 	background-color: #FFFF99;
     padding: 1em;
 }
-div.footer span {
+div#ft span {
     vertical-align: top;
 }    
 

@@ -19,7 +19,7 @@
   </head>
 
   <body><div id="doc3" class="yui-t5">
-  <div class="header" id="hd"><!-- header -->
+  <div id="hd"><!-- header -->
 ##  Logo & Stats
     <span class="logo"><a href="http://pyroscope.googlecode.com/">${"logo.150"|h.icon}</a></span>
     <div class="topstats">
@@ -27,17 +27,19 @@
         &#160; ${"clock.16 TIME"|h.icon} ${h.now()}
     </div>
 ##  Top-level menu
+    <div class="topmenu">
     <ul class="topmenu">
         <li><a id="topmenu-current" href="${h.url_for(controller="index")}">Home</a></li>
         <li><a href="${h.url_for(controller="view", action="active")}">Torrents</a></li>
     </ul>
+    </div>
   </div>
   <div id="bd"><!-- body -->
 ##  Insert body of derived page
     ${self.body()}
 ##  ${dir(g)}
   </div>
-  <div class="footer" id="ft"><!-- footer -->
+  <div id="ft"><!-- footer -->
   <span><small><strong><em>Powered by:</em></strong></small></span>
   &#160; <a href="http://www.python.org/">${"python.png Python_Powered 42x40"|h.img}</a>
   &#160; <a href="http://pylonshq.com/">${"pylons.png Pylons_Powered 59x40"|h.img}</a>
