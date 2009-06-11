@@ -135,14 +135,20 @@ def svg2png():
     svg_path = img_path / "svg"
     svg_files = svg_path.files("*.svg")
     
-    for size in sizes:
+    def make_png(svg_file, size):
         png_path = img_path / "png" / str(size)
         png_path.exists() or png_path.makedirs()
+        png_file = png_path / svg_file.namebase + ".png"
+        if not png_file.exists() or png_file.mtime < svg_file.mtime:
+            sh("inkscape -z -e %(png_file)s -w %(size)d -h %(size)d %(svg_file)s" % locals())
 
+    for size in sizes:
         for svg_file in svg_files:
-            png_file = png_path / svg_file.namebase + ".png"
-            if not png_file.exists() or png_file.mtime < svg_file.mtime:
-                sh("inkscape -z -e %(png_file)s -w %(size)d -h %(size)d %(svg_file)s" % locals())
+            make_png(svg_file, size)
+
+    # Project logo for Google Code & the UI
+    make_png(svg_path / "logo.svg", 55)
+    make_png(svg_path / "logo.svg", 150)
 
 
 @task
