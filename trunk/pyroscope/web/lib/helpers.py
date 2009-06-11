@@ -32,3 +32,18 @@ def icon(name):
         size = int(size)
     return '<img src="/img/png/%(size)d/%(name)s.png" height="%(size)d" width="%(size)d" />' % locals()
 
+
+def img(name):
+    """ Emit tag for a general image.
+    
+        "name" is expected to be a string like ImageMagick's "indentify" emits it.
+    """
+    name, title, size = name.split()
+    if title in ("PNG", "GIF", "JPG"):
+        title = ""
+    else:
+        title = title.replace("_", " ")
+        title = 'title="%(title)s" alt="%(title)s" ' % locals()
+    w, h = size.split("x")
+    return '<img src="/img/%(name)s" height="%(h)s" width="%(w)s" %(title)s/>' % locals()
+
