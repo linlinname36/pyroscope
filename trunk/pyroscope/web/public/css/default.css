@@ -158,4 +158,10 @@ td.monoval {
     font-family: Lucida Console, Courier, monospace;
     text-align: right;
 }
+.profilingstats {
+    /* Page rendering time */
+    float: right;
+    color: #999999;
+}
+
 
