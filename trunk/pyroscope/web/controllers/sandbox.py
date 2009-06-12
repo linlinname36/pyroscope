@@ -30,11 +30,24 @@ LOG = logging.getLogger(__name__)
 
 class SandboxController(BaseController):
 
-    def index(self):
-        c.icons = sorted(os.path.splitext(name)[0]
-            for name in os.listdir(os.path.join(os.path.dirname(__file__), "../public/img/svg"))
-            if name.endswith(".svg")
-        )
+    VIEWS = {
+        "ohloh": "ohloh.net Statistics",
+        "icons": "Icon Sets",
+        "globals": "Global Objects",
+        "helpers": "Helpers",
+    }
+
+
+    def index(self, id=None):
+        c.views = self.VIEWS
+        c.view = id if id in c.views else sorted(c.views)[0]
+        c.title = c.views[c.view]
+     
+        if c.view == "icons":
+            c.icons = sorted(os.path.splitext(name)[0]
+                for name in os.listdir(os.path.join(os.path.dirname(__file__), "../public/img/svg"))
+                if name.endswith(".svg")
+            )
 
         # Return a rendered template
         return render("pages/sandbox.mako")

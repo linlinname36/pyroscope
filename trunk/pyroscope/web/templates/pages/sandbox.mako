@@ -10,8 +10,24 @@
 <h1>PyroScope Labs</h1>
 <div><em>Testing area, enter at your own risk!</em></div>
 
-% if 1:
-    <h2>ohloh.net Statistics</h2>
+##
+## VIEW SELECTION
+##
+<div class="submenu">
+<ul>
+% for view, title in sorted(c.views.items()):
+    <li>
+        <a ${'class="selected"' if view == c.view else "" | n} 
+           href="${h.url_for(id=view)}">${title}</a>
+    </li>
+% endfor
+</ul>
+</div>
+
+##
+## OHLOH VIEW
+##
+% if c.view == "ohloh":
     <div class="ohloh-widgets">
         % for stats in ("basic_stats", "factoids", "cocomo", "languages", ):
             <div>
@@ -22,7 +38,11 @@
     <div style="clear:both;" />
 % endif
 
-<h2>Icon Set [${", ".join("%dx%d" % (sz, sz) for sz in sizes)}]</h2>
+##
+## ICONS VIEW
+##
+% if c.view == "icons":
+<h2>Sizes [${", ".join("%dx%d" % (sz, sz) for sz in sizes)}]</h2>
 <div style="clear:both;" clear="all">
 % for icon in c.icons:
     <div class="iconbox">
@@ -36,8 +56,12 @@
 % endfor
     <div style="clear:both;" />
 </div>
+% endif
 
-<h2>Globals</h2>
+##
+## GLOBALS VIEW
+##
+% if c.view == "globals":
 <dl>
 % for k in dir(g):
   % if not k.startswith('_'):
@@ -47,9 +71,12 @@
   % endif
 % endfor
 </dl>
+% endif
 
-
-<h2>Helpers</h2>
+##
+## HELPERS VIEW
+##
+% if c.view == "helpers":
 <dl>
 % for k in dir(h):
   %if not k.startswith('_'):
@@ -57,4 +84,5 @@
   % endif
 % endfor
 </dl>
+% endif
 
