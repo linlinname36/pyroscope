@@ -59,6 +59,19 @@ def img(name):
     return '<img src="/img/%(name)s" height="%(h)s" width="%(w)s" %(title)s/>' % locals()
 
 
+def bibyte(val):
+    """ Format numercial byte size as human size.
+    """
+    from pyroscope.util.fmt import human_size
+
+    try:
+        val = int(val)
+    except (TypeError, ValueError):
+        return val
+    else:    
+        return human_size(val)
+
+
 def obfuscate(text, replacer=re.compile("[a-zA-Z<>&]+")):
     """ Obfuscator for screenshots and the like. Replaces all alpha chars by question marks.
     """
