@@ -66,6 +66,23 @@ def obfuscate(text, replacer=re.compile("[a-zA-Z<>&]+")):
     return replacer.sub(lambda s: "?" * len(s.group()), text) if obfuscate else text
 
 
+def nowrap(text):
+    """ Replace all spaces by non-breakable ones.
+    """
+    return text.replace(u' ', u'\u00A0')
+
+
+def nostrip(text):
+    """ Replace all leading and trailing spaces by non-breakable ones.
+    """
+    stripped = text.strip()
+    if stripped is not text:
+        l = len(text) - len(text.lstrip())
+        t = len(text) - len(text.rstrip())
+        text = u'\u00A0' * l + text + u'\u00A0' * t
+    return text
+
+
 def now():
     """ Return curren time as a string.
     """
