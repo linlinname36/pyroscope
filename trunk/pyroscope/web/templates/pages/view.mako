@@ -4,6 +4,8 @@
     from pylons import tmpl_context as c
     from pyroscope.web.lib import helpers as h
 
+    valclass = lambda val: 'monoval' if int(val) else 'zeroval'
+
     # XXX Pylons seems to cache the header parts, refresh rate doesn't change always
     # But then this is a temp. hack anyway.
     refresh_rate = c.refresh_rate
@@ -47,11 +49,11 @@
         <td><a class="tlink" href="${h.url_for(controller='torrent', id=item.hash)}" title="${item.tooltip}">
             ${item.name|h.nostrip,h.obfuscate}
         </a></td>
-        <td class="monoval">${item.up_rate_h}</td>
-        <td class="monoval">${item.down_rate_h}</td>
-        <td class="monoval">${item.up_total_h}</td>
-        <td class="monoval">${item.down_total_h}</td>
-        <td class="monoval">${"%6.3f" % item.ratio_1}</td>
+        <td class="${item.up_rate|valclass}">${item.up_rate|h.bibyte}</td>
+        <td class="${item.down_rate|valclass}">${item.down_rate|h.bibyte}</td>
+        <td class="${item.up_total|valclass}">${item.up_total|h.bibyte}</td>
+        <td class="${item.down_total|valclass}">${item.down_total|h.bibyte}</td>
+        <td class="monoval">${"%6.3f" % item.ratio_not0}</td>
         <td>${item.domains|h.obfuscate}</td>
     </tr>
 % endfor

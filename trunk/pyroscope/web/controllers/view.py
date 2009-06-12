@@ -112,14 +112,14 @@ class ViewController(BaseController):
             c.down_total += item.down_rate
 
             item.tooltip = _make_tooltip(item)
-            item.ratio_1 = item.ratio / 1000.0 or 1E-12
+            item.ratio_not0 = item.ratio / 1000.0 or 1E-12
             item.domains = ", ".join(item.tracker_domains)
+
+            # Fix bug in XMLRPC (using 32bit integers?)
             if item.down_total < 0 and item.up_total > 0:
-                # Fix bug in XMLRPC (using 32bit integers?)
-                item.down_total = item.up_total / item.ratio_1
-            for attr in ("up_rate", "up_total", "down_rate", "down_total"):
-                val = getattr(item, attr)
-                setattr(item, attr + "_h", fmt.human_size(val) if val >= 0 else "  >4.0 GiB")
+                item.down_total = int(item.up_total / item.ratio_not0)
+            elif item.down_total > 0 and item.up_total < 0:
+                item.up_total = int(item.down_total * item.ratio_not0)
 
         c.messages = self._get_messages(c.torrents)
 

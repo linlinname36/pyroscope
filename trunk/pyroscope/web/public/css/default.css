@@ -18,6 +18,13 @@
     text-align: right;
     white-space: nowrap;
 }
+.zeroval {
+    /* like monoval, but with a value of 0 in it */
+    font-family: Lucida Console, Courier, monospace;
+    font-weight: normal;
+    text-align: right;
+    white-space: nowrap;
+}
 a.hoverline {
     /* vanilla link that is only underlined on hover */
         text-decoration: none;
