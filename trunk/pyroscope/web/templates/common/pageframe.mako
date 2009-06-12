@@ -67,7 +67,7 @@
   </span>
 % endif
 
-  <small><strong><em>Powered by:</em></strong></small>
+  <small><strong><em>Powered by</em></strong></small>
   &#160; <a href="http://www.python.org/">${"python.png Python_Powered 42x40"|h.img}</a>
   &#160; <a href="http://pylonshq.com/">${"pylons.png Pylons_Powered 59x40"|h.img}</a>
   &#160; <a href="http://www.linux.org/">${"tux.png GNU/Linux_Powered 40x40"|h.img}</a>
