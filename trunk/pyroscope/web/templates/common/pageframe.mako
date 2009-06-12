@@ -1,7 +1,7 @@
 ## This is the default HTML page layout
 <%!
     page_title = "*** PAGE TITLE NOT SET ***"
-    page_head = ""
+    page_head = lambda:""
     refresh_rate = "60"
 %>
 
@@ -17,7 +17,7 @@
     <script type="text/javascript" src="http://yui.yahooapis.com/combo?2.7.0/build/yahoo-dom-event/yahoo-dom-event.js&2.7.0/build/container/container_core-min.js&2.7.0/build/menu/menu-min.js&2.7.0/build/element/element-min.js&2.7.0/build/button/button-min.js&2.7.0/build/calendar/calendar-min.js&2.7.0/build/datasource/datasource-min.js&2.7.0/build/paginator/paginator-min.js&2.7.0/build/datatable/datatable-min.js&2.7.0/build/json/json-min.js&2.7.0/build/layout/layout-min.js&2.7.0/build/stylesheet/stylesheet-min.js&2.7.0/build/tabview/tabview-min.js&2.7.0/build/treeview/treeview-min.js"></script> 
 
     <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/css/default.css">
-    ${self.attr.page_head|n}
+    ${self.attr.page_head()|n}
   </head>
 
   <body><div id="doc3" class="yui-t5">

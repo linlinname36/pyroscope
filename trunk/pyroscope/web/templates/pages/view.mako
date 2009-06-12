@@ -1,18 +1,13 @@
 <%inherit file="/common/pageframe.mako"/>
 <%!
-    from pyroscope.util import fmt
     from pylons import tmpl_context as c
     from pyroscope.web.lib import helpers as h
 
     valclass = lambda val: 'monoval' if int(val) else 'zeroval'
 
-    # XXX Pylons seems to cache the header parts, refresh rate doesn't change always
-    # But then this is a temp. hack anyway.
-    refresh_rate = c.refresh_rate
-
-    # Overloaded attributes
+    # Overloaded attributes of pageframe
     page_title = "Torrents"
-    page_head = '<meta http-equiv="refresh" content="%s" />' % refresh_rate
+    page_head = lambda: '<meta http-equiv="refresh" content="%s" />' % c.refresh_rate
 %>
 ##
 ## VIEW SELECTION
@@ -69,8 +64,8 @@
 % endfor
             ]</em></small>
         </td>
-        <td class="monoval">${"green_sigma.16 SUM UP"|h.icon} ${fmt.human_size(c.up_total)}</td>
-        <td class="monoval">${"green_sigma.16 SUM DOWN"|h.icon} ${fmt.human_size(c.down_total)}</td>
+        <td class="${c.up_total|valclass}">${"green_sigma.16 SUM UP"|h.icon} ${c.up_total|h.bibyte}</td>
+        <td class="${c.down_total|valclass}">${"green_sigma.16 SUM DOWN"|h.icon} ${c.down_total|h.bibyte}</td>
         <td></td>
         <td></td>
         <td></td>
