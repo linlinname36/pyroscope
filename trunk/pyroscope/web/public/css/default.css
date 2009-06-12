@@ -156,10 +156,15 @@ div#ft {
     .bugreport img {
         vertical-align: middle;
 }
+.ohloh {
+    /* "I use it!" */
+    display: inline;
+    float: right;
+}
 .profilingstats {
     /* page rendering time */
     white-space: nowrap;
-    float: right;
+    float: left;
     color: #666666; 
     font-size: 80%;
 }

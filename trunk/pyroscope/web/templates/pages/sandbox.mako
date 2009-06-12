@@ -4,6 +4,13 @@
     from pyroscope.web.lib import helpers as h
     page_title = "Laboratory"
 %>
+<div class="ohloh">
+<h2>ohloh.net Statistics</h2>
+% for stats in ("basic_stats", "factoids", "cocomo", "languages", ):
+  <script type="text/javascript" src="http://www.ohloh.net/p/346666/widgets/project_${stats}.js"></script>
+% endfor
+</div>
+
 <h1>PyroScope Labs</h1>
 
 <div><em>Testing area, enter at your own risk!</em></div>

@@ -24,7 +24,7 @@ from webob import Request
 
 class LatencyProfilingMiddleware(object):
     """ Measure the execution time of any request and add
-        the result into the body, by replacing.
+        the result into the body, by replacing a special token.
     """
     
     # MIME types supported in addition to "text/*" and "*+xml"

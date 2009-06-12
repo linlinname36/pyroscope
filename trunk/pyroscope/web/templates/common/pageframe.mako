@@ -52,6 +52,15 @@
   </div>
 ##  Footer
   <div id="ft" class="rounded"><!-- footer -->
+
+% if 0: # XXX disable until pages are AJAXified
+  <span class="ohloh">
+    <script type="text/javascript" src="http://www.ohloh.net/p/346666/widgets/project_users_logo.js"></script>
+    <small><strong><em>ohloh.net</em></strong></small><br />
+    <script type="text/javascript" src="http://www.ohloh.net/p/346666/widgets/project_thin_badge.js"></script>
+  </span>
+% endif
+
   <small><strong><em>Powered by:</em></strong></small>
   &#160; <a href="http://www.python.org/">${"python.png Python_Powered 42x40"|h.img}</a>
   &#160; <a href="http://pylonshq.com/">${"pylons.png Pylons_Powered 59x40"|h.img}</a>

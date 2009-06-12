@@ -92,11 +92,14 @@ class ViewController(BaseController):
 
 
     def active(self):
+        from paste.deploy.converters import asbool
+        
         # Build view model
         self._get_active()
         
-        # Set refresh rate
+        # Set refresh rate & obfuscator flag
         c.refresh_rate = request.params.get("refresh", 10)
+        c.obfuscate = asbool(request.params.get("obfuscate", "0"))
         
         # Return a rendered template
         return render("pages/view.mako")

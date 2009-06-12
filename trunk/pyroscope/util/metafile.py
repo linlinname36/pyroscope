@@ -251,7 +251,7 @@ class Metafile(object):
             "creation date": long(time.time())
         }
 
-        #!!! meta["encoding"] = "UTF-8"
+        #XXX meta["encoding"] = "UTF-8"
 
         # Return validated meta dict
         return check_meta(meta)
