@@ -23,7 +23,6 @@
 import re
 
 from paste.deploy.converters import asbool
-from pylons import request
 from pylons.controllers.util import url_for
 #from webhelpers.html.tags import checkbox, password
 
@@ -60,7 +59,7 @@ def img(name):
 
 
 def bibyte(val):
-    """ Format numercial byte size as human size.
+    """ Format numerical byte size as human size.
     """
     from pyroscope.util.fmt import human_size
 
@@ -75,6 +74,8 @@ def bibyte(val):
 def obfuscate(text, replacer=re.compile("[a-zA-Z<>&]+")):
     """ Obfuscator for screenshots and the like. Replaces all alpha chars by question marks.
     """
+    from pylons import request
+
     obfuscate = asbool(request.params.get("_obfuscate"))
     return replacer.sub(lambda s: "?" * len(s.group()), text) if obfuscate else text
 
@@ -101,4 +102,8 @@ def now():
     """
     import time
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
+
+
+# not needed anymore
+del re
 
