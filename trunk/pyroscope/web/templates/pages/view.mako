@@ -27,7 +27,9 @@
 ## Active torrents body
 % for _, _, item in sorted(c.ordered, reverse=1):
     <tr>
-        <td><a class="tlink" href="${h.url_for(controller='torrent', id=item.hash)}">${item.name|h.obfuscate}</a></td>
+        <td><a class="tlink" href="${h.url_for(controller='torrent', id=item.hash)}" title="${item.tooltip}">
+            ${item.name|h.obfuscate}
+        </a></td>
         <td class="monoval">${item.up_rate_h}</td>
         <td class="monoval">${item.down_rate_h}</td>
         <td class="monoval">${item.up_total_h}</td>
@@ -62,6 +64,9 @@
 ##                len(seeds),
 ##            )
 
+##
+## MESSAGES
+##
 % if c.messages:
 <h1>${len(c.messages)} Tracker Message(s)</h1>
 
@@ -71,11 +76,13 @@
         <th>${"message.16"|h.icon} MESSAGE</th>
         <th>${"tracker"|h.icon} TRACKER</th>
     </tr>
-% for msg in sorted(c.messages):
+% for item in sorted(c.messages):
     <tr>
-        <td><a class="tlink" href="${h.url_for(controller='torrent', id=msg.hash)}">${msg.name|h.obfuscate}</a></td>
-        <td>${msg.text}</td>
-        <td>${msg.domains|h.obfuscate}</td>
+        <td><a class="tlink" href="${h.url_for(controller='torrent', id=item.hash)}" title="${item.tooltip}">
+            ${item.name|h.obfuscate}
+        </a></td>
+        <td>${item.text}</td>
+        <td>${item.domains|h.obfuscate}</td>
     </tr>
 % endfor
 </table>

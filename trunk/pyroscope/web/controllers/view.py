@@ -19,6 +19,7 @@
 
 import logging
 
+from paste.deploy.converters import asbool
 from pylons import request, response, session, tmpl_context as c
 from pylons.controllers.util import abort, redirect_to
 
@@ -28,6 +29,27 @@ from pyroscope.util.types import Bunch
 from pyroscope.engines import rtorrent
 
 LOG = logging.getLogger(__name__)
+
+
+def _make_tooltip(item):
+    """ Make a tooltip from the most important torrent details.
+    """
+    state = [
+        "OPEN" if item.is_open else "CLOSED",
+        "DONE" if item.complete else "",
+        "PRV"  if item.is_private else "PUB",
+    ]
+
+    lines = [
+        "HASH: %s" % item.hash,
+        "RATIO: %.3f" % (item.ratio / 1000.0,),
+        "RATE UP/DN: %s / %s" % (fmt.human_size(item.up_rate), fmt.human_size(item.down_rate)),
+        "XFER UP/DN: %s / %s" % (fmt.human_size(item.up_total), fmt.human_size(item.down_total)),
+        "STATE: %s" % " ".join(i for i in state if i),
+        # last state change?
+    ]
+
+    return u"\n\u00A0|\u00A0".join(lines)
 
 
 class ViewController(BaseController):
@@ -62,6 +84,7 @@ class ViewController(BaseController):
             c.up_total += item.up_rate
             c.down_total += item.down_rate
 
+            item.tooltip = _make_tooltip(item)
             item.ratio_1 = item.ratio / 1000.0 or 1E-12
             item.domains = ", ".join(item.tracker_domains)
             if item.down_total < 0 and item.up_total > 0:
@@ -83,7 +106,12 @@ class ViewController(BaseController):
         for attr in ("is_open", "complete"):
             counts[attr] = sum(getattr(item, attr) for item in torrents)
 
-        c.messages = [Bunch(hash=item.hash, name=item.name, text=item.message, domains=", ".join(sorted(item.tracker_domains)))
+        if asbool(request.params.get("_debug")) and torrents:
+            torrents[0].message += " [FAKE MESSAGE FOR TESTING]"
+            
+        c.messages = [Bunch(hash=item.hash, name=item.name, text=item.message, 
+                tooltip=_make_tooltip(item),
+                domains=", ".join(sorted(item.tracker_domains)))
             for item in torrents 
             if item.is_open and item.message and not any(ignore in item.message
                 for ignore in self.IGNORE_MESSAGES
