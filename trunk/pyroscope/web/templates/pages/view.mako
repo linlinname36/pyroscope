@@ -12,7 +12,24 @@
     page_title = "Torrents"
     page_head = '<meta http-equiv="refresh" content="%s" />' % refresh_rate
 %>
-<h1>${len(c.ordered)} Active Torrent(s)</h1>
+##
+## VIEW SELECTION
+##
+<div class="submenu">
+<ul>
+% for view in c.views:
+    <li>
+        <a ${'class="selected"' if view is c.view else "" | n} 
+           href="${h.url_for(action='list', id=view.action)}">${view.title}</a>
+    </li>
+% endfor
+</ul>
+</div>
+
+##
+## TORRENT LIST
+##
+<h1>${len(c.torrents)} ${c.view.title.replace("Torrents", "Torrent(s)")}</h1>
 <table class="grid">
 ## Active torrents header
     <tr>
@@ -25,10 +42,10 @@
         <th>${"tracker"|h.icon} TRACKER</th>
     </tr>
 ## Active torrents body
-% for _, _, item in sorted(c.ordered, reverse=1):
+% for item in c.torrents:
     <tr>
         <td><a class="tlink" href="${h.url_for(controller='torrent', id=item.hash)}" title="${item.tooltip}">
-            ${item.name|h.obfuscate}
+            ${item.name|h.nostrip,h.obfuscate}
         </a></td>
         <td class="monoval">${item.up_rate_h}</td>
         <td class="monoval">${item.down_rate_h}</td>
@@ -38,19 +55,24 @@
         <td>${item.domains|h.obfuscate}</td>
     </tr>
 % endfor
-<tr>
-## Active torrents footer
-<td style="border: 0px"><small><em>Refreshes every <strong>${c.refresh_rate}</strong> seconds. [&#160;change to
+## Torrents list footer
+    <tr class="footer">
+        <td>
+            <small><em>Refreshes every <strong>${c.refresh_rate}</strong> seconds. 
+            [&#160;change to
 % for i in (10, 20, 30, 60,):
-    % if i != int(c.refresh_rate):
-        <a class="hoverline" href="?refresh=${i}">${i}</a>
-    % endif
+%   if i != int(c.refresh_rate):
+                <a class="hoverline" href="?refresh=${i}">${i}</a>
+%   endif
 % endfor
-]
-</em></small></td>
-<td class="monoval" style="border: 0px">${"green_sigma.16 SUM UP"|h.icon} ${fmt.human_size(c.up_total)}</td>
-<td class="monoval" style="border: 0px">${"green_sigma.16 SUM DOWN"|h.icon} ${fmt.human_size(c.down_total)}</td>
-</tr>
+            ]</em></small>
+        </td>
+        <td class="monoval">${"green_sigma.16 SUM UP"|h.icon} ${fmt.human_size(c.up_total)}</td>
+        <td class="monoval">${"green_sigma.16 SUM DOWN"|h.icon} ${fmt.human_size(c.down_total)}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
 </table>
 
 ##            print "  [%d torrents on %d trackers with %.3f total ratio]" % (
@@ -79,7 +101,7 @@
 % for item in sorted(c.messages):
     <tr>
         <td><a class="tlink" href="${h.url_for(controller='torrent', id=item.hash)}" title="${item.tooltip}">
-            ${item.name|h.obfuscate}
+            ${item.name|h.nostrip,h.obfuscate}
         </a></td>
         <td>${item.text}</td>
         <td>${item.domains|h.obfuscate}</td>

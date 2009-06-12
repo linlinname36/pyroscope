@@ -60,27 +60,54 @@ class ViewController(BaseController):
         "Could not parse bencoded data",
         "Couldn't connect to server",
     ]
+    VIEWS = (
+        Bunch(action="active", title="Active Torrents", stock=False),
+        Bunch(action="incomplete", title="Incomplete Torrents"),
+        Bunch(action="stopped", title="Stopped Torrents"),
+        Bunch(action="hashing", title="Hashing Torrents"),
+        Bunch(action="name", title="Loaded Torrents"),
+        #Bunch(action="main", title="Loaded Torrents"),
+        Bunch(action="complete", title="Complete Torrents"),
+        Bunch(action="seeding", title="Seeding Torrents"),
+        Bunch(action="started", title="Started Torrents"),
+    )
 
 
     def __init__(self):
         self.proxy = rtorrent.Proxy()
+        self.views = dict((view.action, view) for view in self.VIEWS)
 
 
-    def _get_active(self):
-        """ Get active torrents.
+    def __before__(self):
+        # Set list of views
+        c.views = self.VIEWS
+
+        # Set refresh rate & obfuscator flag
+        c.refresh_rate = request.params.get("refresh", 10)
+        c.obfuscate = asbool(request.params.get("obfuscate", "0"))
+
+
+    def _get_messages(self, torrents):
+        """ Get messages from a list of torrents.
         """
-        view = rtorrent.View(self.proxy, "main")
-        torrents = list(view.items())
-        active = [item 
-            for item in torrents
-            if item.down_rate or item.up_rate
+        if asbool(request.params.get("_debug")) and torrents:
+            torrents[0].message += " [FAKE MESSAGE FOR TESTING]"
+
+        return [Bunch(hash=item.hash, name=item.name, text=item.message, 
+                tooltip=_make_tooltip(item),
+                domains=", ".join(sorted(item.tracker_domains)))
+            for item in torrents 
+            if item.is_open and item.message and not any(ignore in item.message
+                for ignore in self.IGNORE_MESSAGES
+            )
         ]
 
-        c.ordered = [(item.up_rate, item.down_rate, item) for item in active
-                if item.down_rate or item.up_rate]
 
+    def _model_fixup(self):
+        """ Go through c.torrents and fix up the items; also do some stats.
+        """
         c.up_total, c.down_total = 0, 0
-        for _, _, item in c.ordered:
+        for item in c.torrents:
             c.up_total += item.up_rate
             c.down_total += item.down_rate
 
@@ -94,43 +121,54 @@ class ViewController(BaseController):
                 val = getattr(item, attr)
                 setattr(item, attr + "_h", fmt.human_size(val) if val >= 0 else "  >4.0 GiB")
 
-        domains = set(domain for item in torrents for domain in item.tracker_domains)
-        active_up = [item for item in active if item.up_rate and not item.down_rate]
-        active_down = [item for item in active if not item.up_rate and item.down_rate]
-        active_both = [item for item in active if item.up_rate and item.down_rate]
-        ratios = [item.ratio for item in torrents if item.down_total or item.up_total]
-        #queued = [item for item in torrents if not (item.down_total or item.up_total)]
-        seeds = [item for item in torrents if not item.down_total and item.up_total]
+        c.messages = self._get_messages(c.torrents)
+
+        """ XXX stats code currently not used!
+        
+        domains = set(domain for item in all_torrents for domain in item.tracker_domains)
+        active_up = [item for item in c.torrents if item.up_rate and not item.down_rate]
+        active_down = [item for item in c.torrents if not item.up_rate and item.down_rate]
+        active_both = [item for item in c.torrents if item.up_rate and item.down_rate]
+        ratios = [item.ratio for item in all_torrents if item.down_total or item.up_total]
+        #queued = [item for item in all_torrents if not (item.down_total or item.up_total)]
+        seeds = [item for item in all_torrents if not item.down_total and item.up_total]
 
         counts = {}
         for attr in ("is_open", "complete"):
-            counts[attr] = sum(getattr(item, attr) for item in torrents)
+            counts[attr] = sum(getattr(item, attr) for item in all_torrents)
+        """
 
-        if asbool(request.params.get("_debug")) and torrents:
-            torrents[0].message += " [FAKE MESSAGE FOR TESTING]"
             
-        c.messages = [Bunch(hash=item.hash, name=item.name, text=item.message, 
-                tooltip=_make_tooltip(item),
-                domains=", ".join(sorted(item.tracker_domains)))
-            for item in torrents 
-            if item.is_open and item.message and not any(ignore in item.message
-                for ignore in self.IGNORE_MESSAGES
-            )
-        ]
+    def _get_active(self):
+        """ Get active torrents.
+        """
+        # Filter & decorate, sort, undecorate
+        return [i for _, _, i in sorted([
+            (item.up_rate, item.down_rate, item) 
+            for item in rtorrent.View(self.proxy, "main").items()
+            if item.down_rate or item.up_rate
+        ], reverse=True)]
 
 
-    def active(self):
-        from paste.deploy.converters import asbool
+    def list(self, id):
+        c.view = self.views[id]
+
+        # Get list of torrents
+        if c.view.get("stock", True):
+            # Built-in view
+            c.torrents = list(rtorrent.View(self.proxy, id).items())
+        else:
+            # Handle non-stock views
+            c.torrents = getattr(self, "_get_" + id)()
         
         # Build view model
-        self._get_active()
-        
-        # Set refresh rate & obfuscator flag
-        c.refresh_rate = request.params.get("refresh", 10)
-        c.obfuscate = asbool(request.params.get("obfuscate", "0"))
+        self._model_fixup()
         
         # Return a rendered template
         return render("pages/view.mako")
 
-    index = active
+
+    def index(self):
+        # Redirect to list of active torrents
+        return redirect_to(action="list", id="active")
 

@@ -26,21 +26,27 @@
     <div class="logo"><a href="http://pyroscope.googlecode.com/">${"logo.150"|h.icon}</a></div>
 ##  Search box & stats
     <div class="topstats">
-    <form method="GET" action="${h.url_for(controller='search')}">
-      <input type="image" src="/img/png/16/search.png" width="16" height="16" />
-      <input type="text" id="search" name="query" 
-             onfocus="if (this.value == 'Search...') this.value='';" 
-             onblur="if (this.value == '') this.value='Search...';" 
-             value="Search..." size="25" autocomplete="off" />
-    </form>
-    ${"console.16 ENGINE ID"|h.icon} ${g.engine_id}
-    &#160; ${"clock.16 TIME"|h.icon} ${h.now()}
+        <span>
+            <form method="GET" action="${h.url_for(controller='search')}">
+              <input type="image" src="/img/png/16/search.png" width="16" height="16" />
+              <input type="text" id="search" name="query" 
+                     onfocus="if (this.value == 'Search...') this.value='';" 
+                     onblur="if (this.value == '') this.value='Search...';" 
+                     value="Search..." size="25" autocomplete="off" />
+            </form>
+        </span>
+        <span>
+            ${"console.16 ENGINE ID"|h.icon} ${g.engine_id}
+        </span>
+        <span>
+            ${"clock.16 TIME"|h.icon} ${h.now()}
+        </span>
     </div>
 ##  Top-level menu
     <div class="topmenu">
     <ul class="topmenu">
         <li>${"home.24"|h.icon}<a id="topmenu-current" href="${h.url_for(controller='index')}">Home</a></li>
-        <li>${"torrent.24"|h.icon}<a href="${h.url_for(controller='view', action='active')}?refresh=${self.attr.refresh_rate}">Torrents</a></li>
+        <li>${"torrent.24"|h.icon}<a href="${h.url_for(controller='view', action='index')}?refresh=${self.attr.refresh_rate}">Torrents</a></li>
         <li>${"flask.24"|h.icon}<a href="${h.url_for(controller='sandbox')}">Lab</a></li>
         <li>${"help.24"|h.icon}<a href="${h.url_for(controller='help')}">Help</a></li>
     </ul>

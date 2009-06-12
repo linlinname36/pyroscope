@@ -11,6 +11,13 @@
     -webkit-border-radius: 9px;    /* for Safari */
     -moz-border-radius: 9px;       /* for Firefox */
 }
+.monoval {
+    /* a right-aligned  monospace font value (so pre-formatted values line up) */
+    font-family: Lucida Console, Courier, monospace;
+    font-weight: bolder;
+    text-align: right;
+    white-space: nowrap;
+}
 a.hoverline {
     /* vanilla link that is only underlined on hover */
         text-decoration: none;
@@ -26,6 +33,45 @@ a.tlink {
     a.tlink:hover { 
         text-decoration: underline;
     }
+}
+.submenu {
+    /* submenu tab bar */
+    }
+    .submenu ul {
+        /* the list of menu items */
+        line-height: 200%;
+        margin-top: .3em;
+        margin-left: 0em;
+    }
+    .submenu li {
+        display: inline;
+        white-space: nowrap;
+        margin: 0px;
+        padding: 0px;
+    }
+    .submenu a {
+        /* a single menu item */
+        color: #993300;
+        background-color: #FFFFCC;
+        font-size: 115%;
+        font-weight: bolder;
+        text-decoration: none;
+
+        margin-right: .5em;
+        padding-left: 1em;
+        padding-right: 1em;
+
+        /* button-like */
+        border-top: solid 1px #993300; 
+        border-left: solid 1px #993300; 
+        border-bottom: solid 2px #663300; 
+        border-right: solid 2px #663300; 
+        -webkit-border-radius: 15px;    /* for Safari */
+        -moz-border-radius: 15px;       /* for Firefox */
+    }
+    .submenu a.selected {
+        color: #FF0000;
+        background-color: #FFFF00;
 }
 
 
@@ -62,21 +108,26 @@ div.logo {
 }
 div.topstats {
     /* search, statistics, clock, etc. */
+        line-height: 175%;
         width: 100%;
         font-size: 80%;
         font-weight: bold;
     }
-    div.topstats img {
+    .topstats span {
+        -outline: black solid thin;
+        margin-right: 1em;
+    }
+    .topstats img {
         /* icons in the top stats */
         vertical-align: middle;
-        padding-left: 1.5em;
+        padding-left: .3em;
     }
-    div.topstats form {
+    .topstats form {
         /* the search form */
         white-space: nowrap;
         display: inline;
     }
-    div.topstats form input {
+    .topstats form input {
         /* the search submit button */
         vertical-align: middle;
 }
@@ -87,12 +138,13 @@ div.topstats {
 div.topmenu {
     /* tabbed menu in the header */
         vertical-align: top;
+        line-height: 300%;
     }
-    ul.topmenu {
+    .topmenu ul {
         /* the list of menu items */
         padding: .3em;
     }
-    ul.topmenu li {
+    .topmenu li {
         /* a single menu item */
         font-size: 125%;
         white-space: nowrap;
@@ -108,32 +160,32 @@ div.topmenu {
         -webkit-border-radius: 9px;    /* for Safari */
         -moz-border-radius: 9px;       /* for Firefox */
     }
-    ul.topmenu li img {
+    .topmenu img {
         /* the icon in a menu item */
         margin: .3em;
         vertical-align: middle;
     }
-    ul.topmenu li a {
+    .topmenu a {
         /* the anchor pointing to the action of the menu item */
         margin: .3em;
         font-weight: bold;
         text-decoration: none;
     }
-    ul.topmenu li a:link { 
+    .topmenu a:link { 
         /* virginal menu link */
         color: #FFFFFF;
     }
-    ul.topmenu li a:visited { 
+    .topmenu a:visited { 
         /* visited menu link */
         color: #FFFFFF;
     }
-    ul.topmenu li a:hover { 
+    .topmenu a:hover { 
         /* menu link mouse-over */
         color: #000000;
         background-color: #FFFFCC;
     }
     /* default is ok
-    ul.topmenu li a:active { 
+    .topmenu a:active { 
         color: #550000;
     }*/
     #xxxtopmenu-current {
@@ -181,7 +233,7 @@ div#ft {
 
 /*  data tables (grid)
  */
-table.grid tr th {
+table.grid th {
     /* data grid table headers */
         background-color: #666666;
         color: #FFFF99;
@@ -190,22 +242,20 @@ table.grid tr th {
         -webkit-border-radius: 5px;    /* for Safari */
         -moz-border-radius: 5px;       /* for Firefox */
     }
-    table.grid tr th img {
+    .grid th img {
         /* data grid table icons */
         vertical-align: middle;
     }
-    table.grid tr td {
+    .grid td {
         /* data grid table data cells */
+        background-color: #FFFFCC;
         padding: .3em;
-        border: 1px solid #999999;
-        -webkit-border-radius: 5px;    /* for Safari */
-        -moz-border-radius: 5px;       /* for Firefox */
-}
-td.monoval {
-    /* a right-aligned  monospace font value (so pre-formatted values line up) */
-    font-family: Lucida Console, Courier, monospace;
-    font-weight: bolder;
-    text-align: right;
+        border: 1px dotted #999999;
+    }
+    .grid .footer td {
+        background-color: #FFFFEE;
+        border: 1px solid #FFFFEE;
+        border-top: 1px dotted #999999;
 }
 
 
