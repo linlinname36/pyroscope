@@ -170,5 +170,6 @@ class ViewController(BaseController):
 
     def index(self):
         # Redirect to list of active torrents
-        return redirect_to(action="list", id="active")
+        ##return redirect_to(action="list", id="active")
+        return self.list("active")
 
