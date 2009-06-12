@@ -17,6 +17,7 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
 
+import os
 import logging
 
 from pylons import request, response, session, tmpl_context as c
@@ -30,6 +31,11 @@ LOG = logging.getLogger(__name__)
 class SandboxController(BaseController):
 
     def index(self):
+        c.icons = sorted(os.path.splitext(name)[0]
+            for name in os.listdir(os.path.join(os.path.dirname(__file__), "../public/img/svg"))
+            if name.endswith(".svg")
+        )
+
         # Return a rendered template
         return render("pages/sandbox.mako")
 

@@ -11,6 +11,29 @@
     -webkit-border-radius: 9px;    /* for Safari */
     -moz-border-radius: 9px;       /* for Firefox */
 }
+div.iconbox {
+    /* floating display with border */
+        display: block;
+        float: left;
+        width: 150px;
+        height: 80px;
+
+        font-size: 80%;
+        margin-right: .5em;
+        text-align:center;
+
+        border: 1px dotted #999999;
+        -webkit-border-radius: 3px;    /* for Safari */
+        -moz-border-radius: 3px;       /* for Firefox */
+    }
+    .iconbox div {
+        line-height: 80%;
+        margin: 0px;
+        padding: 0px;
+    }
+    .iconbox img {
+        padding-top: 3px;
+}
 .monoval {
     /* a right-aligned  monospace font value (so pre-formatted values line up) */
     font-family: Lucida Console, Courier, monospace;
@@ -228,6 +251,24 @@ div#ft {
     /* "I use it!" */
     display: inline;
     float: right;
+}
+.ohloh-widgets {
+    /* ohloh.net widgets */
+        padding: .5em;
+        font-size: 125%;
+
+        -border: 2px groove #666666;
+        -webkit-border-radius: 6px;    /* for Safari */
+        -moz-border-radius: 6px;       /* for Firefox */
+    }
+    .ohloh-widgets div {
+        display: block;
+        float: left;
+        margin-right: 2em;
+    /*.ohloh-widgets .logo {
+        visibility: hidden;
+        height: 0px;
+        width: 0px;*/
 }
 .profilingstats {
     /* page rendering time */
