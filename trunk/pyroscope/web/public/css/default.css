@@ -115,16 +115,16 @@ div.topstats {
     }
     .topstats span {
         -outline: black solid thin;
+        white-space: nowrap;
         margin-right: 1em;
     }
     .topstats img {
         /* icons in the top stats */
         vertical-align: middle;
-        padding-left: .3em;
+        padding-left: 0px;
     }
     .topstats form {
         /* the search form */
-        white-space: nowrap;
         display: inline;
     }
     .topstats form input {
