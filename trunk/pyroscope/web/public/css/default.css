@@ -19,6 +19,15 @@ a.hoverline {
         text-decoration: underline;
     }
 }
+a.tlink {
+    /* a torrent link */
+        text-decoration: none;
+    }
+    a.tlink:hover { 
+        text-decoration: underline;
+    }
+}
+
 
 /*  global & misc
  */

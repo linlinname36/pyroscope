@@ -83,7 +83,7 @@ class ViewController(BaseController):
         for attr in ("is_open", "complete"):
             counts[attr] = sum(getattr(item, attr) for item in torrents)
 
-        c.messages = [Bunch(name=item.name, text=item.message, domains=", ".join(sorted(item.tracker_domains)))
+        c.messages = [Bunch(hash=item.hash, name=item.name, text=item.message, domains=", ".join(sorted(item.tracker_domains)))
             for item in torrents 
             if item.is_open and item.message and not any(ignore in item.message
                 for ignore in self.IGNORE_MESSAGES

@@ -30,6 +30,14 @@ LOG = logging.getLogger(__name__)
 class TorrentController(BaseController):
 
     def index(self):
+        # Redirect to view page
+        return redirect_to(action="view") #, id="HelpIndex")
+
+
+    def view(self, id):
+        c.hash = id
+        c.name = id
+
         # Return a rendered template
-        return "Single torrent view"
+        return render("pages/torrent.mako")
 

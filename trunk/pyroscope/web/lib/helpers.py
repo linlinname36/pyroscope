@@ -20,8 +20,13 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
 
+import re
+
+from paste.deploy.converters import asbool
+from pylons import request
 from pylons.controllers.util import url_for
 #from webhelpers.html.tags import checkbox, password
+
 
 def icon(name):
     """ Emit image tag for an icon.
@@ -52,6 +57,13 @@ def img(name):
         title = 'title="%(title)s" alt="%(title)s" ' % locals()
     w, h = size.split("x")
     return '<img src="/img/%(name)s" height="%(h)s" width="%(w)s" %(title)s/>' % locals()
+
+
+def obfuscate(text, replacer=re.compile("[a-zA-Z<>&]+")):
+    """ Obfuscator for screenshots and the like. Replaces all alpha chars by question marks.
+    """
+    obfuscate = asbool(request.params.get("_obfuscate"))
+    return replacer.sub(lambda s: "?" * len(s.group()), text) if obfuscate else text
 
 
 def now():

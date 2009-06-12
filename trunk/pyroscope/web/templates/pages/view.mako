@@ -1,6 +1,5 @@
 <%inherit file="/common/pageframe.mako"/>
 <%!
-    import re
     from pyroscope.util import fmt
     from pylons import tmpl_context as c
     from pyroscope.web.lib import helpers as h
@@ -9,36 +8,36 @@
     # But then this is a temp. hack anyway.
     refresh_rate = c.refresh_rate
 
-    # Obfuscator for screenshots etc.
-    obfuscate = lambda x: re.sub("[a-z]|[A-Z]+", lambda s: "?" * len(s.group()), x) if c.obfuscate else x
-
     # Overloaded attributes
     page_title = "Torrents"
     page_head = '<meta http-equiv="refresh" content="%s" />' % refresh_rate
 %>
-<h1>Active Torrents</h1>
+<h1>${len(c.ordered)} Active Torrent(s)</h1>
 <table class="grid">
-<tr>
-<th>${"torrent.16"|h.icon} TORRENT</th>
-<th>${"green_up_double.16 UP"|h.icon} RATE</th>
-<th>${"green_down_double.16 DOWN"|h.icon} RATE</th>
-<th>${"green_up_doc.16 UP"|h.icon} XFER</th>
-<th>${"green_down_doc.16 DOWN"|h.icon} XFER</th>
-<th>${"ying_yang_rg RATIO"|h.icon}</th>
-<th>${"tracker"|h.icon} TRACKER</th>
-</tr>
+## Active torrents header
+    <tr>
+        <th>${"torrent.16"|h.icon} TORRENT</th>
+        <th>${"green_up_double.16 UP"|h.icon} RATE</th>
+        <th>${"green_down_double.16 DOWN"|h.icon} RATE</th>
+        <th>${"green_up_doc.16 UP"|h.icon} XFER</th>
+        <th>${"green_down_doc.16 DOWN"|h.icon} XFER</th>
+        <th>${"ying_yang_rg RATIO"|h.icon}</th>
+        <th>${"tracker"|h.icon} TRACKER</th>
+    </tr>
+## Active torrents body
 % for _, _, item in sorted(c.ordered, reverse=1):
-<tr>
-<td>${item.name|obfuscate}</td>
-<td class="monoval">${item.up_rate_h}</td>
-<td class="monoval">${item.down_rate_h}</td>
-<td class="monoval">${item.up_total_h}</td>
-<td class="monoval">${item.down_total_h}</td>
-<td class="monoval">${"%6.3f" % item.ratio_1}</td>
-<td>${item.domains|obfuscate}</td>
-</tr>
+    <tr>
+        <td><a class="tlink" href="${h.url_for(controller='torrent', id=item.hash)}">${item.name|h.obfuscate}</a></td>
+        <td class="monoval">${item.up_rate_h}</td>
+        <td class="monoval">${item.down_rate_h}</td>
+        <td class="monoval">${item.up_total_h}</td>
+        <td class="monoval">${item.down_total_h}</td>
+        <td class="monoval">${"%6.3f" % item.ratio_1}</td>
+        <td>${item.domains|h.obfuscate}</td>
+    </tr>
 % endfor
 <tr>
+## Active torrents footer
 <td style="border: 0px"><small><em>Refreshes every <strong>${c.refresh_rate}</strong> seconds. [&#160;change to
 % for i in (10, 20, 30, 60,):
     % if i != int(c.refresh_rate):
@@ -67,17 +66,17 @@
 <h1>${len(c.messages)} Tracker Message(s)</h1>
 
 <table class="grid">
-<tr>
-<th>${"torrent.16"|h.icon} TORRENT</th>
-<th>${"message.16"|h.icon} MESSAGE</th>
-<th>${"tracker"|h.icon} TRACKER</th>
-</tr>
+    <tr>
+        <th>${"torrent.16"|h.icon} TORRENT</th>
+        <th>${"message.16"|h.icon} MESSAGE</th>
+        <th>${"tracker"|h.icon} TRACKER</th>
+    </tr>
 % for msg in sorted(c.messages):
-<tr>
-<td>${msg.name|obfuscate}</td>
-<td>${msg.text}</td>
-<td>${msg.domains|obfuscate}</td>
-</tr>
+    <tr>
+        <td><a class="tlink" href="${h.url_for(controller='torrent', id=msg.hash)}">${msg.name|h.obfuscate}</a></td>
+        <td>${msg.text}</td>
+        <td>${msg.domains|h.obfuscate}</td>
+    </tr>
 % endfor
 </table>
 % endif
