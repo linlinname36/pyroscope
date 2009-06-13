@@ -54,6 +54,11 @@ class WikiPage(object):
         r"_(?P<em>.*?)_",
         r"`(?P<code>.*?)`",
         r"{{{(?P<tt>.*?)}}}",
+        r"(?P<img>https?://.+?/.+?\.(?:png|gif|jpg|jpeg))",
+        r"\[(?P<url1>https?://.+?/.+?\s.+?)\]",
+        r"(^|(?<!\w))(?P<url2>https?://([^\s\<%(punct)s]|([%(punct)s][^\s\<%(punct)s]))+)" % {
+            "punct": re.escape('''"\'}]|:,.)?!'''),
+        },
         r"(?P<a>(?:[A-Z][a-z0-9_]+){2,32})",
         #r"",
     ]))
@@ -119,6 +124,24 @@ class WikiPage(object):
                     url_class.lower(), url_prefix, name, url_class, name, text[3:],
                 )
 
+            # Link?
+            if text.startswith("<url"):
+                kind = text[1:5]
+                href = match.group(kind)
+                if kind == "url1":
+                    href, name = href.split(None, 1)
+                else:
+                    name = href
+                return u'<a href="%s" title="%s">%s</a>' % (
+                    href, href, name
+                )
+
+            # Image?
+            elif text.startswith("<img>"):
+                text = '<img src="%s" title="%s" />' % (
+                    match.group("img"), match.group("img"),
+                )
+
             return text
 
         self.lines = [self.RE_INLINE.sub(replacer, line)
@@ -143,7 +166,7 @@ class WikiPage(object):
                 if 0 < level <= 3 and len(line) - len(heading) == 2 * level:
                     stack = (stack + [0]*3)[:level]
                     stack[-1] += 1
-                    heading = u"%s %s" % (u'.'.join(str(i) for i in stack), heading)
+                    heading = u"%s %s" % (u'.'.join(str(i) for i in stack if i), heading)
                     headings.append(heading)
                     self.lines[idx] = u"<h%d>%s</h%d>" % (level, heading, level)
 

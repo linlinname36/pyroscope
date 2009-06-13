@@ -261,8 +261,8 @@ div.topmenu {
         border-left: solid 1px #930; 
         border-bottom: solid 2px #630; 
         border-right: solid 2px #630; 
-        -webkit-border-radius: 9px;
-        -moz-border-radius: 9px;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
     }
     .topmenu img {
         /* the icon in a menu item */
@@ -389,6 +389,16 @@ table.grid th {
     }
     a.wiki-wanted:after {
         content: "�";
+    }
+    .wiki hr {
+        border-style: none;
+        border-top: .3em ridge #fc0;
+    }
+    .wiki-summary {
+        text-size: 80%;
+        color: #666;
+        font-style: italic;
+        padding: .3em 0;
     }
     .wiki-code {
         display: block;
