@@ -400,6 +400,13 @@ table.grid th {
         font-style: italic;
         padding: .3em 0;
     }
+    .wiki-summary a:focus {
+        outline: none;
+    }
+    .wiki-summary img {
+        -vertical-align: bottom;
+        margin-left: .5em;
+    }
     .wiki-code {
         display: block;
         margin: .3em 1.3em;

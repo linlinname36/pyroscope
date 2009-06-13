@@ -4,10 +4,7 @@
     from pyroscope.web.lib import helpers as h
     page_title = lambda: c.page.title
 %>
-##<h1>${c.page.title}</h1>
-% if "summary" in c.page.meta:
-<div class="wiki-summary">${c.page.meta["summary"]}</div>
-% endif
+<%include file="/common/wiki-summary.mako"/>
 
 ${c.page.html|n}
 ##<hr />${repr(c.page.html)}

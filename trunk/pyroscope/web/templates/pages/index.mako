@@ -3,9 +3,7 @@
     from pyroscope.web.lib import helpers as h
     page_title = lambda: "Main Index"
 %>
-% if "summary" in c.page.meta:
-<div class="wiki-summary">${c.page.meta["summary"]}</div>
-% endif
+<%include file="/common/wiki-summary.mako"/>
 
 <h1>Welcome to PyroScope</h1>
 
