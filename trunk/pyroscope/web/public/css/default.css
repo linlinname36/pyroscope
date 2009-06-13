@@ -4,12 +4,12 @@
  */
 .rounded {
     /* class for rounded corners */
-    border-top: solid 1px #CCCCCC; 
-    border-left: solid 1px #CCCCCC; 
-    border-bottom: solid 3px #666666; 
-    border-right: solid 3px #666666; 
-    -webkit-border-radius: 9px;    /* for Safari */
-    -moz-border-radius: 9px;       /* for Firefox */
+    border-top: solid 1px #ccc; 
+    border-left: solid 1px #ccc; 
+    border-bottom: solid 3px #666; 
+    border-right: solid 3px #666; 
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
 }
 div.iconbox {
     /* floating display with border */
@@ -22,14 +22,14 @@ div.iconbox {
         margin-right: .5em;
         text-align:center;
 
-        border: 1px dotted #999999;
-        -webkit-border-radius: 3px;    /* for Safari */
-        -moz-border-radius: 3px;       /* for Firefox */
+        border: 1px dotted #999;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
     }
     .iconbox div {
         line-height: 80%;
-        margin: 0px;
-        padding: 0px;
+        margin: 0;
+        padding: 0;
     }
     .iconbox img {
         padding-top: 3px;
@@ -71,18 +71,19 @@ a.tlink {
         /* the list of menu items */
         line-height: 200%;
         margin-top: .3em;
-        margin-left: 0em;
+        margin-left: 0;
     }
     .submenu li {
+        list-style: none;
         display: inline;
         white-space: nowrap;
-        margin: 0px;
-        padding: 0px;
+        margin: 0;
+        padding: 0;
     }
     .submenu a {
         /* a single menu item */
-        color: #993300;
-        background-color: #FFFFCC;
+        color: #930;
+        background-color: #ffc;
         font-size: 115%;
         font-weight: bolder;
         text-decoration: none;
@@ -92,16 +93,87 @@ a.tlink {
         padding-right: 1em;
 
         /* button-like */
-        border-top: solid 1px #993300; 
-        border-left: solid 1px #993300; 
-        border-bottom: solid 2px #663300; 
-        border-right: solid 2px #663300; 
-        -webkit-border-radius: 15px;    /* for Safari */
-        -moz-border-radius: 15px;       /* for Firefox */
+        border-top: solid 1px #930; 
+        border-left: solid 1px #930; 
+        border-bottom: solid 2px #630; 
+        border-right: solid 2px #630; 
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
     }
     .submenu a.selected {
-        color: #FF0000;
-        background-color: #FFFF00;
+        color: #f00;
+        background-color: #ff0;
+}
+.tab-bar {
+    /* tabbed content */
+    }
+    .tab-bar ul {
+        list-style: none;
+        padding: 0;
+        margin-left: 1em;
+        margin-bottom: 0;
+        background: white;
+        float: left;
+        width: 100%;
+    }
+    .tab-bar li {
+        list-style: none;
+        float: left;
+        margin: 0;
+        margin-right: .5em;
+        padding-top: .5em;
+        background-color: #fc0;
+
+        border-top: groove 2px #fc0; 
+        border-left: groove 2px #fc0; 
+        border-bottom: 0;
+        border-right: outset 3px #fc3; 
+        -webkit-border-radius: 9px;
+        -moz-border-radius-topleft: 14px;
+        -moz-border-radius-topright: 5px;
+    }
+    .tab-bar a {
+        display: block;
+        text-decoration: none;
+        font-size: 110%;
+        font-weight: bold;
+        white-space: nowrap;
+        color: #9630;
+        background-color: #fc0;
+
+        padding: .1em .8em;
+        padding-top: 0;
+        border-bottom: .3em solid #fc0;
+    }
+    .tab-bar li.selected {
+        background-color: #ff0;
+        font-style: italic; 
+    }
+    .tab-bar li.selected a {
+        color: #f33;
+        background-color: #ff0;
+        border-color: #ff3;
+    }
+    .tab-bar a:hover {
+        border-color: #f33;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+    }
+    .tab-bar a:focus {
+        color: #f33;
+    }
+    .tab-box {
+        clear: both;
+        background-color: #ffd;
+        margin: 0;
+        padding: 0 1em;
+
+        border-top: ridge 2px #fc0; 
+        border-left: ridge 2px #fc0; 
+        border-bottom: ridge 4px #fc3; 
+        border-right: ridge 4px #fc3; 
+        -webkit-border-radius: 9px;
+        -moz-border-radius: 9px;
 }
 
 
@@ -110,8 +182,8 @@ a.tlink {
 body {
     /* main HTML body defaults (after YUI defaults are applied) */
     font-family: Verdana;
-    background-color: #FFFFEE;
-    color: #000000;
+    background-color: #ffe;
+    color: #000;
 }
 div#bd div {
     /* div in the main content area */
@@ -127,7 +199,7 @@ div#bd div {
  */
 div#hd {
     /* the header defaults */
-    background-color: FFFF99;
+    background-color: #ff9;
     padding: .2em;
 }
 div.logo {
@@ -151,7 +223,7 @@ div.topstats {
     .topstats img {
         /* icons in the top stats */
         vertical-align: middle;
-        padding-left: 0px;
+        padding-left: 0;
     }
     .topstats form {
         /* the search form */
@@ -172,23 +244,25 @@ div.topmenu {
     }
     .topmenu ul {
         /* the list of menu items */
+        list-style: none;
         padding: .3em;
     }
     .topmenu li {
         /* a single menu item */
+        list-style: none;
         font-size: 125%;
         white-space: nowrap;
         display: inline;
-        background-color: #FF3300;
+        background-color: #F30;
         padding: .3em;
 
         /* button-like */
-        border-top: solid 1px #993300; 
-        border-left: solid 1px #993300; 
-        border-bottom: solid 2px #663300; 
-        border-right: solid 2px #663300; 
-        -webkit-border-radius: 9px;    /* for Safari */
-        -moz-border-radius: 9px;       /* for Firefox */
+        border-top: solid 1px #930; 
+        border-left: solid 1px #930; 
+        border-bottom: solid 2px #630; 
+        border-right: solid 2px #630; 
+        -webkit-border-radius: 9px;
+        -moz-border-radius: 9px;
     }
     .topmenu img {
         /* the icon in a menu item */
@@ -203,24 +277,24 @@ div.topmenu {
     }
     .topmenu a:link { 
         /* virginal menu link */
-        color: #FFFFFF;
+        color: #fff;
     }
     .topmenu a:visited { 
         /* visited menu link */
-        color: #FFFFFF;
+        color: #fff;
     }
     .topmenu a:hover { 
         /* menu link mouse-over */
-        color: #000000;
-        background-color: #FFFFCC;
+        color: #000;
+        background-color: #ffc;
     }
     /* default is ok
     .topmenu a:active { 
-        color: #550000;
+        color: #500;
     }*/
     #xxxtopmenu-current {
         /* not yet implemented */
-        color: #FFFF99;
+        color: #ff9;
 }
 
 
@@ -228,7 +302,7 @@ div.topmenu {
  */
 div#ft {
     /* the footer defaults */
-        background-color: #FFFF99;
+        background-color: #ff9;
         padding: .8em;
         margin-top: .8em;
     }
@@ -257,9 +331,9 @@ div#ft {
         padding: .5em;
         font-size: 125%;
 
-        -border: 2px groove #666666;
-        -webkit-border-radius: 6px;    /* for Safari */
-        -moz-border-radius: 6px;       /* for Firefox */
+        -border: 2px groove #666;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
     }
     .ohloh-widgets div {
         display: block;
@@ -267,14 +341,14 @@ div#ft {
         margin-right: 2em;
     /*.ohloh-widgets .logo {
         visibility: hidden;
-        height: 0px;
-        width: 0px;*/
+        height: 0;
+        width: 0;*/
 }
 .profilingstats {
     /* page rendering time */
     white-space: nowrap;
     float: left;
-    color: #666666; 
+    color: #666; 
     font-size: 80%;
 }
 
@@ -283,12 +357,12 @@ div#ft {
  */
 table.grid th {
     /* data grid table headers */
-        background-color: #666666;
-        color: #FFFF99;
+        background-color: #666;
+        color: #ff9;
         padding: .3em;
-        border: 0px;
-        -webkit-border-radius: 5px;    /* for Safari */
-        -moz-border-radius: 5px;       /* for Firefox */
+        border: 0;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
     }
     .grid th img {
         /* data grid table icons */
@@ -296,14 +370,71 @@ table.grid th {
     }
     .grid td {
         /* data grid table data cells */
-        background-color: #FFFFCC;
+        background-color: #ffc;
         padding: .3em;
-        border: 1px dotted #999999;
+        border: 1px dotted #999;
     }
     .grid .footer td {
-        background-color: #FFFFEE;
-        border: 1px solid #FFFFEE;
-        border-top: 1px dotted #999999;
+        background-color: #ffe;
+        border: 1px solid #ffe;
+        border-top: 1px dotted #999;
 }
 
+
+/*  help wiki
+ */
+.wiki table {
+        margin: 0;
+        margin-top: .8em;
+    }
+    a.wiki-wanted:after {
+        content: "�";
+    }
+    .wiki-code {
+        display: block;
+        margin: .3em 1.3em;
+        padding: .3em .5em;
+        border-left: .3em ridge #fc0;
+    }
+    .wiki-toc {
+        background-color: #ffd;
+        line-height: 50%;
+        margin: 0;
+        padding: 0 1em;
+
+        border-top: solid 1px #fc0; 
+        border-left: solid 1px #fc0; 
+        border-bottom: solid 2px #fc3; 
+        border-right: solid 2px #fc3; 
+        -webkit-border-radius: 9px;
+        -moz-border-radius: 9px;
+    }
+    div.wiki-toc:first-child:before {
+        content: "Table of Contents";
+        display: block;
+        font-weight: bold;
+        font-size: 115%;
+        padding: .8em 0 1.2em 0;
+    }
+    .wiki-toc-num-1 { 
+        font-weight: bolder;
+    }
+    .wiki-toc-title-1 {
+        font-weight: bolder;
+    }
+    .wiki-toc-num-2 { 
+        padding-left: 2em;
+        font-size: 90%;
+    }
+    .wiki-toc-title-2 {
+        font-style: italic;
+        font-size: 90%;
+    }
+    .wiki-toc-num-3 { 
+        padding-left: 4em;
+        font-size: 80%;
+    }
+    .wiki-toc-title-3 {
+        font-size: 80%;
+}
 

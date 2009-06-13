@@ -6,18 +6,20 @@
     valclass = lambda val: 'monoval' if int(val) else 'zeroval'
 
     # Overloaded attributes of pageframe
-    page_title = "Torrents"
+    page_title = lambda: "Torrents"
     page_head = lambda: '<meta http-equiv="refresh" content="%s" />' % c.refresh_rate
 %>
 ##
 ## VIEW SELECTION
 ##
-<div class="submenu">
+<div class="tab-bar">
 <ul>
 % for view in c.views:
-    <li>
-        <a ${'class="selected"' if view is c.view else "" | n} 
-           href="${h.url_for(action='list', id=view.action)}">${view.title}</a>
+    <li ${'class="selected"' if view is c.view else "" | n}>
+        <a href="${h.url_for(action='list', id=view.action)}">
+            ${view.title}
+            ## ${"(%d)" % len(c.torrents) if view is c.view else ""}
+        </a>
     </li>
 % endfor
 </ul>
@@ -26,7 +28,8 @@
 ##
 ## TORRENT LIST
 ##
-<h1>${len(c.torrents)} ${c.view.title.replace("Torrents", "Torrent(s)")}</h1>
+<div class="tab-box">
+<h3>${len(c.torrents)} ${c.view.title.replace("Torrents", "Torrent(s)")}</h3>
 <table class="grid">
 ## Active torrents header
     <tr>
@@ -71,6 +74,7 @@
         <td></td>
     </tr>
 </table>
+</div>
 
 ##            print "  [%d torrents on %d trackers with %.3f total ratio]" % (
 ##                len(self.torrents), len(domains),
@@ -87,7 +91,8 @@
 ## MESSAGES
 ##
 % if c.messages:
-<h1>${len(c.messages)} Tracker Message(s)</h1>
+<div class="tab-box">
+<h3>${len(c.messages)} Tracker Message(s)</h3>
 
 <table class="grid">
     <tr>
@@ -105,5 +110,6 @@
     </tr>
 % endfor
 </table>
+</div>
 % endif
 

@@ -23,6 +23,7 @@ from pylons import request, response, session, tmpl_context as c
 from pylons.controllers.util import abort, redirect_to
 
 from pyroscope.web.lib.base import render, BaseController
+from pyroscope.web.controllers.help import WikiPage
 
 LOG = logging.getLogger(__name__)
 
@@ -30,6 +31,9 @@ LOG = logging.getLogger(__name__)
 class IndexController(BaseController):
 
     def index(self):
+        # Build model
+        c.page = WikiPage.open("PyroScope")
+
         # Return a rendered template
         return render("pages/index.mako")
 

@@ -1,8 +1,12 @@
 <%inherit file="/common/pageframe.mako"/>
 <%!
     from pyroscope.web.lib import helpers as h
-    page_title = "Main Index"
+    page_title = lambda: "Main Index"
 %>
+% if "summary" in c.page.meta:
+<div class="wiki-summary">${c.page.meta["summary"]}</div>
+% endif
+
 <h1>Welcome to PyroScope</h1>
 
 <div>For the moment, the 1st rule is <em>functionality over eye candy</em>, 
@@ -13,3 +17,6 @@ so expect the latter after there's actually some data to please the eye.</div>
 <br />
 Report any bugs to the <a href="http://code.google.com/p/pyroscope/issues/entry">Google Code Issue Tracker</a>.
 </em></div>
+
+${c.page.html|n}
+

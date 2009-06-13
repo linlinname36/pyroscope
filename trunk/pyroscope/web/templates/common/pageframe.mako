@@ -1,14 +1,13 @@
 ## This is the default HTML page layout
 <%!
-    page_title = "*** PAGE TITLE NOT SET ***"
-    page_head = lambda:""
-    refresh_rate = "60"
+    page_title = lambda: "*** PAGE TITLE NOT SET ***"
+    page_head = lambda: ""
 %>
 
 <html>
   <head>
 ##  HTML head
-    <title>${self.attr.page_title} - PyroScope</title>
+    <title>${self.attr.page_title()} - PyroScope</title>
 ##    ${h.stylesheet_link_tag( '/style1.css', '/style2.css')}
 ##    ${h.javascript_include_tag( 'jquery.js', 'jquery.debug.js')}
     <!-- Combo-handled YUI CSS files: --> 
@@ -44,7 +43,7 @@
     </div>
 ##  Top-level menu
     <div class="topmenu">
-    <ul class="topmenu">
+    <ul>
         <li>${"home.24"|h.icon}<a id="topmenu-current" href="/index">Home</a></li>
         <li>${"torrent.24"|h.icon}<a href="/view">Torrents</a></li>
         <li>${"flask.24"|h.icon}<a href="/sandbox">Lab</a></li>

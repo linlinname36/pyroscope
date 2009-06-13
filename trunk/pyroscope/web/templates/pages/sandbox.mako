@@ -2,8 +2,8 @@
 <%!
     from pprint import pformat
     from pyroscope.web.lib import helpers as h
-    page_title = "Laboratory"
 
+    page_title = lambda: "Laboratory"
     sizes = (16, 24, 32, 48)
 %>
 
@@ -13,17 +13,17 @@
 ##
 ## VIEW SELECTION
 ##
-<div class="submenu">
+<div class="tab-bar">
 <ul>
 % for view, title in sorted(c.views.items()):
-    <li>
-        <a ${'class="selected"' if view == c.view else "" | n} 
-           href="${h.url_for(id=view)}">${title}</a>
+    <li ${'class="selected"' if view == c.view else "" | n}>
+        <a href="${h.url_for(id=view)}">${title}</a>
     </li>
 % endfor
 </ul>
 </div>
 
+<div class="tab-box">
 ##
 ## OHLOH VIEW
 ##
@@ -42,7 +42,7 @@
 ## ICONS VIEW
 ##
 % if c.view == "icons":
-<h2>Sizes [${", ".join("%dx%d" % (sz, sz) for sz in sizes)}]</h2>
+<h3>Sizes [${", ".join("%dx%d" % (sz, sz) for sz in sizes)}]</h3>
 <div style="clear:both;" clear="all">
 % for icon in c.icons:
     <div class="iconbox">
@@ -62,7 +62,7 @@
 ## GLOBALS VIEW
 ##
 % if c.view == "globals":
-<dl>
+<dl style="margin-left: 0;">
 % for k in dir(g):
   % if not k.startswith('_'):
     ##.replace('\n', "<br />")
@@ -77,7 +77,7 @@
 ## HELPERS VIEW
 ##
 % if c.view == "helpers":
-<dl>
+<dl style="margin-left: 0;">
 % for k in dir(h):
   %if not k.startswith('_'):
     <dt>${k}</dt><dd><code>${(getattr(h, k).__doc__ or "N/A").replace('\n', "<br />")|n}</code></dd>
@@ -85,4 +85,7 @@
 % endfor
 </dl>
 % endif
+
+## END TAB CONTENT
+</div>
 

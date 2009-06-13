@@ -2,18 +2,13 @@
 <%!
     from pylons import tmpl_context as c
     from pyroscope.web.lib import helpers as h
-    page_title = c.title
+    page_title = lambda: c.page.title
 %>
-##<h1>${c.title}</h1>
-% if "summary" in c.meta:
-<br /><div><em>${c.meta["summary"]}</em></div>
+##<h1>${c.page.title}</h1>
+% if "summary" in c.page.meta:
+<div class="wiki-summary">${c.page.meta["summary"]}</div>
 % endif
 
-<div>
-<code>
-% for line in c.lines:
-${line}<br />
-% endfor
-</code>
-</div>
+${c.page.html|n}
+##<hr />${repr(c.page.html)}
 
