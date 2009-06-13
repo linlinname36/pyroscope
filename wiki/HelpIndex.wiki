@@ -1,6 +1,14 @@
 #summary Online Help Index.
 #labels online.help
 
+== Views ==
+PyroScope has the following views:
+ * HomeView - Welcome page. 
+ * TorrentsView - List torrents by different criteria and control them.
+ * LaboratoryView - Testing grounds and technical information.
+ * HelpView - What you are looking at.
+
+
 == Browser Compatibility ==
 PyroScope is designed for _Mozilla Firefox 3_ and will have no visual defects when used with that browser.
 
