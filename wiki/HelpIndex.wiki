@@ -1,4 +1,7 @@
 #summary Online Help Index.
 #labels online.help
 
-Nothing here at the moment...
+== Browser Compatibility ==
+PyroScope is designed for _Mozilla Firefox 3_ and will have no visual defects when used with that browser.
+
+It is also briefly tested with _Internet Explorer 8_ from time to time. Unsurprisingly, there are some CSS problems and no rounded borders, but overall the user interface is usable.
