@@ -17,8 +17,11 @@ verbatim code block
 }}}
 
 WikiWordLink
-[http://example.com/page label]
+[http://example.com/page Go to http://example.com/page]
 http://example.com/page
+
+Image
+https://s3.amazonaws.com/bits.ohloh.net/attachments/20048/ohloh_med.png
 
 Horizontal rule
 ----
@@ -42,8 +45,11 @@ verbatim code block
 }}}
 
 WikiWordLink
-[http://example.com/page label]
+[http://example.com/page Go to http://example.com/page]
 http://example.com/page
+
+Image
+https://s3.amazonaws.com/bits.ohloh.net/attachments/20048/ohloh_med.png
 
 Horizontal rule
 ----
