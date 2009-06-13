@@ -1,0 +1,3 @@
+#summary Help Browser View.
+
+The help pages only support SimpleMarkup.
