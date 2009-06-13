@@ -83,7 +83,7 @@ class ViewController(BaseController):
         c.views = self.VIEWS
 
         # Set refresh rate & obfuscator flag
-        c.refresh_rate = request.params.get("refresh", 10)
+        c.refresh_rate = request.params.get("refresh", 60)
         c.obfuscate = asbool(request.params.get("obfuscate", "0"))
 
 
