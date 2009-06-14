@@ -1,0 +1,10 @@
+#summary Screenshots of different browser views.
+
+<wiki:toc />
+
+== Welcome Page ==
+http://pyroscope.googlecode.com/svn/trunk/docs/media/home-view.jpg
+== Laboratory ==
+http://pyroscope.googlecode.com/svn/trunk/docs/media/lab-view-icons.jpg
+== Help Index ==
+http://pyroscope.googlecode.com/svn/trunk/docs/media/help-view.jpg
