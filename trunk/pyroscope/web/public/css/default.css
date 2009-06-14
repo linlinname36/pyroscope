@@ -275,7 +275,7 @@ div.topmenu {
         font-size: 125%;
         white-space: nowrap;
         display: inline;
-        background-color: #F30;
+        background-color: #fc3;
         padding: .3em;
 
         /* button-like */
@@ -299,15 +299,15 @@ div.topmenu {
     }
     .topmenu a:link { 
         /* virginal menu link */
-        color: #fff;
+        color: #030;
     }
     .topmenu a:visited { 
         /* visited menu link */
-        color: #fff;
+        color: #030;
     }
     .topmenu a:hover { 
         /* menu link mouse-over */
-        color: #000;
+        color: #030;
         background-color: #ffc;
     }
     /* default is ok
