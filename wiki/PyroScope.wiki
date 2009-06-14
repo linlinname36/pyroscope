@@ -17,6 +17,8 @@ If you like PyroScope, click on the following button to support it.
 <wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_users.xml?style=red" height="100"  border="0" />
 
 == Project Status ==
+PyroScope is implemented in [http://www.python.org/ Python] using the [http://pylonshq.com/ Pylons] web framework. The main build tool is [http://www.blueskyonmars.com/projects/paver/ Paver], which is based on `setuptools`.
+
 This is the status of various parts of the project:
 || *ohloh.net Statistics* || <wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_thin_badge.xml" height="36"  border="0" /> ||
 || *Web Interface* || usable alpha ||
