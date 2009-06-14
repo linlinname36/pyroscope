@@ -368,9 +368,14 @@ table.grid th {
         /* data grid table icons */
         vertical-align: middle;
     }
+    .grid tr.even {
+        background-color: #ff9;
+    }
+    .grid tr.odd {
+        background-color: #ffc;
+    }
     .grid td {
         /* data grid table data cells */
-        background-color: #ffc;
         padding: .3em;
         border: 1px dotted #999;
     }

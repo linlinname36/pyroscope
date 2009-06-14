@@ -50,13 +50,13 @@
 <h3>${len(c.messages)} Tracker Message(s)</h3>
 
 <table class="grid">
-    <tr>
+    <tr class="header">
         <th>${"torrent.16"|h.icon} TORRENT</th>
         <th>${"message.16"|h.icon} MESSAGE</th>
         <th>${"tracker"|h.icon} TRACKER</th>
     </tr>
-% for item in sorted(c.messages):
-    <tr>
+% for idx, item in enumerate(c.messages):
+    <tr class="${'odd' if idx&1 else 'even'}">
         <td><a class="tlink" href="${h.url_for(controller='torrent', id=item.hash)}" title="${item.tooltip}">
             ${item.name|h.nostrip,h.obfuscate}
         </a></td>
