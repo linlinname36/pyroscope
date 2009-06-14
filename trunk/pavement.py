@@ -162,13 +162,15 @@ def svg2png():
 def _screenshots():
     """ Make thumbnails for the screenshots.
     """
+    # developers need to checkout the wiki in read/write mode using
+    #  svn co https://pyroscope.googlecode.com/svn/wiki
+    gallery_file = "wiki/ScreenShotGallery.wiki"
     gallery_text = [
         "#summary Screenshots of different browser views",
         "",
         "Click on a thumbnail to see a larger version...",
         "",
     ]
-    gallery_file = "pyroscope/web/wiki/ScreenShotGallery.wiki"
     thumb_size = "300x200"
     img_path = "docs/media/screens"
     svn_base = "http://pyroscope.googlecode.com/svn/trunk/" + img_path
