@@ -80,6 +80,32 @@ def obfuscate(text, replacer=re.compile("[a-zA-Z<>&]+")):
     return replacer.sub(lambda s: "?" * len(s.group()), text) if obfuscate else text
 
 
+def echo(url, view_params=None):
+    """ Add existing query parameters to an URL.
+    """
+    from pylons import request
+
+    view_params = view_params or ()
+    params = []
+    
+    # Helper variable to check for already existing URL parameters
+    check_url = url.replace('?', '&')
+    
+    # Find parameters we want to echo
+    for key, val in request.params.items():
+        if (key in view_params or key.startswith('_')) and ('&'+key+'=') not in check_url:
+            params.append((key, val))
+
+    # Add any parameters found    
+    if params:
+        import urllib
+        
+        url += '?' if '?' not in url else '&'
+        url += urllib.urlencode(params)
+
+    return url
+
+
 def nowrap(text):
     """ Replace all spaces by non-breakable ones.
     """
