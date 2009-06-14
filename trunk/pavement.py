@@ -171,6 +171,7 @@ def _screenshots():
         "Click on a thumbnail to see a larger version...",
         "",
     ]
+    gallery_width = 2
     thumb_size = "300x200"
     img_path = "docs/media/screens"
     svn_base = "http://pyroscope.googlecode.com/svn/trunk/" + img_path
@@ -187,9 +188,9 @@ def _screenshots():
         if img_file.ext in (".jpg", ".png",) and "-thumb" not in img_file.namebase:
             thumb_file = make_thumb(img_file)
 
-            counter += 1
-            if counter&1:
+            if counter % gallery_width == 0:
                 gallery_text.append("|| ")
+            counter += 1
 
             gallery_text[-1] += '<a title="%s" href="%s/%s"><img src="%s/%s" /></a> ||' % (
                 img_file.namebase, svn_base, img_file.basename(),
