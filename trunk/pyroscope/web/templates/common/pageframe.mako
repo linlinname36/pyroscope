@@ -17,7 +17,7 @@
     ${self.attr.page_head()|n}
   </head>
 
-  <body><div id="doc3" class="yui-t5">
+  <body><div id="doc3" class="yui-skin-sam yui-t5">
   <div id="hd" class="rounded"><!-- header -->
 ##  Logo
     <div class="logo"><a href="http://pyroscope.googlecode.com/">${"logo.150"|h.icon}</a></div>

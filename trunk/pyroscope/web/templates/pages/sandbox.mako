@@ -28,15 +28,42 @@
 ## YUI VIEW
 ##
 % if c.view == "yui":
-    <div class="yui-skin-sam">
-        <div id="-tooltipped">Tooltip Test</div>
+    <div style="background-color: gray">
+        <div id="texttipped">Tooltip Test</div>
         <img id="tooltipped" src="/img/png/24/logo.png" /> 
-        <script>
-            myTooltip = new YAHOO.widget.Tooltip("Tooltip Title", {
+
+        <span id="mycheckbox" class="yui-button"> 
+            <span class="first-child"> 
+                <button type="button">Check me!</button> 
+            </span> 
+        </span> 
+        
+        <div id="calendar"></div>
+
+        <script type="text/javascript">
+
+            myTooltip = new YAHOO.widget.Tooltip("tt-id", {
                 context: "tooltipped",
                 text: "You have hovered over Tooltip Test.",
                 showDelay: 500
             }); 
+            new YAHOO.widget.Tooltip("tt-id2", {
+                context: "texttipped",
+                text: "You have hovered over a text.",
+                showDelay: 500
+            }); 
+
+            // A DIV with id "cal1Container" should already exist on the page
+            var calendar = new YAHOO.widget.Calendar("calendar");
+            calendar.render();
+
+            var oButton = new YAHOO.widget.Button("mycheckbox", { 
+                    type: "checkbox", 
+                    name: "field1",
+                    value: "somevalue"
+                }
+            );
+
         </script>
     </div>
 % endif
@@ -52,7 +79,6 @@
             </div>
         % endfor
     </div>
-    <div style="clear:both;" />
 % endif
 
 ##
@@ -60,7 +86,6 @@
 ##
 % if c.view == "icons":
 <h3>Sizes [${", ".join("%dx%d" % (sz, sz) for sz in sizes)}]</h3>
-<div style="clear:both;" clear="all">
 % for icon in c.icons:
     <div class="iconbox">
         <div>
@@ -71,7 +96,8 @@
         <div>${icon}</div>
     </div>
 % endfor
-    <div style="clear:both;" />
+    <!-- end icon float -->
+    <div style="clear:both;"></div>
 </div>
 % endif
 
@@ -104,5 +130,6 @@
 % endif
 
 ## END TAB CONTENT
+<div style="clear:both;"></div>
 </div>
 
