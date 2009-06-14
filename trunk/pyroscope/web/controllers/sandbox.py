@@ -31,9 +31,10 @@ LOG = logging.getLogger(__name__)
 class SandboxController(BaseController):
 
     VIEWS = {
-        "ohloh": "ohloh.net Statistics",
-        "icons": "Icon Sets",
-        "globals": "Global Objects",
+        "yui": "YUI Tests",
+        "ohloh": "ohloh.net Stats",
+        "icons": "Icons",
+        "globals": "Globals",
         "helpers": "Helpers",
     }
 

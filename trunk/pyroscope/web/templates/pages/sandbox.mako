@@ -25,6 +25,23 @@
 
 <div class="tab-box">
 ##
+## YUI VIEW
+##
+% if c.view == "yui":
+    <div class="yui-skin-sam">
+        <div id="-tooltipped">Tooltip Test</div>
+        <img id="tooltipped" src="/img/png/24/logo.png" /> 
+        <script>
+            myTooltip = new YAHOO.widget.Tooltip("Tooltip Title", {
+                context: "tooltipped",
+                text: "You have hovered over Tooltip Test.",
+                showDelay: 500
+            }); 
+        </script>
+    </div>
+% endif
+
+##
 ## OHLOH VIEW
 ##
 % if c.view == "ohloh":
