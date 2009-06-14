@@ -1,10 +1,6 @@
 #summary Screenshots of different browser views.
 
-<wiki:toc />
+Click on a thumbnail to watch a larger version...
 
-== Welcome Page ==
-http://pyroscope.googlecode.com/svn/trunk/docs/media/home-view.jpg
-== Laboratory ==
-http://pyroscope.googlecode.com/svn/trunk/docs/media/lab-view-icons.jpg
-== Help Index ==
-http://pyroscope.googlecode.com/svn/trunk/docs/media/help-view.jpg
+|| <a title="Welcome Page" href="http://pyroscope.googlecode.com/svn/trunk/docs/media/screens/home-view.jpg"><img src="http://pyroscope.googlecode.com/svn/trunk/docs/media/screens/home-view-thumb.jpg" /></a> || <img alt="Help Index" src="http://pyroscope.googlecode.com/svn/trunk/docs/media/screens/help-view-thumb.jpg" /> ||
+|| <img alt="Icon Set" src="http://pyroscope.googlecode.com/svn/trunk/docs/media/screens/lab-view-icons-thumb.jpg" /> ||
