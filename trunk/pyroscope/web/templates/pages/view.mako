@@ -53,6 +53,11 @@
     <h3>
         ${len(c.torrents)} ${c.view.title} Torrent(s)
         ${'[filtered by "%s" out of %d]' % (c.filter, c.torrents_unfiltered) if c.filter else ''}
+% if c.messages:
+        <a href="#messages">
+            ${'info_red.16 There are %d Tracker Message(s)' % len(c.messages)|h.icon}
+        </a>
+% endif
     </h3>
     <%include file="/views/torrents-list.mako"/>
 </div>
@@ -73,12 +78,14 @@
 ##
 % if c.messages:
 <div class="tab-box">
-<h3>${len(c.messages)} Tracker Message(s)</h3>
+<a name="messages">
+    <h3>${len(c.messages)} Tracker Message(s)</h3>
+</a>
 
 <table class="grid">
     <tr class="header">
         <th>${"torrent.16"|h.icon} TORRENT</th>
-        <th>${"message.16"|h.icon} MESSAGE</th>
+        <th>${"info_red.16"|h.icon} MESSAGE</th>
         <th>${"tracker"|h.icon} TRACKER</th>
     </tr>
 % for idx, item in enumerate(c.messages):
