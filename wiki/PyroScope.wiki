@@ -19,6 +19,10 @@ If you like PyroScope, click on the following button to support it.
 == Project Status ==
 This is the status of various parts of the project:
 || *ohloh.net Statistics* || <wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_thin_badge.xml" height="36"  border="0" /> ||
-|| *Web Interface* || usable alpha; all rTorrent views; active torrents & messages view; no torrent control actions (yet) ||
-|| *Queue Manager* || not yet implemented ||
-|| *CLI Tools* || mktor, lstor ||
+|| *Web Interface* || usable alpha ||
+|| _Torrents List_ || all rTorrent views; active torrents & messages view; no torrent control actions (yet) ||
+|| _Torrent Control_ || _not yet implemented_ ||
+|| _Torrent Detail_ || _not yet implemented_ ||
+|| _Torrents Search_ || _not yet implemented_ ||
+|| *QueueManager* || _not yet implemented_ ||
+|| *CommandLineTools* || mktor, lstor ||
