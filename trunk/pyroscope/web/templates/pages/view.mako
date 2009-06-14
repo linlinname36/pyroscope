@@ -1,3 +1,6 @@
+<%doc>
+    PAGE: Torrent Views
+</%doc>
 <%inherit file="/common/pageframe.mako"/>
 <%!
     from pylons import tmpl_context as c
