@@ -20,6 +20,9 @@
 % for view in c.views:
     <li ${'class="selected"' if view is c.view else "" | n}>
         <a href="${h.url_for(action='list', id=view.action)|echo}">
+% if "icon" in view:
+            ${view.icon|h.icon}
+% endif
             ${view.title}
             ## ${"(%d)" % len(c.torrents) if view is c.view else ""}
         </a>

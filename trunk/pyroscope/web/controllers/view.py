@@ -37,6 +37,7 @@ def _make_state(item):
     """
     yield "OPEN" if item.is_open else "CLOSED"
     if item.complete: yield "DONE"
+    if item.message: yield "MSG"
     yield "PRV" if item.is_private else "PUB"
 
 
@@ -64,15 +65,15 @@ class ViewController(BaseController):
         "Couldn't connect to server",
     ]
     VIEWS = (
-        Bunch(action="active", title="Active", stock=False),
-        Bunch(action="incomplete", title="Incomplete"),
-        Bunch(action="stopped", title="Stopped"),
-        Bunch(action="hashing", title="Hashing"),
-        Bunch(action="name", title="Loaded"),
+        Bunch(action="active", title="Active", icon="nuked.12", stock=False),
+        Bunch(action="incomplete", title="Incomplete", icon="box-cross.12"),
+        Bunch(action="stopped", title="Stopped", icon="stopped.12"),
+        Bunch(action="hashing", title="Hashing", icon="hash.12"),
+        Bunch(action="name", title="Loaded", icon="torrent.12"),
         #Bunch(action="main", title="Loaded"),
-        Bunch(action="complete", title="Completed"),
-        Bunch(action="seeding", title="Seeding"),
-        Bunch(action="started", title="Started"),
+        Bunch(action="complete", title="Completed", icon="box-check.12"),
+        Bunch(action="seeding", title="Seeding", icon="green_up_single.12"),
+        Bunch(action="started", title="Started", icon="started.12"),
     )
 
 

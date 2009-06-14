@@ -1,5 +1,5 @@
 <%doc>
-    INCLUDE: Torrent listing
+    VIEW: Torrent listing
     
     Expects the torents in c.torrents, and optionally the summary fields
     c.refresh_rate, c.up_total and c.down_total.
@@ -10,22 +10,41 @@
     from pyroscope.web.lib import helpers as h
 
     valclass = lambda val: 'monoval' if int(val) else 'zeroval'
+    harmless = [
+        "Tried all trackers",
+        "Timeout was reached",
+    ]
 %>
 
 <table class="grid">
 ## Active torrents header
     <tr class="header">
-        <th>${"torrent.16"|h.icon} TORRENT</th>
+        <th>${"info_green.16 STATUS"|h.icon}</th>
+        <th>${"torrent.16 NAME"|h.icon} TORRENT</th>
         <th>${"green_up_double.16 UP"|h.icon} RATE</th>
         <th>${"green_down_double.16 DOWN"|h.icon} RATE</th>
         <th>${"green_up_doc.16 UP"|h.icon} XFER</th>
         <th>${"green_down_doc.16 DOWN"|h.icon} XFER</th>
-        <th>${"ying_yang_rg RATIO"|h.icon}</th>
-        <th>${"tracker"|h.icon} TRACKER</th>
+        <th>${"ying_yang_rg.16 RATIO"|h.icon}</th>
+        <th>${"tracker.16 DOMAIN"|h.icon} TRACKER</th>
     </tr>
 ## Active torrents body
 % for idx, item in enumerate(c.torrents):
     <tr class="${'odd' if idx&1 else 'even'}">
+        <td>
+            ${"started.12 STARTED" if item.is_open else "stopped.12 STOPPED"|h.icon}
+            ${"box-check.12 COMPLETE" if item.complete else "box-cross.12 INCOMPLETE"|h.icon}
+            ${"nuked.12 ACTIVE" if item.up_rate or item.down_rate else "empty.12 IDLE"|h.icon}
+% if item.message:
+% if any(h in item.message for h in harmless):
+            ${"info_green.12 %s" % item.message|h.icon}
+% elif item.is_open:
+            ${"info_red.12 %s" % item.message|h.icon}
+% else:
+            ${"info_blue.12 %s" % item.message|h.icon}
+% endif
+% endif
+        </td>
         <td><a class="tlink" href="${h.url_for(controller='torrent', id=item.hash)}" title="${item.tooltip}">
             ${item.name|h.nostrip,h.obfuscate}
         </a></td>
@@ -40,6 +59,7 @@
 ## Torrents list footer
 % if c.up_total != "" or c.down_total != "":
     <tr class="footer">
+        <td></td>
         <td>
             <small><em>Refreshes every <strong>${c.refresh_rate}</strong> seconds. 
             [&#160;change to

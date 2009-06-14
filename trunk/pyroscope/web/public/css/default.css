@@ -15,7 +15,7 @@ div.iconbox {
     /* floating display with border */
         display: block;
         float: left;
-        width: 150px;
+        width: 160px;
         height: 80px;
 
         font-size: 80%;
@@ -32,7 +32,8 @@ div.iconbox {
         padding: 0;
     }
     .iconbox img {
-        padding-top: 3px;
+        margin-top: 3px;
+        border: 1px solid #ccc;
 }
 .monoval {
     /* a right-aligned  monospace font value (so pre-formatted values line up) */
@@ -145,6 +146,10 @@ a.tlink {
         padding-top: 0;
         border-bottom: .3em solid #fc0;
     }
+    .tab-bar img {
+        --border: 1px solid #f99;
+        vertical-align: middle;
+    }
     .tab-bar li.selected {
         background-color: #ff0;
         font-style: italic; 
@@ -166,7 +171,7 @@ a.tlink {
         clear: both;
         background-color: #ffd;
         margin: 0;
-        padding: 0 1em;
+        padding: .3em 1em;
 
         border-top: ridge 2px #fc0; 
         border-left: ridge 2px #fc0; 

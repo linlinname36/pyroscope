@@ -32,7 +32,7 @@ class SandboxController(BaseController):
 
     VIEWS = {
         "yui": "YUI Tests",
-        "ohloh": "ohloh.net Stats",
+        "ohloh": "ohloh.net",
         "icons": "Icons",
         "globals": "Globals",
         "helpers": "Helpers",

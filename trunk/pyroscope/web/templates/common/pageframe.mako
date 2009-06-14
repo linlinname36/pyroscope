@@ -44,6 +44,7 @@
     <ul>
         <li>${"home.24"|h.icon}<a id="topmenu-current" href="/index">Home</a></li>
         <li>${"torrent.24"|h.icon}<a href="/view">Torrents</a></li>
+        <li>${"chart2.24"|h.icon}<a href="/stats">Stats</a></li>
         <li>${"flask.24"|h.icon}<a href="/sandbox">Lab</a></li>
         <li>${"help.24"|h.icon}<a href="/help">Help</a></li>
     </ul>
