@@ -162,18 +162,39 @@ def svg2png():
 def _screenshots():
     """ Make thumbnails for the screenshots.
     """
+    gallery_text = [
+        "#summary Screenshots of different browser views",
+        "",
+        "Click on a thumbnail to see a larger version...",
+        "",
+    ]
+    gallery_file = "pyroscope/web/wiki/ScreenShotGallery.wiki"
     thumb_size = "300x200"
-    img_path = path("docs/media/screens")
-    img_files = img_path.files()
-    
+    img_path = "docs/media/screens"
+    svn_base = "http://pyroscope.googlecode.com/svn/trunk/" + img_path
+
     def make_thumb(img_file, thumb_size=thumb_size):
         thumb_file = img_file.dirname() / img_file.namebase + "-thumb.jpg"
         if not thumb_file.exists() or thumb_file.mtime < img_file.mtime:
             sh("convert -geometry %(thumb_size)s %(img_file)s %(thumb_file)s" % locals())
+        return thumb_file
 
+    counter = 0
+    img_files = path(img_path).files()
     for img_file in img_files:
-        if img_file.ext in (".jpg", ".png",):
-            make_thumb(img_file)
+        if img_file.ext in (".jpg", ".png",) and "-thumb" not in img_file.namebase:
+            thumb_file = make_thumb(img_file)
+
+            counter += 1
+            if counter&1:
+                gallery_text.append("|| ")
+
+            gallery_text[-1] += '<a title="%s" href="%s/%s"><img src="%s/%s" /></a> ||' % (
+                img_file.namebase, svn_base, img_file.basename(),
+                svn_base, thumb_file.basename(),
+            )
+        
+    path(gallery_file).write_lines(gallery_text)
 
 
 @task
