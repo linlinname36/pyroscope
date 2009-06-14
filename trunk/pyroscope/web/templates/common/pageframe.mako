@@ -51,8 +51,13 @@
     </ul>
     </div>
   </div>
-  <div id="bd"><!-- body -->
+
+% for line in c._debug:
+    ${line}<br />
+% endfor
+
 ##  Body of derived page
+  <div id="bd"><!-- body -->
     ${self.body()}
   </div>
 ##  Footer

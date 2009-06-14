@@ -19,6 +19,7 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
 
+from pylons import tmpl_context as c
 from pylons.controllers import WSGIController
 from pylons.templating import render_mako as render
 
@@ -28,6 +29,8 @@ class BaseController(WSGIController):
     def __call__(self, environ, start_response):
         """ Invoke the Controller.
         """
+        c._debug = []
+
         # WSGIController.__call__ dispatches to the Controller method
         # the request is routed to. This routing information is
         # available in environ['pylons.routes_dict']
