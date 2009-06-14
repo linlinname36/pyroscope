@@ -21,7 +21,7 @@
     </tr>
 % for idx, (domain, counts) in enumerate(sorted(c.trackers.items())):
     <tr class="${'odd' if idx&1 else 'even'}">
-        <td><a href="/view/list/name?filter=${domain}" title="Click for list of torrents on ${domain}">
+        <td><a href="/view/list/name?filter=*${domain|u}" title="Click for list of torrents on ${domain}">
             ${domain|h.obfuscate}
         </a></td>
 % for key in ('total', 'active', 'incomplete', 'open', 'closed'):
