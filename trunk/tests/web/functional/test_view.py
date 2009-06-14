@@ -26,8 +26,3 @@ class TestViewController(TestController):
         response = self.app.get(url(controller="view", action="index"))
         # Test response...
 
-
-    def test_active(self):
-        response = self.app.get(url(controller="view", action="active"))
-        # Test response...
-
