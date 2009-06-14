@@ -1,5 +1,5 @@
 #summary Screenshots of different browser views
 
 Click on a thumbnail to see a larger version...
-<a title="help-view" href="http://pyroscope.googlecode.com/svn/trunk/docs/media/screens/help-view.jpg"><img src="http://pyroscope.googlecode.com/svn/trunk/docs/media/screens/help-view-thumb.jpg" /></a> ||<a title="home-view" href="http://pyroscope.googlecode.com/svn/trunk/docs/media/screens/home-view.jpg"><img src="http://pyroscope.googlecode.com/svn/trunk/docs/media/screens/home-view-thumb.jpg" /></a> ||
-|| <a title="lab-view-icons" href="http://pyroscope.googlecode.com/svn/trunk/docs/media/screens/lab-view-icons.jpg"><img src="http://pyroscope.googlecode.com/svn/trunk/docs/media/screens/lab-view-icons-thumb.jpg" /></a> ||
+
+|| <a title="help-view" href="http://pyroscope.googlecode.com/svn/trunk/docs/media/screens/help-view.jpg"><img src="http://pyroscope.googlecode.com/svn/trunk/docs/media/screens/help-view-thumb.jpg" /></a> ||<a title="home-view" href="http://pyroscope.googlecode.com/svn/trunk/docs/media/screens/home-view.jpg"><img src="http://pyroscope.googlecode.com/svn/trunk/docs/media/screens/home-view-thumb.jpg" /></a> ||<a title="lab-view-icons" href="http://pyroscope.googlecode.com/svn/trunk/docs/media/screens/lab-view-icons.jpg"><img src="http://pyroscope.googlecode.com/svn/trunk/docs/media/screens/lab-view-icons-thumb.jpg" /></a> ||
