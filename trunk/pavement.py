@@ -198,6 +198,9 @@ def _screenshots():
             )
         
     path(gallery_file).write_lines(gallery_text)
+    sh('svn stat %s' % gallery_file)
+    print "Use this command to check-in the new gallery if changed..."
+    print '    svn ci -m "Auto-generated ScreenShotGallery" %s' % gallery_file
 
 
 @task
