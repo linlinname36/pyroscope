@@ -53,7 +53,13 @@
         <td class="${item.up_total|valclass}">${item.up_total|h.bibyte}</td>
         <td class="${item.down_total|valclass}">${item.down_total|h.bibyte}</td>
         <td class="monoval">${"%6.3f" % item.ratio_not0}</td>
-        <td>${item.domains|h.obfuscate}</td>
+        <td>
+% for domain in item.tracker_domains:
+            <a href="/view/list/name?filter=${domain|u}" title="Click for list of torrents on ${domain}">
+                ${domain|h.obfuscate}
+            </a>
+% endfor        
+        </td>
     </tr>
 % endfor
 ## Torrents list footer
