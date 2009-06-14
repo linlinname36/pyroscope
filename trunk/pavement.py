@@ -31,6 +31,11 @@ from paver.setuputils import setup
 
 from setuptools import find_packages
 
+
+#
+# Project Metadata
+#
+
 name, version = open("debian/changelog").readline().split(" (", 1)
 version, _ = version.split(")", 1)
 
@@ -109,6 +114,9 @@ project = dict(
     ],
 )
 
+#
+# Build
+#
 
 @task
 @needs(["setuptools.command.egg_info", "svg2png"])
@@ -151,23 +159,33 @@ def svg2png():
     make_png(svg_path / "logo.svg", 150)
 
 
-@task
-@consume_args
-def controller(args):
-    links = [
-        ("web/controllers", "%s/controllers" % project["name"]),
-        ("../tests/web", "%s/tests" % project["name"]),
-    ]
-    for link_pair in links:
-        if not os.path.exists(link_pair[1]):
-            #print "%s <- %s" % link_pair
-            os.symlink(*link_pair)
-    try:
-        sh("paster controller %s" % " ".join(args))
-    finally:
-        for _, link in links:
-            os.remove(link)
+def _screenshots():
+    """ Make thumbnails for the screenshots.
+    """
+    thumb_size = "300x200"
+    img_path = path("docs/media/screens")
+    img_files = img_path.files()
+    
+    def make_thumb(img_file, thumb_size=thumb_size):
+        thumb_file = img_file.dirname() / img_file.namebase + "-thumb.jpg"
+        if not thumb_file.exists() or thumb_file.mtime < img_file.mtime:
+            sh("convert -geometry %(thumb_size)s %(img_file)s %(thumb_file)s" % locals())
 
+    for img_file in img_files:
+        if img_file.ext in (".jpg", ".png",):
+            make_thumb(img_file)
+
+
+@task
+def docs():
+    """ Create documentation.
+    """
+    _screenshots()
+
+
+#
+# Testing
+#
 
 @task
 @needs("setuptools.command.build")
@@ -189,8 +207,31 @@ def functest():
 
 
 #
+# Project Management
+#
+
+@task
+@consume_args
+def controller(args):
+    links = [
+        ("web/controllers", "%s/controllers" % project["name"]),
+        ("../tests/web", "%s/tests" % project["name"]),
+    ]
+    for link_pair in links:
+        if not os.path.exists(link_pair[1]):
+            #print "%s <- %s" % link_pair
+            os.symlink(*link_pair)
+    try:
+        sh("paster controller %s" % " ".join(args))
+    finally:
+        for _, link in links:
+            os.remove(link)
+
+
+#
 # Web Server Control
 #
+
 PASTER_CMD =  " ".join([
     "paster serve %s",
     "--pid-file ~/.pyroscope/web.pid",
