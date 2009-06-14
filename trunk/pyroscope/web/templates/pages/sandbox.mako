@@ -4,7 +4,7 @@
     from pyroscope.web.lib import helpers as h
 
     page_title = lambda: "Laboratory"
-    sizes = (16, 24, 32, 48)
+    sizes = (12, 16, 24, 32, 48)
 %>
 
 <h1>PyroScope Labs</h1>

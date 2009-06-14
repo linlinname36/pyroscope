@@ -138,7 +138,7 @@ def bootstrap():
 def svg2png():
     """ Convert SVG icons to PNG icons.
     """
-    sizes = (16, 24, 32, 48)
+    sizes = (12, 16, 24, 32, 48)
     img_path = path("pyroscope/web/public/img")
     svg_path = img_path / "svg"
     svg_files = svg_path.files("*.svg")
