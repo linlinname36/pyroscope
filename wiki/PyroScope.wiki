@@ -21,11 +21,11 @@ PyroScope is implemented in [http://www.python.org/ Python] using the [http://py
 
 This is the status of various parts of the project:
 || *ohloh.net Statistics* || <wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_thin_badge.xml" height="36"  border="0" /> ||
-|| *Web Interface* || usable alpha ||
-|| _Torrents List_ || all rTorrent views; active torrents & messages view; no torrent control actions (yet) ||
+|| *Web Interface* || http://pyroscope.googlecode.com/svn/trunk/docs/media/img/box-check.png usable alpha ||
+|| _Torrents List_ || http://pyroscope.googlecode.com/svn/trunk/docs/media/img/box-check.png all rTorrent views plus active torrents & messages view ||
 || _Torrent Control_ || _not yet implemented_ ||
 || _Torrent Detail_ || _not yet implemented_ ||
 || _Torrents Search_ || _not yet implemented_ ||
 || _Statistics_ || _not yet implemented_ ||
 || *QueueManager* || _not yet implemented_ ||
-|| *CommandLineTools* || mktor, lstor ||
+|| *CommandLineTools* || http://pyroscope.googlecode.com/svn/trunk/docs/media/img/box-check.png mktor, lstor ||
