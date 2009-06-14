@@ -48,7 +48,7 @@
         ${len(c.torrents)} ${c.view.title} Torrent(s)
         ${'[filtered by "%s" out of %d]' % (c.filter, c.torrents_unfiltered) if c.filter else ''}
     </h3>
-    <%include file="/common/torrents-list.mako"/>
+    <%include file="/views/torrents-list.mako"/>
 </div>
 
 ##            print "  [%d torrents on %d trackers with %.3f total ratio]" % (
