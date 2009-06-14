@@ -44,7 +44,11 @@ def make_map():
     map.connect("/{controller}/{action}")
     map.connect("/{controller}/{action}/{id}")
 
+    # Define root page
     map.connect("/", controller="index", action="index")
+
+    # Always remove trailing slash
+    map.redirect('/*(url)/', '/{url}', _redirect_code='301 Moved Permanently')
 
     return map
 
