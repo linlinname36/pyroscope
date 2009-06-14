@@ -369,10 +369,10 @@ table.grid th {
         vertical-align: middle;
     }
     .grid tr.even {
-        background-color: #ff9;
+        background-color: #ffc;
     }
     .grid tr.odd {
-        background-color: #ffc;
+        background-color: #fec;
     }
     .grid td {
         /* data grid table data cells */
