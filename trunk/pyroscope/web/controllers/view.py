@@ -18,6 +18,7 @@
 """
 
 import logging
+from fnmatch import fnmatchcase as fnmatch
 
 from paste.deploy.converters import asbool
 from pylons import request, response, session, tmpl_context as c
@@ -31,21 +32,23 @@ from pyroscope.engines import rtorrent
 LOG = logging.getLogger(__name__)
 
 
+def _make_state(item):
+    """ Generate string torrent states.
+    """
+    yield "OPEN" if item.is_open else "CLOSED"
+    if item.complete: yield "DONE"
+    yield "PRV" if item.is_private else "PUB"
+
+
 def _make_tooltip(item):
     """ Make a tooltip from the most important torrent details.
     """
-    state = [
-        "OPEN" if item.is_open else "CLOSED",
-        "DONE" if item.complete else "",
-        "PRV"  if item.is_private else "PUB",
-    ]
-
     lines = [
         "HASH: %s" % item.hash,
         "RATIO: %.3f" % (item.ratio / 1000.0,),
         "RATE UP/DN: %s / %s" % (fmt.human_size(item.up_rate), fmt.human_size(item.down_rate)),
         "XFER UP/DN: %s / %s" % (fmt.human_size(item.up_total), fmt.human_size(item.down_total)),
-        "STATE: %s" % " ".join(i for i in state if i),
+        "STATE: %s" % " ".join(_make_state(item)),
         # last state change?
     ]
 
@@ -61,15 +64,15 @@ class ViewController(BaseController):
         "Couldn't connect to server",
     ]
     VIEWS = (
-        Bunch(action="active", title="Active Torrents", stock=False),
-        Bunch(action="incomplete", title="Incomplete Torrents"),
-        Bunch(action="stopped", title="Stopped Torrents"),
-        Bunch(action="hashing", title="Hashing Torrents"),
-        Bunch(action="name", title="Loaded Torrents"),
-        #Bunch(action="main", title="Loaded Torrents"),
-        Bunch(action="complete", title="Complete Torrents"),
-        Bunch(action="seeding", title="Seeding Torrents"),
-        Bunch(action="started", title="Started Torrents"),
+        Bunch(action="active", title="Active", stock=False),
+        Bunch(action="incomplete", title="Incomplete"),
+        Bunch(action="stopped", title="Stopped"),
+        Bunch(action="hashing", title="Hashing"),
+        Bunch(action="name", title="Loaded"),
+        #Bunch(action="main", title="Loaded"),
+        Bunch(action="complete", title="Completed"),
+        Bunch(action="seeding", title="Seeding"),
+        Bunch(action="started", title="Started"),
     )
 
 
@@ -150,6 +153,38 @@ class ViewController(BaseController):
         ], reverse=True)]
 
 
+    def _filter(self, torrents, query):
+        """ Filter list of torrents.
+        """
+        def fields(item):
+            "Which fields to search in..."
+            yield item.name
+            for i in item.tracker_domains:
+                yield i
+            for i in _make_state(item):
+                yield i
+
+        if query:
+            patterns = ["*%s*" % p if '*' not in p else p
+                for p in query.lower().split()]
+            return [item for item in torrents
+                if any(fnmatch(i.lower(), p)
+                    for p in patterns
+                    for i in fields(item)
+                )
+            ]
+        else:
+            return torrents
+
+
+    def _normalized_filter(self):
+        """ Normalize filter query.
+        """
+        return ' '.join(["*%s*" % p if '*' not in p else p
+            for p in request.params.get("filter", "").lower().split()
+        ])
+
+
     def list(self, id):
         c.view = self.views[id]
 
@@ -161,6 +196,13 @@ class ViewController(BaseController):
             # Handle non-stock views
             c.torrents = getattr(self, "_get_" + id)()
         
+        # Handle filter
+        c.torrents_unfiltered = len(c.torrents)
+        c.filter = self._normalized_filter()
+        if c.filter == "Filter...":
+            c.filter = ""
+        c.torrents = self._filter(c.torrents, c.filter)
+
         # Build view model
         self._model_fixup()
         
