@@ -13,7 +13,7 @@
    id="svg1"
    inkscape:version="0.46"
    sodipodi:docbase="/home/danny/flat/scalable/actions"
-   sodipodi:docname="filter.svg"
+   sodipodi:docname="filter-off.svg"
    sodipodi:version="0.32"
    version="1.0"
    width="48"
@@ -76,20 +76,31 @@
      bordercolor="#666666"
      borderopacity="1.0"
      id="base"
-     inkscape:cx="24.000001"
-     inkscape:cy="24.000001"
+     inkscape:cx="24"
+     inkscape:cy="24"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:window-height="722"
      inkscape:window-width="1016"
-     inkscape:window-x="67"
-     inkscape:window-y="291"
+     inkscape:window-x="72"
+     inkscape:window-y="315"
      inkscape:zoom="10.291667"
      pagecolor="#ffffff"
      showgrid="false"
      inkscape:current-layer="svg1" />
   <defs
      id="defs3">
+    <linearGradient
+       id="linearGradient3328">
+      <stop
+         style="stop-color:#ff6565;stop-opacity:1;"
+         offset="0"
+         id="stop3330" />
+      <stop
+         style="stop-color:#d40000;stop-opacity:1;"
+         offset="1"
+         id="stop3332" />
+    </linearGradient>
     <linearGradient
        id="linearGradient3271">
       <stop
@@ -213,6 +224,32 @@
        x2="42.562421"
        y2="26.980721"
        gradientUnits="userSpaceOnUse" />
+    <inkscape:perspective
+       id="perspective12"
+       inkscape:persp3d-origin="53.34375 : 15.37517 : 1"
+       inkscape:vp_z="106.6875 : 23.062756 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 23.062756 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3328"
+       id="radialGradient3338"
+       cx="23.089619"
+       cy="17.713692"
+       fx="23.089619"
+       fy="17.713692"
+       r="16.590113"
+       gradientTransform="matrix(1,0,0,1.141342,0,-2.5036883)"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       inkscape:collect="always"
+       id="filter3344">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.17762552"
+         id="feGaussianBlur3346" />
+    </filter>
   </defs>
   <g
      id="g2407">
@@ -239,4 +276,9 @@
        d="M 23.65625,6.78125 C 18.937556,7.3071078 13.40847,6.9594359 9.71875,10.25 C 10.777065,14.880924 17.737835,13.719832 21.65625,14.84375 C 31.003415,15.648623 41.143996,15.724425 49.815077,12.122745 C 51.621967,7.7076338 44.191757,7.9523273 41.1875,7.15625 C 35.378723,6.4753805 29.490128,6.477883 23.65625,6.78125 z"
        style="font-size:12px;fill:url(#radialGradient3269);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.29206562000000003;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter3259);opacity:1" />
   </g>
+  <path
+     id="path2163"
+     style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:url(#radialGradient3338);stroke-width:9;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter3344)"
+     d="M 10.999506,32.148682 L 35.17973,3.278699 M 12.453383,5.873756 L 34.586729,27.902982"
+     sodipodi:nodetypes="cccc" />
 </svg>
