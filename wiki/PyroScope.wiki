@@ -26,5 +26,6 @@ This is the status of various parts of the project:
 || _Torrent Control_ || _not yet implemented_ ||
 || _Torrent Detail_ || _not yet implemented_ ||
 || _Torrents Search_ || _not yet implemented_ ||
+|| _Statistics_ || _not yet implemented_ ||
 || *QueueManager* || _not yet implemented_ ||
 || *CommandLineTools* || mktor, lstor ||
