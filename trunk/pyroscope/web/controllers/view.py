@@ -86,9 +86,10 @@ class ViewController(BaseController):
         # Set list of views
         c.views = self.VIEWS
 
-        # Set refresh rate & obfuscator flag
+        # Set flags
         c.refresh_rate = request.params.get("refresh", 60)
         c.obfuscate = asbool(request.params.get("obfuscate", "0"))
+        c.filter_mode = request.params.get("filter_mode", "AND")
 
 
     def _get_messages(self, torrents):
@@ -161,17 +162,23 @@ class ViewController(BaseController):
             "Which fields to search in..."
             yield item.name
             for i in item.tracker_domains:
-                yield i
+                yield i.lstrip("*.")
             for i in _make_state(item):
                 yield i
 
         if query:
             patterns = ["*%s*" % p if '*' not in p else p
                 for p in query.lower().split()]
+
+            # AND: all patterns must be matched
+            # OR:  at least 1 pattern must be matched
+            threshold = len(patterns) if c.filter_mode == "AND" else 1
+
             return [item for item in torrents
-                if any(fnmatch(i.lower(), p)
+                if threshold <= sum(
+                        any(fnmatch(i.lower(), p) for i in fields(item) 
+                    )
                     for p in patterns
-                    for i in fields(item)
                 )
             ]
         else:
@@ -181,7 +188,7 @@ class ViewController(BaseController):
     def _normalized_filter(self):
         """ Normalize filter query.
         """
-        return ' '.join(["*%s*" % p if '*' not in p else p
+        return ' '.join(["%s*" % p if '*' not in p else p
             for p in request.params.get("filter", "").lower().split()
         ])
 

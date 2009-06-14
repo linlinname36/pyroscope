@@ -6,7 +6,7 @@
     from pylons import tmpl_context as c
     from pyroscope.web.lib import helpers as h
 
-    echo = lambda url: h.echo(url, ("refresh", "filter"))
+    echo = lambda url: h.echo(url, ("refresh", "filter", "filter_mode",))
 
     # Overloaded attributes of pageframe
     page_title = lambda: "Torrents"
@@ -35,21 +35,27 @@
 ## TORRENT LIST
 ##
 <div class="tab-box">
+    ## FILTER
     <div class="filter">
         <form method="GET" action="${'' | h.echo}">
+% if c.filter:
+            <a href="?"><img src="/img/png/16/filter-off.png" width="16" height="16" title="Clear filter" /></a>
+% endif
             <input type="image" src="/img/png/16/filter.png" width="16" height="16"
                  title="Enter filter glob pattern; syntax: * ? [seq] [!seq]" />
             <input type="text" id="search" name="filter" 
                  onfocus="if (this.value == 'Filter...') this.value='';" 
                  onblur="if (this.value == '') this.value='Filter...';" 
                  value="${c.filter or 'Filter...'}" size="25" autocomplete="off" />
-% if c.filter:
-            <a href="?">
-                <img src="/img/png/16/filter-off.png" width="16" height="16" title="Clear filter" />
-            </a>
-% endif
+            <input type="radio" name="filter_mode" id="filter-and" value="AND"
+                ${'checked="checked"' if c.filter_mode == "AND" else ''} />
+            <label for="filter-and">AND</label>
+            <input type="radio" name="filter_mode" id="filter-or"  value="OR"
+                ${'checked="checked"' if c.filter_mode == "OR" else ''} />
+            <label for="filter-or">OR</label>
         </form>
     </div>
+    ## BOX TITLE
     <h3>
         ${len(c.torrents)} ${c.view.title} Torrent(s)
         ${'[filtered by "%s" out of %d]' % (c.filter, c.torrents_unfiltered) if c.filter else ''}

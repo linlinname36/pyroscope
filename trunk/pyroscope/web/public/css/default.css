@@ -139,7 +139,7 @@ a.tlink {
         font-size: 110%;
         font-weight: bold;
         white-space: nowrap;
-        color: #9630;
+        color: #963;
         background-color: #fc0;
 
         padding: .1em .8em;
@@ -299,15 +299,15 @@ div.topmenu {
     }
     .topmenu a:link { 
         /* virginal menu link */
-        color: #030;
+        color: #630;
     }
     .topmenu a:visited { 
         /* visited menu link */
-        color: #030;
+        color: #630;
     }
     .topmenu a:hover { 
         /* menu link mouse-over */
-        color: #030;
+        color: #630;
         background-color: #ffc;
     }
     /* default is ok
@@ -315,7 +315,7 @@ div.topmenu {
         color: #500;
     }*/
     #xxxtopmenu-current {
-        /* not yet implemented */
+        /* XXX not yet implemented */
         color: #ff9;
 }
 
