@@ -188,8 +188,11 @@ class ViewController(BaseController):
     def _normalized_filter(self):
         """ Normalize filter query.
         """
+        filter = request.params.get("filter", "").lower()
+        if filter == "filter...":
+            filter = ""
         return ' '.join(["%s*" % p if '*' not in p else p
-            for p in request.params.get("filter", "").lower().split()
+            for p in filter.split()
         ])
 
 
@@ -207,8 +210,6 @@ class ViewController(BaseController):
         # Handle filter
         c.torrents_unfiltered = len(c.torrents)
         c.filter = self._normalized_filter()
-        if c.filter == "Filter...":
-            c.filter = ""
         c.torrents = self._filter(c.torrents, c.filter)
 
         # Build view model
