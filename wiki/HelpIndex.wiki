@@ -5,6 +5,7 @@
 PyroScope has the following views:
  * HomeView - Welcome page. 
  * TorrentsView - List torrents by different criteria and control them.
+ * StatsView - Different statistics about the available torrents and assembled data.
  * LaboratoryView - Testing grounds and technical information.
  * HelpView - What you are looking at.
 
