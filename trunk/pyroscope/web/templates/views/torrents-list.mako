@@ -56,8 +56,7 @@
         <td>
 % for domain in item.tracker_domains:
             <a href="/view/list/name?filter=${domain|u}" title="Click for list of torrents on ${domain}">
-                ${domain|h.obfuscate}
-            </a> &nbsp;
+                ${domain|h.obfuscate}</a> &nbsp;
 % endfor        
         </td>
     </tr>
