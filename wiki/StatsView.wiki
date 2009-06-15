@@ -1,0 +1,5 @@
+#summary Different statistics about the available torrents and assembled data.
+
+== Trackers ==
+
+Lists the number of loaded, active, incomplete, opened and closed torrents per tracker. The tracker domains names link to a filtered list of torrents for that tracker.
