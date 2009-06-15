@@ -23,11 +23,16 @@ from pylons import request, response, session, tmpl_context as c
 from pylons.controllers.util import abort, redirect_to
 
 from pyroscope.web.lib.base import render, BaseController
+from pyroscope.engines import rtorrent
 
 LOG = logging.getLogger(__name__)
 
 
 class TorrentController(BaseController):
+
+    def __init__(self):
+        self.proxy = rtorrent.Proxy()
+
 
     def index(self):
         # Redirect to view page
@@ -37,6 +42,8 @@ class TorrentController(BaseController):
     def view(self, id):
         c.hash = id
         c.name = id
+
+        c.torrents = list(rtorrent.View(self.proxy, "incomplete").items())
 
         # Return a rendered template
         return render("pages/torrent.mako")
