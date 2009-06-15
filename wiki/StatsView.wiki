@@ -2,4 +2,9 @@
 
 == Trackers ==
 
-Lists the number of loaded, active, incomplete, opened and closed torrents per tracker. The tracker domains names link to a filtered list of torrents for that tracker.
+List of known tracker domains names that link to a filtered list of torrents for that tracker, plus the following data aggregated per tracker:
+ * number of loaded, active, incomplete, opened and closed torrents.
+ * amount of data uploaded and downloaded.
+ * average ratio.
+
+Note that these statistics only include the data of the torrents that are _currently_ loaded into rTorrent.
