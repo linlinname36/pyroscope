@@ -3,7 +3,7 @@
 
 == Torrents Table ==
 
-The status column indicates the state of each torrent: http://pyroscope.googlecode.com/svn/wiki/img/started.png started / http://pyroscope.googlecode.com/svn/wiki/img/stopped.png stopped, completion http://pyroscope.googlecode.com/svn/wiki/img/box-check.png / http://pyroscope.googlecode.com/svn/wiki/img/box-cross.png, active up-/download http://pyroscope.googlecode.com/svn/wiki/img/nuked.png and tracker messages: http://pyroscope.googlecode.com/svn/wiki/img/info_red.png severe, http://pyroscope.googlecode.com/svn/wiki/img/info_blue.png severe but for a closed torrent, http://pyroscope.googlecode.com/svn/wiki/img/info_green.png informational.
+The info column indicates the state of each torrent: http://pyroscope.googlecode.com/svn/wiki/img/started.png started / http://pyroscope.googlecode.com/svn/wiki/img/stopped.png stopped, completion http://pyroscope.googlecode.com/svn/wiki/img/box-check.png / http://pyroscope.googlecode.com/svn/wiki/img/box-cross.png, active up-/download http://pyroscope.googlecode.com/svn/wiki/img/nuked.png and tracker messages: http://pyroscope.googlecode.com/svn/wiki/img/info_red.png severe, http://pyroscope.googlecode.com/svn/wiki/img/info_blue.png severe but for a closed torrent, http://pyroscope.googlecode.com/svn/wiki/img/info_green.png informational.
 
 The name links to the torrents detail page and has a tooltip with the most imporant data associated. The following columns show current upload / download rates, transferred data volume and the upload/download ratio. The tracker column shows the domains of the announce URLs (with certain common words like "tracker" replaced by "*"), which link to a filter for that domain.
 
