@@ -120,7 +120,9 @@ class ViewController(BaseController):
             item.ratio_not0 = item.ratio / 1000.0 or 1E-12
             item.domains = ", ".join(item.tracker_domains)
 
-            # Fix bug in XMLRPC (using 32bit integers?)
+            # XXX Fix bug in XMLRPC (using 32bit integers?)
+            if item.size_bytes < 0:
+                item.size_bytes = (item.size_chunks-1) * item.chunk_size + item.size_bytes % item.chunk_size
             if item.down_total < 0 and item.up_total > 0:
                 item.down_total = int(item.up_total / item.ratio_not0)
             elif item.down_total > 0 and item.up_total < 0:
@@ -162,7 +164,7 @@ class ViewController(BaseController):
             "Which fields to search in..."
             yield item.name
             for i in item.tracker_domains:
-                yield i.lstrip("*")
+                yield i.lstrip("*.")
             for i in _make_state(item):
                 yield i
 
@@ -176,8 +178,7 @@ class ViewController(BaseController):
 
             return [item for item in torrents
                 if threshold <= sum(
-                        any(fnmatch(i.lower(), p) for i in fields(item) 
-                    )
+                    any(fnmatch(i.lower(), p) for i in fields(item))
                     for p in patterns
                 )
             ]
