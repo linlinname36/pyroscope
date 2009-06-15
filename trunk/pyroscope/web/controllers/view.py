@@ -192,7 +192,7 @@ class ViewController(BaseController):
         filter = request.params.get("filter", "").lower()
         if filter == "filter...":
             filter = ""
-        return ' '.join(["%s*" % p if '*' not in p else p
+        return ' '.join(["%s*" % p if '*' not in p and '[' not in p else p
             for p in filter.split()
         ])
 
