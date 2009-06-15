@@ -162,7 +162,7 @@ class ViewController(BaseController):
             "Which fields to search in..."
             yield item.name
             for i in item.tracker_domains:
-                yield i.lstrip("*.")
+                yield i.lstrip("*")
             for i in _make_state(item):
                 yield i
 
