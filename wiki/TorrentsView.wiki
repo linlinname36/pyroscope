@@ -12,8 +12,9 @@ The name links to the torrents detail page and has a tooltip with the most impor
 A filter can be enabled to reduce the set of currently displayed torrents by entering patterns for  torrent names, torrent states, and tracker domains. Torrent states can be addressed by the abbreviations visible in the tooltips: OPEN, CLOSED, DONE, MSG, PRV, PUB.
 
 Before we go into details, let's start with a few examples:
+ * `*.pdf` just shows all downloaded PDF files.
  * `examp open msg` would list all the open `example.org` torrents that have a message associated with them.
- * `C` lists all torrents whose name starts with "C", and incidently, all those that are (C)losed or on a tracker domain starting with "C".
+ * `C` lists all torrents whose name starts with "C", and incidently, all those that are (C)losed or on a tracker domain starting with "c".
  * `c??????*` is the same as above, but won't display closed torrents (since "CLOSED" has not enough characters for that pattern).
  * `[x-z]` matches all torrents with names at the end of the alphabet.
  * `PUB` lists all torrents with DHT/PEX enabled, while using `PRV` does the reverse.
