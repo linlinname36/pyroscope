@@ -81,6 +81,8 @@ class Download(Bunch):
                         .replace(".tracker.",".*.")
                         .replace(".Tracker.",".*.")
                         .replace(".update.",".*.")
+                        .replace(".announce.",".*.")
+                        .replace(".www.",".*.")
                         .lstrip(".")
                     for url in self.tracker_urls)
             else:
