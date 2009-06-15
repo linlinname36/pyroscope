@@ -24,4 +24,3 @@ As you can see, the filter search is a little fuzzy, but since it's meant to red
 The filter patterns follow the rules of shell globbing, i.e. a `*` matches any sequence of characters (including none), `?` matches exactly one character, `[seq]` matches a sequence of characters (either a list or a range like `a-z`), and finally `[!seq]` matches anything _but_ the given character set. The filtering is case-insensitive.
 
 If you enter several patterns separated by spaces, they have to match all at once in mode AND, while selecting OR means that if any of the patterns matches a torrent, it will be displayed. Each pattern that doesn't already contain a `*` is automatically expanded to have one at the end, so that you can easily search for prefixes.
-[x-z]*
