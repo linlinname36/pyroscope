@@ -2,6 +2,7 @@
 <%!
     from pyroscope.web.lib import helpers as h
     page_title = lambda: "Main Index"
+    page_help = lambda: "HomeView"
 %>
 <%include file="/common/wiki-summary.mako"/>
 

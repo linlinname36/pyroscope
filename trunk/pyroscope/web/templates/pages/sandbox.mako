@@ -4,6 +4,7 @@
     from pyroscope.web.lib import helpers as h
 
     page_title = lambda: "Laboratory"
+    page_help = lambda: "LaboratoryView"
     sizes = (12, 16, 24, 32, 48)
 %>
 

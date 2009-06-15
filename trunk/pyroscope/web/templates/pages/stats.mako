@@ -8,6 +8,7 @@
 
     # Overloaded attributes of pageframe
     page_title = lambda: "Statistics"
+    page_help = lambda: "StatsView"
 %>
 ##
 ## VIEW SELECTION

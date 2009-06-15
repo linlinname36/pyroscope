@@ -79,6 +79,12 @@ class StatsController(BaseController):
                 c.trackers[domain]["open" if item.is_open else "closed"] += 1
                 if item.down_rate or item.up_rate:
                     c.trackers[domain]["active"] += 1
+                c.trackers[domain]["up"] += max(0, item.up_total)
+                c.trackers[domain]["down"] += max(0, item.down_total)
+                c.trackers[domain]["ratio"] += item.ratio / 1000.0
+                if item.down_total:
+                    c.trackers[domain]["down_count"] += 1
+                    c.trackers[domain]["real_ratio"] += item.ratio / 1000.0
 
         return self._render()
 

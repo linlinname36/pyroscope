@@ -26,7 +26,7 @@
         <th>${"green_up_doc.16 UP"|h.icon} XFER</th>
         <th>${"green_down_doc.16 DOWN"|h.icon} XFER</th>
         <th>${"ying_yang_rg.16 RATIO"|h.icon}</th>
-        <th>${"tracker.16 DOMAIN"|h.icon} TRACKER</th>
+        <th><a href="/stats/trackers">${"tracker.16 DOMAIN | Click for tracker stats."|h.icon}</a> TRACKER</th>
     </tr>
 ## Active torrents body
 % for idx, item in enumerate(c.torrents):

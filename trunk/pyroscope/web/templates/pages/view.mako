@@ -10,6 +10,7 @@
 
     # Overloaded attributes of pageframe
     page_title = lambda: "Torrents"
+    page_help = lambda: "TorrentsView"
     page_head = lambda: '<meta http-equiv="refresh" content="%s" />' % c.refresh_rate
 %>
 ##
