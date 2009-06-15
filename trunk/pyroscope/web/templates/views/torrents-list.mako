@@ -23,6 +23,7 @@
         <th>${"torrent.16 NAME"|h.icon} TORRENT</th>
         <th>${"green_up_double.16 UP"|h.icon} RATE</th>
         <th>${"green_down_double.16 DOWN"|h.icon} RATE</th>
+        <th>${"document.16 DATA"|h.icon} SIZE</th>
         <th>${"green_up_doc.16 UP"|h.icon} XFER</th>
         <th>${"green_down_doc.16 DOWN"|h.icon} XFER</th>
         <th>${"ying_yang_rg.16 RATIO"|h.icon}</th>
@@ -50,8 +51,11 @@
         </a></td>
         <td class="${item.up_rate|valclass}">${item.up_rate|h.bibyte}</td>
         <td class="${item.down_rate|valclass}">${item.down_rate|h.bibyte}</td>
+        <td class="${item.size_bytes|valclass}">${item.size_bytes|h.bibyte}</td>
         <td class="${item.up_total|valclass}">${item.up_total|h.bibyte}</td>
-        <td class="${item.down_total|valclass}">${item.down_total|h.bibyte}</td>
+        <td class="${item.down_total or item.completed_chunks|valclass}">
+            ${"%4.1f%%" % (100.0 * item.completed_chunks / item.size_chunks) if item.left_bytes else ''}
+            ${h.bibyte(item.down_total).replace(u' ', u'\u00A0')}</td>
         <td class="monoval">${"%6.3f" % item.ratio_not0}</td>
         <td>
 % for domain in item.tracker_domains:
