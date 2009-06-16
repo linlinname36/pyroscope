@@ -22,6 +22,7 @@ div.iconbox {
         margin-right: .5em;
         text-align:center;
 
+        background-image: url('/img/png/160x80/black-bt-lin-00ff.png');
         border: 1px dotted #999;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
