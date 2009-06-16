@@ -46,7 +46,7 @@ class SandboxController(BaseController):
      
         if c.view == "icons":
             c.icons = sorted(os.path.splitext(name)[0]
-                for name in os.listdir(os.path.join(os.path.dirname(__file__), "../public/img/svg"))
+                for name in os.listdir(os.path.join(os.path.dirname(__file__), "../public/img/svg/icons"))
                 if name.endswith(".svg")
             )
 
