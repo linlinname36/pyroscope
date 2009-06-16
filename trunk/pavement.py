@@ -138,25 +138,49 @@ def bootstrap():
 def svg2png():
     """ Convert SVG icons to PNG icons.
     """
-    sizes = (12, 16, 24, 32, 48)
+    grad_sizes = (100, (160,80),)
+    grad_colors = {
+        "black": lambda s: s,
+        "grey": lambda s: s.replace("#000000", "#808080"),
+    }
+    icon_sizes = (12, 16, 24, 32, 48)
     img_path = path("pyroscope/web/public/img")
     svg_path = img_path / "svg"
+
+    def grad_transform(svg_file, color):
+        tmp_file = path("build/%s-%s.svg" % (color, svg_file.namebase))
+        tmp_file.write_bytes(grad_colors[color](svg_file.bytes()))
+        return tmp_file
     
     def make_png(svg_file, size):
-        png_path = img_path / "png" / str(size)
+        try:
+            w, h = size
+            szdir = "%dx%d" % size
+        except TypeError:
+            w, h = size, size
+            szdir = str(size)
+        png_path = img_path / "png" / szdir
         png_path.exists() or png_path.makedirs()
         png_file = png_path / svg_file.namebase + ".png"
         if not png_file.exists() or png_file.mtime < svg_file.mtime:
-            sh("inkscape -z -e %(png_file)s -w %(size)d -h %(size)d %(svg_file)s" % locals())
+            sh("inkscape -z -e %(png_file)s -w %(w)d -h %(h)d %(svg_file)s" % locals())
 
     icon_files = (svg_path / "icons").files("*.svg")
-    for size in sizes:
+    for size in icon_sizes:
         for svg_file in icon_files:
             make_png(svg_file, size)
 
+    grad_files = (svg_path / "gradients").files("*.svg")
+    for svg_file in grad_files:
+        for color in grad_colors:
+            tmp_file = grad_transform(svg_file, color)
+            for size in grad_sizes:
+                make_png(tmp_file, size)
+            tmp_file.remove()
+
     # Project logo for Google Code & the UI
-    make_png(svg_path / "logo.svg", 55)
-    make_png(svg_path / "logo.svg", 150)
+    make_png(svg_path / "icons" / "logo.svg", 55)
+    make_png(svg_path / "icons" / "logo.svg", 150)
 
 
 def _screenshots():
