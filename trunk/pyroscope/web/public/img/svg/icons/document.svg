@@ -70,91 +70,63 @@
     </filter>
     <filter
        inkscape:collect="always"
-       id="filter3213"
-       x="-0.04883517"
-       width="1.0976703"
-       y="-0.15150001"
-       height="1.303">
+       id="filter3268"
+       x="-0.045980049"
+       width="1.0919601"
+       y="-0.2578164"
+       height="1.5156328">
       <feGaussianBlur
          inkscape:collect="always"
-         stdDeviation="0.26858119"
-         id="feGaussianBlur3215" />
+         stdDeviation="0.59315468"
+         id="feGaussianBlur3270" />
     </filter>
     <filter
        inkscape:collect="always"
-       id="filter3217"
-       x="-0.026504971"
-       width="1.0530099"
-       y="-0.1515"
-       height="1.303">
+       id="filter3272"
+       x="-0.045980049"
+       width="1.0919601"
+       y="-0.2578164"
+       height="1.5156328">
       <feGaussianBlur
          inkscape:collect="always"
-         stdDeviation="0.26858119"
-         id="feGaussianBlur3219" />
+         stdDeviation="0.59315468"
+         id="feGaussianBlur3274" />
     </filter>
     <filter
        inkscape:collect="always"
-       id="filter3221"
-       x="-0.026504971"
-       width="1.0530099"
-       y="-0.1515"
-       height="1.303">
+       id="filter3276"
+       x="-0.045980049"
+       width="1.0919601"
+       y="-0.2578164"
+       height="1.5156328">
       <feGaussianBlur
          inkscape:collect="always"
-         stdDeviation="0.26858119"
-         id="feGaussianBlur3223" />
+         stdDeviation="0.59315468"
+         id="feGaussianBlur3278" />
     </filter>
     <filter
        inkscape:collect="always"
-       id="filter3225"
-       x="-0.026504971"
-       width="1.0530099"
-       y="-0.1515"
-       height="1.303">
+       id="filter3280"
+       x="-0.095003522"
+       width="1.190007"
+       y="-0.2578164"
+       height="1.5156328">
       <feGaussianBlur
          inkscape:collect="always"
-         stdDeviation="0.26858119"
-         id="feGaussianBlur3227" />
+         stdDeviation="0.59315468"
+         id="feGaussianBlur3282" />
     </filter>
     <filter
        inkscape:collect="always"
-       id="filter4720">
+       id="filter3284"
+       x="-0.045980049"
+       width="1.0919601"
+       y="-0.2578164"
+       height="1.5156328">
       <feGaussianBlur
          inkscape:collect="always"
-         stdDeviation="0.14328867"
-         id="feGaussianBlur4722" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter4724">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="0.14328867"
-         id="feGaussianBlur4726" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter4728">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="0.14328867"
-         id="feGaussianBlur4730" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter4732">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="0.14328867"
-         id="feGaussianBlur4734" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter4736">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="0.14328867"
-         id="feGaussianBlur4738" />
+         stdDeviation="0.59315468"
+         id="feGaussianBlur3286" />
     </filter>
   </defs>
   <sodipodi:namedview
@@ -164,14 +136,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:cx="24"
-     inkscape:cy="24"
+     inkscape:cx="23.999999"
+     inkscape:cy="23.562532"
      inkscape:zoom="11.520833"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:window-width="1280"
      inkscape:window-height="781"
-     inkscape:window-x="5"
+     inkscape:window-x="10"
      inkscape:window-y="389"
      width="135px"
      height="135px"
@@ -207,7 +179,7 @@
        sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
-       style="font-size:4.63183831999999995px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:#333333;stroke-width:0.40000000000000002;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.35836174999999998;font-family:Bitstream Vera Sans;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter4736)"
+       style="font-size:4.63183831999999995px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.40000001000000007;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.35836174999999998;font-family:Bitstream Vera Sans;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter3284)"
        x="150.41017"
        y="227.39459"
        id="text4696"
@@ -218,7 +190,7 @@
          y="227.39459">Lorem Ipsum</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:4.63183831999999995px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:#333333;stroke-width:0.40000000000000002;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.35836174999999998;font-family:Bitstream Vera Sans;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter4732)"
+       style="font-size:4.63183831999999995px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.40000001000000007;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.35836174999999998;font-family:Bitstream Vera Sans;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter3280)"
        x="150.41017"
        y="222.08359"
        id="text4700"
@@ -229,7 +201,7 @@
          y="222.08359">Ipsum</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:4.63183831999999995px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:#333333;stroke-width:0.40000000000000002;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.35836174999999998;font-family:Bitstream Vera Sans;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter4728)"
+       style="font-size:4.63183831999999995px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.40000001000000007;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.35836174999999998;font-family:Bitstream Vera Sans;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter3276)"
        x="150.41017"
        y="233.15692"
        id="text4708"
@@ -240,7 +212,7 @@
          y="233.15692">Lorem Ipsum</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:4.63183831999999995px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:#333333;stroke-width:0.40000000000000002;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.35836174999999998;font-family:Bitstream Vera Sans;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter4724)"
+       style="font-size:4.63183831999999995px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.40000001000000007;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.35836174999999998;font-family:Bitstream Vera Sans;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter3272)"
        x="150.41017"
        y="244.56963"
        id="text4712"
@@ -251,7 +223,7 @@
          y="244.56963">Lorem Ipsum</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:4.63183831999999995px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:#333333;stroke-width:0.40000000000000002;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.35836174999999998;font-family:Bitstream Vera Sans;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter4720)"
+       style="font-size:4.63183831999999995px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.40000001000000007;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.35836174999999998;font-family:Bitstream Vera Sans;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter3268)"
        x="150.41017"
        y="238.85564"
        id="text4716"
