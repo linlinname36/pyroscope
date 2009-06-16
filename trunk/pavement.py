@@ -141,7 +141,6 @@ def svg2png():
     sizes = (12, 16, 24, 32, 48)
     img_path = path("pyroscope/web/public/img")
     svg_path = img_path / "svg"
-    svg_files = svg_path.files("*.svg")
     
     def make_png(svg_file, size):
         png_path = img_path / "png" / str(size)
@@ -150,8 +149,9 @@ def svg2png():
         if not png_file.exists() or png_file.mtime < svg_file.mtime:
             sh("inkscape -z -e %(png_file)s -w %(size)d -h %(size)d %(svg_file)s" % locals())
 
+    icon_files = (svg_path / "icons").files("*.svg")
     for size in sizes:
-        for svg_file in svg_files:
+        for svg_file in icon_files:
             make_png(svg_file, size)
 
     # Project logo for Google Code & the UI
