@@ -203,7 +203,7 @@ def svg2png():
             os.remove(tmp_file)
 
     # Project logo for Google Code & the UI
-    make_png(svg_path / "icons" / "logo-wide.svg", (150, 55))
+    make_png(svg_path / "logo-wide.svg", (150, 55))
     make_png(svg_path / "icons" / "logo.svg", 150)
 
 
