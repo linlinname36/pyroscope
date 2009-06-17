@@ -130,6 +130,8 @@ class RefreshPoller(object):
         
             This is used to get the browser up-to-date via AJAX.
         """
+        #XXX need to keep record of deletions  for a while and somehow transfer them
+        #    maybe a .deleted attr and a 5 min window
         if self.last_updated > timestamp:
             for item in self.downloads:
                 if item.last_updated > timestamp:
