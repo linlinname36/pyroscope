@@ -92,7 +92,7 @@ class RefreshPoller(object):
             pass #XXX Implement!
 
 
-    def mainloop(self):
+    def _mainloop(self):
         """ Refresh poller mainloop.
         """
         LOG.info("refresh poller started...")
@@ -123,4 +123,17 @@ class RefreshPoller(object):
         """ Start the refresh poller thread.
         """
         #XXX Implement!
+
+
+    def updated_since(self, timestamp):
+        """ Generate a list of all items updated since a certain point in time.
+        
+            This is used to get the browser up-to-date via AJAX.
+        """
+        if self.last_updated > timestamp:
+            for item in self.downloads:
+                if item.last_updated > timestamp:
+                    yield item
+
+        # else generator is simply empty
 
