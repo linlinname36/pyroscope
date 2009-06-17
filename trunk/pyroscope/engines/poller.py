@@ -19,6 +19,7 @@
 
 import time
 import logging
+from collections import defaultdict
 
 from pyroscope.util.types import Bunch
 from pyroscope.engines import rtorrent
@@ -50,6 +51,9 @@ class RefreshPoller(object):
     PENALTY_TICKS = 1
     MAX_PENALTY_TICKS = 15
 
+    # How long to keep deletions around [minutes]
+    DELETION_RETENTION = 5
+
     
     def __init__(self):
         """ Initialize the refresh poller.
@@ -57,12 +61,26 @@ class RefreshPoller(object):
         self.proxy = rtorrent.Proxy()
         self.shutdown = False
         self.downloads = {}
+        self.deleted = defaultdict(list)
         self.ticks = 0
         self.penalty = 0
 
         # refreshed never -- or actually 1970 ;)
+        self.now = 0
         self.last_update = 0.0
         self.last_sync = 0.0
+
+
+    def _deleted(self, id_hash):
+        """ Register a hash as deleted.
+        """
+        # Keep a reference and remove from downloads
+        item = self.downloads[id_hash]
+        del self.downloads[id_hash]
+
+        # Append to deletion buffer
+        item.last_update = self.now
+        self.deleted[self.now // 60].append(item)
 
 
     def _sync(self):
@@ -75,14 +93,26 @@ class RefreshPoller(object):
         except rtorrent.Error:
             LOG.exception("Problem while syncing...")
         else:
+            # Record deletions!
+            deleted = set(self.downloads) - set(downloads)
+            for hash in deleted:
+                self._deleted(hash)
+
             self.downloads = downloads
             self.last_update = self.last_sync = time.time()
+
+        # Prune deletions buffer
+        now_mins = self.now // 60
+        for bucket in self.deleted:
+            if bucket + self.DELETION_RETENTION < now_mins:
+                del self.deleted[bucket]
 
 
     def _hash_list(self):
         """ Get a new hash list.
         """
         #XXX Implement!
+        # Consider deletions!
 
 
     def _mutables(self):
@@ -90,6 +120,7 @@ class RefreshPoller(object):
         """
         for item in self.downloads:
             pass #XXX Implement!
+            # Consider deletions!
 
 
     def _mainloop(self):
@@ -99,6 +130,8 @@ class RefreshPoller(object):
 
         while not self.shutdown:
             try:
+                self.now = time.time()
+
                 if self.ticks % self.SNYC_TICKS == 0:
                     self._sync()
                 elif self.ticks % self.HASH_LIST_TICKS == 0:
@@ -112,6 +145,7 @@ class RefreshPoller(object):
                 LOG.exception("Unknown problem in refresh poller, resuming...")
             else:
                 self.penalty = 0
+                self.last_updated = self.now
 
             time.sleep(self.CLOCK_TICK * (self.penalty + 1))
             self.ticks += 1
@@ -131,11 +165,21 @@ class RefreshPoller(object):
             This is used to get the browser up-to-date via AJAX.
         """
         #XXX need to keep record of deletions  for a while and somehow transfer them
-        #    maybe a .deleted attr and a 5 min window
-        if self.last_updated > timestamp:
-            for item in self.downloads:
-                if item.last_updated > timestamp:
+        if self.now > timestamp:
+            #XXX Need ThreadLock for this block?
+            downloads = self.downloads
+
+            # Yield loaded downloads (unless deleted in the meantime by poller)
+            sent = set(downloads)
+            for id_hash in sent:
+                item = downloads.get(id_hash)
+                if item and item.last_updated > timestamp:
                     yield item
+
+            # Send deletions; note that hashes can be reloaded, so we need to
+            # filter what we have! Also, we need to go through time in reverse and
+            # send each hash only once!
+            #XXX Implement!
 
         # else generator is simply empty
 
