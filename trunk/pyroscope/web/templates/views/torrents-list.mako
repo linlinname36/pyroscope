@@ -14,6 +14,13 @@
         "Tried all trackers",
         "Timeout was reached",
     ]
+
+    def completed(item, fmt, scale):
+        return fmt % (
+            scale * float(item.completed_chunks) / item.size_chunks 
+            if   item.left_bytes 
+            else scale
+        )
 %>
 
 <table class="grid">
@@ -34,7 +41,8 @@
     <tr class="${'odd' if idx&1 else 'even'}">
         <td class="tor-state">
             <span class="tor-${'started' if item.is_open else 'stopped'}"/>
-            <span class="done-clk-${"%02d" % (12.0 * item.completed_chunks / item.size_chunks) if item.left_bytes else '12'}"/>
+            <span class="done-clk-${completed(item, "%02d", 12.0)}" 
+                  title="${completed(item, "%3d%%", 100.0)}" />
             <span class="tor-${'active' if item.up_rate or item.down_rate else 'idle'}"/>
 % if item.message:
 % if any(h in item.message for h in harmless):
