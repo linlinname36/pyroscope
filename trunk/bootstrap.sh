@@ -1,5 +1,5 @@
 # This script has to be sourced in a shell and is thus NOT executable.
-virtualenv . || exit 1
+virtualenv --no-site-packages . || exit 1
 . bin/activate
 
 # tools
