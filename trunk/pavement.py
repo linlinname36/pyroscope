@@ -138,10 +138,33 @@ def bootstrap():
 def svg2png():
     """ Convert SVG icons to PNG icons.
     """
-    grad_sizes = (100, (160,80),)
+    grad_sizes = (
+        100, 
+        (160,80), # icon boxes
+        (160, 32), (160, 48),         
+        (320, 32), (320, 48), 
+        (1920, 16), (1920, 24), (1920, 32),  (1920, 48), 
+        (1920, 16), (1920, 24), (1920, 32),  (1920, 48), 
+        (1920, 96), (1920, 360),
+    )
     grad_colors = {
         "black": lambda s: s,
-        "grey": lambda s: s.replace("#000000", "#808080"),
+        "grey": lambda s: s
+            .replace("#000000", "#808080"),
+        "white": lambda s: s
+            .replace("#000000", "#FFFFFF"),
+        "half-black": lambda s: s
+            .replace("stop-opacity:1", "stop-opacity:0.5"),
+        "half-grey": lambda s: s
+            .replace("#000000", "#808080")
+            .replace("stop-opacity:1", "stop-opacity:0.5"),
+        "half-white": lambda s: s
+            .replace("#000000", "#FFFFFF")
+            .replace("stop-opacity:1", "stop-opacity:0.5"),
+        "ff9": lambda s: s
+            .replace("#000000", "#FFFF99"),
+        "ffc": lambda s: s
+            .replace("#000000", "#FFFFCC"),
     }
     icon_sizes = (12, 16, 24, 32, 48)
     img_path = path("pyroscope/web/public/img")
@@ -150,6 +173,7 @@ def svg2png():
     def grad_transform(svg_file, color):
         tmp_file = path("build/%s-%s.svg" % (color, svg_file.namebase))
         tmp_file.write_bytes(grad_colors[color](svg_file.bytes()))
+        tmp_file.utime((svg_file.atime, svg_file.mtime))
         return tmp_file
     
     def make_png(svg_file, size):
@@ -176,7 +200,7 @@ def svg2png():
             tmp_file = grad_transform(svg_file, color)
             for size in grad_sizes:
                 make_png(tmp_file, size)
-            tmp_file.remove()
+            os.remove(tmp_file)
 
     # Project logo for Google Code & the UI
     make_png(svg_path / "icons" / "logo.svg", 55)
