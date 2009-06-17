@@ -520,6 +520,7 @@ table.grid th {
 
 /*  torrent state icons
  */
+.tor-state { white-space: nowrap; }
 .tor-started:before { content: url('/img/png/12/started.png'); }
 .tor-stopped:before { content: url('/img/png/12/stopped.png'); }
 .tor-active:before { content: url('/img/png/12/nuked.png'); }

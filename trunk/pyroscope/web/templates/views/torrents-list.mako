@@ -32,7 +32,7 @@
 ## Active torrents body
 % for idx, item in enumerate(c.torrents):
     <tr class="${'odd' if idx&1 else 'even'}">
-        <td>
+        <td class="tor-state">
             <span class="tor-${'started' if item.is_open else 'stopped'}"/>
             <span class="done-clk-${"%02d" % (12.0 * item.completed_chunks / item.size_chunks) if item.left_bytes else '12'}"/>
             <span class="tor-${'active' if item.up_rate or item.down_rate else 'idle'}"/>
