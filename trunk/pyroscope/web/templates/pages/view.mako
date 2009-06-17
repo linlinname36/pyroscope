@@ -39,6 +39,7 @@
     ## FILTER
     <div class="filter">
         <form method="GET" action="${'' | h.echo}">
+            ${h.echo('', form=1)|n}
 % if c.filter:
             <a href="?"><img src="/img/png/16/filter-off.png" width="16" height="16" title="Clear filter" /></a>
 % endif
@@ -59,7 +60,10 @@
     ## BOX TITLE
     <h3>
         ${len(c.torrents)} ${c.view.title} Torrent(s)
-        ${'[filtered by "%s" out of %d]' % (c.filter, c.torrents_unfiltered) if c.filter else ''}
+% if c.filter:
+        ${'[filtered by "%s" out of %d]' % (c.filter, c.torrents_unfiltered)}
+        <a href="${'?'|h.echo}"><img src="/img/png/12/filter-off.png" width="12" height="12" title="Clear filter" /></a>
+% endif
 % if c.messages:
         <a href="#messages">
             ${'info_red.16 There are %d Tracker Message(s)' % len(c.messages)|h.icon}
