@@ -88,7 +88,7 @@ class ViewController(BaseController):
 
         # Set flags
         c.refresh_rate = request.params.get("refresh", 60)
-        c.obfuscate = asbool(request.params.get("obfuscate", "0"))
+        c.obfuscate = asbool(request.params.get("_obfuscate", request.params.get("_obfuscated")))
         c.filter_mode = request.params.get("filter_mode", "AND")
 
 

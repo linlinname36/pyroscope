@@ -76,7 +76,7 @@ def obfuscate(text, replacer=re.compile("[a-zA-Z<>&]+")):
     """
     from pylons import request
 
-    obfuscate = asbool(request.params.get("_obfuscate"))
+    obfuscate = asbool(request.params.get("_obfuscate", request.params.get("_obfuscated")))
     return replacer.sub(lambda s: "?" * len(s.group()), text) if obfuscate else text
 
 
