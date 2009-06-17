@@ -22,7 +22,7 @@ div.iconbox {
         margin-right: .5em;
         text-align:center;
 
-        background-image: url('/img/png/160x80/black-bt-lin-00ff.png');
+        background-image: url('/img/png/160x80/black-bt-lin-0f.png');
         border: 1px dotted #999;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
@@ -124,7 +124,8 @@ a.tlink {
         margin: 0;
         margin-right: .5em;
         padding-top: .5em;
-        background-color: #fc0;
+        background-color: #f60;
+        background-image: url('/img/png/160x80/white-tb-lin-f0.png');
 
         border-top: groove 2px #fc0; 
         border-left: groove 2px #fc0; 
@@ -140,12 +141,12 @@ a.tlink {
         font-size: 110%;
         font-weight: bold;
         white-space: nowrap;
-        color: #963;
-        background-color: #fc0;
+        color: #630;
 
         padding: .1em .8em;
         padding-top: 0;
-        border-bottom: .3em solid #fc0;
+        padding-bottom: .3em;
+        --border-bottom: .3em solid #fc0;
     }
     .tab-bar img {
         --border: 1px solid #f99;
@@ -153,15 +154,17 @@ a.tlink {
     }
     .tab-bar li.selected {
         background-color: #ff0;
+        background-image: url('/img/png/160x80/white-tb-lin-0f.png');
         font-style: italic; 
     }
     .tab-bar li.selected a {
         color: #f33;
-        background-color: #ff0;
-        border-color: #ff3;
+        --border-color: #ff3;
     }
     .tab-bar a:hover {
-        border-color: #f33;
+        padding-bottom: 0;
+        border-bottom: .3em solid #f33;
+        --border-color: #f33;
         -webkit-border-radius: 15px;
         -moz-border-radius: 15px;
     }
@@ -223,6 +226,9 @@ div#bd div {
 div#hd {
     /* the header defaults */
     background-color: #ff9;
+    --background-image: url('/img/png/1920x96/half-white-rad-lin-0f.png');
+    background-position: center; 
+    background-repeat: no-repeat;
     padding: .2em;
 }
 div.logo {
@@ -274,10 +280,11 @@ div.topmenu {
         /* a single menu item */
         list-style: none;
         font-size: 125%;
+        padding: .3em;
         white-space: nowrap;
         display: inline;
-        background-color: #fc3;
-        padding: .3em;
+        background-color: #f90;
+        background-image: url('/img/png/160x80/white-tb-lin-f0.png');
 
         /* button-like */
         border-top: solid 1px #930; 
@@ -308,8 +315,9 @@ div.topmenu {
     }
     .topmenu a:hover { 
         /* menu link mouse-over */
-        color: #630;
-        background-color: #ffc;
+        color: #300;
+        background-image: url('/img/png/160x80/white-tb-lin-0f.png');
+        background-position: bottom right; 
     }
     /* default is ok
     .topmenu a:active { 
@@ -381,32 +389,57 @@ div#ft {
  */
 table.grid th {
     /* data grid table headers */
-        background-color: #666;
+        background-image: url('/img/png/160x32/black-tb-lin-0f.png');
+        background-position: top left; 
+        background-repeat: repeat;
+        background-color: #999;
+        white-space: nowrap;
         color: #ff9;
-        padding: .3em;
         border: 0;
+        padding: .3em;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
+    }
+    .grid th.wide {
+        background-image: url('/img/png/1920x32/black-tb-lin-0f.png');
     }
     .grid th img {
         /* data grid table icons */
         vertical-align: middle;
     }
+    .grid tr {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        background-color: #ff9;
+    }
     .grid tr.even {
-        background-color: #ffc;
+        background-image: url('/img/png/1920x16/ffc-v-lin-f0.png');
+        background-position: top; 
+        background-repeat: no-repeat;
+        background-color: #ee9;
+        --background-color: #fe9;
     }
     .grid tr.odd {
-        background-color: #fec;
+        background-image: url('/img/png/1920x16/ffc-v-lin-0f.png');
+        background-position: bottom; 
+        background-repeat: no-repeat;
+        background-color: #ee9;
+        --background-color: #fec;
     }
     .grid td {
         /* data grid table data cells */
-        padding: .3em;
-        border: 1px dotted #999;
+        padding: 0 .3em;
+        --line-height: 200%;
+        height: 24px;
+        border: 0;
+        margin: 0;
+        --border: 1px dotted #999;
     }
     .grid .footer td {
         background-color: #ffe;
-        border: 1px solid #ffe;
-        border-top: 1px dotted #999;
+        --border: 1px solid #ffe;
+        --border-top: 1px dotted #999;
 }
 
 
@@ -483,4 +516,28 @@ table.grid th {
     .wiki-toc-title-3 {
         font-size: 80%;
 }
+
+
+/*  torrent state icons
+ */
+.tor-started:before { content: url('/img/png/12/started.png'); }
+.tor-stopped:before { content: url('/img/png/12/stopped.png'); }
+.tor-active:before { content: url('/img/png/12/nuked.png'); }
+.tor-idle:before { content: url('/img/png/12/empty.png'); }
+.tor-msg-crit { background-image: url('/img/png/12/info_red.png'); }
+.tor-msg-warn { background-image: url('/img/png/12/info_blue.png'); }
+.tor-msg-info { background-image: url('/img/png/12/info_green.png'); }
+.done-clk-00:before { content: url('/img/png/12/clock00.png'); }
+.done-clk-01:before { content: url('/img/png/12/clock01.png'); }
+.done-clk-02:before { content: url('/img/png/12/clock02.png'); }
+.done-clk-03:before { content: url('/img/png/12/clock03.png'); }
+.done-clk-04:before { content: url('/img/png/12/clock04.png'); }
+.done-clk-05:before { content: url('/img/png/12/clock05.png'); }
+.done-clk-06:before { content: url('/img/png/12/clock06.png'); }
+.done-clk-07:before { content: url('/img/png/12/clock07.png'); }
+.done-clk-08:before { content: url('/img/png/12/clock08.png'); }
+.done-clk-09:before { content: url('/img/png/12/clock09.png'); }
+.done-clk-10:before { content: url('/img/png/12/clock10.png'); }
+.done-clk-11:before { content: url('/img/png/12/clock11.png'); }
+.done-clk-12:before { content: url('/img/png/12/box-check.png'); }
 

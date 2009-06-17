@@ -20,29 +20,29 @@
 ## Active torrents header
     <tr class="header">
         <th>${"info_green.16 STATUS"|h.icon}</th>
-        <th>${"torrent.16 NAME"|h.icon} TORRENT</th>
+        <th class="wide">${"torrent.16 NAME"|h.icon} TORRENT</th>
         <th>${"green_up_double.16 UP"|h.icon} RATE</th>
         <th>${"green_down_double.16 DOWN"|h.icon} RATE</th>
         <th>${"document.16 DATA"|h.icon} SIZE</th>
         <th>${"green_up_doc.16 UP"|h.icon} XFER</th>
         <th>${"green_down_doc.16 DOWN"|h.icon} XFER</th>
         <th>${"ying_yang_rg.16 RATIO"|h.icon}</th>
-        <th><a href="/stats/trackers">${"tracker.16 DOMAIN | Click for tracker stats."|h.icon}</a> TRACKER</th>
+        <th class="wide"><a href="/stats/trackers">${"tracker.16 DOMAIN | Click for tracker stats."|h.icon}</a> TRACKER</th>
     </tr>
 ## Active torrents body
 % for idx, item in enumerate(c.torrents):
     <tr class="${'odd' if idx&1 else 'even'}">
         <td>
-            ${"started.12 STARTED" if item.is_open else "stopped.12 STOPPED"|h.icon}
-            ${"box-check.12 COMPLETE" if item.complete else "box-cross.12 INCOMPLETE"|h.icon}
-            ${"nuked.12 ACTIVE" if item.up_rate or item.down_rate else "empty.12 IDLE"|h.icon}
+            <span class="tor-${'started' if item.is_open else 'stopped'}"/>
+            <span class="done-clk-${"%02d" % (12.0 * item.completed_chunks / item.size_chunks) if item.left_bytes else '12'}"/>
+            <span class="tor-${'active' if item.up_rate or item.down_rate else 'idle'}"/>
 % if item.message:
 % if any(h in item.message for h in harmless):
-            ${"info_green.12 %s" % item.message|h.icon}
+            <img class="tor-msg-info" title="${item.message}" src="/img/png/12/empty.png" height="12" width="12" />
 % elif item.is_open:
-            ${"info_red.12 %s" % item.message|h.icon}
+            <img class="tor-msg-crit" title="${item.message}" src="/img/png/12/empty.png" height="12" width="12" />
 % else:
-            ${"info_blue.12 %s" % item.message|h.icon}
+            <img class="tor-msg-warn" title="${item.message}" src="/img/png/12/empty.png" height="12" width="12" />
 % endif
 % endif
         </td>
@@ -53,9 +53,7 @@
         <td class="${item.down_rate|valclass}">${item.down_rate|h.bibyte}</td>
         <td class="${item.size_bytes|valclass}">${item.size_bytes|h.bibyte}</td>
         <td class="${item.up_total|valclass}">${item.up_total|h.bibyte}</td>
-        <td class="${item.down_total or item.completed_chunks|valclass}">
-            ${"%4.1f%%" % (100.0 * item.completed_chunks / item.size_chunks) if item.left_bytes else ''}
-            ${h.bibyte(item.down_total).replace(u' ', u'\u00A0')}</td>
+        <td class="${item.down_total|valclass}">${h.bibyte(item.down_total)}</td>
         <td class="monoval">${"%6.3f" % item.ratio_not0}</td>
         <td>
 % for domain in item.tracker_domains:

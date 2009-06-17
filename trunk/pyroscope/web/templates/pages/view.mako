@@ -91,9 +91,9 @@
 
 <table class="grid">
     <tr class="header">
-        <th>${"torrent.16"|h.icon} TORRENT</th>
-        <th>${"info_red.16"|h.icon} MESSAGE</th>
-        <th>${"tracker"|h.icon} TRACKER</th>
+        <th class="wide">${"torrent.16"|h.icon} TORRENT</th>
+        <th class="wide">${"info_red.16"|h.icon} MESSAGE</th>
+        <th class="wide">${"tracker.16"|h.icon} TRACKER</th>
     </tr>
 % for idx, item in enumerate(c.messages):
     <tr class="${'odd' if idx&1 else 'even'}">

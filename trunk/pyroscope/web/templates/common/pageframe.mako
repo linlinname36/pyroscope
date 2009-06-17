@@ -38,14 +38,14 @@
 ##  Top-level menu
         <div class="topmenu">
             <ul>
-                <li>${"home.24"|h.icon}<a id="topmenu-current" href="/index">Home</a></li>
-                <li>${"torrent.24"|h.icon}<a href="/view">Torrents</a></li>
-                <li>${"chart2.24"|h.icon}<a href="/stats">Stats</a></li>
-                <li>${"flask.24"|h.icon}<a href="/sandbox">Lab</a></li>
+                <li><a id="topmenu-current" href="/index">${"home.24"|h.icon} Home</a></li>
+                <li><a href="/view">${"torrent.24"|h.icon} Torrents</a></li>
+                <li><a href="/stats">${"chart2.24"|h.icon} Stats</a></li>
+                <li><a href="/sandbox">${"flask.24"|h.icon} Lab</a></li>
 % if self.attr.page_help():
-                <li>${"help.24"|h.icon}<a href="/help/wiki/${self.attr.page_help()|u}">Help</a></li>
+                <li><a href="/help/wiki/${self.attr.page_help()|u}">${"help.24"|h.icon} Help</a></li>
 % else:
-                <li>${"help.24"|h.icon}<a href="/help">Index</a></li>
+                <li><a href="/help">${"help.24"|h.icon}Index</a></li>
 % endif
             </ul>
         </div>

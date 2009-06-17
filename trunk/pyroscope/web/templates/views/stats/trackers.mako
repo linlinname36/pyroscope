@@ -12,7 +12,7 @@
 
 <table class="grid">
     <tr class="header">
-        <th>${"tracker Tracker Domain"|h.icon} TRACKER</th>
+        <th class="wide">${"tracker Tracker Domain"|h.icon} TRACKER</th>
         <th>${"torrent # of LOADED Torrents"|h.icon}</th>
         <th>${"nuked # of ACTIVE Torrents"|h.icon}</th>
         <th>${"box-cross # of INCOMPLETE Torrents"|h.icon}</th>
