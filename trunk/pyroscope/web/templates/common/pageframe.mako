@@ -16,7 +16,9 @@
     <body><div id="doc3" class="yui-skin-sam yui-t5">
     <div id="hd" class="rounded"><!-- header -->
 ##  Logo
-        <div class="logo"><a href="http://pyroscope.googlecode.com/">${"logo.150"|h.icon}</a></div>
+        <div class="logo"><a href="http://pyroscope.googlecode.com/">
+            <img src="/img/png/150/logo.png" width="150" height="150" /></a></div>
+            ##<img src="/img/png/200x100/logo-wide.png" width="200" height="100" /></a></div>
 ##  Search box & stats
         <div class="topstats">
             <span>

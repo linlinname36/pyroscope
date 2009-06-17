@@ -38,11 +38,11 @@
             <span class="tor-${'active' if item.up_rate or item.down_rate else 'idle'}"/>
 % if item.message:
 % if any(h in item.message for h in harmless):
-            <img class="tor-msg-info" title="${item.message}" src="/img/png/12/empty.png" height="12" width="12" />
+            <img class="tor-msg-info" title="${item.message}" src="/img/png/12/empty.png" width="12" height="12" />
 % elif item.is_open:
-            <img class="tor-msg-crit" title="${item.message}" src="/img/png/12/empty.png" height="12" width="12" />
+            <img class="tor-msg-crit" title="${item.message}" src="/img/png/12/empty.png" width="12" height="12" />
 % else:
-            <img class="tor-msg-warn" title="${item.message}" src="/img/png/12/empty.png" height="12" width="12" />
+            <img class="tor-msg-warn" title="${item.message}" src="/img/png/12/empty.png" width="12" height="12" />
 % endif
 % endif
         </td>

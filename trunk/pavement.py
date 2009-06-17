@@ -204,6 +204,7 @@ def svg2png():
 
     # Project logo for Google Code & the UI
     make_png(svg_path / "logo-wide.svg", (150, 55))
+    make_png(svg_path / "logo-wide.svg", (200, 100))
     make_png(svg_path / "icons" / "logo.svg", 150)
 
 
