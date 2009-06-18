@@ -5,6 +5,10 @@
 
     page_title = lambda: "Laboratory"
     page_help = lambda: "LaboratoryView"
+    page_head = lambda: """
+        <script src="http://static.simile.mit.edu/timeline/api-2.3.0/timeline-api.js?bundle=true" type="text/javascript"></script>
+    """
+
     sizes = (12, 16, 24, 32, 48)
 %>
 
@@ -128,6 +132,53 @@
   % endif
 % endfor
 </dl>
+% endif
+
+##
+## SANDBOX VIEW
+##
+% if c.view == "sandbox":
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+<%!
+    import time
+    now = time.strftime("%c", time.localtime(time.time()))
+%>
+<div id="timeline" style="height: 300px; border: 1px solid #aaa"></div>
+${now}
+
+<script>
+ var tl;
+ function onLoad() {
+   var eventSource = new Timeline.DefaultEventSource();
+   var bandInfos = [
+     Timeline.createBandInfo({
+         eventSource:    eventSource,
+         date:           "${now}",
+         width:          "70%", 
+         intervalUnit:   Timeline.DateTime.DAY, 
+         intervalPixels: 150
+     }),
+     Timeline.createBandInfo({
+         overview:       true,
+         eventSource:    eventSource,
+         date:           "${now}",
+         width:          "30%", 
+         intervalUnit:   Timeline.DateTime.MONTH, 
+         intervalPixels: 250
+     })
+   ];
+   bandInfos[1].syncWith = 0;
+   bandInfos[1].highlight = true;
+   
+   tl = Timeline.create(document.getElementById("timeline"), bandInfos);
+   Timeline.loadXML("/sandbox/data/timeline.xml", function(xml, url) { eventSource.loadXML(xml, url); });
+ }
+ 
+ onLoad();
+</script>
+
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % endif
 
 ## END TAB CONTENT

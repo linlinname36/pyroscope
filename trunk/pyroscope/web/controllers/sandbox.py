@@ -36,7 +36,56 @@ class SandboxController(BaseController):
         "icons": "Icons",
         "globals": "Globals",
         "helpers": "Helpers",
+        "sandbox": "Sandbox",
     }
+
+
+    def data(self, id):
+        if id == "timeline.xml":
+            response.headers['Content-Type'] = 'application/xml; charset="utf-8"'
+            return u"""<?xml version="1.0" encoding="utf-8"?>
+<data>
+    <event 
+            start="Jun 04 2009 00:00:00 GMT"
+            title="PyroScope project created on Google Code"
+            image="http://code.google.com/p/pyroscope/logo?logo_id=1245201363"
+        ><![CDATA[
+            Initial directory structure for project 
+            <a href="http://pyroscope.googlecode.com/">PyroScope</a> 
+            created in SVN.
+        ]]>
+    </event>
+    
+    <event 
+            start="Jun 13 2009 00:00:00 GMT"
+            title="Started rTorrent 0.8.2/0.12.2"
+        >
+        Started rTorrent 0.8.2/0.12.2
+    </event>
+    
+    <event 
+            start="Jun 14 2009 22:00:00 GMT"
+            end="Jun 16 2009 01:00:00 GMT"
+            isDuration="true"
+            title="Downloading Debian.ISO"
+        >
+        Debian.ISO [3333MiB, Ratio 1.234]
+        </event>
+        
+    <event 
+            start="Jun 16 2009 01:00:00 GMT"
+            end="Jun 20 2009 14:00:00 GMT"
+            isDuration="true"
+            title="Seeding Debian.ISO"
+        >
+        Debian.ISO [3333MiB, Ratio 2.674]
+        </event>
+        
+    <!--    
+    <event link="...">
+    -->
+</data>
+"""
 
 
     def index(self, id=None):

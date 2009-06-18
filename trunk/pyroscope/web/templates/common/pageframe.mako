@@ -9,6 +9,7 @@
     <head>
         <title>${self.attr.page_title()} - PyroScope</title>
         <%include file="/common/yui.mako"/>
+
         <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/css/default.css">
         ${self.attr.page_head()|n}
     </head>
@@ -51,6 +52,9 @@
 % endif
             </ul>
         </div>
+        <noscript>
+            <strong>Please enable Javascript in your browser to be able to use most features. Thank you.</strong>
+        </noscript>
     </div>
 ##
 % for line in c._debug:
