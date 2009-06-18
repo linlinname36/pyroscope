@@ -5,7 +5,7 @@
 = For the Impatient =
 
 Requirements:
- * an existing rTorrent installation
+ * an existing rTorrent installation, _with the xmlrpc option compiled in_
  * Python 2.5 or a higher 2.x version (2.5 is recommended)
  * currently, a proper build environment (see below) and a subversion client
 
