@@ -45,7 +45,7 @@ class RefreshPoller(object):
     
     # How often to get the full list of values (to fix out-of-sync problems and
     # get fresh almost-immutable values like download locations)
-    SNYC_TICKS = 60
+    SYNC_TICKS = 60
 
     # How long to sleep (at max) after problems, i.e. unknown exceptions
     PENALTY_TICKS = 1
