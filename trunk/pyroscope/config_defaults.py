@@ -18,5 +18,5 @@
 """
 
 # Path to rTorrent socket
-scgi_url = "~/lib/rtorrent/.scgi/socket"
+scgi_url = "~/lib/rtorrent/.scgi_local"
 
