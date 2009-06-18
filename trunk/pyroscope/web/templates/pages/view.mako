@@ -61,7 +61,7 @@
     <h3>
         ${len(c.torrents)} ${c.view.title} Torrent(s)
 % if c.filter:
-        ${'[filtered by "%s" out of %d]' % (c.filter, c.torrents_unfiltered)}
+        ${'[filtered by "%s" out of %d]' % ((' %s ' % c.filter_mode).join(c.filter.split()), c.torrents_unfiltered)}
         <a href="${'?'|h.echo}"><img src="/img/png/12/filter-off.png" width="12" height="12" title="Clear filter" /></a>
 % endif
 % if c.messages:
