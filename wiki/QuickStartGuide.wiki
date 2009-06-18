@@ -6,7 +6,7 @@
 
 Requirements:
  * an existing rTorrent installation
- * Python 2.5 or a higher 2.x version
+ * Python 2.5 or a higher 2.x version (2.5 is recommended)
  * currently, a proper build environment (see below) and a subversion client
 
 Initial installation:
@@ -18,6 +18,7 @@ source bootstrap.sh
 }}}
 
 After that, the CommandLineTools are available in the `~/lib/pyroscope/bin` directory.
+If you want to use the web interface, see "Details of Installation" below.
 
 If you like PyroScope after using it for a while, click on the following button to support it.
 <wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_users_logo.xml" height="43"  border="0" />
@@ -35,19 +36,9 @@ aptitude install inkscape build-essential devtools subversion
 
 If there are packages missing from that list, leave a comment.
 
-== Updating to the Latest SVN Version ==
-To update the software after initial installation, use these commands:
-{{{
-cd ~/lib/pyroscope
-svn update
-source bin/activate
-paver develop -U
-paver bootstrap
-}}}
-
 
 = Configuration =
-_The file system paths in the following sections have to be adapted to your installation, of course._
+_The file system paths in the following sections can be adapted to your installation, of course, but avoid that unless you have a good reason. It's recommended to put the SCGI socket into the `~/lib/rtorrent` directory, just create it if your rTorrent installation is located elsewhere. These instructions work best if PyroScope is installed into the same user account as rTorrent._
 
 == `rTorrent` Configuration ==
 In your `~/.rtorrent.rc` file, add or change these lines:
@@ -61,7 +52,7 @@ Then restart it.
 == `PyroScope` Basic Configuration ==
 Create the `~/.pyroscope` directory and the necessary sub directories.
 {{{
-mkdir -p ~/.pyroscope/{log,www-data}
+mkdir -p ~/.pyroscope/{log,data,www-data}
 }}}
 
 == Enabling the Queue Manager ==
@@ -75,11 +66,29 @@ Using `crontab -e`, add the following to your cron schedule:
 == Starting the Web Interface ==
 To use the web server, you first have to make a config file as follows:
 {{{
-paster make-config pyroscope ~/.pyroscope/web.ini
+cd ~/lib/pyroscope
+./bin/paster make-config pyroscope ~/.pyroscope/web.ini
 }}}
 
-Tweak the config file as appropriate and then start the web server in daemon mode:
+Tweak the config file as appropriate (read the comments in the file); if you intend to use the default port 8042 this can be skipped altogether. Then start the web server in daemon mode:
 {{{
-paver start
+cd ~/lib/pyroscope
+./bin/paver start
 }}}
 If you did not change the web server parameters, you can now view the start page at http://127.0.0.1:8042/. You can use the `paver status` command to check on the server status, and `paver stop` to stop a running server.
+
+
+= Maintenance Tasks =
+The following information helps you to keep your software up-to-date and use all of its features...
+
+== Updating to the Latest SVN Version ==
+To update the software after initial installation, use these commands:
+{{{
+cd ~/lib/pyroscope
+source bin/activate
+paver stop
+svn update
+paver develop -U
+paver bootstrap
+paver start
+}}}
