@@ -169,9 +169,10 @@ def svg2png():
     icon_sizes = (12, 16, 24, 32, 48)
     img_path = path("pyroscope/web/public/img")
     svg_path = img_path / "svg"
+    build_dir = path("build")
 
     def grad_transform(svg_file, color):
-        tmp_file = path("build/%s-%s.svg" % (color, svg_file.namebase))
+        tmp_file = build_dir / ("%s-%s.svg" % (color, svg_file.namebase))
         tmp_file.write_bytes(grad_colors[color](svg_file.bytes()))
         tmp_file.utime((svg_file.atime, svg_file.mtime))
         return tmp_file
@@ -188,6 +189,8 @@ def svg2png():
         png_file = png_path / svg_file.namebase + ".png"
         if not png_file.exists() or png_file.mtime < svg_file.mtime:
             sh("inkscape -z -e %(png_file)s -w %(w)d -h %(h)d %(svg_file)s" % locals())
+
+    build_dir.exists() or build_dir.makedirs()
 
     icon_files = (svg_path / "icons").files("*.svg")
     for size in icon_sizes:
