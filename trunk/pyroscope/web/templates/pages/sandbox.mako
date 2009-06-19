@@ -111,12 +111,12 @@
 ## GLOBALS VIEW
 ##
 % if c.view == "globals":
+##${repr(g)}
 <dl style="margin-left: 0;">
-% for k in dir(g):
+% for k, v in g.items():
   % if not k.startswith('_'):
-    ##.replace('\n', "<br />")
     <dt>${k}</dt>
-    <dd><code>${getattr(h, k, "N/A")|n}</code></dd>
+    <dd><code>${repr(g[k]) or "N/A"}</code></dd>
   % endif
 % endfor
 </dl>

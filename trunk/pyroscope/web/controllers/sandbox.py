@@ -85,6 +85,10 @@ class SandboxController(BaseController):
         'system.get_cwd',
         'system.hostname',
         'system.library_version',
+        'system.pid',
+        'system.time',
+        'system.time_seconds',
+        'system.time_usec',
         'view_list',
     )
     

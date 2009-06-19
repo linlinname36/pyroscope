@@ -33,6 +33,9 @@
             </span>
             <span>
                 ${"console.16 ENGINE ID"|h.icon} ${g.engine_id}
+                % if g.xmlrpc_bug:
+                    ${"bio-hazard.16 Your rTorrent installation has the XMLRPC bug!"|h.icon}
+                % endif
             </span>
             <span>
                 ${"clock.16 TIME"|h.icon} ${h.now()}

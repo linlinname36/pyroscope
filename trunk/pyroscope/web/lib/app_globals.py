@@ -20,11 +20,12 @@
 import logging
 
 from pyroscope.engines import rtorrent
+from pyroscope.util.types import Bunch
 
 LOG = logging.getLogger(__name__)
 
 
-class Globals(object):
+class Globals(Bunch):
     """ Globals acts as a container for objects available throughout the
         life of the application
     """
@@ -38,6 +39,7 @@ class Globals(object):
         try:
             proxy = rtorrent.Proxy()
             self.engine_id = "%s [%s]" % (proxy.id, proxy.version)
+            self.xmlrpc_bug = proxy.rpc.system.time_usec() < 0
         except Exception, exc:
             LOG.warning("Cannot determine engine ID (%s)" % exc)
         
