@@ -23,7 +23,7 @@
 <ul>
 % for view, title in sorted(c.views.items()):
     <li ${'class="selected"' if view == c.view else "" | n}>
-        <a href="${h.url_for(id=view)}">${title}</a>
+        <a href="${h.url_for(id=view)|h.echo}">${title}</a>
     </li>
 % endfor
 </ul>
@@ -193,13 +193,8 @@
 % if c.view == "timeline":
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-<%!
-    import time
-    now = time.strftime("%c", time.localtime(time.time()))
-%>
 <h2>Metafile Download Timeline</h2>
 <div id="timeline" style="height: 500px; border: 1px solid #aaa"></div>
-${now}
 
 <script>
  var tl;
@@ -208,7 +203,7 @@ ${now}
    var bandInfos = [
      Timeline.createBandInfo({
          eventSource:    eventSource,
-         date:           "${now}",
+         date:           "${c.now}",
          width:          "90%", 
          intervalUnit:   Timeline.DateTime.DAY, 
          intervalPixels: 500
@@ -216,7 +211,7 @@ ${now}
      Timeline.createBandInfo({
          overview:       true,
          eventSource:    eventSource,
-         date:           "${now}",
+         date:           "${c.now}",
          width:          "10%", 
          intervalUnit:   Timeline.DateTime.MONTH, 
          intervalPixels: 100
@@ -226,7 +221,7 @@ ${now}
    bandInfos[1].highlight = true;
    
    tl = Timeline.create(document.getElementById("timeline"), bandInfos);
-   Timeline.loadXML("/sandbox/data/timeline.xml", function(xml, url) { eventSource.loadXML(xml, url); });
+   Timeline.loadXML("${'/sandbox/data/timeline.xml'|h.echo}", function(xml, url) { eventSource.loadXML(xml, url); });
  }
  
  onLoad();

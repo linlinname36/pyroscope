@@ -41,7 +41,7 @@ def _make_state(item):
     yield "PRV" if item.is_private else "PUB"
 
 
-def _make_tooltip(item):
+def make_tooltip(item):
     """ Make a tooltip from the most important torrent details.
     """
     lines = [
@@ -99,7 +99,7 @@ class ViewController(BaseController):
             torrents[0].message += " [FAKE MESSAGE FOR TESTING]"
 
         return [Bunch(hash=item.hash, name=item.name, text=item.message, 
-                tooltip=_make_tooltip(item),
+                tooltip=make_tooltip(item),
                 domains=", ".join(sorted(item.tracker_domains)))
             for item in torrents 
             if item.is_open and item.message and not any(ignore in item.message
@@ -116,7 +116,7 @@ class ViewController(BaseController):
             c.up_total += item.up_rate
             c.down_total += item.down_rate
 
-            item.tooltip = _make_tooltip(item)
+            item.tooltip = make_tooltip(item)
             item.ratio_not0 = item.ratio / 1000.0 or 1E-12
             item.domains = ", ".join(item.tracker_domains)
 

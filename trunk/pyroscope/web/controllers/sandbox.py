@@ -26,10 +26,22 @@ from collections import defaultdict
 from pylons import request, response, session, tmpl_context as c
 from pylons.controllers.util import abort, redirect_to
 
+from pyroscope.util.types import Bunch
+from pyroscope.web.lib.helpers import obfuscate
 from pyroscope.web.lib.base import render, BaseController
+from pyroscope.web.controllers.view import make_tooltip
 from pyroscope.engines import rtorrent
 
 LOG = logging.getLogger(__name__)
+
+
+
+def shorten(text, maxlen=40, tail=5):
+    """ Shorten a text to a maximal length.
+    """
+    if len(text) > maxlen:
+        text = text[:maxlen - 3 - tail] + "..." + text[-tail:]
+    return text
 
 
 class SandboxController(BaseController):
@@ -77,6 +89,10 @@ class SandboxController(BaseController):
         'get_port_open',
         'get_port_random',
         'get_port_range',
+        'get_session',
+        'get_session_lock',
+        'get_stats_not_preloaded',
+        'get_stats_preloaded',
         'get_up_rate',
         'get_up_total',
         'get_upload_rate',
@@ -93,6 +109,11 @@ class SandboxController(BaseController):
         'view_list',
     )
     
+
+    def __before__(self):
+        self.now = time.localtime(time.time())
+        c.now = time.strftime("%c", self.now)
+
     
     def data(self, id):
         if id == "timeline.xml":
@@ -100,21 +121,71 @@ class SandboxController(BaseController):
 
             proxy = rtorrent.Proxy()
             torrents = list(rtorrent.View(proxy, 'main').items())
-
-            tmpl = u'<event start="%s" title="%s">Downloaded %s</event>'
-            def get_mtime():
-                os.path.getmtime(os.path.expanduser(item.tied_to_file))
             torrent_data = []
+
+            rtorrent_start = None
+            if proxy.rpc.get_session_lock():
+                lock_file = os.path.join(proxy.rpc.get_session(), "rtorrent.lock")
+                if os.path.exists(lock_file):
+                    rtorrent_start = os.path.getmtime(lock_file)
+
+            span_data = defaultdict(list)
             for item in torrents:
+                if item.is_open:
+                    # Store in minute-sized buckets
+                    span_data[item.state_changed // 60 * 60].append(item)
+
                 tied_file = os.path.expanduser(item.tied_to_file)
                 if os.path.exists(tied_file):
-                    torrent_data.append(tmpl % (
+                    title = shorten(obfuscate(item.name))
+                    torrent_data.append(u'<event start="%s" title="Downloaded %s">'
+                            u'Downloaded metafile for %s</event>' % (
                         time.strftime("%c", time.localtime(
                             os.path.getmtime(tied_file)
                         )),
-                        cgi.escape(item.name, quote=True),
-                        cgi.escape(item.name),
+                        cgi.escape(title, quote=True),
+                        cgi.escape(obfuscate(item.name)),
                     ))
+
+            for bucket, items in span_data.items():
+                if len(items) > 10:
+                    # hot spot, f.x. happens when you restart rTorrent
+                    # since we filtered open torrents only, they had to be started at that point
+                    entries = [Bunch(
+                        title = u"Started %d torrents within a minute, seeding them..." % (len(items)),
+                        start = bucket,
+                        text = ",\n".join(shorten(obfuscate(item.name), 20) for item in items[:40])
+                             + (", ..." if len(items) > 40 else ""),
+                    )]
+                else:
+                    # torrent gets its own event
+                    entries = [Bunch(
+                            title = u"%s %s" % (
+                                u"Seeding" if item.complete else u"Leeching",
+                                shorten(obfuscate(item.name)) ),
+                            start = item.state_changed,
+                            text = u"NAME: %s | %s" % (
+                                obfuscate(item.name), make_tooltip(item)),
+                        ) for item in items
+                    ]
+
+                torrent_data.extend([u'<event start="%s" end="%s" title="%s">%s</event>' % (
+                        time.strftime(u"%c", time.localtime(entry.start)),
+                        c.now,
+                        cgi.escape(entry.title, quote=True),
+                        cgi.escape(entry.text),
+                    ) for entry in entries
+                ])
+
+            if rtorrent_start:
+                torrent_data.append(u'<event start="%s" title="rTorrent started"></event>' % (
+                    time.strftime(u"%c", time.localtime(rtorrent_start)),
+                ))
+
+            torrent_data.append(u'<event start="%s" title="The time is now %s"></event>' % (
+                c.now, time.strftime("%Y-%m-%d %H:%M:%S", self.now),
+            ))
+
             torrent_data = u'\n'.join(torrent_data)
 
             return u"""<?xml version="1.0" encoding="utf-8"?>
