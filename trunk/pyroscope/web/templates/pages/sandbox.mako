@@ -211,7 +211,7 @@ ${now}
          date:           "${now}",
          width:          "90%", 
          intervalUnit:   Timeline.DateTime.DAY, 
-         intervalPixels: 150
+         intervalPixels: 500
      }),
      Timeline.createBandInfo({
          overview:       true,
@@ -219,7 +219,7 @@ ${now}
          date:           "${now}",
          width:          "10%", 
          intervalUnit:   Timeline.DateTime.MONTH, 
-         intervalPixels: 250
+         intervalPixels: 100
      })
    ];
    bandInfos[1].syncWith = 0;
