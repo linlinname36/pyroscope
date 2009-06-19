@@ -18,6 +18,8 @@
 """
 
 import os
+import cgi
+import time
 import logging
 from collections import defaultdict
 
@@ -43,7 +45,17 @@ class SandboxController(BaseController):
     }
 
     rt_globals = (
-        'dht_statistics', 'view_list',
+        'dht_statistics', 
+        ##'false',
+        'get_bind',
+        'get_check_hash',
+        'get_connection_leech',
+        'get_connection_seed',
+        'get_dht_port',
+        'get_directory',
+        'get_down_rate',
+        'get_down_total',
+        'get_download_rate',
         'get_max_downloads_div',
         'get_max_downloads_global',
         'get_max_file_size',
@@ -64,14 +76,44 @@ class SandboxController(BaseController):
         'get_port_open',
         'get_port_random',
         'get_port_range',
+        'get_up_rate',
+        'get_up_total',
+        'get_upload_rate',
+        'get_use_udp_trackers',
+        'get_xmlrpc_size_limit',
+        'system.client_version',
+        'system.get_cwd',
+        'system.hostname',
+        'system.library_version',
+        'view_list',
     )
     
     
     def data(self, id):
         if id == "timeline.xml":
             response.headers['Content-Type'] = 'application/xml; charset="utf-8"'
+
+            proxy = rtorrent.Proxy()
+            torrents = list(rtorrent.View(proxy, 'main').items())
+
+            tmpl = u'<event start="%s" title="%s">Downloaded %s</event>'
+            def get_mtime():
+                os.path.getmtime(os.path.expanduser(item.tied_to_file))
+            torrent_data = []
+            for item in torrents:
+                tied_file = os.path.expanduser(item.tied_to_file)
+                if os.path.exists(tied_file):
+                    torrent_data.append(tmpl % (
+                        time.strftime("%c", time.localtime(
+                            os.path.getmtime(tied_file)
+                        )),
+                        cgi.escape(item.name, quote=True),
+                        cgi.escape(item.name),
+                    ))
+            torrent_data = u'\n'.join(torrent_data)
+
             return u"""<?xml version="1.0" encoding="utf-8"?>
-<data>
+<data>""" + torrent_data + u"""
     <event 
             start="Jun 04 2009 00:00:00 GMT"
             title="PyroScope project created on Google Code"
@@ -83,6 +125,7 @@ class SandboxController(BaseController):
         ]]>
     </event>
     
+    <!--    
     <event 
             start="Jun 13 2009 00:00:00 GMT"
             title="Started rTorrent 0.8.2/0.12.2"
@@ -108,7 +151,6 @@ class SandboxController(BaseController):
         Debian.ISO [3333MiB, Ratio 2.674]
         </event>
         
-    <!--    
     <event link="...">
     -->
 </data>

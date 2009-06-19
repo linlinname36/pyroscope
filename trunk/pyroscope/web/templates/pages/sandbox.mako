@@ -1,6 +1,7 @@
 <%inherit file="/common/pageframe.mako"/>
 <%!
     from pprint import pformat
+    from pylons import tmpl_context as c
     from pyroscope.web.lib import helpers as h
 
     page_title = lambda: "Laboratory"
@@ -157,7 +158,16 @@
         % for method, (signatures, help) in sorted(methods):
             % for signature in signatures:
                 <code><strong>${method}</strong>(<em>${', '.join(signature[1:])}</em>)
-                </code>&#8658;<code> <em>${signature[0]}</em></code> ${help}<br />
+                </code>&#8658;<code> <em>${signature[0]}</em>
+<%!
+    def typed_result(method):
+        result = getattr(c.proxy.rpc, method)()
+        return "%r %r" % (type(result), result)
+%>
+                % if method in c.rt_globals:
+                    <strong>${typed_result(method)}</strong>
+                % endif
+                </code> ${help}<br />
             % endfor
         % endfor
         </div>
@@ -165,7 +175,10 @@
 
 ## ~~~ Default ~~~
 % else:
-%for method in (c.rt_globals):
+##view.size('main') = ${c.proxy.rpc.view.size('main')}<br />
+##view.size_not_visible('main') = ${c.proxy.rpc.view.size_not_visible('main')}<br />
+
+% for method in (c.rt_globals):
     ${method} = ${getattr(c.proxy.rpc, method)()}<br />
 % endfor
 
@@ -184,7 +197,8 @@
     import time
     now = time.strftime("%c", time.localtime(time.time()))
 %>
-<div id="timeline" style="height: 300px; border: 1px solid #aaa"></div>
+<h2>Metafile Download Timeline</h2>
+<div id="timeline" style="height: 500px; border: 1px solid #aaa"></div>
 ${now}
 
 <script>
@@ -195,7 +209,7 @@ ${now}
      Timeline.createBandInfo({
          eventSource:    eventSource,
          date:           "${now}",
-         width:          "70%", 
+         width:          "90%", 
          intervalUnit:   Timeline.DateTime.DAY, 
          intervalPixels: 150
      }),
@@ -203,7 +217,7 @@ ${now}
          overview:       true,
          eventSource:    eventSource,
          date:           "${now}",
-         width:          "30%", 
+         width:          "10%", 
          intervalUnit:   Timeline.DateTime.MONTH, 
          intervalPixels: 250
      })
