@@ -41,6 +41,7 @@ class SandboxController(BaseController):
         "globals": "Globals",
         "helpers": "Helpers",
         "sandbox": "Sandbox",
+        "timeline": "Timeline",
         "rtorrent": "rTorrent",
     }
 
