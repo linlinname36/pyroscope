@@ -132,7 +132,7 @@ def nostrip(text):
 
 
 def now():
-    """ Return curren time as a string.
+    """ Return current time as a string.
     """
     import time
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
