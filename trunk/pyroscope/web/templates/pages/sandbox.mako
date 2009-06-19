@@ -135,6 +135,46 @@
 % endif
 
 ##
+## RTORRENT VIEW
+##
+% if c.view == "rtorrent":
+<div>
+<a href="?">Default View</a>
+| <a href="?methods=1">List Methods</a>
+</div>
+
+## ~~~ Methods listing ~~~
+% if c.methods:
+    <div>
+    % for letter, methods in sorted(c.methods.items()):
+        <a href="#${letter}">[${letter}]</a>&nbsp;
+    % endfor
+    </div>
+
+    % for letter, methods in sorted(c.methods.items()):
+        <a name="${letter}"><h5>${letter}</h5></a>
+        <div>
+        % for method, (signatures, help) in sorted(methods):
+            % for signature in signatures:
+                <code><strong>${method}</strong>(<em>${', '.join(signature[1:])}</em>)
+                </code>&#8658;<code> <em>${signature[0]}</em></code> ${help}<br />
+            % endfor
+        % endfor
+        </div>
+    % endfor
+
+## ~~~ Default ~~~
+% else:
+%for method in (c.rt_globals):
+    ${method} = ${getattr(c.proxy.rpc, method)()}<br />
+% endfor
+
+##    ${c.proxy.rpc}<br />
+## ~~~ End rTorrent ~~~
+% endif
+% endif
+
+##
 ## SANDBOX VIEW
 ##
 % if c.view == "sandbox":
