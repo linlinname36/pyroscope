@@ -56,6 +56,12 @@ class SandboxController(BaseController):
         "timeline": "Timeline",
         "rtorrent": "rTorrent",
     }
+    
+    # Time span in seconds for hot spots
+    BUCKET_SIZE = 240
+
+    # Minimum number of events considered a hotspot
+    HOTSPOT_SIZE = 10
 
     rt_globals = (
         'dht_statistics', 
@@ -133,7 +139,7 @@ class SandboxController(BaseController):
             for item in torrents:
                 if item.is_open:
                     # Store in minute-sized buckets
-                    span_data[item.state_changed // 60 * 60].append(item)
+                    span_data[item.state_changed // self.BUCKET_SIZE * self.BUCKET_SIZE].append(item)
 
                 tied_file = os.path.expanduser(item.tied_to_file)
                 if os.path.exists(tied_file):
@@ -148,11 +154,12 @@ class SandboxController(BaseController):
                     ))
 
             for bucket, items in span_data.items():
-                if len(items) > 10:
+                if len(items) > self.HOTSPOT_SIZE:
                     # hot spot, f.x. happens when you restart rTorrent
                     # since we filtered open torrents only, they had to be started at that point
                     entries = [Bunch(
-                        title = u"Started %d torrents within a minute, seeding them..." % (len(items)),
+                        title = u"Started %d torrents within %d secs, seeding them..." % (
+                            len(items), self.BUCKET_SIZE),
                         start = bucket,
                         text = ",\n".join(shorten(obfuscate(item.name), 20) for item in items[:40])
                              + (", ..." if len(items) > 40 else ""),
