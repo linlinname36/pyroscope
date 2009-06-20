@@ -129,7 +129,6 @@ a.tlink {
 
         border-top: groove 2px #fc0; 
         border-left: groove 2px #fc0; 
-        border-bottom: 0;
         border-right: outset 3px #fc3; 
         -webkit-border-radius: 9px;
         -moz-border-radius-topleft: 14px;
@@ -145,8 +144,8 @@ a.tlink {
 
         padding: .1em .8em;
         padding-top: 0;
-        padding-bottom: .3em;
-        --border-bottom: .3em solid #fc0;
+        padding-bottom: .1em;
+        border-bottom: .3em solid #ff0;
     }
     .tab-bar img {
         --border: 1px solid #f99;
@@ -162,7 +161,6 @@ a.tlink {
         --border-color: #ff3;
     }
     .tab-bar a:hover {
-        padding-bottom: 0;
         border-bottom: .3em solid #f33;
         --border-color: #f33;
         -webkit-border-radius: 15px;
@@ -200,24 +198,6 @@ a.tlink {
     .filter form input {
         /* submit button */
         vertical-align: middle;
-}
-
-
-/*  global & misc
- */
-body {
-    /* main HTML body defaults (after YUI defaults are applied) */
-    font-family: Verdana;
-    background-color: #ffe;
-    color: #000;
-}
-div#bd div {
-    /* div in the main content area */
-        margin-bottom: .8em;
-    }
-    div#bd div:last {
-        /* last div in the main content area */
-        margin-bottom: .05em;
 }
 
 
@@ -329,6 +309,24 @@ div.topmenu {
 }
 
 
+/*  body
+ */
+body {
+    /* main HTML body defaults (after YUI defaults are applied) */
+    font-family: Verdana;
+    background-color: #ffe;
+    color: #000;
+}
+div#bd div {
+    /* div in the main content area */
+        margin-bottom: .8em;
+    }
+    div#bd div:last {
+        /* last div in the main content area */
+        margin-bottom: .05em;
+}
+
+
 /*  footer
  */
 div#ft {
@@ -436,10 +434,13 @@ table.grid th {
         margin: 0;
         --border: 1px dotted #999;
     }
-    .grid .footer td {
-        background-color: #ffe;
-        --border: 1px solid #ffe;
-        --border-top: 1px dotted #999;
+    .grid tr.footer {
+        background-color: #ffd;
+    }
+    .grid .totals span {
+        width: 100%;
+        border-top: 3px double #000;
+        padding-top: 3px;
 }
 
 
@@ -545,4 +546,13 @@ table.grid th {
 .done-clk-10:before { content: url('/img/png/12/clock10.png'); }
 .done-clk-11:before { content: url('/img/png/12/clock11.png'); }
 .done-clk-12:before { content: url('/img/png/12/box-check.png'); }
+
+
+/*  misc
+ */
+#stats-total {
+    float: right;
+    padding-top: 4px;
+    padding-right: 1em;
+}
 

@@ -69,25 +69,31 @@ class StatsController(BaseController):
         #for attr in ("is_open", "complete"):
         #    c.counts[attr] = sum(getattr(item, attr) for item in torrents)
 
+        # Sum up different values per tracker, over all torrents
         c.trackers = {}
         for item in torrents:
-            for domain in item.tracker_domains:
-                domain = domain.lstrip(".*")
-                c.trackers.setdefault(domain, defaultdict(int))
-                c.trackers[domain]["total"] += 1
-                c.trackers[domain]["done" if item.complete else "incomplete"] += 1
-                c.trackers[domain]["open" if item.is_open else "closed"] += 1
-                c.trackers[domain]["prv" if item.is_private else "pub"] += 1
-                if item.down_rate or item.up_rate:
-                    c.trackers[domain]["active"] += 1
-                c.trackers[domain]["up"] += max(0, item.up_total)
-                c.trackers[domain]["down"] += max(0, item.down_total)
-                c.trackers[domain]["ratio"] += item.ratio / 1000.0
-                if item.size_bytes > 0:
-                    c.trackers[domain]["size"] += item.size_bytes
-                if item.down_total:
-                    c.trackers[domain]["down_count"] += 1
-                    c.trackers[domain]["real_ratio"] += item.ratio / 1000.0
+            domain = ", ".join(i.lstrip(".*") for i in sorted(item.tracker_domains))
+            c.trackers.setdefault(domain, defaultdict(int))
+            c.trackers[domain]["total"] += 1
+            c.trackers[domain]["done" if item.complete else "incomplete"] += 1
+            c.trackers[domain]["open" if item.is_open else "closed"] += 1
+            c.trackers[domain]["prv" if item.is_private else "pub"] += 1
+            if item.down_rate or item.up_rate:
+                c.trackers[domain]["active"] += 1
+            c.trackers[domain]["up"] += max(0, item.up_total)
+            c.trackers[domain]["down"] += max(0, item.down_total)
+            c.trackers[domain]["ratio"] += item.ratio / 1000.0
+            if item.size_bytes > 0:
+                c.trackers[domain]["size"] += item.size_bytes
+            if item.down_total:
+                c.trackers[domain]["down_count"] += 1
+                c.trackers[domain]["real_ratio"] += item.ratio / 1000.0
+
+        # Do totals over all fields
+        c.totals = defaultdict(int)
+        for values in c.trackers.values():
+            for key, val in values.items():
+                c.totals[key] += val
 
         return self._render()
 

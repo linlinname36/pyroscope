@@ -26,9 +26,12 @@
         <th>${"ying_yang_rg Average Real RATIO"|h.icon}</th>
         <th>${"percent Average Total RATIO"|h.icon}</th>
     </tr>
+#############################################################################
+## BODY
 % for idx, (domain, counts) in enumerate(sorted(c.trackers.items())):
     <tr class="${'odd' if idx&1 else 'even'}">
-        <td><a href="/view/list/name?filter=*${domain.lstrip('*.')|u}" title="Click for list of torrents on ${domain}">
+        <td><a href="/view/list/name?filter=${' '.join('*'+i.lstrip('*.') for i in domain.split(', '))|u}"
+              title="Click for a list of torrents on ${domain}">
             ${domain|h.obfuscate}
         </a></td>
 % for key in ('total', 'active'):
@@ -52,5 +55,18 @@
         <td class="monoval">${"%6.3f" % (counts['ratio'] / counts['total'])}</td>
     </tr>
 % endfor
+#############################################################################
+## TOTALS
+    <tr class="footer">
+        <td id="stats-total">${"green_sigma.16 TOTALS"|h.icon}</td>
+% for key in ('total', 'active', 'incomplete', 'open', 'closed', 'prv', 'pub'):
+        <td class="totals"><span class="${c.totals[key] | valclass}">${"%5d" % c.totals[key] | h.nowrap}</span></td>
+% endfor
+% for key in ('size', 'up', 'down'):
+        <td class="totals"><span class="${c.totals[key] | valclass}">${c.totals[key]|h.bibyte,h.nowrap}</span></td>
+% endfor
+        <td></td>
+        <td></td>
+    </tr>
 </table>
 
