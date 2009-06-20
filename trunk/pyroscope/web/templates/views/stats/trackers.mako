@@ -18,6 +18,8 @@
         <th>${"box-cross # of INCOMPLETE Torrents"|h.icon}</th>
         <th>${"started # of OPEN Torrents"|h.icon}</th>
         <th>${"stopped # of CLOSED Torrents"|h.icon}</th>
+        <th>${"padlock2 # of PRV Torrents"|h.icon}</th>
+        <th>${"people # of PUB Torrents"|h.icon}</th>
         <th>${"green_up_doc Amount UPLOADED"|h.icon}</th>
         <th>${"green_down_doc Amount DOWNLOADED"|h.icon}</th>
         <th>${"ying_yang_rg Average Real RATIO"|h.icon}</th>
@@ -28,8 +30,19 @@
         <td><a href="/view/list/name?filter=*${domain.lstrip('*.')|u}" title="Click for list of torrents on ${domain}">
             ${domain|h.obfuscate}
         </a></td>
-% for key in ('total', 'active', 'incomplete', 'open', 'closed'):
+% for key in ('total', 'active'):
         <td class="${counts[key] | valclass}">${counts[key]}</td>
+% endfor
+% for key in ('incomplete', 'open', 'closed', 'prv', 'pub'):
+        <td class="${counts[key] | valclass}">
+        % if counts[key]:
+            <a href="/view/list/name?filter=*${domain.lstrip('*.') + ' ' + key | u}&filter_mode=AND" 
+                    title="Click for list of ${key.upper()} torrents on ${domain}">
+                ${counts[key]}</a>
+        % else:
+                ${counts[key]}
+        % endif
+        </td>
 % endfor
 % for key in ('up', 'down'):
         <td class="${counts[key] | valclass}">${counts[key]|h.bibyte}</td>

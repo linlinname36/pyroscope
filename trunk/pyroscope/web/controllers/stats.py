@@ -77,6 +77,7 @@ class StatsController(BaseController):
                 c.trackers[domain]["total"] += 1
                 c.trackers[domain]["done" if item.complete else "incomplete"] += 1
                 c.trackers[domain]["open" if item.is_open else "closed"] += 1
+                c.trackers[domain]["prv" if item.is_private else "pub"] += 1
                 if item.down_rate or item.up_rate:
                     c.trackers[domain]["active"] += 1
                 c.trackers[domain]["up"] += max(0, item.up_total)
