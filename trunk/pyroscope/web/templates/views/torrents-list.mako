@@ -26,8 +26,8 @@
 <table class="grid">
 ## Active torrents header
     <tr class="header">
-        <th>${"cog.16 CONTROL"|h.icon}</th>
         <th>${"info_green.16 STATUS"|h.icon}</th>
+        <th>${"cog.16 CONTROL"|h.icon}</th>
         <th class="wide">${"torrent.16 NAME"|h.icon} TORRENT</th>
         <th>${"green_up_double.16 UP"|h.icon} RATE</th>
         <th>${"green_down_double.16 DOWN"|h.icon} RATE</th>
@@ -40,14 +40,13 @@
 ## Active torrents body
 % for idx, item in enumerate(c.torrents):
     <tr class="${'odd' if idx&1 else 'even'}">
-        <td class="tor-control">
-            <span class="tor-${'stop' if item.is_open else 'start'}"/>
-        </td>
         <td class="tor-state">
-            <span class="tor-${'started' if item.is_open else 'stopped'}"/>
+            <span class="tor-${'started' if item.is_open else 'stopped'}"
+                  title="${'STARTED' if item.is_open else 'STOPPED'}" />
             <span class="done-clk-${completed(item, "%02d", 12.0)}" 
                   title="${completed(item, "%3d%%", 100.0)}" />
-            <span class="tor-${'active' if item.up_rate or item.down_rate else 'idle'}"/>
+            <span class="tor-${'active' if item.up_rate or item.down_rate else 'idle'}" 
+                  title="${'ACTIVE' if item.up_rate or item.down_rate else 'IDLE'}"/>
 % if item.message:
 % if any(h in item.message for h in harmless):
             <img class="tor-msg-info" title="${item.message}" src="/img/png/12/empty.png" width="12" height="12" />
@@ -56,6 +55,13 @@
 % else:
             <img class="tor-msg-warn" title="${item.message}" src="/img/png/12/empty.png" width="12" height="12" />
 % endif
+% endif
+        </td>
+        <td class="tor-control">
+            <span class="tor-${'stop' if item.is_open else 'start'}"
+                  title="${'STOP' if item.is_open else 'START'}" />
+% if not item.is_open:
+            <span class="tor-remove" title="REMOVE" />
 % endif
         </td>
         <td><a class="tlink" href="${h.url_for(controller='torrent', id=item.hash)}" title="${item.tooltip}">

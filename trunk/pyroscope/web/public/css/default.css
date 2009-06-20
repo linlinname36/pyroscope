@@ -520,6 +520,10 @@ table.grid th {
 
 /*  torrent state icons
  */
+.tor-control { white-space: nowrap; }
+.tor-stop:before { content: url('/img/png/12/stop3.png'); }
+.tor-start:before { content: url('/img/png/12/start3.png'); }
+.tor-remove:before { content: url('/img/png/12/remove.png'); }
 .tor-state { white-space: nowrap; }
 .tor-started:before { content: url('/img/png/12/started.png'); }
 .tor-stopped:before { content: url('/img/png/12/stopped.png'); }
