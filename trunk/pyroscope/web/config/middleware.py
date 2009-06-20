@@ -21,6 +21,7 @@ from beaker.middleware import CacheMiddleware, SessionMiddleware
 from paste.cascade import Cascade
 from paste.registry import RegistryManager
 from paste.urlparser import StaticURLParser
+from paste.translogger import TransLogger
 from paste.deploy.converters import asbool
 from pylons import config
 from pylons.middleware import ErrorHandler, StatusCodeRedirect
@@ -31,7 +32,7 @@ from pyroscope.web.config.environment import load_environment
 from pyroscope.util.wsgi import LatencyProfilingMiddleware
 
 
-def make_app(global_conf, full_stack=True, static_files=True, **app_conf):
+def make_app(global_conf, full_stack=True, static_files=True, access_log=False, **app_conf):
     """Create a Pylons WSGI application and return it
 
     ``global_conf``
@@ -66,6 +67,8 @@ def make_app(global_conf, full_stack=True, static_files=True, **app_conf):
     app = CacheMiddleware(app, config)
 
     # CUSTOM MIDDLEWARE HERE (filtered by error handling middlewares)
+    if asbool(access_log):
+        app = TransLogger(app)
     app = LatencyProfilingMiddleware(app, config)
 
     if asbool(full_stack):
