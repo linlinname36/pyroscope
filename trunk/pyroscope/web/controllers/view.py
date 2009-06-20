@@ -45,7 +45,7 @@ def make_tooltip(item):
     """ Make a tooltip from the most important torrent details.
     """
     lines = [
-        "HASH: %s" % item.hash,
+        ##"HASH: %s" % item.hash,
         "RATIO: %.3f" % (item.ratio / 1000.0,),
         "RATE UP/DN: %s / %s" % (fmt.human_size(item.up_rate), fmt.human_size(item.down_rate)),
         "XFER UP/DN: %s / %s" % (fmt.human_size(item.up_total), fmt.human_size(item.down_total)),
