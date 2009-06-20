@@ -83,6 +83,8 @@ class StatsController(BaseController):
                 c.trackers[domain]["up"] += max(0, item.up_total)
                 c.trackers[domain]["down"] += max(0, item.down_total)
                 c.trackers[domain]["ratio"] += item.ratio / 1000.0
+                if item.size_bytes > 0:
+                    c.trackers[domain]["size"] += item.size_bytes
                 if item.down_total:
                     c.trackers[domain]["down_count"] += 1
                     c.trackers[domain]["real_ratio"] += item.ratio / 1000.0

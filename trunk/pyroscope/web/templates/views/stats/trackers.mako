@@ -20,6 +20,7 @@
         <th>${"stopped # of CLOSED Torrents"|h.icon}</th>
         <th>${"padlock2 # of PRV Torrents"|h.icon}</th>
         <th>${"people # of PUB Torrents"|h.icon}</th>
+        <th>${"green_size_doc Total SIZE"|h.icon}</th>
         <th>${"green_up_doc Amount UPLOADED"|h.icon}</th>
         <th>${"green_down_doc Amount DOWNLOADED"|h.icon}</th>
         <th>${"ying_yang_rg Average Real RATIO"|h.icon}</th>
@@ -44,7 +45,7 @@
         % endif
         </td>
 % endfor
-% for key in ('up', 'down'):
+% for key in ('size', 'up', 'down'):
         <td class="${counts[key] | valclass}">${counts[key]|h.bibyte}</td>
 % endfor
         <td class="monoval">${"%6.3f" % (counts['real_ratio'] / counts['down_count']) if counts['down_count'] else ''}</td>
