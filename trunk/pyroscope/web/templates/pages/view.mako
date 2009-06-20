@@ -66,7 +66,7 @@
 % endif
 % if c.messages:
         <a href="#messages">
-            ${'info_red.16 There are %d Tracker Message(s)' % len(c.messages)|h.icon}
+            ${'info_red.16 There are %d tracker message(s)' % len(c.messages)|h.icon}
         </a>
 % endif
     </h3>
