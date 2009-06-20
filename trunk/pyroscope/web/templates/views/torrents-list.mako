@@ -26,6 +26,7 @@
 <table class="grid">
 ## Active torrents header
     <tr class="header">
+        <th>${"cog.16 CONTROL"|h.icon}</th>
         <th>${"info_green.16 STATUS"|h.icon}</th>
         <th class="wide">${"torrent.16 NAME"|h.icon} TORRENT</th>
         <th>${"green_up_double.16 UP"|h.icon} RATE</th>
@@ -39,6 +40,9 @@
 ## Active torrents body
 % for idx, item in enumerate(c.torrents):
     <tr class="${'odd' if idx&1 else 'even'}">
+        <td class="tor-control">
+            <span class="tor-${'stop' if item.is_open else 'start'}"/>
+        </td>
         <td class="tor-state">
             <span class="tor-${'started' if item.is_open else 'stopped'}"/>
             <span class="done-clk-${completed(item, "%02d", 12.0)}" 
@@ -74,6 +78,7 @@
 ## Torrents list footer
 % if c.up_total != "" or c.down_total != "":
     <tr class="footer">
+        <td></td>
         <td></td>
         <td>
             <small><em>Refreshes every <strong>${c.refresh_rate}</strong> seconds. 

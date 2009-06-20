@@ -70,15 +70,15 @@
     <linearGradient
        id="linearGradient6130">
       <stop
-         style="stop-color:#232600;stop-opacity:1;"
+         style="stop-color:#efff2d;stop-opacity:1;"
          offset="0"
          id="stop6132" />
       <stop
          id="stop6138"
          offset="0.5"
-         style="stop-color:#a4a837;stop-opacity:1;" />
+         style="stop-color:#d6de00;stop-opacity:1;" />
       <stop
-         style="stop-color:#c2c436;stop-opacity:1;"
+         style="stop-color:#fcff12;stop-opacity:1;"
          offset="0.75"
          id="stop6140" />
       <stop
