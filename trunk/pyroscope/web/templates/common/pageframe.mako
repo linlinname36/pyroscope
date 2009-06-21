@@ -40,6 +40,24 @@
             <span>
                 ${"clock.16 TIME"|h.icon} ${h.now()}
             </span>
+            <span>
+                ${"up_down.16 RATE UP/DN"|h.icon} ${'N/A'}
+            </span>
+            <span>
+                ${"up_slots.16 SLOTS UP"|h.icon} ${'N/A'}
+            </span>
+            <span>
+                ${"down_slots.16 SLOTS DN"|h.icon} ${'N/A'}
+            </span>
+            <span>
+                ${"http.16 HTTP"|h.icon} ${'N/A'}
+            </span>
+            <span>
+                ${"socket.16 SOCKETS"|h.icon} ${'N/A'}
+            </span>
+            <span>
+                ${"storage.16 FILES"|h.icon} ${'N/A'}
+            </span>
         </div>
 ##  Top-level menu
         <div class="topmenu">
