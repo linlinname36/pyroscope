@@ -75,7 +75,7 @@
         <td class="monoval">${"%6.3f" % item.ratio_not0}</td>
         <td>
 % for domain in item.tracker_domains:
-            <a href="/view/list/name?filter=${domain|u}" title="Click for list of torrents on ${domain}">
+            <a href="/view/list/name?filter=*${domain.lstrip('.*')|u}" title="Click for list of torrents on ${domain}">
                 ${domain|h.obfuscate}</a> &nbsp;
 % endfor        
         </td>
