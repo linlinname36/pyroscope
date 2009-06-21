@@ -36,7 +36,7 @@ def _make_state(item):
     """ Generate string torrent states.
     """
     yield "OPEN" if item.is_open else "CLOSED"
-    if item.complete: yield "DONE"
+    yield "DONE" if item.complete else "INCOMPLETE"
     if item.message: yield "MSG"
     yield "PRV" if item.is_private else "PUB"
 
