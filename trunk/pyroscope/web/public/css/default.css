@@ -229,6 +229,9 @@ div.topstats {
         white-space: nowrap;
         margin-right: 1em;
     }
+    .topstats span.statsval {
+        margin-right: 0;
+    }
     .topstats img {
         /* icons in the top stats */
         vertical-align: middle;

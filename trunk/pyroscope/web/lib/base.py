@@ -23,13 +23,36 @@ from pylons import tmpl_context as c
 from pylons.controllers import WSGIController
 from pylons.templating import render_mako as render
 
+from pyroscope.util.types import Bunch
+from pyroscope.engines import rtorrent
+
 
 class BaseController(WSGIController):
+
+    GLOBAL_STATE = {
+        "max_up_rate":      "get_upload_rate",
+        "max_down_rate":    "get_download_rate",
+        "max_up_slots":     "get_max_uploads_global",
+        "max_down_slots":   "get_max_downloads_global",
+        "max_http":         "get_max_open_http",
+        "max_sockets":      "get_max_open_sockets",
+        "max_files":        "get_max_open_files",
+        "max_mem":          "get_max_memory_usage",
+    }
+
+
+    def __init__(self):
+        self.proxy = rtorrent.Proxy()
+
 
     def __call__(self, environ, start_response):
         """ Invoke the Controller.
         """
         c._debug = []
+
+        c.engine = Bunch()
+        for attr, method in self.GLOBAL_STATE.items():
+            c.engine[attr] = getattr(self.proxy.rpc, method)()
 
         # WSGIController.__call__ dispatches to the Controller method
         # the request is routed to. This routing information is

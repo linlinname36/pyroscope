@@ -31,6 +31,7 @@
                          value="Search..." size="25" autocomplete="off" />
                 </form>
             </span>
+          ##<br />
             <span>
                 ${"console.16 ENGINE ID"|h.icon} ${g.engine_id}
                 % if g.xmlrpc_bug:
@@ -40,23 +41,46 @@
             <span>
                 ${"clock.16 TIME"|h.icon} ${h.now()}
             </span>
+          ##<br />
             <span>
-                ${"up_down.16 RATE UP/DN"|h.icon} ${'N/A'}
+                ${"up_rate.16 RATE UP"|h.icon}
+                <span class="statsval" id="engine_up_rate">?</span>
+                / ${c.engine.max_up_rate|h.bibyte}
             </span>
             <span>
-                ${"up_slots.16 SLOTS UP"|h.icon} ${'N/A'}
+                ${"down_rate.16 RATE DOWN"|h.icon}
+                <span class="statsval" id="engine_down_rate">?</span> 
+                / ${c.engine.max_down_rate|h.bibyte}
             </span>
             <span>
-                ${"down_slots.16 SLOTS DN"|h.icon} ${'N/A'}
+                ${"up_slots.16 SLOTS UP"|h.icon} 
+                <span class="statsval" id="engine_up_slots">?</span> 
+                / ${c.engine.max_up_slots}
             </span>
             <span>
-                ${"http.16 HTTP"|h.icon} ${'N/A'}
+                ${"down_slots.16 SLOTS DOWN"|h.icon}
+                <span class="statsval" id="engine_down_slots">?</span>
+                / ${c.engine.max_down_slots}
             </span>
             <span>
-                ${"socket.16 SOCKETS"|h.icon} ${'N/A'}
+                ${"http.16 HTTP"|h.icon}
+                <span class="statsval" id="engine_http">?</span>
+                / ${c.engine.max_http}
             </span>
             <span>
-                ${"storage.16 FILES"|h.icon} ${'N/A'}
+                ${"socket.16 SOCKETS"|h.icon}
+                <span class="statsval" id="engine_sockets">?</span>
+                / ${c.engine.max_sockets}
+            </span>
+            <span>
+                ${"storage.16 FILES"|h.icon}
+                <span class="statsval" id="engine_files">?</span>
+                / ${c.engine.max_files}
+            </span>
+            <span>
+                ${"memory.16 MEMORY"|h.icon}
+                <span class="statsval" id="engine_mem">?</span>
+                / ${c.engine.max_mem|h.bibyte}
             </span>
         </div>
 ##  Top-level menu
