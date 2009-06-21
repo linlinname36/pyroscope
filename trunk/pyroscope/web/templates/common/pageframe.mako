@@ -82,6 +82,12 @@
                 <span class="statsval" id="engine_mem">?</span>
                 / ${c.engine.max_mem|h.bibyte}
             </span>
+            <span>
+                ${"network.16 DHT"|h.icon}
+                ${"led_green.12 ENABLED" if c.engine.dht else "led_red.12 DISABLED"|h.icon}
+                <span class="statsval" id="engine_dht">?</span>
+                [${c.engine.dht_port}]
+            </span>
         </div>
 ##  Top-level menu
         <div class="topmenu">
@@ -90,11 +96,11 @@
                 <li><a href="/view">${"torrent.24"|h.icon} Torrents</a></li>
                 <li><a href="/stats">${"chart2.24"|h.icon} Stats</a></li>
                 <li><a href="/sandbox">${"flask.24"|h.icon} Lab</a></li>
-% if self.attr.page_help():
-                <li><a href="/help/wiki/${self.attr.page_help()|u}">${"help.24"|h.icon} Help</a></li>
-% else:
-                <li><a href="/help">${"help.24"|h.icon}Index</a></li>
-% endif
+                % if self.attr.page_help():
+                    <li><a href="/help/wiki/${self.attr.page_help()|u}">${"help.24"|h.icon} Help</a></li>
+                % else:
+                    <li><a href="/help">${"help.24"|h.icon}Index</a></li>
+                % endif
             </ul>
         </div>
         <noscript>
@@ -112,15 +118,6 @@
     </div>
 ##  Footer
     <div id="ft" class="rounded"><!-- footer -->
-
-% if 0: # XXX disable until pages are AJAXified to avoid contant reload
-        <span class="ohloh">
-            <script type="text/javascript" src="http://www.ohloh.net/p/346666/widgets/project_users_logo.js"></script>
-            <small><strong><em>ohloh.net</em></strong></small><br />
-            <script type="text/javascript" src="http://www.ohloh.net/p/346666/widgets/project_thin_badge.js"></script>
-       </span>
-% endif
-
         <small><strong><em>Powered by</em></strong></small>
         &#160; <a href="http://www.python.org/">${"python.png Python_Powered 42x40"|h.img}</a>
         &#160; <a href="http://pylonshq.com/">${"pylons.png Pylons_Powered 59x40"|h.img}</a>

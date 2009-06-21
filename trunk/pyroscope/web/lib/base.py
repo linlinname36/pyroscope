@@ -38,6 +38,7 @@ class BaseController(WSGIController):
         "max_sockets":      "get_max_open_sockets",
         "max_files":        "get_max_open_files",
         "max_mem":          "get_max_memory_usage",
+        "dht_port":         "get_dht_port",
     }
 
 
@@ -51,6 +52,8 @@ class BaseController(WSGIController):
         c._debug = []
 
         c.engine = Bunch()
+        c.engine["dht"] = self.proxy.rpc.dht_statistics()["dht"] != "disable"
+
         for attr, method in self.GLOBAL_STATE.items():
             c.engine[attr] = getattr(self.proxy.rpc, method)()
 
