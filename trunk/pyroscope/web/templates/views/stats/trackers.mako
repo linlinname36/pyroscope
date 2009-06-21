@@ -34,7 +34,7 @@
               title="Click for a list of torrents on ${domain}">
             ${domain|h.obfuscate}
         </a></td>
-% for key in ('total', 'active'):
+% for key in ('loaded', 'active'):
         <td class="${counts[key] | valclass}">${counts[key]}</td>
 % endfor
 % for key in ('incomplete', 'open', 'closed', 'prv', 'pub'):
@@ -52,18 +52,18 @@
         <td class="${counts[key] | valclass}">${counts[key]|h.bibyte}</td>
 % endfor
         <td class="monoval">${"%6.3f" % (counts['real_ratio'] / counts['down_count']) if counts['down_count'] else ''}</td>
-        <td class="monoval">${"%6.3f" % (counts['ratio'] / counts['total'])}</td>
+        <td class="monoval">${"%6.3f" % (counts['ratio'] / counts['loaded'])}</td>
     </tr>
 % endfor
 #############################################################################
 ## TOTALS
     <tr class="footer">
         <td id="stats-total">${"green_sigma.16 TOTALS"|h.icon}</td>
-% for key in ('total', 'active', 'incomplete', 'open', 'closed', 'prv', 'pub'):
-        <td class="totals"><span class="${c.totals[key] | valclass}">${"%5d" % c.totals[key] | h.nowrap}</span></td>
+% for key in ('loaded', 'active', 'incomplete', 'open', 'closed', 'prv', 'pub'):
+        <td class="totals"><span title="Total ${key.upper()}" class="${c.totals[key] | valclass}">${"%5d" % c.totals[key] | h.nowrap}</span></td>
 % endfor
 % for key in ('size', 'up', 'down'):
-        <td class="totals"><span class="${c.totals[key] | valclass}">${c.totals[key]|h.bibyte,h.nowrap}</span></td>
+        <td class="totals"><span title="Total ${key.upper()}" class="${c.totals[key] | valclass}">${c.totals[key]|h.bibyte,h.nowrap}</span></td>
 % endfor
         <td></td>
         <td></td>

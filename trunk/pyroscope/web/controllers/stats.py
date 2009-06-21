@@ -74,7 +74,7 @@ class StatsController(BaseController):
         for item in torrents:
             domain = ", ".join(i.lstrip(".*") for i in sorted(item.tracker_domains))
             c.trackers.setdefault(domain, defaultdict(int))
-            c.trackers[domain]["total"] += 1
+            c.trackers[domain]["loaded"] += 1
             c.trackers[domain]["done" if item.complete else "incomplete"] += 1
             c.trackers[domain]["open" if item.is_open else "closed"] += 1
             c.trackers[domain]["prv" if item.is_private else "pub"] += 1
