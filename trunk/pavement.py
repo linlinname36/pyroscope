@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """ PyroScope - Python Torrent Tools.
 
     PyroScope is a collection of tools for the BitTorrent protocol and especially the rTorrent client.
