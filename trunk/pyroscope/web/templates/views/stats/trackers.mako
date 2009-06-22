@@ -40,7 +40,7 @@
 % for key in ('incomplete', 'open', 'closed', 'prv', 'pub'):
         <td class="${counts[key] | valclass}">
         % if counts[key]:
-            <a href="/view/list/name?filter=*${domain.lstrip('*.') + ' ' + key | u}&filter_mode=AND" 
+            <a href="/view/list/name?filter=*${' '.join('*'+i.lstrip('*.') for i in domain.split(', ')) + ' ' + key | u}&filter_mode=AND" 
                     title="Click for list of ${key.upper()} torrents on ${domain}">
                 ${counts[key]}</a>
         % else:
