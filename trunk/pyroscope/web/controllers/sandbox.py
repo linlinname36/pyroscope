@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """ PyroScope - Controller "sandbox".
 
     Copyright (c) 2009 The PyroScope Project <pyroscope.project@gmail.com>
@@ -18,9 +19,9 @@
 """
 
 import os
-import cgi
 import time
 import logging
+from cgi import escape
 from collections import defaultdict
 
 from pylons import request, response, session, tmpl_context as c
@@ -42,6 +43,12 @@ def shorten(text, maxlen=40, tail=5):
     if len(text) > maxlen:
         text = text[:maxlen - 3 - tail] + "..." + text[-tail:]
     return text
+
+
+def quoted(text):
+    """ Put text in quotes.
+    """
+    return u"«%s»" % text
 
 
 class SandboxController(BaseController):
@@ -137,20 +144,30 @@ class SandboxController(BaseController):
 
             span_data = defaultdict(list)
             for item in torrents:
+                title = shorten(obfuscate(item.name))
                 if item.is_open:
                     # Store in minute-sized buckets
                     span_data[item.state_changed // self.BUCKET_SIZE * self.BUCKET_SIZE].append(item)
+                elif item.message:
+                    # Add closed torrents with a message (like unregistered ones)
+                    torrent_data.append(u'<event start="%s" title="Stopped %s">'
+                            u'Stopped %s, possibly due to %s @ %s</event>' % (
+                        time.strftime("%c", time.localtime(item.state_changed)),
+                        escape(quoted(title), quote=True),
+                        escape(quoted(obfuscate(item.name))),
+                        escape(quoted(item.message)),
+                        ", ".join(escape(obfuscate(i)) for i in item.tracker_domains),
+                    ))
 
                 tied_file = os.path.expanduser(item.tied_to_file)
                 if os.path.exists(tied_file):
-                    title = shorten(obfuscate(item.name))
                     torrent_data.append(u'<event start="%s" title="Downloaded %s">'
                             u'Downloaded metafile for %s</event>' % (
                         time.strftime("%c", time.localtime(
                             os.path.getmtime(tied_file)
                         )),
-                        cgi.escape(title, quote=True),
-                        cgi.escape(obfuscate(item.name)),
+                        escape(quoted(title), quote=True),
+                        escape(quoted(obfuscate(item.name))),
                     ))
 
             for bucket, items in span_data.items():
@@ -169,7 +186,7 @@ class SandboxController(BaseController):
                     entries = [Bunch(
                             title = u"%s %s" % (
                                 u"Seeding" if item.complete else u"Leeching",
-                                shorten(obfuscate(item.name)) ),
+                                quoted(shorten(obfuscate(item.name))) ),
                             start = item.state_changed,
                             text = u"NAME: %s | %s" % (
                                 obfuscate(item.name), make_tooltip(item)),
@@ -179,8 +196,8 @@ class SandboxController(BaseController):
                 torrent_data.extend([u'<event start="%s" end="%s" title="%s">%s</event>' % (
                         time.strftime(u"%c", time.localtime(entry.start)),
                         c.now,
-                        cgi.escape(entry.title, quote=True),
-                        cgi.escape(entry.text),
+                        escape(entry.title, quote=True),
+                        escape(entry.text),
                     ) for entry in entries
                 ])
 
