@@ -18,6 +18,7 @@
 """
 
 import logging
+from cgi import escape
 
 from pylons import request, response, session, tmpl_context as c
 from pylons.controllers.util import abort, redirect_to
@@ -30,6 +31,8 @@ LOG = logging.getLogger(__name__)
 class SearchController(BaseController):
 
     def index(self):
-        # Return a rendered template
-        return render("pages/search.mako")
+        # Quick&dirty search by filtering...
+        query = request.params.get('query')
+        return redirect_to('/view/list/name?filter=%s&filter_mode=AND' % escape(query.encode("utf8")))
+        ##return render("pages/search.mako")
 
