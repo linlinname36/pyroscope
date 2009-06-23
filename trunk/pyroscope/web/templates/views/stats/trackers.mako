@@ -22,7 +22,7 @@
         <th>${"people # of PUB Torrents"|h.icon}</th>
         <th>${"green_size_doc Total SIZE"|h.icon}</th>
         <th>${"green_up_doc Amount UPLOADED"|h.icon}</th>
-        <th>${"green_down_doc Amount DOWNLOADED"|h.icon}</th>
+        <th>${"red_down_doc Amount DOWNLOADED"|h.icon}</th>
         <th>${"ying_yang_rg Average Real RATIO"|h.icon}</th>
         <th>${"percent Average Total RATIO"|h.icon}</th>
     </tr>
