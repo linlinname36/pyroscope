@@ -83,8 +83,7 @@
                 / ${c.engine.max_mem|h.bibyte}
             </span>
             <span>
-                ${"network.16 DHT"|h.icon}
-                ${"led_green.12 ENABLED" if c.engine.dht else "led_red.12 DISABLED"|h.icon}
+                ${"network_green.16 DHT ENABLED" if c.engine.dht else "network_red.16 DHT DISABLED"|h.icon}
                 <span class="statsval" id="engine_dht">?</span>
                 [${c.engine.dht_port}]
             </span>
