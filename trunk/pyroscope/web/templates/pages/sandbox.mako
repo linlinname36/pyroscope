@@ -1,6 +1,8 @@
 <%inherit file="/common/pageframe.mako"/>
 <%!
+    from cgi import escape
     from pprint import pformat
+    from pylons import request, config
     from pylons import tmpl_context as c
     from pyroscope.web.lib import helpers as h
 
@@ -11,6 +13,11 @@
     """
 
     sizes = (12, 16, 24, 32, 48)
+
+    request_attrs = (
+        "params", "environ", "headers", "cookies",
+        "host", "scheme", "script_name", "path_info", "method",
+    )
 %>
 
 <h1>PyroScope Labs</h1>
@@ -112,12 +119,50 @@
 ##
 % if c.view == "globals":
 ##${repr(g)}
+<h3>Globals</h3>
 <dl style="margin-left: 0;">
-% for k, v in g.items():
+% for k, v in sorted(g.items()):
   % if not k.startswith('_'):
     <dt>${k}</dt>
-    <dd><code>${repr(g[k]) or "N/A"}</code></dd>
+    <dd><code>${repr(g[k] or "N/A")}</code></dd>
   % endif
+% endfor
+</dl>
+<h3>Config</h3>
+##${repr(config)}
+<dl style="margin-left: 0;">
+% for k, v in sorted(config.items()):
+  <dt>${k}</dt>
+  <dd><code>
+  % if isinstance(getattr(config, k, None), (dict, list, tuple)):
+    ${'<br />'.join(escape(pformat(config[k])).replace(' ', '&#160;').splitlines())|n}
+  % else:
+    ${repr(config.get(k, "N/A"))}
+  % endif
+  </code></dd>
+% endfor
+</dl>
+% endif
+
+##
+## REQUEST VIEW
+##
+% if c.view == "request":
+${repr(request)}
+<dl style="margin-left: 0;">
+% for k in request_attrs:
+  <dt>
+    ${k} ${repr(type(getattr(request, k, None)))}
+    ${getattr(getattr(request, k), '__module__', '')}
+  </dt>
+  <dd><code>
+  ##% if type(getattr(request, k, None)) == dict:
+  % if isinstance(getattr(request, k, None), (dict, list, tuple)):
+    ${'<br />'.join(escape(pformat(getattr(request, k))).replace(' ', '&#160;').splitlines())|n}
+  % else:
+    ${repr(getattr(request, k, "N/A"))}
+  % endif
+</code></dd>
 % endfor
 </dl>
 % endif

@@ -58,6 +58,7 @@ class SandboxController(BaseController):
         "ohloh": "ohloh.net",
         "icons": "Icons",
         "globals": "Globals",
+        "request": "Request",
         "helpers": "Helpers",
         "sandbox": "Sandbox",
         "timeline": "Timeline",
