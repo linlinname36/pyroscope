@@ -230,10 +230,10 @@ ${repr(request)}
 ##view.size_not_visible('main') = ${c.proxy.rpc.view.size_not_visible('main')}<br />
 
 % for method in (c.rt_globals):
-    ${method} = ${getattr(c.proxy.rpc, method)()}<br />
+    ${method} = ${repr(getattr(c.proxy.rpc, method)())}<br />
 % endfor
 
-##    ${c.proxy.rpc}<br />
+##    ${repr(c.proxy.rpc)}<br />
 ## ~~~ End rTorrent ~~~
 % endif
 % endif
