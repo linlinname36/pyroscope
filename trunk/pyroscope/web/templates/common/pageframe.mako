@@ -3,6 +3,7 @@
     page_title = lambda: "*** PAGE TITLE NOT SET ***"
     page_head = lambda: ""
     page_help = lambda: ""
+    page_onload = lambda: ""
 %>
 <html>
 ##  HTML head
@@ -14,7 +15,7 @@
         ${self.attr.page_head()|n}
     </head>
 
-    <body><div id="doc3" class="yui-skin-sam yui-t5">
+    <body${' onload="%s();"' % self.attr.page_onload() if self.attr.page_onload() else ''|n}><div id="doc3" class="yui-skin-sam yui-t5">
     <div id="hd" class="rounded"><!-- header -->
 ##  Logo
         <div class="logo"><a href="http://pyroscope.googlecode.com/">

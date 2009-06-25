@@ -30,6 +30,40 @@ from pyroscope.engines import rtorrent
 LOG = logging.getLogger(__name__)
 
 
+def domain_key(item):
+    return ", ".join(i.lstrip(".*") for i in sorted(item.tracker_domains))
+
+def get_tracker_stats(torrents):
+    """ Sum up different values per tracker, over all torrents.
+    """
+    tracker_stats = {}
+    for item in torrents:
+        domain = domain_key(item)
+        tracker_stats.setdefault(domain, defaultdict(int))
+        tracker_stats[domain]["loaded"] += 1
+        tracker_stats[domain]["done" if item.complete else "incomplete"] += 1
+        tracker_stats[domain]["open" if item.is_open else "closed"] += 1
+        tracker_stats[domain]["prv" if item.is_private else "pub"] += 1
+        if item.down_rate or item.up_rate:
+            tracker_stats[domain]["active"] += 1
+        tracker_stats[domain]["up"] += max(0, item.up_total)
+        tracker_stats[domain]["down"] += max(0, item.down_total)
+        tracker_stats[domain]["ratio"] += item.ratio / 1000.0
+        if item.size_bytes > 0:
+            tracker_stats[domain]["size"] += item.size_bytes
+        if item.down_total:
+            tracker_stats[domain]["down_count"] += 1
+            tracker_stats[domain]["real_ratio"] += item.ratio / 1000.0
+
+    # Do totals over all fields
+    totals = defaultdict(int)
+    for values in tracker_stats.values():
+        for key, val in values.items():
+            totals[key] += val
+
+    return tracker_stats, totals
+
+
 class StatsController(BaseController):
 
     VIEWS = (
@@ -70,30 +104,7 @@ class StatsController(BaseController):
         #    c.counts[attr] = sum(getattr(item, attr) for item in torrents)
 
         # Sum up different values per tracker, over all torrents
-        c.trackers = {}
-        for item in torrents:
-            domain = ", ".join(i.lstrip(".*") for i in sorted(item.tracker_domains))
-            c.trackers.setdefault(domain, defaultdict(int))
-            c.trackers[domain]["loaded"] += 1
-            c.trackers[domain]["done" if item.complete else "incomplete"] += 1
-            c.trackers[domain]["open" if item.is_open else "closed"] += 1
-            c.trackers[domain]["prv" if item.is_private else "pub"] += 1
-            if item.down_rate or item.up_rate:
-                c.trackers[domain]["active"] += 1
-            c.trackers[domain]["up"] += max(0, item.up_total)
-            c.trackers[domain]["down"] += max(0, item.down_total)
-            c.trackers[domain]["ratio"] += item.ratio / 1000.0
-            if item.size_bytes > 0:
-                c.trackers[domain]["size"] += item.size_bytes
-            if item.down_total:
-                c.trackers[domain]["down_count"] += 1
-                c.trackers[domain]["real_ratio"] += item.ratio / 1000.0
-
-        # Do totals over all fields
-        c.totals = defaultdict(int)
-        for values in c.trackers.values():
-            for key, val in values.items():
-                c.totals[key] += val
+        c.trackers, c.totals = get_tracker_stats(torrents)
 
         return self._render()
 

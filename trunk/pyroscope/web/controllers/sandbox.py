@@ -26,9 +26,10 @@ from collections import defaultdict
 
 from pylons import request, response, session, tmpl_context as c
 from pylons.controllers.util import abort, redirect_to
+from pylons.decorators import jsonify
 
 from pyroscope.util.types import Bunch
-from pyroscope.web.lib.helpers import obfuscate
+from pyroscope.web.lib.helpers import obfuscate, bibyte
 from pyroscope.web.lib.base import render, BaseController
 from pyroscope.web.controllers.view import make_tooltip
 from pyroscope.engines import rtorrent
@@ -54,7 +55,8 @@ def quoted(text):
 class SandboxController(BaseController):
 
     VIEWS = {
-        "yui": "YUI Tests",
+        "yui": "YUI",
+        "jit": "JIT",
         "ohloh": "ohloh.net",
         "icons": "Icons",
         "globals": "Globals",
@@ -127,6 +129,88 @@ class SandboxController(BaseController):
     def __before__(self):
         self.now = time.localtime(time.time())
         c.now = time.strftime("%c", self.now)
+
+
+    @jsonify
+    def jit(self):
+        ##import copy
+        from math import log
+        from pyroscope.web.controllers.stats import domain_key, get_tracker_stats
+
+        # Get rTorrent proxy and a torrents list
+        proxy = rtorrent.Proxy()
+        torrents = list(rtorrent.View(proxy, 'main').items())
+        tracker_stats, totals = get_tracker_stats(torrents)
+
+        # Create root node
+        root = Bunch(
+            id = "root",
+            name = proxy.id,
+            data = {"$area": 100},
+            children = [],  
+        )
+        
+        # Add tracker hierarchy
+        trackers = set(domain_key(item) for item in torrents)
+        trackers_node = dict(
+            id = "trackers",
+            name = "Data Size per Tracker",
+            data = {"$area": 50},
+            children = [{
+                    "id": "trk-%s" % tracker.replace('*', '_').replace('.', '-')
+                        .replace(',', '').replace(' ', ''),  
+                    "name": "%s [%d / %s / %.1f%%]" % (
+                        tracker, tracker_stats[tracker]["loaded"],
+                        bibyte(tracker_stats[tracker]["size"]),
+                        100.0 * tracker_stats[tracker]["size"] / totals["size"],
+                    ),
+                    "data": {
+                        ##"$area": tracker_stats[tracker]["loaded"] or 1,
+                        "$area": tracker_stats[tracker]["size"],
+                        "$color": int(100 * log(max(1, 100 * tracker_stats[tracker]["size"] // totals["size"])) / log(100)),
+                    },  
+                    "children": [],    
+                }
+                for tracker in sorted(trackers)
+            ],  
+        )
+        root.children.append(trackers_node)
+
+        def copy_children(scope, children):
+            for item in children:
+                item = item.copy()
+                item["id"] = "%s-%s" % (scope, item["id"])
+                yield item
+
+        # Status selection
+        status_node = dict(
+            id = "status",
+            name = "Status",
+            data = {"$area": 50},
+            children = [{
+                    "id": "status-%s" % status,  
+                    "name": "%s [%d]" % (status, totals[status]),
+                    "data": {"$area": totals[status] or 1},  
+                    "children": [], ##list(copy_children(status, trackers_node["children"])),
+                }
+                for status in ('active', 'done', 'incomplete', 'open', 'closed', 'prv', 'pub')
+            ],  
+        )
+        ##root.children.append(status_node)
+
+        # Recurse over tree and add areas
+        def area_sum(tree):
+            area = 0
+            for node in tree["children"]:
+                if "$area" not in node["data"]:
+                    area_sum(node)
+                area += node["data"]["$area"]
+
+            tree["data"]["$area"] = area
+            return tree
+        
+        # Return graph data
+        return area_sum(root)
 
     
     def data(self, id):

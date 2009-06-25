@@ -10,7 +10,13 @@
     page_help = lambda: "LaboratoryView"
     page_head = lambda: """
         <script src="http://static.simile.mit.edu/timeline/api-2.3.0/timeline-api.js?bundle=true" type="text/javascript"></script>
+
+        <!--[if IE]>  
+        <script type="text/javascript" src="/js/jit/excanvas.js"></script>  
+        <![endif]-->  
+        <script type="text/javascript" src="/js/jit/jit.js" ></script>  
     """
+    page_onload = lambda: "onLoad"
 
     sizes = (12, 16, 24, 32, 48)
 
@@ -268,11 +274,154 @@ ${repr(request)}
    tl = Timeline.create(document.getElementById("timeline"), bandInfos);
    Timeline.loadXML("${'/sandbox/data/timeline.xml'|h.echo}", function(xml, url) { eventSource.loadXML(xml, url); });
  }
- 
- onLoad();
 </script>
 
+##~~~ TIMELINE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% endif
+
+##
+## JIT VIEW
+##
+% if c.view == "jit":
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+<h2>JavaScript InfoVis Toolkit</h2>
+<a href="http://thejit.org/">Homepage</a>
+|
+<select id="tree-switch">
+    <option>left</option>
+    <option>top</option>
+    <option>right</option>
+    <option>bottom</option>
+</select>
+
+##<div id="st-infovis" class="infovis-root"></div>  
+<div id="tm-infovis" class="infovis-root"></div>  
+   
+<script>
+
+function treeMap(json) {
+    //var infovis = document.getElementById('infovis');
+    //var w = infovis.offsetWidth, h = infovis.offsetHeight;
+    //infovis.style.width = w + 'px';
+    //infovis.style.height = h + 'px';
+
+    //var tree = new TM.SliceAndDice({
+    //var tree = new TM.Strip({
+    var tree = new TM.Squarified({
+        // Where to inject the Treemap  
+        rootId: 'tm-infovis',
+
+        Color: {
+            // Allow coloring
+            allow: true,
+
+            // Select a value range for the $color
+            // property. Default's to -100 and 100.
+            minValue: 0,
+            maxValue: 100,
+
+            // Set color range. Default's to reddish and
+            // greenish. It takes an array of three
+            // integers as R, G and B values.
+            minColorValue: [0, 0, 0],
+            maxColorValue: [224, 224, 96]
+        }
+    });  
+
+    // load json data
+    tree.loadJSON(json);
+}
+
+function spaceTree(json) {
+    // Create a new canvas instance.
+    var canvas = new Canvas('mycanvas', {
+        // Where to inject canvas. Any HTML container will do.
+        'injectInto': 'st-infovis',
+
+        // Set width and height, default's to 200.
+        'width': 900,
+        'height': 500,
+
+        // Set a background color in case the browser
+        // does not support clearing a specific area.
+        'backgroundColor': '#ffd'
+    });
+
+    // Create a new tree instance
+    //var tree = new Hypertree(canvas, {
+    var tree = new ST(canvas, {
+        // set node and edge colors
+        Node: {
+            color: '#6ff'
+        },
+        Edge: {
+            color: '#33f'
+        },
+
+        // Add an event handler to the node when creating it.  
+        onCreateLabel: function(label, node) {  
+            label.id = node.id;  
+            label.innerHTML = node.name;  
+            label.onclick = function() {  
+                tree.onClick(node.id);  
+            };  
+        },  
+    });
+
+    // load json data
+    tree.loadJSON(json);
+
+    // compute node positions and layout
+    tree.compute();
+
+    // optional: make a translation of the tree
+    //Tree.Geometry.translate(tree.tree, new Complex(-200, 0), "startPos");
+
+    // Emulate a click on the root node.
+    tree.onClick(tree.root);
+
+    // Add input handler to switch spacetree orientation.
+    var select = document.getElementById('tree-switch');
+    select.onchange = function() {
+        var index = select.selectedIndex;
+        var orientation = select.options[index].text;
+        select.disabled = true;
+        tree.switchPosition(orientation, {
+            onComplete: function() {
+                select.disabled = false;
+            }
+        });
+    };
+}
+
+function onLoad() {
+    var callbacks = {
+        // Successful XHR response handler
+        success: function(o) {
+            var data = [];
+
+            // Use the JSON Utility to parse the data returned from the server
+            try {
+                data = YAHOO.lang.JSON.parse(o.responseText);
+            }
+            catch (x) {
+                alert("JSON Parse failed (" + x + ") for " + o.responseText + "!");
+                return;
+            }
+
+            treeMap(data);
+            //spaceTree(data);
+        }
+    };
+
+    // Make the call to the server for JSON data
+    YAHOO.util.Connect.asyncRequest('GET', "/sandbox/jit/spacetree.json", callbacks);
+};
+    
+</script>
+
+##~~~ JIT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % endif
 
 ##

@@ -16,4 +16,5 @@ See the http://code.google.com/p/pyroscope/wiki/QuickStartGuide.
 ACKNOWLEDGEMENTS
 
 xmlrpc2scgi module by Glenn Washburn (GPLv2 licensed)
+JIT by Nicolas Garcia Belmonte, http://thejit.org/ (BSD licensed)
 
