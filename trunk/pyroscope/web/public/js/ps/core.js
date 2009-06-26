@@ -82,6 +82,8 @@ var stats_refresh = function() {
     var clock = document.getElementById('clock');
     var up_rate = document.getElementById('engine_up_rate');
     var down_rate = document.getElementById('engine_down_rate');
+    var mem = document.getElementById('engine_mem');
+    var dht = document.getElementById('engine_dht');
     var stats_url = '/json/engine_state';
 
     YAHOO.util.Connect.asyncRequest('GET', stats_url, {
@@ -106,6 +108,8 @@ var stats_refresh = function() {
                     clock.innerHTML = iso_date.substring(0, 19);
                     up_rate.innerHTML = bibyte(engine_state.engine.up_rate);
                     down_rate.innerHTML = bibyte(engine_state.engine.down_rate);
+                    mem.innerHTML = bibyte(engine_state.engine.mem);
+                    dht.innerHTML = engine_state.engine.dht.active;
                 }
             }
         },
