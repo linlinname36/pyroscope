@@ -72,7 +72,11 @@ var bibyte = function(size) {
 
 /** Periodically update global state in header.
  */
-var stats_refresh_rate = 1000;
+var stats = {
+    timer: 0,
+    active: 1,
+    refresh_rate: 1000,
+}
 
 var stats_refresh = function() {
     var clock = document.getElementById('clock');
@@ -83,7 +87,9 @@ var stats_refresh = function() {
     YAHOO.util.Connect.asyncRequest('GET', stats_url, {
         success: function(o) {
             // Trigger timer for next update
-            setTimeout("stats_refresh()", stats_refresh_rate);
+            if (stats.active) {
+                stats.timer = setTimeout("stats_refresh()", stats.refresh_rate);
+            }
 
             // Handle response
         	if (o.responseText !== undefined) {
@@ -105,12 +111,33 @@ var stats_refresh = function() {
         },
         failure: function(o) {
             // Trigger timer with increased delay
-            setTimeout("stats_refresh()", 5*stats_refresh_rate);
+            if (stats.active) {
+                stats.timer = setTimeout("stats_refresh()", 5*stats.refresh_rate);
+            }
         },
     }); 
 };
 
-var stats_onload = function() {
-    setTimeout("stats_refresh()", 250);
-}
+var stats_on = function(e, stats) {
+    var clock_img = document.getElementById('clock_img');
+    clock_img.src = "/img/png/16/clock_green.png";
+
+    stats.active = 1;
+    clearTimeout(stats.timer);
+    stats.timer = setTimeout("stats_refresh()", 250);
+};
+
+var stats_off = function(e, stats) {
+    var clock_img = document.getElementById('clock_img');
+    clock_img.src = "/img/png/16/clock_red.png";
+
+    stats.active = 0;
+    clearTimeout(stats.timer);
+};
+
+var stats_activate = function() {
+    YAHOO.util.Event.onDOMReady(stats_on, stats);
+    YAHOO.util.Event.addFocusListener(document, stats_on, stats);
+    YAHOO.util.Event.addBlurListener(document, stats_off, stats);
+};
 

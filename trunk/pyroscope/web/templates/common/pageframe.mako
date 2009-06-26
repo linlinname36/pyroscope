@@ -16,7 +16,7 @@
 
         <!- Register global events -->
         <script>
-            YAHOO.util.Event.onDOMReady(stats_onload);
+            stats_activate();
         </script>
     </head>
 
@@ -35,7 +35,8 @@
                 % endif
             </span>
             <span>
-                ${"clock.16 TIME"|h.icon} <span id="clock">${h.now()}</span>
+                <img id="clock_img" src="/img/png/16/clock_red.png" width="16" height="16" title="TIME" />
+                <span id="clock">${h.now()}</span>
             </span>
             <span>
                 ${"up_rate.16 RATE UP"|h.icon}
