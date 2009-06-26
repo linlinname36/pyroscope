@@ -17,6 +17,7 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
 
+import time
 import logging
 
 from pylons import request, response, session, tmpl_context as c
@@ -39,7 +40,10 @@ class JsonController(BaseController):
         """ Return global state of torrent engine, mainly for updating
             the header display.
         """
-        return rtorrent.get_global_state()
+        return dict(
+            engine = rtorrent.get_global_state(),
+            clock = int(time.time()),
+        )            
 
 
     def index(self):

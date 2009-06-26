@@ -38,9 +38,27 @@ class TorrentAttributeError(Error, AttributeError):
     """
 
 
+GLOBAL_STATE_FIELDS = dict(
+    up_rate = "get_up_rate",
+    down_rate = "get_down_rate", 
+    #up_slots = "", 
+    #down_slots = "",
+    #http = "",
+    #sockets = "",
+    #files = "",
+    mem = "get_memory_usage",
+    dht = "dht_statistics",
+)
+
 def get_global_state():
-    return {
-    }
+    fields = GLOBAL_STATE_FIELDS.items()
+    args = [{'methodName': method, 'params': []} for _, method in fields]
+    results = Proxy().rpc.system.multicall(args)
+    
+    return dict((key, val[0])
+        for (key, _), val in zip(fields, results)
+        if isinstance(val, (list, tuple)) # else it's a fault!
+    )
 
 
 class Proxy(object):
