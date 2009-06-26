@@ -30,7 +30,7 @@
         <th>${"cog.16 CONTROL"|h.icon}</th>
         <th class="wide">${"torrent.16 NAME"|h.icon} TORRENT</th>
         <th>${"green_up_double.16 UP"|h.icon} RATE</th>
-        <th>${"green_down_double.16 DOWN"|h.icon} RATE</th>
+        <th>${"red_down_double.16 DOWN"|h.icon} RATE</th>
         <th>${"green_size_doc.16 DATA"|h.icon} SIZE</th>
         <th>${"green_up_doc.16 UP"|h.icon} XFER</th>
         <th>${"red_down_doc.16 DOWN"|h.icon} XFER</th>
