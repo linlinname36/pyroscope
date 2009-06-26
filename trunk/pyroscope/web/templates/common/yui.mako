@@ -1,12 +1,21 @@
 <%doc>
     INCLUDE: YUI Loading
 
-    XXX Make a switch that allows to use an aggregate version.
 </%doc>
 <%!
+    yui_use_configurator = 0
     yui_dev_tools = 0
 %>
+% if yui_use_configurator:
+## Configurator: combined minified files
+## http://developer.yahoo.com/yui/articles/hosting/?base&button&calendar&connection&container&containercore&dom&event&fonts&grids&json&reset&yahoo&MIN
+<!-- Combo-handled YUI CSS files: -->
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset-fonts-grids/reset-fonts-grids.css&2.7.0/build/base/base-min.css&2.7.0/build/assets/skins/sam/skin.css">
+<!-- Combo-handled YUI JS files: -->
+<script type="text/javascript" src="http://yui.yahooapis.com/combo?2.7.0/build/yahoo-dom-event/yahoo-dom-event.js&2.7.0/build/element/element-min.js&2.7.0/build/button/button-min.js&2.7.0/build/calendar/calendar-min.js&2.7.0/build/connection/connection-min.js&2.7.0/build/container/container-min.js&2.7.0/build/json/json-min.js"></script>
 
+% else:
+## Single expanded files
 <!--CSS Foundation: (also partially aggegrated in reset-fonts-grids.css; does not include base.css)--> 
 <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset/reset-min.css"> 
 <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/base/base-min.css"> 
@@ -92,3 +101,4 @@ YUI download for details on each of the aggregate files and their contents):-->
 ##YAHOO.widget.Chart.SWFURL = "http://yui.yahooapis.com/2.7.0/build/charts/assets/charts.swf"; 
 ##</script>
 
+% endif

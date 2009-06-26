@@ -16,7 +16,6 @@
         <![endif]-->  
         <script type="text/javascript" src="/js/jit/jit.js" ></script>  
     """
-    page_onload = lambda: "onLoad"
 
     sizes = (12, 16, 24, 32, 48)
 
@@ -259,32 +258,34 @@ ${repr(request)}
 <div id="timeline" style="height: 500px; border: 1px solid #aaa"></div>
 
 <script>
- var tl;
- function onLoad() {
-   var eventSource = new Timeline.DefaultEventSource();
-   var bandInfos = [
-     Timeline.createBandInfo({
-         eventSource:    eventSource,
-         date:           "${c.now}",
-         width:          "90%", 
-         intervalUnit:   Timeline.DateTime.DAY, 
-         intervalPixels: 500
-     }),
-     Timeline.createBandInfo({
-         overview:       true,
-         eventSource:    eventSource,
-         date:           "${c.now}",
-         width:          "10%", 
-         intervalUnit:   Timeline.DateTime.MONTH, 
-         intervalPixels: 100
-     })
-   ];
-   bandInfos[1].syncWith = 0;
-   bandInfos[1].highlight = true;
+var tl;
+function time_line() {
+    var eventSource = new Timeline.DefaultEventSource();
+    var bandInfos = [
+        Timeline.createBandInfo({
+            eventSource:    eventSource,
+            date:           "${c.now}",
+            width:          "90%", 
+            intervalUnit:   Timeline.DateTime.DAY, 
+            intervalPixels: 500
+        }),
+        Timeline.createBandInfo({
+            overview:       true,
+            eventSource:    eventSource,
+            date:           "${c.now}",
+            width:          "10%", 
+            intervalUnit:   Timeline.DateTime.MONTH, 
+            intervalPixels: 100
+        })
+    ];
+    bandInfos[1].syncWith = 0;
+    bandInfos[1].highlight = true;
    
-   tl = Timeline.create(document.getElementById("timeline"), bandInfos);
-   Timeline.loadXML("${'/sandbox/data/timeline.xml'|h.echo}", function(xml, url) { eventSource.loadXML(xml, url); });
- }
+    tl = Timeline.create(document.getElementById("timeline"), bandInfos);
+    Timeline.loadXML("${'/sandbox/data/timeline.xml'|h.echo}", function(xml, url) { eventSource.loadXML(xml, url); });
+}
+
+YAHOO.util.Event.onDOMReady(time_line);
 </script>
 
 ##~~~ TIMELINE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -406,7 +407,7 @@ function spaceTree(json) {
     };
 }
 
-function onLoad() {
+function jit_load() {
     var callbacks = {
         // Successful XHR response handler
         success: function(o) {
@@ -429,7 +430,8 @@ function onLoad() {
     // Make the call to the server for JSON data
     YAHOO.util.Connect.asyncRequest('GET', "/sandbox/jit/spacetree.json", callbacks);
 };
-    
+
+YAHOO.util.Event.onDOMReady(jit_load);
 </script>
 
 ##~~~ JIT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

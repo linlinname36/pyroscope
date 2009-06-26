@@ -3,7 +3,6 @@
     page_title = lambda: "*** PAGE TITLE NOT SET ***"
     page_head = lambda: ""
     page_help = lambda: ""
-    page_onload = lambda: ""
 %>
 <html>
 ##  HTML head
@@ -12,10 +11,16 @@
         <%include file="/common/yui.mako"/>
 
         <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/css/default.css">
+        <script type="text/javascript" src="/js/ps/core.js"></script>
         ${self.attr.page_head()|n}
+
+        <!- Register global events -->
+        <script>
+            YAHOO.util.Event.onDOMReady(stats_onload);
+        </script>
     </head>
 
-    <body${' onload="%s();"' % self.attr.page_onload() if self.attr.page_onload() else ''|n}><div id="doc3" class="yui-skin-sam yui-t5">
+    <body><div id="doc3" class="yui-skin-sam yui-t5">
     <div id="hd" class="rounded"><!-- header -->
 ##  Logo
         <div class="logo"><a href="http://pyroscope.googlecode.com/">
@@ -24,25 +29,14 @@
 ##  Search box & stats
         <div class="topstats">
             <span>
-                <form method="GET" action="${h.url_for(controller='search')}">
-                  <input type="image" src="/img/png/16/search.png" width="16" height="16" />
-                  <input type="text" id="search" name="query" 
-                         onfocus="if (this.value == 'Search...') this.value='';" 
-                         onblur="if (this.value == '') this.value='Search...';" 
-                         value="Search..." size="25" autocomplete="off" />
-                </form>
-            </span>
-          ##<br />
-            <span>
                 ${"console.16 ENGINE ID"|h.icon} ${g.engine_id}
                 % if g.xmlrpc_bug:
                     ${"bio-hazard.16 Your rTorrent installation has the XMLRPC bug!"|h.icon}
                 % endif
             </span>
             <span>
-                ${"clock.16 TIME"|h.icon} ${h.now()}
+                ${"clock.16 TIME"|h.icon} <span id="clock">${h.now()}</span>
             </span>
-          ##<br />
             <span>
                 ${"up_rate.16 RATE UP"|h.icon}
                 <span class="statsval" id="engine_up_rate">?</span>
@@ -53,6 +47,7 @@
                 <span class="statsval" id="engine_down_rate">?</span> 
                 / ${c.engine.max_down_rate|h.bibyte}
             </span>
+          <br />
             <span>
                 ${"up_slots.16 SLOTS UP"|h.icon} 
                 <span class="statsval" id="engine_up_slots">?</span> 
@@ -87,6 +82,15 @@
                 ${"network_green.16 DHT ENABLED" if c.engine.dht else "network_red.16 DHT DISABLED"|h.icon}
                 <span class="statsval" id="engine_dht">?</span>
                 [${c.engine.dht_port}]
+            </span>
+            <span id="search">
+                <form method="GET" action="${h.url_for(controller='search')}">
+                  <input type="image" src="/img/png/16/search.png" width="16" height="16" />
+                  <input type="text" id="search" name="query" 
+                         onfocus="if (this.value == 'Search...') this.value='';" 
+                         onblur="if (this.value == '') this.value='Search...';" 
+                         value="Search..." size="25" autocomplete="off" />
+                </form>
             </span>
         </div>
 ##  Top-level menu

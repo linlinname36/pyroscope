@@ -53,7 +53,7 @@ GLOBAL_STATE_FIELDS = dict(
 def get_global_state():
     fields = GLOBAL_STATE_FIELDS.items()
     args = [{'methodName': method, 'params': []} for _, method in fields]
-    results = Proxy().rpc.system.multicall(args)
+    results = Proxy.create().rpc.system.multicall(args)
     
     return dict((key, val[0])
         for (key, _), val in zip(fields, results)
@@ -62,6 +62,15 @@ def get_global_state():
 
 
 class Proxy(object):
+
+    instance = None
+
+    @classmethod
+    def create(cls):
+        # XXX: Thread-safety?!
+        if cls.instance is None:
+            cls.instance = Proxy()
+        return cls.instance
 
     def __init__(self):
         self.rpc = xmlrpc2scgi.RTorrentXMLRPCClient(config.scgi_url)

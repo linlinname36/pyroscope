@@ -242,7 +242,8 @@ div.topstats {
     }
     .topstats form {
         /* the search form */
-        display: inline;
+        --display: inline;
+        margin-top: .3em;
     }
     .topstats form input {
         /* the search submit button */
