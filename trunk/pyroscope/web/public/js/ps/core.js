@@ -74,7 +74,7 @@ var bibyte = function(size) {
  */
 var stats = {
     timer: 0,
-    active: 1,
+    active: 0,
     refresh_rate: 1000,
 }
 
@@ -140,7 +140,7 @@ var stats_off = function(e, stats) {
 };
 
 var stats_activate = function() {
-    YAHOO.util.Event.onDOMReady(stats_on, stats);
+    //YAHOO.util.Event.onDOMReady(stats_on, stats);
     YAHOO.util.Event.addFocusListener(document, stats_on, stats);
     YAHOO.util.Event.addBlurListener(document, stats_off, stats);
 };
