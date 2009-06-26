@@ -31,6 +31,7 @@ from pylons.decorators import jsonify
 from pyroscope.util.types import Bunch
 from pyroscope.web.lib.helpers import obfuscate, bibyte
 from pyroscope.web.lib.base import render, BaseController
+from pyroscope.web.controllers.json import JsonController
 from pyroscope.web.controllers.view import make_tooltip
 from pyroscope.engines import rtorrent
 
@@ -59,6 +60,7 @@ class SandboxController(BaseController):
         "jit": "JIT",
         "ohloh": "ohloh.net",
         "icons": "Icons",
+        "json": "JSON",
         "globals": "Globals",
         "request": "Request",
         "helpers": "Helpers",
@@ -362,6 +364,13 @@ class SandboxController(BaseController):
                         c.proxy.rpc.system.methodSignature(method), 
                         c.proxy.rpc.system.methodHelp(method),
                     )))
+        elif c.view == "json":
+            c.json_api = dict((method, getattr(getattr(JsonController, method), '__doc__'))
+                for method in dir(JsonController)
+                if not method.startswith('_') 
+                and method != 'index'
+                and callable(getattr(JsonController, method))
+            )
 
         # Return a rendered template
         return render("pages/sandbox.mako")

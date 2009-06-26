@@ -38,6 +38,11 @@ class TorrentAttributeError(Error, AttributeError):
     """
 
 
+def get_global_state():
+    return {
+    }
+
+
 class Proxy(object):
 
     def __init__(self):

@@ -187,6 +187,17 @@ ${repr(request)}
 % endif
 
 ##
+## JSON VIEW
+##
+% if c.view == "json":
+<dl style="margin-left: 0;">
+% for name, docs in sorted(c.json_api.items()):
+  <dt><a href="${h.url_for(controller='json', action=name)}">${name}</a></dt><dd>${docs or 'N/A'}</dd>
+% endfor
+</dl>
+% endif
+
+##
 ## RTORRENT VIEW
 ##
 % if c.view == "rtorrent":
