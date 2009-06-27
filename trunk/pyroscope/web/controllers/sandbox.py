@@ -222,15 +222,10 @@ class SandboxController(BaseController):
         if id == "timeline.xml":
             response.headers['Content-Type'] = 'application/xml; charset="utf-8"'
 
-            proxy = rtorrent.Proxy()
+            proxy = rtorrent.Proxy.create()
             torrents = list(rtorrent.View(proxy, 'main').items())
             torrent_data = []
-
-            rtorrent_start = None
-            if proxy.rpc.get_session_lock():
-                lock_file = os.path.join(proxy.rpc.get_session(), "rtorrent.lock")
-                if os.path.exists(lock_file):
-                    rtorrent_start = os.path.getmtime(lock_file)
+            rtorrent_start = rtorrent.get_startup()
 
             span_data = defaultdict(list)
             for item in torrents:

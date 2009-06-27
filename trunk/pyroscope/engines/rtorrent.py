@@ -61,6 +61,17 @@ def get_global_state():
     )
 
 
+
+def get_startup():
+    proxy = Proxy.create()
+    rtorrent_start = None
+    if proxy.rpc.get_session_lock():
+        lock_file = os.path.join(proxy.rpc.get_session(), "rtorrent.lock")
+        if os.path.exists(lock_file):
+            rtorrent_start = os.path.getmtime(lock_file)
+    return rtorrent_start
+
+
 class Proxy(object):
 
     instance = None

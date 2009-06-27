@@ -23,6 +23,7 @@ from pylons import tmpl_context as c
 from pylons.controllers import WSGIController
 from pylons.templating import render_mako as render
 
+from pyroscope.util import fmt
 from pyroscope.util.types import Bunch
 from pyroscope.engines import rtorrent
 
@@ -43,7 +44,7 @@ class BaseController(WSGIController):
 
 
     def __init__(self):
-        self.proxy = rtorrent.Proxy()
+        self.proxy = rtorrent.Proxy.create()
 
 
     def __call__(self, environ, start_response):
@@ -52,6 +53,9 @@ class BaseController(WSGIController):
         c._debug = []
 
         c.engine = Bunch()
+        c.engine.startup = fmt.human_duration(rtorrent.get_startup())
+
+        #XXX: Refresh this by JS (stats_refresh)
         c.engine["dht"] = self.proxy.rpc.dht_statistics()["dht"] != "disable"
 
         for attr, method in self.GLOBAL_STATE.items():

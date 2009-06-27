@@ -30,10 +30,16 @@
         <div class="topstats">
             <span>
                 ${"console.16 ENGINE ID"|h.icon} ${g.engine_id}
+                % if c.engine.startup:
+                    started ${c.engine.startup}
+                %endif
                 % if g.xmlrpc_bug:
                     ${"bio-hazard.16 Your rTorrent installation has the XMLRPC bug!"|h.icon}
                 % endif
+
             </span>
+          ##XXX Do this by CSS!
+          <br />
             <span>
                 <img id="clock_img" src="/img/png/16/clock_red.png" width="16" height="16" title="TIME" />
                 <span id="clock">${h.now()}</span>
@@ -48,6 +54,7 @@
                 <span class="statsval" id="engine_down_rate">?</span> 
                 / ${c.engine.max_down_rate|h.bibyte}
             </span>
+          ##XXX Do this by CSS!
           <br />
             <span>
                 ${"up_slots.16 SLOTS UP"|h.icon} 

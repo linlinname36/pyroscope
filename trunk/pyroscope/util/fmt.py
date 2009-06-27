@@ -17,6 +17,7 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
 
+import time
 import logging
 
 LOG = logging.getLogger(__name__)
@@ -33,4 +34,26 @@ def human_size(size):
             return "%6.1f %s" % (size, unit)
 
     return "%6.1f GiB" % size
+
+
+def human_duration(time1, time2=None):
+    """ Return a human-readable representation of a time delta.
+    """
+    if time2 is None:
+        time2 = time.time()
+
+    duration = time1 - time2
+    direction = " ago" if duration < 0 else " from now"
+    duration = abs(duration)
+    parts = (
+        ("days", duration // 86400),
+        ("hours", duration // 3600 % 24),
+        ("mins", duration // 60 % 60),
+        ("secs", duration % 60),
+    )
+        
+    return ", ".join("%d %s" % (val, key)
+        for key, val in parts
+        if val
+    ) + direction
 
