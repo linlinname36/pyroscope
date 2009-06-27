@@ -35,6 +35,8 @@
         <th>${"green_up_doc.16 UP"|h.icon} XFER</th>
         <th>${"red_down_doc.16 DOWN"|h.icon} XFER</th>
         <th>${"ying_yang_rg.16 RATIO"|h.icon}</th>
+        <th>${"seeder.16 Visible SEEDS"|h.icon}</th>
+        <th>${"leecher.16 Visible LEECHES"|h.icon}</th>
         <th class="wide"><a href="/stats/trackers">${"tracker.16 DOMAIN | Click for tracker stats."|h.icon}</a> TRACKER</th>
     </tr>
 ## Active torrents body
@@ -73,6 +75,8 @@
         <td class="${item.up_total|valclass}">${item.up_total|h.bibyte}</td>
         <td class="${item.down_total|valclass}">${h.bibyte(item.down_total)}</td>
         <td class="monoval">${"%6.3f" % item.ratio_not0}</td>
+        <td class="${item.seeders|valclass}">${item.seeders}</td>
+        <td class="${item.leeches|valclass}">${item.leeches}</td>
         <td>
 % for domain in item.tracker_domains:
             <a href="/view/list/name?filter=*${domain.lstrip('.*')|u}" title="Click for list of torrents on ${domain}">
@@ -98,6 +102,8 @@
         </td>
         <td class="${c.up_total|valclass}">${"green_sigma.16 SUM UP"|h.icon} ${c.up_total|h.bibyte}</td>
         <td class="${c.down_total|valclass}">${"green_sigma.16 SUM DOWN"|h.icon} ${c.down_total|h.bibyte}</td>
+        <td></td>
+        <td></td>
         <td></td>
         <td></td>
         <td></td>

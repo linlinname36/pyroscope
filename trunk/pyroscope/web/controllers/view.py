@@ -116,6 +116,16 @@ class ViewController(BaseController):
             c.up_total += item.up_rate
             c.down_total += item.down_rate
 
+            ##d.get_peers_accounted()
+            ##d.get_peers_connected()
+            ##d.get_peers_max()
+            ##d.get_peers_min()
+            ##d.get_peers_not_connected() 
+            #XXX This seems reliable only for active torrents
+            item.seeders = item.peers_complete + (item.is_open and item.complete)
+            item.leeches = (item.peers_not_connected + item.peers_connected
+                - item.peers_complete + (item.is_open and not item.complete))
+
             item.tooltip = make_tooltip(item)
             item.ratio_not0 = item.ratio / 1000.0 or 1E-12
             item.domains = ", ".join(item.tracker_domains)
