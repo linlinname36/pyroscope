@@ -108,6 +108,7 @@
                 <li><a id="topmenu-current" href="/index">${"home.24"|h.icon} Home</a></li>
                 <li><a href="/view">${"torrent.24"|h.icon} Torrents</a></li>
                 <li><a href="/stats">${"chart2.24"|h.icon} Stats</a></li>
+                <li><a href="/admin">${"wrench.24"|h.icon} Admin</a></li>
                 <li><a href="/sandbox">${"flask.24"|h.icon} Lab</a></li>
                 % if self.attr.page_help():
                     <li><a href="/help/wiki/${self.attr.page_help()|u}">${"help.24"|h.icon} Help</a></li>
@@ -124,6 +125,15 @@
 % for line in c._debug:
     ${line}<br />
 % endfor
+% if c._messages:
+    <div class="messages">
+        <ul class="rounded">
+            % for msg in c._messages:
+            <li>${msg}</li>
+            % endfor
+        </ul>
+    </div>
+% endif
 ##
 ##  Body of derived page
     <div id="bd"><!-- body -->

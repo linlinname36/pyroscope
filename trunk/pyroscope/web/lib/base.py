@@ -33,6 +33,8 @@ class BaseController(WSGIController):
     def __call__(self, environ, start_response):
         """ Invoke the Controller.
         """
+        c._messages = []
+
         # WSGIController.__call__ dispatches to the Controller method
         # the request is routed to. This routing information is
         # available in environ['pylons.routes_dict']
