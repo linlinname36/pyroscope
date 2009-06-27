@@ -27,7 +27,7 @@ from pylons.decorators import jsonify
 from pyroscope.web.lib.base import render, BaseController
 from pyroscope.engines import rtorrent
 
-LOG = logging.getLogger(__name__)
+log = logging.getLogger(__name__)
 
 
 class JsonController(BaseController):

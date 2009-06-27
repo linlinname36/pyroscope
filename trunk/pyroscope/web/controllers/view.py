@@ -29,7 +29,7 @@ from pyroscope.util import fmt
 from pyroscope.util.types import Bunch
 from pyroscope.engines import rtorrent
 
-LOG = logging.getLogger(__name__)
+log = logging.getLogger(__name__)
 
 
 def _make_state(item):

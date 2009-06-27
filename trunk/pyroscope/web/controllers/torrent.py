@@ -25,7 +25,7 @@ from pylons.controllers.util import abort, redirect_to
 from pyroscope.web.lib.base import render, PageController
 from pyroscope.engines import rtorrent
 
-LOG = logging.getLogger(__name__)
+log = logging.getLogger(__name__)
 
 
 class TorrentController(PageController):

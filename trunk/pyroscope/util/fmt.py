@@ -20,7 +20,7 @@
 import time
 import logging
 
-LOG = logging.getLogger(__name__)
+log = logging.getLogger(__name__)
 
 
 def human_size(size):

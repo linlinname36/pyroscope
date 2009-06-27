@@ -35,7 +35,7 @@ from pyroscope.web.controllers.json import JsonController
 from pyroscope.web.controllers.view import make_tooltip
 from pyroscope.engines import rtorrent
 
-LOG = logging.getLogger(__name__)
+log = logging.getLogger(__name__)
 
 
 

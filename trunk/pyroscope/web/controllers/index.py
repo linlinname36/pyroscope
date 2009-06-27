@@ -25,7 +25,7 @@ from pylons.controllers.util import abort, redirect_to
 from pyroscope.web.lib.base import render, PageController
 from pyroscope.web.lib.wiki import WikiPage
 
-LOG = logging.getLogger(__name__)
+log = logging.getLogger(__name__)
 
 
 class IndexController(PageController):
