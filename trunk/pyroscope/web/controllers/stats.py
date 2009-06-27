@@ -23,7 +23,7 @@ from collections import defaultdict
 from pylons import request, response, session, tmpl_context as c
 from pylons.controllers.util import abort, redirect_to
 
-from pyroscope.web.lib.base import render, BaseController
+from pyroscope.web.lib.base import render, PageController
 from pyroscope.util.types import Bunch
 from pyroscope.engines import rtorrent
 
@@ -64,7 +64,7 @@ def get_tracker_stats(torrents):
     return tracker_stats, totals
 
 
-class StatsController(BaseController):
+class StatsController(PageController):
 
     VIEWS = (
         Bunch(action="trackers", icon="tracker.12 Torrent Stats per Tracker", title="Trackers"),

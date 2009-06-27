@@ -5,7 +5,7 @@
 #
 [DEFAULT]
 debug = true
-email_to = you@yourdomain.com
+#email_to = you@yourdomain.com
 smtp_server = localhost
 error_email_from = pyroscope@localhost
 
@@ -18,6 +18,8 @@ port = 8042
 use = egg:pyroscope
 full_stack = true
 static_files = true
+
+pyroscope.timezone = +00:00
 
 cache_dir = %(here)s/www-data
 beaker.session.key = pyroscope

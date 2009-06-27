@@ -22,13 +22,13 @@ import logging
 from pylons import request, response, session, tmpl_context as c
 from pylons.controllers.util import abort, redirect_to
 
-from pyroscope.web.lib.base import render, BaseController
+from pyroscope.web.lib.base import render, PageController
 from pyroscope.web.lib.wiki import WikiPage
 
 LOG = logging.getLogger(__name__)
 
 
-class HelpController(BaseController):
+class HelpController(PageController):
     """ The help pages controller.
     """
 

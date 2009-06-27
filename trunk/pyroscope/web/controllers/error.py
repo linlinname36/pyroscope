@@ -8,6 +8,7 @@ from webhelpers.html.builder import literal
 
 from pyroscope.web.lib.base import BaseController
 
+
 class ErrorController(BaseController):
     """ Generates error documents as and when they are required.
 

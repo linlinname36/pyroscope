@@ -24,7 +24,7 @@ from paste.deploy.converters import asbool
 from pylons import request, response, session, tmpl_context as c
 from pylons.controllers.util import abort, redirect_to
 
-from pyroscope.web.lib.base import render, BaseController
+from pyroscope.web.lib.base import render, PageController
 from pyroscope.util import fmt
 from pyroscope.util.types import Bunch
 from pyroscope.engines import rtorrent
@@ -56,7 +56,7 @@ def make_tooltip(item):
     return u"\n\u00A0|\u00A0".join(lines)
 
 
-class ViewController(BaseController):
+class ViewController(PageController):
 
     IGNORE_MESSAGES = [
         "Timeout was reached",

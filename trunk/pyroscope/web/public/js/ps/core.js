@@ -84,6 +84,7 @@ var stats_refresh = function() {
     var down_rate = document.getElementById('engine_down_rate');
     var mem = document.getElementById('engine_mem');
     var dht = document.getElementById('engine_dht');
+    var dht_active = document.getElementById('dht_active');
     var stats_url = '/json/engine_state';
 
     YAHOO.util.Connect.asyncRequest('GET', stats_url, {
@@ -104,12 +105,20 @@ var stats_refresh = function() {
                     YAHOO.log("Error parsing JSON from " + stats_url, "error", "stats_refresh");
                 }
                 if (engine_state !== undefined) {
-                    var iso_date = new Date(engine_state.clock * 1000).toISO8601String(5, "+02:00", " ");
+                    // Update header fields
+                    var iso_date = new Date(engine_state.clock * 1000).toISO8601String(5, _timezone, " ");
                     clock.innerHTML = iso_date.substring(0, 19);
                     up_rate.innerHTML = bibyte(engine_state.engine.up_rate);
                     down_rate.innerHTML = bibyte(engine_state.engine.down_rate);
                     mem.innerHTML = bibyte(engine_state.engine.mem);
                     dht.innerHTML = engine_state.engine.dht.active;
+                    if (engine_state.engine.dht.dht == "disable") {
+                        dht_active.src = "/img/png/16/network_red.png";
+                        dht_active.title = "DHT DISABLED";
+                    } else {
+                        dht_active.src = "/img/png/16/network_green.png";
+                        dht_active.title = "DHT ENABLED";
+                    }
                 }
             }
         },

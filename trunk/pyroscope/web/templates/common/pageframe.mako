@@ -16,6 +16,7 @@
 
         <!- Register global events -->
         <script>
+            var _timezone = "${c._timezone}";
             stats_activate();
         </script>
     </head>
@@ -87,7 +88,7 @@
                 / ${c.engine.max_mem|h.bibyte}
             </span>
             <span>
-                ${"network_green.16 DHT ENABLED" if c.engine.dht else "network_red.16 DHT DISABLED"|h.icon}
+                <img id="dht_active" src="/img/png/16/network_red.png" width="16" height="16" title="DHT?" />
                 <span class="statsval" id="engine_dht">?</span>
                 [${c.engine.dht_port}]
             </span>

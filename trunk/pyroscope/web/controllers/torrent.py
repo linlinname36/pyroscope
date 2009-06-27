@@ -22,13 +22,13 @@ import logging
 from pylons import request, response, session, tmpl_context as c
 from pylons.controllers.util import abort, redirect_to
 
-from pyroscope.web.lib.base import render, BaseController
+from pyroscope.web.lib.base import render, PageController
 from pyroscope.engines import rtorrent
 
 LOG = logging.getLogger(__name__)
 
 
-class TorrentController(BaseController):
+class TorrentController(PageController):
 
     def __init__(self):
         self.proxy = rtorrent.Proxy()

@@ -30,7 +30,7 @@ from pylons.decorators import jsonify
 
 from pyroscope.util.types import Bunch
 from pyroscope.web.lib.helpers import obfuscate, bibyte
-from pyroscope.web.lib.base import render, BaseController
+from pyroscope.web.lib.base import render, PageController
 from pyroscope.web.controllers.json import JsonController
 from pyroscope.web.controllers.view import make_tooltip
 from pyroscope.engines import rtorrent
@@ -53,7 +53,7 @@ def quoted(text):
     return u"«%s»" % text
 
 
-class SandboxController(BaseController):
+class SandboxController(PageController):
 
     VIEWS = {
         "yui": "YUI",

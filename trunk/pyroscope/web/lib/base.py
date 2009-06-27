@@ -19,7 +19,7 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
 
-from pylons import tmpl_context as c
+from pylons import request, config, tmpl_context as c
 from pylons.controllers import WSGIController
 from pylons.templating import render_mako as render
 
@@ -29,6 +29,17 @@ from pyroscope.engines import rtorrent
 
 
 class BaseController(WSGIController):
+
+    def __call__(self, environ, start_response):
+        """ Invoke the Controller.
+        """
+        # WSGIController.__call__ dispatches to the Controller method
+        # the request is routed to. This routing information is
+        # available in environ['pylons.routes_dict']
+        return WSGIController.__call__(self, environ, start_response)
+
+
+class PageController(BaseController):
 
     GLOBAL_STATE = {
         "max_up_rate":      "get_upload_rate",
@@ -51,18 +62,14 @@ class BaseController(WSGIController):
         """ Invoke the Controller.
         """
         c._debug = []
+        c._timezone = config['pyroscope.timezone']
 
         c.engine = Bunch()
         c.engine.startup = fmt.human_duration(rtorrent.get_startup())
 
-        #XXX: Refresh this by JS (stats_refresh)
-        c.engine["dht"] = self.proxy.rpc.dht_statistics()["dht"] != "disable"
-
+        #XXX Use multimethod, or get from poller
         for attr, method in self.GLOBAL_STATE.items():
             c.engine[attr] = getattr(self.proxy.rpc, method)()
 
-        # WSGIController.__call__ dispatches to the Controller method
-        # the request is routed to. This routing information is
-        # available in environ['pylons.routes_dict']
-        return WSGIController.__call__(self, environ, start_response)
+        return BaseController.__call__(self, environ, start_response)
 
