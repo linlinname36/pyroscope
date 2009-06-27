@@ -65,7 +65,7 @@ class PageController(BaseController):
         c._timezone = config['pyroscope.timezone']
 
         c.engine = Bunch()
-        c.engine.startup = fmt.human_duration(rtorrent.get_startup())
+        c.engine.startup = fmt.human_duration(rtorrent.get_startup(), precision=3)
 
         #XXX Use multimethod, or get from poller
         for attr, method in self.GLOBAL_STATE.items():

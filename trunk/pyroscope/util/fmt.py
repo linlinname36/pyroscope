@@ -36,7 +36,7 @@ def human_size(size):
     return "%6.1f GiB" % size
 
 
-def human_duration(time1, time2=None):
+def human_duration(time1, time2=None, precision=0):
     """ Return a human-readable representation of a time delta.
     """
     if time2 is None:
@@ -45,14 +45,23 @@ def human_duration(time1, time2=None):
     duration = time1 - time2
     direction = " ago" if duration < 0 else " from now"
     duration = abs(duration)
-    parts = (
-        ("days", duration // 86400),
+    parts = [
+        ("weeks", duration // (7*86400)),
+        ("days", duration // 86400 % 7),
         ("hours", duration // 3600 % 24),
         ("mins", duration // 60 % 60),
         ("secs", duration % 60),
-    )
+    ]
+    
+    # Kill leading zero parts
+    while len(parts) > 1 and parts[0][1] == 0:
+        parts = parts[1:]
+
+    # Limit to # of parts given by precision 
+    if precision:
+        parts = parts[:precision]
         
-    return ", ".join("%d %s" % (val, key)
+    return ", ".join("%d %s" % (val, key[:-1] if val == 1 else key)
         for key, val in parts
         if val
     ) + direction
