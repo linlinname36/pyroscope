@@ -128,6 +128,7 @@ class Download(Bunch):
                         .replace(".www.",".*.")
                         .lstrip(".")
                     for url in self.tracker_urls)
+                value.discard('')
             else:
                 accessor = ("" if name.startswith("is_") else "get_") + name
                 try:
