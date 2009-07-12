@@ -17,5 +17,5 @@ so expect the latter after there's actually some data to please the eye.</div>
 Report any bugs to the <a href="http://code.google.com/p/pyroscope/issues/entry">Google Code Issue Tracker</a>.
 </em></div>
 
-${c.page.html|n}
+${c.page.html}
 

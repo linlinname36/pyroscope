@@ -179,7 +179,7 @@ ${repr(request)}
 <dl style="margin-left: 0;">
 % for k in dir(h):
   %if not k.startswith('_'):
-    <dt>${k}</dt><dd><code>${(getattr(h, k).__doc__ or "N/A").replace('\n', "<br />")|n}</code></dd>
+    <dt>${k}</dt><dd><code>${escape(getattr(h, k).__doc__ or "N/A").replace('\n', "<br />")|n}</code></dd>
   % endif
 % endfor
 </dl>

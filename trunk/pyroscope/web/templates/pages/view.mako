@@ -38,8 +38,8 @@
 <div class="tab-box">
     ## FILTER
     <div class="filter">
-        <form method="GET" action="${'' | h.echo}">
-            ${h.echo('', form=1)|n}
+        <form method="GET" action="">
+            ${h.echo('', form=1)}
 % if c.filter:
             <a href="?"><img src="/img/png/16/filter-off.png" width="16" height="16" title="Clear filter" /></a>
 % endif

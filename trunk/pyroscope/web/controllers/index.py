@@ -35,5 +35,5 @@ class IndexController(PageController):
         c.page = WikiPage.open("PyroScope")
 
         # Return a rendered template
-        return render("pages/index.mako")
+        return render("/pages/index.mako")
 

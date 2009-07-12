@@ -24,6 +24,7 @@ import re
 
 from paste.deploy.converters import asbool
 from pylons.controllers.util import url_for
+from webhelpers.html import literal
 #from webhelpers.html.tags import checkbox, password
 
 
@@ -40,7 +41,7 @@ def icon(name):
         name, size = name.split('.')
         size = int(size)
 
-    return '<img src="/img/png/%(size)d/%(name)s.png" height="%(size)d" width="%(size)d" %(title)s/>' % locals()
+    return literal('<img src="/img/png/%(size)d/%(name)s.png" height="%(size)d" width="%(size)d" %(title)s/>') % locals()
 
 
 def img(name):
@@ -55,7 +56,7 @@ def img(name):
         title = title.replace("_", " ")
         title = 'title="%(title)s" alt="%(title)s" ' % locals()
     w, h = size.split("x")
-    return '<img src="/img/%(name)s" height="%(h)s" width="%(w)s" %(title)s/>' % locals()
+    return literal('<img src="/img/%(name)s" height="%(h)s" width="%(w)s" %(title)s/>') % locals()
 
 
 def bibyte(val):
@@ -101,10 +102,10 @@ def echo(url, view_params=None, form=False):
         if form:
             import cgi
 
-            url = ''.join('<input type="hidden" name="%s" value="%s" />' % (
+            url = literal(''.join('<input type="hidden" name="%s" value="%s" />' % (
                     cgi.escape(key), cgi.escape(val)
                 ) for key, val in params
-            )
+            ))
         else:
             import urllib
             

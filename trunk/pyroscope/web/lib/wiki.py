@@ -22,6 +22,8 @@ import re
 import logging
 from cgi import escape
 
+from webhelpers.html import literal
+
 LOG = logging.getLogger(__name__)
 
 
@@ -357,5 +359,5 @@ class WikiPage(object):
         # Put the whole page in a wiki div
         self.lines.insert(0, '<div class="wiki">')
         self.lines.append('</div>')
-        self.html = u'\n'.join(self.lines)
+        self.html = literal(u'\n'.join(self.lines))
 
