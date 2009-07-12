@@ -135,9 +135,9 @@
     </div>
 % endif
 ##
-##  Body of derived page
+##  Body of derived template(s)
     <div id="bd"><!-- body -->
-        ${self.body()}
+        ${next.body()}
     </div>
 ##  Footer
     <div id="ft" class="rounded"><!-- footer -->
