@@ -206,7 +206,7 @@ ${repr(request)}
 </div>
 
 ## ~~~ Methods listing ~~~
-% if c.methods:
+% if hasattr(c, "methods"):
     <div>
     % for letter, methods in sorted(c.methods.items()):
         <a href="#${letter}">[${letter}]</a>&nbsp;

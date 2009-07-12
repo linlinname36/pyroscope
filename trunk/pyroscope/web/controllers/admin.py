@@ -87,6 +87,8 @@ class AdminController(PageController):
 
     def log(self):
         c.view = self.views['log']
+        c.filename = "N/A"
+        c.lines = []
 
         return self._render()
 
