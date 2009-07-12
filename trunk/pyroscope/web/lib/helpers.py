@@ -103,7 +103,7 @@ def echo(url, view_params=None, form=False):
             import cgi
 
             url = literal(''.join('<input type="hidden" name="%s" value="%s" />' % (
-                    cgi.escape(key), cgi.escape(val)
+                    cgi.escape(key, quote=True), cgi.escape(val, quote=True)
                 ) for key, val in params
             ))
         else:

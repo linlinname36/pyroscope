@@ -18,7 +18,7 @@
 """
 
 import logging
-from cgi import escape
+from urllib import quote_plus
 
 from pylons import request, response, session, tmpl_context as c
 from pylons.controllers.util import abort, redirect_to
@@ -33,6 +33,6 @@ class SearchController(BaseController):
     def index(self):
         # Quick&dirty search by filtering...
         query = request.params.get('query')
-        return redirect_to('/view/list/name?filter=%s&filter_mode=AND' % escape(query.encode("utf8")))
+        return redirect_to('/view/list/name?filter=%s&filter_mode=AND' % quote_plus(query.encode("utf8")))
         ##return render("pages/search.mako")
 
