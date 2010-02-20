@@ -2,6 +2,8 @@
 #labels cli,shell
 <wiki:toc max_depth="2" />
 
+See QuickStartGuide on how to install these commands on your computer.
+
 = Common Options =
 
 All commands share some common options:
