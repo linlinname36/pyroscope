@@ -83,7 +83,7 @@ Options:
 }}}
 
 `chtor` currently is able to change one aspect of a metafile, its announce URL. 
-For `rtorrent`, too mass-change the announce URL for a tracker, you would do this:
+For `rtorrent`, to mass-change the announce URL for a tracker, you would do this:
   * stop `rtorrent`
   * *make a backup of your `*.torrent` files* (`tar cvfz /tmp/metafiles.tgz ./.session ./watch` or similar)
   * `chtor -a http://example.com/new/announce/url watch/*.torrent .session/*.torrent`
