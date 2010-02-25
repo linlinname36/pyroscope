@@ -67,3 +67,26 @@ FILE LISTING
 pyroscope tests/
     test_bencode.py                                                     2.6 KiB
 }}}
+
+
+== chtor ==
+{{{
+Usage: chtor [options] <metafile>...
+
+Change attributes of a bittorrent metafile.
+
+Options:
+  -n, --dry-run         don't write changes to disk, just tell what would
+                        happen
+  -a URL, --reannounce=URL
+                        set a new announce URL
+}}}
+
+`chtor` currently is able to change one aspect of a metafile, its announce URL. 
+For `rtorrent`, too mass-change the announce URL for a tracker, you would do this:
+  * stop `rtorrent`
+  * *make a backup of your `*.torrent` files* (`tar cvfz /tmp/metafiles.tgz ./.session ./watch` or similar)
+  * `chtor -a http://example.com/new/announce/url watch/*.torrent .session/*.torrent`
+  * restart `rtorrent`
+ 
+Note that `chtor` automatically changes only those metafiles whose existing announce URL starts with the scheme and location of the new URL (`http://example.com/` in the above example) and only rewrites metafiles that were actually changed. Changes are first written to a temporary file, which is then renamed.
