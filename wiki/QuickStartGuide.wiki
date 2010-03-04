@@ -9,8 +9,9 @@ On Ubuntu, do this (tested on Hardy 8.04 LTS):
     sudo aptitude install python-setuptools
     sudo easy_install-2.5 --prefix /usr/local --record /dev/stdout pyrocore
 }}}
-After that, the command line utilities `mktor` and `lstor` should be available in your path.
+After that, the command line utilities `mktor` and `lstor` should be available in your path. On Debian or other Debian-based distributions, the same commands should work. 
 
+If you're unable to find a `setuptools` package for your distribution, download it [http://pypi.python.org/pypi/setuptools/ from here] and install it according to the given instructions. Then use the `easy_install` command shown above to download and install the `pyrocore` package.
 
 
 ----
