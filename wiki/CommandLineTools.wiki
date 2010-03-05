@@ -32,13 +32,15 @@ mktor [options] <dir-or-file> <tracker-url>
     Optional human-readable comment
 }}}
 
-`mktor` creates `*.torrent` files (metafiles), given the path to a file or directory and a tracker URL. Optionally, you can also set an additional comment and a different name for the resulting torrent file. Peer exchange and DHT can be disabled by using the `--private` option. 
+`mktor` creates `*.torrent` files (metafiles), given the path to a file, directory, or named pipe (more on that below) and a tracker URL. Optionally, you can also set an additional comment and a different name for the resulting torrent file. Peer exchange and DHT can be disabled by using the `--private` option. 
 
 To exclude files stored on disk from the resulting torrent, use the `--exclude` option to extend the list of standard glob patterns that are ignored. These standard patterns are: `core`, `CVS`, `.*`, `*~`, `*.swp`, `*.tmp`, `*.bak`, `[Tt]humbs.db`, `[Dd]esktop.ini`, and `ehthumbs_vista.db`.
 
 As a unique feature, if you want to change the root directory of the torrent to something different than the basename of the data directory, you can do so with the `--root-name` option. This is especially useful if you have hierarchical paths like `documents/2009/myproject/specs` - normally, all the context information but `specs` would be lost on the receiving side.
 
 If you create several torrents on the same data for different trackers, they're automatically enabled for cross-seeding. For the technically inclined, this is done by adding a unique key so that the info hash is always different.
+
+Another advanced feature is concurrent hashing — if the first argument is a named pipe (see the `mkfifo` man page), the filenames to be hashed are read from that pipe. These names must be relative to the directory the named pipe resides in, or put another way, the named pipe has to be created in the same directory as the files to be hashed. For example, this makes it possible to hash files as they arrive via FTP, reducing overall latency. See [http://code.google.com/p/pyroscope/source/browse/trunk/pyrocore/src/tests/fifotest.sh this bash script] for a demonstration of the concept.
 
 == lstor ==
 `lstor` lists the contents of bittorrent metafiles. The resulting output looks like this:
