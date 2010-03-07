@@ -7,6 +7,19 @@ Configuration is loaded from the directory `~/.pyroscope` containing the files `
 The script `config.py` allows much more detailed control over complex setups, at the price of you knowing at least the basics of the Python programming language.
 
 
+= Creating a set of default configuration files =
+
+To create your own configuration, the best way is to start from the default files that are part of your PyroScope installation. To create them at the default location `~/.pyroscope`, simply call this command:
+{{{
+pyroadmin --create-config
+}}}
+
+If you need several distinct configuration sets, just add the `--config-dir` option like so:
+{{{
+pyroadmin --create-config --config-dir ~/rtorrent/special/.pyroscope
+}}}
+
+
 = Setting values in `config.ini` =
 
 ...
