@@ -15,7 +15,7 @@ If you're unable to find a `setuptools` package for your distribution, download 
 
 After installation, you might want to adapt things to your local setup using the instructions on the UserConfiguration page.
 
-To later *update* an existing installtion, use this command:
+To later *update* an existing installation, use this command:
 {{{
     sudo easy_install-2.5 --prefix /usr/local -U pyrocore
 }}}
