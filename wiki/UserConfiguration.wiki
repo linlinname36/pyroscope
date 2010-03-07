@@ -1,0 +1,17 @@
+#summary PyroScope configuration.
+
+= Introduction =
+
+Configuration is loaded from the directory `~/.pyroscope` containing the files `config.ini` and `config.py`. Both files are optional — for simple setups, you only need to edit the plain text file `config.ini`.
+
+The script `config.py` allows much more detailed control over complex setups, at the price of you knowing at least the basics of the Python programming language.
+
+
+= Setting values in `config.ini` =
+
+...
+
+
+= Modifying your configuration via `config.py` =
+
+...
