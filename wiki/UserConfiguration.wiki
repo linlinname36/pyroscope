@@ -46,7 +46,7 @@ OBT = http://tracker.openbittorrent.com:80/announce
 Debian = http://bttracker.debian.org:6969/announce
 }}}
 
-_For advanced users:_ Values can contain format strings of the from `%(name)s` which refer to other values in the same section, or values in the `[DEFAULT]` section.
+_For advanced users:_ Values can contain format strings of the form `%(name)s` which refer to other values in the same section, or values in the `[DEFAULT]` section.
 
 
 = Modifying and extending your configuration via `config.py` =
