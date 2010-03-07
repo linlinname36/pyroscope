@@ -17,7 +17,7 @@ After installation, you might want to adapt things to your local setup using the
 
 
 ----
-*Currently, what follows is likely broken...*
+*Currently, what follows has a chance of being broken...*
 ----
 
 = For the Impatient =
