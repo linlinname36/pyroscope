@@ -13,6 +13,8 @@ After that, the command line utilities `mktor` and `lstor` should be available i
 
 If you're unable to find a `setuptools` package for your distribution, download it [http://pypi.python.org/pypi/setuptools/ from here] and install it according to the given instructions. Then use the `easy_install` command shown above to download and install the `pyrocore` package.
 
+After installation, you might want to adapt things to your local setup using the instructions on the UserConfiguration page.
+
 
 ----
 *Currently, what follows is likely broken...*
