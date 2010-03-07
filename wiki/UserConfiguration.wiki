@@ -31,7 +31,7 @@ The configuration file consists of sections, led by a `[section]` header and fol
 
 Lines beginning with a semicolon (`;`), a hash mark (`#`), or the letters `REM` (uppercase or lowercase) will be ignored and can be used for comments. You cannot put a comment on an option line, a comment *MUST* start the beginning of a line!
 
-As an example, this is a very minimal condiguration file: 
+As an example, this is a very minimal configuration file: 
 {{{
 # PyroScope configuration file
 
