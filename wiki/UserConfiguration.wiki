@@ -36,6 +36,8 @@ As an example, this is a very minimal condiguration file:
 # PyroScope configuration file
 
 [DEFAULT]
+# Note that the "config_dir" value is provided by the system!
+config_script = %(config_dir)s/config.py
 rtorrent_rc = ~/.rtorrent.rc
 
 [ANNOUNCE]
