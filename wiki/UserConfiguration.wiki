@@ -35,7 +35,7 @@ As an example, this is a very minimal condiguration file:
 {{{
 # PyroScope configuration file
 
-[DEFAULT]
+[GLOBAL]
 # Note that the "config_dir" value is provided by the system!
 config_script = %(config_dir)s/config.py
 rtorrent_rc = ~/.rtorrent.rc
@@ -43,9 +43,13 @@ rtorrent_rc = ~/.rtorrent.rc
 [ANNOUNCE]
 # Add alias names for announce URLs to this section; those aliases are used
 # at many places, e.g. by the "mktor" tool
-PBT = http://tracker.publicbt.com:80/announce
-OBT = http://tracker.openbittorrent.com:80/announce
-Debian = http://bttracker.debian.org:6969/announce
+
+# Public trackers
+PBT     = http://tracker.publicbt.com:80/announce
+          udp://tracker.publicbt.com:80/announce
+OBT     = http://tracker.openbittorrent.com:80/announce
+          udp://tracker.openbittorrent.com:80/announce
+Debian  = http://bttracker.debian.org:6969/announce
 }}}
 
 _For advanced users:_ Values can contain format strings of the form `%(name)s` which refer to other values in the same section, or values in the `[DEFAULT]` section.
