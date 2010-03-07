@@ -19,12 +19,36 @@ If you need several distinct configuration sets, just add the `--config-dir` opt
 pyroadmin --create-config --config-dir ~/rtorrent/special/.pyroscope
 }}}
 
+To view your configuration, use this (again, use the `--config-dir` option for non-default configurations):
+{{{
+pyroadmin --dump-config
+}}}
+
 
 = Setting values in `config.ini` =
 
-...
+The configuration file consists of sections, led by a `[section]` header and followed by `name: value` entries; `name = value` is also accepted. Longer values can be broken into several lines and the continuation lines must be indented (start with a space). Note that leading whitespace is removed from values. 
+
+Lines beginning with a semicolon (`;`), a hash mark (`#`), or the letters `REM` (uppercase or lowercase) will be ignored and can be used for comments. You cannot put a comment on an option line, a comment *MUST* start the beginning of a line!
+
+As an example, this is a very minimal condiguration file: 
+{{{
+# PyroScope configuration file
+
+[DEFAULT]
+rtorrent_rc = ~/.rtorrent.rc
+
+[ANNOUNCE]
+# Add alias names for announce URLs to this section; those aliases are used
+# at many places, e.g. by the "mktor" tool
+PBT = http://tracker.publicbt.com:80/announce
+OBT = http://tracker.openbittorrent.com:80/announce
+Debian = http://bttracker.debian.org:6969/announce
+}}}
+
+_For advanced users:_ Values can contain format strings of the from `%(name)s` which refer to other values in the same section, or values in the `[DEFAULT]` section.
 
 
-= Modifying your configuration via `config.py` =
+= Modifying and extending your configuration via `config.py` =
 
 ...
