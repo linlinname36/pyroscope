@@ -59,4 +59,11 @@ _For advanced users:_ Values can contain format strings of the form `%(name)s` w
 
 = Modifying and extending your configuration via `config.py` =
 
-...
+*TODO*...
+
+
+= Updating your existing configuration for a new software version =
+
+After you installed a new version of the software, you can easily check whether the default configuration files changed by calling the `pyroadmin --create-config` command. Since this will never overwrite existing configration files, the files `config.ini.default` and `config.py.default` will be created instead.
+
+You can then use the `diff` tool to check for the differences between your current configration and the new default one, and add any changes you want to adopt.
