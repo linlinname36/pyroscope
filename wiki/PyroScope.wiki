@@ -28,4 +28,4 @@ This is the status of various parts of the project:
 || _Torrents Search_ || _not yet implemented_ ||
 || _Statistics_ || _not yet implemented_ ||
 || *QueueManager* || _not yet implemented_ ||
-|| *CommandLineTools* || http://pyroscope.googlecode.com/svn/trunk/docs/media/img/box-check.png mktor, lstor ||
+|| *CommandLineTools* || http://pyroscope.googlecode.com/svn/trunk/docs/media/img/box-check.png mktor, lstor, chtor ||
