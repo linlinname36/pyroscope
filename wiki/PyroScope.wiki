@@ -21,12 +21,12 @@ PyroScope is implemented in [http://www.python.org/ Python] using the [http://py
 
 This is the status of various parts of the project:
 || *ohloh.net Statistics* || <wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_thin_badge.xml" height="36"  border="0" /> ||
-|| *Web Interface* || http://pyroscope.googlecode.com/svn/trunk/docs/media/img/box-check.png usable alpha ||
-|| _Torrents List_ || http://pyroscope.googlecode.com/svn/trunk/docs/media/img/box-check.png all rTorrent views plus active torrents & messages view ||
+|| *Web Interface* || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png usable alpha ||
+|| _Torrents List_ || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png all rTorrent views plus active torrents & messages view ||
 || _Torrent Control_ || _not yet implemented_ ||
 || _Torrent Detail_ || _not yet implemented_ ||
-|| _Torrents Search_ || _not yet implemented_ ||
-|| _Statistics_ || _not yet implemented_ ||
+|| _Torrents Search_ || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png view filter searching in all metadata fields ||
+|| _Statistics_ || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png tracker stats ||
 || *QueueManager* || _not yet implemented_ ||
-|| *CommandLineTools* || http://pyroscope.googlecode.com/svn/trunk/docs/media/img/box-check.png mktor, lstor, chtor ||
-|| *UserConfiguration* || _underway_ ||
+|| *CommandLineTools* || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png mktor, lstor, chtor, pyroadmin ||
+|| *UserConfiguration* || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png loaded from `config.ini` and `config.py` ||
