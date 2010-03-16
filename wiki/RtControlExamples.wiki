@@ -2,23 +2,29 @@
 <wiki:toc max_depth="2" />
 
 = Useful filter conditions =
-|| *Condition(s)*   || *Description* ||
+|| *Condition(s)*     || *Description* ||
 || `ratio=+1`         || All downloads seeded to at least 1:1 ||
 || `xfer=+0`          || All active torrents (transferring data) ||
 || `up=+0`            || All seeding torrents (uploading data) ||
 || `down=+0 down=-5k` || Slow torrents (uploading, but with < 5 KB/s) ||
 || `size=+4g`         || Big stuff (DVD size or larger) ||
+|| `is_complete=no`   || Incomplete downloads ||
+|| `alias=obt`        || Torrents tracked by `openbittorrent.com` (see UserConfiguration on how to add aliases for trackers) ||
 || `ratio=+1 realpath=\!/mnt/*` || 1:1 seeds not on a mounted path (i.e. likely local) ||
 || `age=+2w`          || Older than 2 weeks (_not implemented yet_) ||
 || `kind=flac,mp3`    || Music downloads (_not implemented yet_) ||
 
-Note that the `!` character has to be escaped in shell commands.
+Note that the `!` character has to be escaped in shell commands. For a current full list of all the field names you can use and their meaning, see the output of `rtcontrol --help`.
 
 = Reports =
-
+You might want to add the following alias definitions to your `~/.bashrc`:
 {{{
-TODO...
+$ alias rthot="watch -n10 rtcontrol -rs up,down,name xfer=+0"
+$ alias rtmsg="rtcontrol -s alias,message,name 'message=?*' message=\!*Tried?all?trackers*"
+$ alias rtmsgstats="rtcontrol -q -s alias,message -o alias,message 'message=?*' message=\!*Tried?all?trackers* | uniq -c"
 }}}
+
+`rthot` shows active torrents every 10 seconds (until you hit CTRL-C), `rtmsg` lists all torrents that have a tracker message, and `rtmsgstats` print a count of how many messages there are per tracker and message text.
 
 
 = Statistics =
@@ -29,6 +35,16 @@ TODO...
 
 = Ratio Management =
 
+While rTorrent has a built-in form of ratio management since a few versions, it's hard to use after-the-fact and also hard to understand — you need to have different watch directories and complex settings in your `.rtorrent.rc`.
+
+A basic form of ratio management using `rtcontrol` looks like this:
 {{{
-TODO...
+rtcontrol is_complete=yes is_open=yes ratio=+1.1 alias=sometracker,othertracker --stop
 }}}
+You will always want to have the `is_complete=yes is_open=yes ratio=+1.1` part, which excludes all torrents that are still downloading, closed or not having the necessary ratio. 
+
+To that you can add anything you think fits your needs, like using several commands with different minimum ratios for different trackers you select using `alias` or `tracker`, like in the example above. Only your imagination (and the available fields) are the limit here.
+
+If you then put these commands into a script that runs every few minutes via `cron`, you have a very flexible form of ratio management that can be changed on a whim.
+
+To complete you command line, you add the action you want to take on the torrents found, in the above example `--stop`. Later versions will also allow you to delete or move your data.
