@@ -29,9 +29,9 @@ Note that the `!` character has to be escaped in shell commands. For a current f
 = Reports =
 You might want to add the following alias definitions to your `~/.bashrc`:
 {{{
-$ alias rthot="watch -n10 rtcontrol -rs up,down,name xfer=+0"
-$ alias rtmsg="rtcontrol -s alias,message,name 'message=?*' message=\!*Tried?all?trackers*"
-$ alias rtmsgstats="rtcontrol -q -s alias,message -o alias,message 'message=?*' message=\!*Tried?all?trackers* | uniq -c"
+alias rthot="watch -n10 rtcontrol -rs up,down,name xfer=+0"
+alias rtmsg="rtcontrol -s alias,message,name 'message=?*' message=\!*Tried?all?trackers*"
+alias rtmsgstats="rtcontrol -q -s alias,message -o alias,message 'message=?*' message=\!*Tried?all?trackers* | uniq -c"
 }}}
 
 `rthot` shows active torrents every 10 seconds (until you hit CTRL-C), `rtmsg` lists all torrents that have a non-trivial tracker message, and `rtmsgstats` print a count of how many messages there are per tracker and message text.
