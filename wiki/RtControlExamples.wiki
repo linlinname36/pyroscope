@@ -10,7 +10,7 @@ Multiple values separated by a comma indicate several possible choices (OR).
 `!` in front of a filter value negates it (NOT).
 
 = Useful filter conditions =
-The following conditions give you a hint on what you wcan do, and some building blocks for more complex conditions.
+The following conditions give you a hint on what you can do, and some building blocks for more complex conditions.
 
 || *Condition(s)*     || *Description* ||
 || `ratio=+1`         || All downloads seeded to at least 1:1 ||
