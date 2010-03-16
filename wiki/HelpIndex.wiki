@@ -1,5 +1,5 @@
 #summary Online Help Index.
-#labels online.help
+#labels online.help,web.ui
 
 == Views ==
 PyroScope has the following views:
