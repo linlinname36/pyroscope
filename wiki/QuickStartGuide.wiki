@@ -17,8 +17,6 @@ After that, the command line utilities `mktor` and `lstor` should be available i
 
 On Debian or other Debian-based distributions, the same commands should work. For non-Debian distributions, use the appropriate package management tools — the package names should be similar (contain the word "`setuptools`"). If you're unable to find a `setuptools` package for your distribution, download it [http://pypi.python.org/pypi/setuptools/ from here] and install it according to the given instructions. Then use the `easy_install` command shown above to download and install the `pyrocore` package.
 
-If `easy_install` prints a message containing `error: bad install directory or PYTHONPATH`, try to use `--prefix /usr` in the above command.
-
 After installation, you might want to adapt things to your local setup using the instructions on the UserConfiguration page.
 
 To later *update* an existing installation, use this command:
@@ -26,8 +24,11 @@ To later *update* an existing installation, use this command:
     sudo easy_install-2.5 --prefix /usr/local -U pyrocore
 }}}
 
+If `easy_install` prints a message containing `error: bad install directory or PYTHONPATH`, try to use `--prefix /usr` in the above command.
+
+
 ----
-*Currently, what follows has a chance of being broken...*
+*What follows is the more complex installation of the yet-incomplete web interface and currently has a chance of being broken...*
 ----
 
 = For the Impatient =
