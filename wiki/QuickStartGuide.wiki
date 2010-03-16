@@ -1,5 +1,5 @@
 #summary How to get started - installation and first steps.
-#labels installation,configuration
+#labels installation,configuration,cli,web.ui
 <wiki:toc max_depth="2" />
 
 = Installation of the command line tools =
