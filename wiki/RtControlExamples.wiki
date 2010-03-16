@@ -1,6 +1,19 @@
 #summary Real-world use-cases for rtcontrol.
 <wiki:toc max_depth="2" />
 
+= Useful filter conditions =
+|| *Condition(s)*   || *Description* ||
+|| ratio=+1         || All downloads seeded to at least 1:1 ||
+|| xfer=+0          || All active torrents (transferring data) ||
+|| up=+0            || All seeding torrents (uploading data) ||
+|| down=+0 down=-5k || Slow torrents (uploading, but with < 5 KB/s) ||
+|| size=+4g         || Big stuff (DVD size or larger) ||
+|| ratio=+1 realpath=\!/mnt/* || 1:1 seeds not on a mounted path (i.e. likely local) ||
+|| age=+2w          || Older than 2 weeks (_not implemented yet_) ||
+|| kind=flac,mp3    || Music downloads (_not implemented yet_) ||
+
+Note that the `!` character has to be escaped in shell commands.
+
 = Reports =
 
 {{{
