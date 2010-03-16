@@ -44,6 +44,7 @@ alias rtmsgstats="rtcontrol -q -s alias,message -o alias,message 'message=?*' me
 TODO...
 }}}
 
+
 = Ratio Management =
 
 While rTorrent has a built-in form of ratio management since a few versions, it's hard to use after-the-fact and also hard to understand — you need to have different watch directories and complex settings in your `.rtorrent.rc`.
@@ -56,6 +57,14 @@ You will always want to have the `is_complete=yes is_open=yes ratio=+1.1` part, 
 
 To that you can add anything you think fits your needs, and also use several commands with different minimum ratios for different trackers by selecting them using `alias` or `tracker`, like in the example above. Only your imagination (and the available fields) are the limit here.
 
-If you then put these commands into a script that runs every few minutes via `cron`, you have a very flexible form of ratio management that can be changed on a whim.
+If you then put these commands into a script that runs every few minutes via `cron`, you have a very flexible form of ratio management that can be changed on a whim. 
 
 To complete your command line, you add the action you want to take on the torrents found, in the above example `--stop`. Later versions will also allow you to delete or move your data.
+
+
+= Other uses of rtcontrol with cron =
+
+There are other useful commands besides ratio management you can perform on a regular basis, i.e. using a crontab. This one stops any torrent that isn't known by the tracker anymore or has other authorization problems:
+{{{
+rtcontrol is_open=yes 'message=*not?registered*,*unregistered*,*not?authorized*' --stop
+}}}
