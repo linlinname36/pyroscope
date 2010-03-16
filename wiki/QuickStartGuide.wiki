@@ -21,7 +21,7 @@ After installation, you might want to adapt things to your local setup using the
 
 To later *update* an existing installation, use this command:
 {{{
-    sudo easy_install-2.5 --prefix /usr/local -U pyrocore
+sudo easy_install-2.5 --prefix /usr/local -U pyrocore
 }}}
 
 If `easy_install` prints a message containing `error: bad install directory or PYTHONPATH`, try to use `--prefix /usr` in the above command.
