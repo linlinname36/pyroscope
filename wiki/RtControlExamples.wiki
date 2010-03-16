@@ -2,12 +2,12 @@
 <wiki:toc max_depth="2" />
 
 = Fundamentals =
-`rtcontrol`'s main purpose is to take filter conditions on the command line of the form "_field_`=`_value_" and select a set of torrents according to them. All given conditions must be met (AND), and if a field name is omitted, "name" is assumed.
+`rtcontrol`'s main purpose is to take filter conditions on the command line of the form "_field_`=`_value_" and select a set of torrents according to them. All given conditions must be met (AND), and if a field name is omitted, "`name`" is assumed.
 
-For numeric fields, a leading "+" means greater than, a leading "-" means less 
+For numeric fields, a leading "`+`" means greater than, a leading "`-`" means less 
 than (just like with the standard `find` command). For string fields, the value is a glob pattern which you are used to from shell filename patterns (`*`, `?`, `[a-z]`, `[!a-z]`).
 Multiple values separated by a comma indicate several possible choices (OR).
-`!` in front of a filter value negates it (NOT).
+"`!`" in front of a filter value negates it (NOT).
 
 = Useful filter conditions =
 The following conditions give you a hint on what you can do, and some building blocks for more complex conditions.
