@@ -30,7 +30,7 @@ Note that the `!` character has to be escaped in shell commands. For a current f
 = Reports =
 You might want to add the following alias definitions to your `~/.bashrc`:
 {{{
-alias rthot="watch -n10 rtcontrol -rs up,down,name xfer=+0"
+alias rthot="watch -n10 'rtcontrol -rs up,down,name xfer=+0 2>&1'"
 alias rtmsg="rtcontrol -s alias,message,name 'message=?*' message=\!*Tried?all?trackers*"
 alias rtmsgstats="rtcontrol -q -s alias,message -o alias,message 'message=?*' message=\!*Tried?all?trackers* | uniq -c"
 }}}
