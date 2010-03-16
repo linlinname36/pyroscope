@@ -17,7 +17,7 @@ The following conditions give you a hint on what you can do, and some building b
 || `ratio=+1`         || All downloads seeded to at least 1:1 ||
 || `xfer=+0`          || All active torrents (transferring data) ||
 || `up=+0`            || All seeding torrents (uploading data) ||
-|| `down=+0 down=-5k` || Slow torrents (uploading, but with < 5 KB/s) ||
+|| `down=+0 down=-5k` || Slow torrents (downloading, but with < 5 KB/s) ||
 || `size=+4g`         || Big stuff (DVD size or larger) ||
 || `is_complete=no`   || Incomplete downloads ||
 || `alias=obt`        || Torrents tracked by `openbittorrent.com` (see UserConfiguration on how to add aliases for trackers) ||
