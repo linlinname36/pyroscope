@@ -14,7 +14,7 @@
 || `age=+2w`          || Older than 2 weeks (_not implemented yet_) ||
 || `kind=flac,mp3`    || Music downloads (_not implemented yet_) ||
 
-Note that the `!` character has to be escaped in shell commands. For a current full list of all the field names you can use and their meaning, see the output of `rtcontrol --help`.
+Note that the `!` character has to be escaped in shell commands. For a current full list of all the field names and their meaning, see the output of `rtcontrol --help`.
 
 = Reports =
 You might want to add the following alias definitions to your `~/.bashrc`:
