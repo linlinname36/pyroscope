@@ -11,7 +11,7 @@ Requirements:
 On Ubuntu, do this (tested on Hardy 8.04 LTS):
 {{{
 sudo aptitude install python-setuptools
-sudo easy_install-2.5 --prefix /usr/local --record /dev/stdout pyrocore
+sudo easy_install --prefix /usr/local pyrocore
 }}}
 After that, the command line utilities `mktor` and `lstor` should be available in your path. 
 
@@ -21,7 +21,7 @@ After installation, you might want to adapt things to your local setup using the
 
 To later *update* an existing installation, use this command:
 {{{
-sudo easy_install-2.5 --prefix /usr/local -U pyrocore
+sudo easy_install --prefix /usr/local -U pyrocore
 }}}
 
 If `easy_install` prints a message containing `error: bad install directory or PYTHONPATH`, try to use `--prefix /usr` in the above command.
