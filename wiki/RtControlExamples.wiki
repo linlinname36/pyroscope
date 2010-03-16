@@ -47,4 +47,4 @@ To that you can add anything you think fits your needs, like using several comma
 
 If you then put these commands into a script that runs every few minutes via `cron`, you have a very flexible form of ratio management that can be changed on a whim.
 
-To complete you command line, you add the action you want to take on the torrents found, in the above example `--stop`. Later versions will also allow you to delete or move your data.
+To complete your command line, you add the action you want to take on the torrents found, in the above example `--stop`. Later versions will also allow you to delete or move your data.
