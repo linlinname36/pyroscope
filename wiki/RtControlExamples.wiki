@@ -21,7 +21,7 @@ The following conditions give you a hint on what you can do, and some building b
 || `size=+4g`         || Big stuff (DVD size or larger) ||
 || `is_complete=no`   || Incomplete downloads ||
 || `alias=obt`        || Torrents tracked by `openbittorrent.com` (see UserConfiguration on how to add aliases for trackers) ||
-|| `ratio=+1 realpath=\!/mnt/*` || 1:1 seeds not on a mounted path (i.e. likely local) ||
+|| `ratio=+1 realpath=\!/mnt/*` || 1:1 seeds not on a mounted path (i.e. likely on localhost) ||
 || `age=+2w`          || Older than 2 weeks (_not implemented yet_) ||
 || `kind=flac,mp3`    || Music downloads (_not implemented yet_) ||
 
