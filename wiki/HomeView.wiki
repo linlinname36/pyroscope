@@ -1,2 +1,2 @@
 #summary The welcome page.
-#labels web-ui
+#labels online.help,web-ui
