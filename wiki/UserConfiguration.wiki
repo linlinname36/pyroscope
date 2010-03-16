@@ -1,4 +1,5 @@
 #summary PyroScope configuration.
+#labels configuration,installation
 
 <wiki:toc />
 
