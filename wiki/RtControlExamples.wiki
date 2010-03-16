@@ -1,4 +1,4 @@
-#summary PyroScope CLI Tool Overview.
+#summary Real-world use-cases for rtcontrol.
 <wiki:toc max_depth="2" />
 
 = Reports =
