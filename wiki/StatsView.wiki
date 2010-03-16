@@ -1,4 +1,5 @@
 #summary Different statistics about the available torrents and assembled data.
+#labels online.help,web.ui
 
 == Trackers ==
 
