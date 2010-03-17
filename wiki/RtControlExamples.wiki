@@ -21,6 +21,7 @@ The following conditions give you a hint on what you can do, and some building b
 || `down=0 is_complete=no is_open=yes` || Stuck torrents ||
 || `size=+4g`         || Big stuff (DVD size or larger) ||
 || `is_complete=no`   || Incomplete downloads ||
+|| `is_ghost=yes`     || Torrents that have no data (were never started or lost their data; _since v0.3.3_) ||
 || `alias=obt`        || Torrents tracked by `openbittorrent.com` (see UserConfiguration on how to add aliases for trackers) ||
 || `ratio=+1 realpath=\!/mnt/*` || 1:1 seeds not on a mounted path (i.e. likely on localhost) ||
 || `age=+2w`          || Older than 2 weeks (_not implemented yet_) ||
@@ -69,3 +70,9 @@ There are other useful commands besides ratio management you can perform on a re
 {{{
 rtcontrol is_open=yes 'message=*not?registered*,*unregistered*,*not?authorized*' --stop
 }}}
+
+And the following stops completed torrents that lost their data:
+{{{
+rtcontrol is_complete=yes is_open=yes is_ghost=yes --stop
+}}}
+Note that this means you can simply stop torrents by removing their data and calling this command afterwards, either manually or by `cron`.
