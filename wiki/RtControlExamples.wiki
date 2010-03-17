@@ -75,4 +75,4 @@ And the following stops completed torrents that lost their data:
 {{{
 rtcontrol is_complete=yes is_open=yes is_ghost=yes --stop
 }}}
-Note that this means you can simply stop torrents by removing their data and calling this command afterwards, either manually or by `cron`.
+Note that this means you can simply stop torrents by removing their data and calling this command afterwards, either manually or via `cron`.
