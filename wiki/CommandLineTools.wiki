@@ -19,21 +19,21 @@ All commands share some common options:
 
 == mktor ==
 {{{
-mktor [options] <dir-or-file> <tracker-url>...
+mktor [options] <dir-or-file> <tracker-url-or-alias>...
 
-  -p, --private
-    Disallow DHT and PEX
+  -p, --private         disallow DHT and PEX
+  --no-date             leave out creation date
   -o PATH, --output-filename=PATH
-    Optional file name for the metafile
+                        optional file name for the metafile
   -r NAME, --root-name=NAME
-    Optional root name (default is basename of the data path)
+                        optional root name (default is basename of the data
+                        path)
   -x PATTERN, --exclude=PATTERN
-    Exclude files matching a glob pattern from hashing
-  --comment=TEXT
-    Optional human-readable comment
+                        exclude files matching a glob pattern from hashing
+  --comment=TEXT        optional human-readable comment
 }}}
 
-`mktor` creates `*.torrent` files (metafiles), given the path to a file, directory, or named pipe (more on that below) and a tracker URL. Optionally, you can also set an additional comment and a different name for the resulting torrent file. Peer exchange and DHT can be disabled by using the `--private` option. 
+`mktor` creates `*.torrent` files (metafiles), given the path to a file, directory, or named pipe (more on that below) and a tracker URL or alias name (see UserConfiguration on how to define them). Optionally, you can also set an additional comment and a different name for the resulting torrent file. Peer exchange and DHT can be disabled by using the `--private` option. 
 
 To exclude files stored on disk from the resulting torrent, use the `--exclude` option to extend the list of standard glob patterns that are ignored. These standard patterns are: `core`, `CVS`, `.*`, `*~`, `*.swp`, `*.tmp`, `*.bak`, `[Tt]humbs.db`, `[Dd]esktop.ini`, and `ehthumbs_vista.db`.
 
@@ -41,7 +41,7 @@ As a unique feature, if you want to change the root directory of the torrent to 
 
 If you create several torrents on the same data for different trackers, they're automatically enabled for cross-seeding. For the technically inclined, this is done by adding a unique key so that the info hash is always different.
 
-Another advanced feature is concurrent hashing — if the first argument is a named pipe (see the `mkfifo` man page), the filenames to be hashed are read from that pipe. These names must be relative to the directory the named pipe resides in, or put another way, the named pipe has to be created in the same directory as the files to be hashed. For example, this makes it possible to hash files as they arrive via FTP, reducing overall latency. See [http://code.google.com/p/pyroscope/source/browse/trunk/pyrocore/src/tests/fifotest.sh this bash script] for a demonstration of the concept.
+Very few people will ever need that, but another advanced feature is concurrent hashing — if the first argument is a named pipe (see the `mkfifo` man page), the filenames to be hashed are read from that pipe. These names must be relative to the directory the named pipe resides in, or put another way, the named pipe has to be created in the same directory as the files to be hashed. For example, this makes it possible to hash files as they arrive via FTP or are transcoded from one audio format to another, reducing overall latency. See [http://code.google.com/p/pyroscope/source/browse/trunk/pyrocore/src/tests/fifotest.sh this bash script] for a demonstration of the concept.
 
 == lstor ==
 `lstor` lists the contents of bittorrent metafiles. The resulting output looks like this:
