@@ -28,5 +28,5 @@ This is the status of various parts of the project:
 || _Torrents Search_ || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png view filter searching in all metadata fields ||
 || _Statistics_ || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png tracker stats ||
 || *QueueManager* || _not yet implemented_ ||
-|| *CommandLineTools* || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png mktor, lstor, chtor, pyroadmin ||
+|| *CommandLineTools* || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png mktor, lstor, chtor, rtcontrol, pyroadmin ||
 || *UserConfiguration* || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png loaded from `config.ini` and `config.py` ||
