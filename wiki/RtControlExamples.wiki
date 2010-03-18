@@ -42,9 +42,11 @@ alias rtmsgstats="rtcontrol -q -s alias,message -o alias,message 'message=?*' me
 
 = Statistics =
 
+Create a list of all your trackers and how many torrents are loaded for each:
 {{{
-TODO...
+rtcontrol -qo alias -s alias ratio=+1 | uniq -c
 }}}
+You can easily modify this by using conditions other than `*`, e.g. show the count of fully seeded downloads using `ratio=+1`.
 
 
 = Ratio Management =
