@@ -5,8 +5,8 @@
 = Installation of the command line tools =
 
 Requirements:
- * Python 2.5 or a higher 2.x version (2.5 is recommended)
- * for `rtcontrol`, an existing rTorrent installation, _with the xmlrpc option compiled in_ and the `scgi_local` option added to your `~/.rtorrent.rc`
+ * Python 2.5 or a higher 2.x version (2.5 is recommended); go to http://www.python.org/download/ if you're on an OS that doesn't have Python out of the box.
+ * for `rtcontrol`, an existing rTorrent installation, _with the xmlrpc option compiled in_ and the `scgi_local` option added to your `~/.rtorrent.rc`.
 
 On Ubuntu, do this (tested on Hardy 8.04 LTS):
 {{{
