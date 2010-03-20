@@ -98,7 +98,7 @@ Options:
                         ensuring unique info hashes
 }}}
 
-`chtor` is able to change common attributes of a metafile, or clean any non-standard data from them (namely, rTorrent session infomation).
+`chtor` is able to change common attributes of a metafile, or clean any non-standard data from them (namely, rTorrent session information).
 
 For `rtorrent`, to mass-change the announce URL for a tracker, you would do this:
   * stop `rtorrent`
