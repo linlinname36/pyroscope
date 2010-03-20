@@ -81,18 +81,32 @@ Change attributes of a bittorrent metafile.
 Options:
   -n, --dry-run         don't write changes to disk, just tell what would
                         happen
+  --no-skip             do not skip broken metafiles that fail the integrity
+                        check
+  -F, --force           change all metafiles given on the command line,
+                        regardless of current announce URL
+  -p, --make-private    make torrent private (DHT/PEX disabled)
+  -P, --make-public     make torrent public (DHT/PEX enabled)
+  -C, --clean           remove all non-standard data from metafile outside the
+                        info dict
+  -A, --clean-all       remove all non-standard data from metafile including
+                        the info dict
+  -R, --clean-rtorrent  remove all rTorrent session data from metafile
   -a URL, --reannounce=URL
                         set a new announce URL
+  --no-cross-seed       do not add a non-standard field to the info dict
+                        ensuring unique info hashes
 }}}
 
-`chtor` currently is able to change one aspect of a metafile, its announce URL. 
+`chtor` is able to change common attributes of a metafile, or clean any non-standard data from them (namely, rTorrent session infomation).
+
 For `rtorrent`, to mass-change the announce URL for a tracker, you would do this:
   * stop `rtorrent`
   * *make a backup of your `*.torrent` files* (`tar cvfz /tmp/metafiles.tgz ./.session ./watch` or similar)
   * `chtor -a http://example.com/new/announce/url watch/*.torrent .session/*.torrent`
   * restart `rtorrent`
  
-Note that `chtor` automatically changes only those metafiles whose existing announce URL starts with the scheme and location of the new URL (`http://example.com/` in the above example) and only rewrites metafiles that were actually changed. Changes are first written to a temporary file, which is then renamed.
+Note that `chtor` automatically changes only those metafiles whose existing announce URL starts with the scheme and location of the new URL (`http://example.com/` in the above example) — unless the `--force` option is also given. It only rewrites metafiles that were actually changed, and those changes are first written to a temporary file, which is then renamed.
 
 
 == rtcontrol ==
