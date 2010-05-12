@@ -64,7 +64,7 @@ rtcontrol is_complete=yes is_open=yes ratio=+1.1 alias=sometracker,othertracker 
 }}}
 You will always want to have the `is_complete=yes is_open=yes ratio=+1.1` part, which excludes all torrents that are still downloading, closed or not having the necessary ratio. 
 
-To that you can add anything you think fits your needs, and also use several commands with different minimum ratios for different trackers by selecting them using `alias` or `tracker`, like in the example above. Only your imagination (and the available fields) are the limit here.
+To that you can add anything you think fits your needs, and also use several commands with different minimum ratios for different trackers by selecting them using `alias` or `tracker`, like in the example above. Assuming you have your original seeds in a directory named `seed` and don't want to ratio-limit them, one thing you might add is `'datapath=!*/seed/*'` to prevent them from being stopped. Only your imagination (and the available fields) are the limit here.
 
 If you then put these commands into a script that runs every few minutes via `cron`, you have a very flexible form of ratio management that can be changed on a whim. 
 
