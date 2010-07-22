@@ -44,7 +44,7 @@ Initial installation:
 {{{
 mkdir -p ~/lib
 svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
-cd ~/lib/pyroscope
+cd ~/lib/pyroscope/pyrocore
 source bootstrap.sh
 }}}
 
@@ -117,9 +117,8 @@ To update the software after initial installation, use these commands:
 {{{
 cd ~/lib/pyroscope
 source bin/activate
-paver stop
+#( cd pyroscope && paver stop )
 svn update
-paver develop -U
-paver bootstrap
-paver start
+( cd pyrocore && source bootstrap.sh )
+#( cd pyroscope && paver develop -U && paver bootstrap && paver start )
 }}}
