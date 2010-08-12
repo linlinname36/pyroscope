@@ -1,0 +1,24 @@
+#summary How to write your own XMLRPC scripts in Python.
+
+= Introduction =
+
+The `pyrocore` Python package contains powerful helper classes that make remote access to rTorrent child's play. See for yourself:
+{{{
+#! /usr/bin/env python
+# Enter the magic kingdom
+from pyrocore import config
+from pyrocore.util import load_config
+
+if __name__ == "__main__":
+    # Grab your magic wand
+    load_config.ConfigLoader().load()
+    
+    # Wave it
+    torrents = list(config.engine.items())
+
+    # Abracadabra
+    print "You have loaded %d torrents tracked by %d trackers." % (
+        len(torrents), 
+        len(set(i.alias for i in torrents)),
+    )
+}}}
