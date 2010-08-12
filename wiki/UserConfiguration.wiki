@@ -60,7 +60,36 @@ _For advanced users:_ Values can contain format strings of the form `%(name)s` w
 
 = Modifying and extending your configuration via `config.py` =
 
-*TODO*...
+== Defining your own custom fields ==
+To add user-defined fields to the built-in ones, you can put code like this into your `~/.pyroscope/config.py` file:
+{{{
+def _custom_fields():
+    """ Yield custom field definitions.
+    """
+    import os
+    from pyrocore.torrent import engine, matching
+
+    def has_nfo(obj):
+        "Check for .NFO file."
+        pathname = obj.path
+        if os.path.isdir(pathname):
+            return any(i.lower().endswith(".nfo") for i in os.listdir(pathname))
+        else:
+            return False
+
+    # Add .NFO checker    
+    yield engine.DynamicField(bool, "has_nfo", "does download have a .NFO file?", 
+        matcher=matching.BoolFilter, accessor=has_nfo, 
+        formatter=lambda val: "NFO" if val else "---")
+
+    # Add a rTorrent attribute not available by default
+    yield engine.OnDemandField(int, "peers_connected", "number of connected peers", matcher=matching.FloatFilter)
+
+# Register our factory with the system
+custom_field_factories.append(_custom_fields)
+}}}
+
+After you did that, you can use your custom field just like any built-in one, e.g. issue a command like `rtcontrol size=+4g -q -ohas_nfo,name`. They're also listed when you call `rtcontrol --help-fields`.
 
 
 = Updating your existing configuration for a new software version =
