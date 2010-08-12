@@ -77,10 +77,21 @@ def _custom_fields():
         else:
             return False
 
-    # Add .NFO checker    
+    def has_thumb(obj):
+        "Check for folder.jpg file."
+        pathname = obj.path
+        if pathname and os.path.isdir(pathname):
+            return any(i.lower() == "folder.jpg" for i in os.listdir(pathname))
+        else:
+            return False
+
+    # Add file checkers
     yield engine.DynamicField(bool, "has_nfo", "does download have a .NFO file?", 
         matcher=matching.BoolFilter, accessor=has_nfo, 
         formatter=lambda val: "NFO" if val else "---")
+    yield engine.DynamicField(bool, "has_thumb", "does download have a folder.jpg file?", 
+        matcher=matching.BoolFilter, accessor=has_thumb, 
+        formatter=lambda val: "THMB" if val else "----")
 
     # Add a rTorrent attribute not available by default
     yield engine.OnDemandField(int, "peers_connected", "number of connected peers", matcher=matching.FloatFilter)
