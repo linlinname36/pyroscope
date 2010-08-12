@@ -72,7 +72,7 @@ def _custom_fields():
     def has_nfo(obj):
         "Check for .NFO file."
         pathname = obj.path
-        if os.path.isdir(pathname):
+        if pathname and os.path.isdir(pathname):
             return any(i.lower().endswith(".nfo") for i in os.listdir(pathname))
         else:
             return False
