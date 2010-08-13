@@ -57,6 +57,17 @@ Debian  = http://bttracker.debian.org:6969/announce
 
 _For advanced users:_ Values can contain format strings of the form `%(name)s` which refer to other values in the same section, or values in the `[DEFAULT]` section.
 
+= Extending your `.rtorrent.rc` =
+
+You need either a `scgi_local` or `scgi_port` specification in your rTorrent configuration; `scgi_local` is preferable since more secure. Furthermore, you need to provide the path to a `session` directory. See the rTorrent manual for details.
+
+For the `loaded` and `completed` fields to work (added in version 0.3.4), you also have to add this:
+{{{
+# Timestamp events
+system.method.set_key = event.download.inserted_new,loaded_stamp,"d.set_custom=tm_loaded,$cat=$system.time= ;d.save_session="
+system.method.set_key = event.download.finished,completed_stamp,"d.set_custom=tm_completed,$cat=$system.time= ;d.save_session="
+}}}
+
 
 = Modifying and extending your configuration via `config.py` =
 
