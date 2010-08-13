@@ -79,7 +79,7 @@ view_filter_on = main,event.download.finished
 = Modifying and extending your configuration via `config.py` =
 
 == Defining your own custom fields ==
-To add user-defined fields to the built-in ones, you can put code like this into your `~/.pyroscope/config.py` file (you need at least version 0.3.4 of `pyrocore`):
+To add user-defined fields in addition to the built-in ones, you can put code like this into your `~/.pyroscope/config.py` file (you need at least version 0.3.4 of `pyrocore`):
 {{{
 def _custom_fields():
     """ Yield custom field definitions.
