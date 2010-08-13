@@ -68,6 +68,13 @@ system.method.set_key = event.download.inserted_new,loaded_stamp,"d.set_custom=t
 system.method.set_key = event.download.finished,completed_stamp,"d.set_custom=tm_completed,$cat=$system.time= ;d.save_session="
 }}}
 
+BTW, given these extensions, you can also sort your `main` view by completion time:
+{{{
+# Show recently completed top-most in "main"
+view_sort_current = main,greater=d.get_custom=tm_completed
+view_filter_on = main,event.download.finished
+}}}
+
 
 = Modifying and extending your configuration via `config.py` =
 
