@@ -1,0 +1,13 @@
+#summary Real-world use-cases for rtxmlrpc.
+#labels shell,cli,xmlrpc
+<wiki:toc max_depth="2" />
+
+= Setting and checking throttles =
+{{{
+rtxmlrpc throttle_down slow 120
+# 0
+rtxmlrpc get_throttle_down_max slow 
+# 122880
+rtxmlrpc get_throttle_down_rate slow 
+# 0
+}}}
