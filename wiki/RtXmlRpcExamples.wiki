@@ -17,6 +17,7 @@ fi
 
 echo -n rTorrent $(rtxmlrpc system.client_version)/$(rtxmlrpc system.library_version)
 echo -n , up $(rtxmlrpc to_elapsed_time $(ls -l --time-style '+%s' $SCGI_SOCKET | awk '{print $6}'))
+echo -n \ [$(rtcontrol -qosize \* | awk '{ SUM += $1} END { print SUM/1024/1024/1024 }') GiB loaded]
 echo -n , D:$(rtxmlrpc to_mb $(rtxmlrpc get_down_total)) MiB
 echo -n \ @ $(rtxmlrpc to_kb $(rtxmlrpc get_down_rate)) 
 echo -n \ / $(rtxmlrpc to_kb $(rtxmlrpc get_download_rate)) KiB/s
@@ -29,10 +30,11 @@ echo
 When called, it prints something like this:
 {{{
 $ rtuptime
-rTorrent 0.8.6/0.12.6, up 24:49:38, D: 42,3 MiB @ 0,1 / 666,0 KiB/s, U: 42,2 MiB @ 42,1 / 42,2 KiB/s
+rTorrent 0.8.6/0.12.6, up 24:49:38 [123.456 GiB loaded], D: 42,3 MiB @ 0,1 / 666,0 KiB/s, U: 42,2 MiB @ 42,1 / 42,2 KiB/s
 }}}
 And yes, doing the same in a Python script would be much more CPU efficient. ;)
 
+If you connect via `scgi_port`, touch a file in `/tmp` in your startup script and use that for uptime checking.
 
 = General maintenance tasks =
 Here are some commands that can help with managing your rTorrent instance:
