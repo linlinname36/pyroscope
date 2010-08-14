@@ -52,3 +52,44 @@ rtxmlrpc get_throttle_down_rate slow
 # 0
 }}}
 Note that the speed is specified in KiB/s as a string when setting it but returned in bytes/s as an integer on queries.
+
+
+= Global throttling when other computers are up =
+If you want to be loved by your house-mates, try this:
+{{{
+#! /bin/bash
+# Throttle bittorrent when certain hosts are up
+
+#
+# CONFIGURATION
+#
+hosts_to_check="mom dad"
+full_up=62
+full_down=620
+nice_up=42
+nice_down=123
+
+#
+# HERE BE DRAGONS!
+#
+
+# Check in any prioritized hosts are up
+throttle=false
+for host in $hosts_to_check; do
+    if ping -c1 $host >/dev/null 2>&1; then
+        throttle=true
+    fi
+done
+
+if $throttle; then
+    up=$nice_up
+    down=$nice_down
+else
+    up=$full_up
+    down=$full_down
+fi
+
+# Set chosen bandwidth
+rtxmlrpc -q set_upload_rate $(( $up * 1024 ))
+rtxmlrpc -q set_download_rate $(( $down * 1024 ))
+}}}
