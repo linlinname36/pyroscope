@@ -2,6 +2,15 @@
 #labels shell,cli,xmlrpc
 <wiki:toc max_depth="2" />
 
+= General Maintenance Taks =
+Here are some commands that can help with managing your rTorrent instance:
+{{{
+# Flush ALL session data NOW, use this before you make a backup of your session directory
+rtxmlrpc d.multicall main d.save_session=
+# [[1], [1], ..., [1]]
+}}}
+
+
 = Setting and checking throttles =
 To set the speed of the `slow` throttle, and then check your new limit and print the current download rate, use:
 {{{
