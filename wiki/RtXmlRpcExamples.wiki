@@ -6,7 +6,7 @@
 The `rtuptime` script shows you essential information about your rTorrent instance:
 {{{
 #! /bin/bash
-SCGI_SOCKET=~/rtorrent/.scgi_local
+SCGI_SOCKET=~/bt/rtorrent/.scgi_local
 
 if test ! -S $SCGI_SOCKET; then
     echo >&2 "rTorrent is not running (no socket $SCGI_SOCKET)"
@@ -15,8 +15,12 @@ fi
 
 echo -n rTorrent $(rtxmlrpc system.client_version)/$(rtxmlrpc system.library_version)
 echo -n , up $(rtxmlrpc to_elapsed_time $(ls -l --time-style '+%s' $SCGI_SOCKET | awk '{print $6}'))
-echo -n , D:$(rtxmlrpc to_mb $(rtxmlrpc get_down_total)) MiB @ $(rtxmlrpc to_kb $(rtxmlrpc get_down_rate)) / $(rtxmlrpc to_kb $(rtxmlrpc get_download_rate)) KiB/s
-echo -n , U:$(rtxmlrpc to_mb $(rtxmlrpc get_up_total)) MiB @ $(rtxmlrpc to_kb $(rtxmlrpc get_up_rate)) / $(rtxmlrpc to_kb $(rtxmlrpc get_upload_rate)) KiB/s
+echo -n , D:$(rtxmlrpc to_mb $(rtxmlrpc get_down_total)) MiB
+echo -n \ @ $(rtxmlrpc to_kb $(rtxmlrpc get_down_rate)) 
+echo -n \ / $(rtxmlrpc to_kb $(rtxmlrpc get_download_rate)) KiB/s
+echo -n , U:$(rtxmlrpc to_mb $(rtxmlrpc get_up_total)) MiB
+echo -n \ @ $(rtxmlrpc to_kb $(rtxmlrpc get_up_rate)) 
+echo -n \ / $(rtxmlrpc to_kb $(rtxmlrpc get_upload_rate)) KiB/s
 echo
 }}}
 
