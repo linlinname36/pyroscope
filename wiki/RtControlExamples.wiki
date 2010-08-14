@@ -53,8 +53,48 @@ The total amount of data you have loaded in GB:
 rtcontrol -qosize \* | awk '{ SUM += $1} END { print SUM/1024/1024/1024 }'
 }}}
 
+= Performing periodic tasks (cron jobs) =
 
-= Ratio Management =
+== Simple Queue Management ==
+
+This is a queue management one-liner (well, logically one line). Before you run it automatically, add a trailing "-n" to test it out, e.g. play with the queue size parameter and check out what would be started. Then put it into a crontab and run it every (few) minute(s).
+{{{
+export rt_max_start=6; rtcontrol -q --start --yes hash=$(echo $( \
+    rtcontrol -qrs is_active -o is_open,hash is_complete=no is_ignored=no \
+    | head -n $rt_max_start | grep ^CLS | cut -f2 ) | tr " " ,)
+}}}
+It works by listing all incomplete downloads that heed commands and sorting the already active ones to the top. Then it looks at the first `rt_max_start` entries and starts any closed ones. 
+
+Note that this means you can exempt items from queue management easily by using the `I` key in the curses interface.
+
+
+== Move on Completion ==
+
+The following moves completed downloads to another directory (note that you can
+restrict this further, e.g. to a specific tracker by using "alias=NAME").
+You don't need any multiple watch folders or other prerequisites for this.
+{{{
+rtcontrol is_complete=yes 'realpath=!*/completed/*' -qo '
+        echo "Moving %(name)s..." \
+        && mv -u "%(path)s" ~/completed \
+        && ln -s "~/completed/\$(basename "%(path)s")" "%(directory)s"
+    ' | bash
+}}}
+Another advantage is that in case you ever wanted to switch clients, or exchange the drive you host the data on, you can do so easily since all the active downloads still reside at one place in your download directory (in form of a bunch of symlinks).
+
+You can also extend it to create more organized completion structures, e.g. by adding the tracker and the month of completion:
+{{{
+rtcontrol is_complete=yes 'realpath=!*/completed/*' -qo '
+        echo "Moving %(name)s..." \
+        && export target="$HOME/completed/%(alias)s/\$(date +"%%Y-%%m")" \
+        && mkdir -p $target \
+        && mv -u "%(path)s" $target \
+        && ln -s "$target/\$(basename "%(path)s")" "%(directory)s"
+    ' | bash
+}}}
+
+
+== Ratio Management ==
 
 While rTorrent has a built-in form of ratio management since a few versions, it's hard to use after-the-fact and also hard to understand — you need to have different watch directories and complex settings in your `.rtorrent.rc`.
 
@@ -71,9 +111,9 @@ If you then put these commands into a script that runs every few minutes via `cr
 To complete your command line, you add the action you want to take on the torrents found, in the above example `--stop`. Later versions will also allow you to delete or move your data.
 
 
-= Other uses of rtcontrol with cron =
+== Other uses of rtcontrol with cron ==
 
-There are other useful commands besides ratio management you can perform on a regular basis, i.e. using a crontab. This one stops any torrent that isn't known by the tracker anymore or has other authorization problems:
+There are other useful commands you can perform on a regular basis, i.e. using a crontab. This one stops any torrent that isn't known by the tracker anymore or has other authorization problems:
 {{{
 rtcontrol is_open=yes 'message=*not?registered*,*unregistered*,*not?authorized*' --stop
 }}}
