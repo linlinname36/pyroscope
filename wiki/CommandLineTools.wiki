@@ -113,3 +113,11 @@ Note that `chtor` automatically changes only those metafiles whose existing anno
 `rtcontrol` allows you to select torrents loaded into rTorrent using various filter conditions. You can then either list the matches found using flexible output formatting, or perform some management action like starting and stopping torrents. 
 
 For example, the command `rtcontrol up=+0 up=-10k` will list all torrents that are currently uploading any data, but at a rate of below 10 KB/s. See the RtControlExamples page for more real-world examples.
+
+
+== rtxmlrpc ==
+`rtxmlrpc` allows you to call raw XMLRPC commands on the rTorrent instance that you have specified in your configuration.
+
+The command and optional arguments are provided using standard shell rules, i.e. where you would use "^X `throttle_down=slow,120`" in rTorrent you just list the arguments in the usual shell way (`rtxmlrpc throttle_down slow 120`). The rTorrent format is also recognized though, but without any escaping rules (i.e. you cannot have a '`,`' in your arguments then).
+
+To get a list of available commands, just call `rtxmlrpc system.listMethods`. See RtXmlRpcExamples for a list of useful calls.
