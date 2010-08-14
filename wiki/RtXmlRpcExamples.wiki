@@ -32,7 +32,7 @@ rTorrent 0.8.6/0.12.6, up 24:49:38, D: 42,3 MiB @ 0,1 / 666,0 KiB/s, U: 42,2 MiB
 And yes, doing the same in a Python script would be much more CPU efficient. ;)
 
 
-= General Maintenance Tasks =
+= General maintenance tasks =
 Here are some commands that can help with managing your rTorrent instance:
 {{{
 # Flush ALL session data NOW, use this before you make a backup of your session directory
