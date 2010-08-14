@@ -87,3 +87,4 @@ done
 rtxmlrpc -q set_upload_rate $(( $up * 1024 )) >/dev/null
 rtxmlrpc -q set_download_rate $(( $down * 1024 )) >/dev/null
 }}}
+Add it to your crontab and run it every few minutes.
