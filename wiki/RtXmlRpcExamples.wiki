@@ -1,7 +1,8 @@
 #summary Real-world use-cases for rtxmlrpc.
 #labels shell,cli,xmlrpc
-<wiki:toc max_depth="2" />
 See also RtControlExamples.
+
+_Contents_ <wiki:toc max_depth="2" />
 
 = Querying system information =
 The `rtuptime` script shows you essential information about your rTorrent instance:
