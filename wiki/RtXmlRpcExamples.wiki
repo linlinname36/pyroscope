@@ -2,7 +2,33 @@
 #labels shell,cli,xmlrpc
 <wiki:toc max_depth="2" />
 
-= General Maintenance Taks =
+= Querying system information =
+The `rtuptime` script shows you essential information about your rTorrent instance:
+{{{
+#! /bin/bash
+SCGI_SOCKET=~/rtorrent/.scgi_local
+
+if test ! -S $SCGI_SOCKET; then
+    echo >&2 "rTorrent is not running (no socket $SCGI_SOCKET)"
+    exit 1
+fi
+
+echo -n rTorrent $(rtxmlrpc system.client_version)/$(rtxmlrpc system.library_version)
+echo -n , up $(rtxmlrpc to_elapsed_time $(ls -l --time-style '+%s' $SCGI_SOCKET | awk '{print $6}'))
+echo -n , D:$(rtxmlrpc to_mb $(rtxmlrpc get_down_total)) MiB @ $(rtxmlrpc to_kb $(rtxmlrpc get_down_rate)) / $(rtxmlrpc to_kb $(rtxmlrpc get_download_rate)) KiB/s
+echo -n , U:$(rtxmlrpc to_mb $(rtxmlrpc get_up_total)) MiB @ $(rtxmlrpc to_kb $(rtxmlrpc get_up_rate)) / $(rtxmlrpc to_kb $(rtxmlrpc get_upload_rate)) KiB/s
+echo
+}}}
+
+When called, it prints something like this:
+{{{
+$ rtuptime
+rTorrent 0.8.6/0.12.6, up 24:49:38, D: 42,3 MiB @ 0,1 / 666,0 KiB/s, U: 42,2 MiB @ 42,1 / 42,2 KiB/s
+}}}
+And yes, doing the same in a Python script would be much more CPU efficient. ;)
+
+
+= General Maintenance Tasks =
 Here are some commands that can help with managing your rTorrent instance:
 {{{
 # Flush ALL session data NOW, use this before you make a backup of your session directory
