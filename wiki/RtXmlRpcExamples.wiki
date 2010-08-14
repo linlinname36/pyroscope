@@ -74,22 +74,16 @@ nice_down=123
 #
 
 # Check in any prioritized hosts are up
-throttle=false
+up=$full_up
+down=$full_down
 for host in $hosts_to_check; do
     if ping -c1 $host >/dev/null 2>&1; then
-        throttle=true
+        up=$nice_up
+        down=$nice_down
     fi
 done
 
-if $throttle; then
-    up=$nice_up
-    down=$nice_down
-else
-    up=$full_up
-    down=$full_down
-fi
-
 # Set chosen bandwidth
-rtxmlrpc -q set_upload_rate $(( $up * 1024 ))
-rtxmlrpc -q set_download_rate $(( $down * 1024 ))
+rtxmlrpc -q set_upload_rate $(( $up * 1024 )) >/dev/null
+rtxmlrpc -q set_download_rate $(( $down * 1024 )) >/dev/null
 }}}
