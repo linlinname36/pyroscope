@@ -74,7 +74,7 @@ The following moves completed downloads to another directory (note that you can
 restrict this further, e.g. to a specific tracker by using "alias=NAME").
 You don't need any multiple watch folders or other prerequisites for this.
 
-Test it first *without the `| bash` part* at the end, to make sure it'll in fact do what you intended.
+Test it first *without the "`| bash`" part* at the end, to make sure it'll in fact do what you intended.
 {{{
 rtcontrol is_complete=yes 'realpath=!*/completed/*' -qo '
         echo "Moving %(name)s..." \
