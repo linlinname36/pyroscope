@@ -63,28 +63,41 @@ If you want to be loved by your house-mates, try this:
 #
 # CONFIGURATION
 #
-hosts_to_check="mom dad"
+hosts_to_check="${1:-mom dad}"
 full_up=62
 full_down=620
 nice_up=42
 nice_down=123
+unit=1024 # KiB/s
 
 #
 # HERE BE DRAGONS!
 #
 
 # Check in any prioritized hosts are up
-up=$full_up
-down=$full_down
+up=$(( $full_up * $unit ))
+down=$(( $full_down * $unit ))
+hosts=""
+
 for host in $hosts_to_check; do
     if ping -c1 $host >/dev/null 2>&1; then
-        up=$nice_up
-        down=$nice_down
+        up=$(( $nice_up * $unit ))
+        down=$(( $nice_down * $unit ))
+        hosts="$hosts $host"
     fi
 done
 
+reason="at full throttle"
+test -z "$hosts" || reason="for$hosts"
+
 # Set chosen bandwidth
-rtxmlrpc -q set_upload_rate $(( $up * 1024 )) >/dev/null
-rtxmlrpc -q set_download_rate $(( $down * 1024 )) >/dev/null
+if test $(rtxmlrpc -q get_upload_rate) -ne $up; then
+    echo "Setting upload rate to $(( $up / 1024 )) KiB/s $reason"
+    rtxmlrpc -q set_upload_rate $up >/dev/null
+fi
+if test $(rtxmlrpc -q get_download_rate) -ne $down; then
+    echo "Setting download rate to $(( $down / 1024 )) KiB/s $reason"
+    rtxmlrpc -q set_download_rate $down >/dev/null
+fi
 }}}
 Add it to your crontab and run it every few minutes.
