@@ -3,6 +3,7 @@
 <wiki:toc max_depth="2" />
 
 = Setting and checking throttles =
+To set the speed of the `slow` throttle, and then check your new limit and print the current download rate, use:
 {{{
 rtxmlrpc throttle_down slow 120
 # 0
@@ -11,3 +12,4 @@ rtxmlrpc get_throttle_down_max slow
 rtxmlrpc get_throttle_down_rate slow 
 # 0
 }}}
+Note that the speed is specified in KiB/s as a string when setting it but returned in bytes/s as an integer on queries.
