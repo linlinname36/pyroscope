@@ -74,7 +74,7 @@ unit=1024 # KiB/s
 # HERE BE DRAGONS!
 #
 
-# Check in any prioritized hosts are up
+# Check if any prioritized hosts are up
 up=$(( $full_up * $unit ))
 down=$(( $full_down * $unit ))
 hosts=""
