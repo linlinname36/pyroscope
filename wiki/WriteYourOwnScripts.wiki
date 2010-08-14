@@ -1,4 +1,5 @@
 #summary How to write your own XMLRPC scripts in Python.
+#labels python,xmlrpc
 
 = Introduction =
 
@@ -22,3 +23,5 @@ if __name__ == "__main__":
         len(set(i.alias for i in torrents)),
     )
 }}}
+
+For simple calls, you can also use the `rtxmlrpc` command on a shell prompt.
