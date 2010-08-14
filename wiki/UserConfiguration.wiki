@@ -64,8 +64,8 @@ You need either a `scgi_local` or `scgi_port` specification in your rTorrent con
 For the `loaded` and `completed` fields to work (added in version 0.3.4), you also have to add this:
 {{{
 # Timestamp events
-system.method.set_key = event.download.inserted_new,loaded_stamp,"d.set_custom=tm_loaded,$cat=$system.time= ;d.save_session="
-system.method.set_key = event.download.finished,completed_stamp,"d.set_custom=tm_completed,$cat=$system.time= ;d.save_session="
+system.method.set_key = event.download.inserted_new,time_stamp,"d.set_custom=tm_loaded,$cat=$system.time= ;d.save_session="
+system.method.set_key = event.download.finished,time_stamp,"d.set_custom=tm_completed,$cat=$system.time= ;d.save_session="
 }}}
 
 BTW, given these extensions, you can also sort your `main` view by completion time:
