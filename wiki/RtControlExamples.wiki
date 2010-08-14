@@ -1,6 +1,8 @@
 #summary Real-world use-cases for rtcontrol.
 #labels cli,shell,cron
-<wiki:toc max_depth="2" />
+See also RtXmlRpcExamples.
+
+_Contents_ <wiki:toc max_depth="2" />
 
 = Fundamentals =
 `rtcontrol`'s main purpose is to take filter conditions on the command line of the form "_field_`=`_value_" and select a set of torrents according to them. All given conditions must be met (AND), and if a field name is omitted, "`name`" is assumed.
