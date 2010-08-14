@@ -1,5 +1,5 @@
 #summary Real-world use-cases for rtcontrol.
-#labels cli,shell
+#labels cli,shell,cron
 <wiki:toc max_depth="2" />
 
 = Fundamentals =
