@@ -136,7 +136,7 @@ To fully make use of the new features, you need to do the following:
 {{{
 # Make a full, current backup of the session data
 rtxmlrpc d.multicall main d.save_session= >/dev/null
-tar cvfz /tmp/session-backup.tgz "$(echo $(rtxmlrpc get_session)/ | tr -s / /)"
+tar cvfz /tmp/session-backup.tgz $(echo $(rtxmlrpc get_session)/ | tr -s / /)*.torrent
 
 # Set loaded time to that of the .torrent file
 rtcontrol \* -q -o '# $(name)s\nrtxmlrpc d.set_custom $(hash)s tm_loaded \$(\
