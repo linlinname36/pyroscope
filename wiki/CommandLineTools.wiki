@@ -8,11 +8,12 @@ See QuickStartGuide on how to install these commands on your computer.
 
 All commands share some common options:
 {{{
---version      show program's version number and exit
--h, --help     show this help message and exit
--q, --quiet    omit informational logging
--v, --verbose  increase informational logging
---debug        always show stack-traces for errors
+--version          show program's version number and exit
+-h, --help         show this help message and exit
+-q, --quiet        omit informational logging
+-v, --verbose      increase informational logging
+--debug            always show stack-traces for errors
+--config-dir=DIR   configuration directory [~/.pyroscope]
 }}}
 
 = Commands =
@@ -21,6 +22,7 @@ All commands share some common options:
 {{{
 mktor [options] <dir-or-file> <tracker-url-or-alias>...
 
+Options:
   -p, --private         disallow DHT and PEX
   --no-date             leave out creation date
   -o PATH, --output-filename=PATH
@@ -71,6 +73,12 @@ pyroscope tests/
     test_bencode.py                                                     2.6 KiB
 }}}
 
+`lstor` has these options:
+{{{
+  --reveal       show full announce URL including keys
+  --raw          print the metafile's raw content in all detail
+}}}
+
 
 == chtor ==
 {{{
@@ -83,8 +91,6 @@ Options:
                         happen
   --no-skip             do not skip broken metafiles that fail the integrity
                         check
-  -F, --force           change all metafiles given on the command line,
-                        regardless of current announce URL
   -p, --make-private    make torrent private (DHT/PEX disabled)
   -P, --make-public     make torrent public (DHT/PEX enabled)
   -C, --clean           remove all non-standard data from metafile outside the
@@ -93,9 +99,14 @@ Options:
                         the info dict
   -R, --clean-rtorrent  remove all rTorrent session data from metafile
   -a URL, --reannounce=URL
-                        set a new announce URL
-  --no-cross-seed       do not add a non-standard field to the info dict
-                        ensuring unique info hashes
+                        set a new announce URL, but only if the old announce
+                        URL matches the new one
+  --reannounce-all=URL  set a new announce URL on ALL given metafiles
+  --no-cross-seed       when using --reannounce-all, do not add a non-standard
+                        field to the info dict ensuring unique info hashes
+  --comment=TEXT        set a new comment (an empty value deletes it)
+  --bump-date           set the creation date to right now
+  --no-date             remove the 'creation date' field
 }}}
 
 `chtor` is able to change common attributes of a metafile, or clean any non-standard data from them (namely, rTorrent session information).
