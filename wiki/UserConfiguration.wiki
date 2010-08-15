@@ -129,8 +129,8 @@ You can then use the `diff` tool to check for the differences between your curre
 
 == Migrating to version 0.3.4 ==
 To fully make use of the new features, you need to do the following:
-  # Read and follow the section _Extending your `.rtorrent.rc`_ from above.
-  # To add the new custom fields to your existing items, call these commands in a shell: 
+  # Read and follow the section _Extending your `.rtorrent.rc`_ from above and restart rTorrent.
+  # To add the new custom keys to your existing session data, call these commands in a shell: 
 {{{
 # Make a full, current backup of the session data
 rtxmlrpc d.multicall main d.save_session=
