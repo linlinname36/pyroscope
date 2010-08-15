@@ -126,3 +126,20 @@ After you did that, you can use your custom field just like any built-in one, e.
 After you installed a new version of the software, you can easily check whether the default configuration files changed by calling the `pyroadmin --create-config` command. Since this will never overwrite existing configuration files, the files `config.ini.default` and `config.py.default` will be created instead.
 
 You can then use the `diff` tool to check for the differences between your current configuration and the new default one, and add any changes you want to adopt.
+
+== Migrating to version 0.3.4 ==
+To fully make use of the new features, you need to do the following:
+  # Read and follow the section _Extending your `.rtorrent.rc`_ from above.
+  # To add the new custom fields to your existing items, call these commands in a shell: {{{
+# Make a full, current backup of the session data
+rtxmlrpc d.multicall main d.save_session=
+tar cvfz /tmp/session-backup.tgz "$(rtxmlrpc get_session)"
+
+# Set loaded time to that of the .torrent file
+rtcontrol \* -q -o '# $(name)s\nrtxmlrpc d.set_custom $(hash)s tm_loaded \$(ls -l --time-style "+%%s" "$(metafile)s" | cut -f6 -d" ")\nrtxmlrpc d.save_session $(hash)s' | bash
+
+# Set completed time to that of the data file or directory
+rtcontrol \* path=\! -q -o '# $(name)s\nrtxmlrpc d.set_custom $(hash)s tm_completed \$(ls -ld --time-style "+%%s" "$(realpath)s" | cut -f6 -d" ")\nrtxmlrpc d.save_session $(hash)s' | bash
+}}}
+  # call `pyroadmin --create-config` and check your `config.ini` against `config.ini.default` as described above; among other things, the default `output_format` has changed.
+  # Enjoy.
