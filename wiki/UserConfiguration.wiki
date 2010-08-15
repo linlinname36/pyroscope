@@ -135,7 +135,7 @@ To fully make use of the new features, you need to do the following:
   # To add the new custom keys to your existing session data, call these commands in a shell: 
 {{{
 # Make a full, current backup of the session data
-rtxmlrpc d.multicall main d.save_session=
+rtxmlrpc d.multicall main d.save_session= >/dev/null
 tar cvfz /tmp/session-backup.tgz "$(rtxmlrpc get_session)"
 
 # Set loaded time to that of the .torrent file
