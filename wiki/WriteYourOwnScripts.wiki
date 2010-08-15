@@ -24,4 +24,4 @@ if __name__ == "__main__":
     )
 }}}
 
-For simple calls, you can also use the `rtxmlrpc` command on a shell prompt.
+For simple calls, you can also use the `rtxmlrpc` command on a shell prompt, see RtXmlRpcExamples for that.
