@@ -139,12 +139,12 @@ rtxmlrpc d.multicall main d.save_session= >/dev/null
 tar cvfz /tmp/session-backup.tgz $(echo $(rtxmlrpc get_session)/ | tr -s / /)*.torrent
 
 # Set loaded time to that of the .torrent file
-rtcontrol \* -q -o 'echo $(name)s\ntest -f "$(metafile)s" && rtxmlrpc -q d.set_custom $(hash)s tm_loaded \$(\
+rtcontrol \* -q -sname -o 'echo $(name)s\ntest -f "$(metafile)s" && rtxmlrpc -q d.set_custom $(hash)s tm_loaded \$(\
     ls -l --time-style "+%%s" "$(metafile)s" \
     | cut -f6 -d" ")\nrtxmlrpc -q d.save_session $(hash)s' | bash
 
 # Set completed time to that of the data file or directory
-rtcontrol \* path=\! is_ghost=no -q -o 'echo $(name)s\ntest -e "$(realpath)s" && rtxmlrpc -q d.set_custom $(hash)s tm_completed \$(\
+rtcontrol \* path=\! is_ghost=no -q -sname -o 'echo $(name)s\ntest -e "$(realpath)s" && rtxmlrpc -q d.set_custom $(hash)s tm_completed \$(\
     ls -ld --time-style "+%%s" "$(realpath)s" \
     | cut -f6 -d" ")\nrtxmlrpc -q d.save_session $(hash)s' | bash
 }}}
