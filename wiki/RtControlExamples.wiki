@@ -47,7 +47,7 @@ alias rtmsgstats="rtcontrol -q -s alias,message -o alias,message 'message=?*' me
 alias rt2days="rtcontrol -scompleted -ocompleted,is_open,up.sz,ratio,alias,name completed=-2d"
 }}}
 
-`rthot` shows active torrents every 10 seconds (until you hit CTRL-C), `rtmsg` lists all torrents that have a non-trivial tracker message, `rtmsgstats` prints a count of how many messages there are per unique combination of tracker and message text, and finally `rt2days` gives the completion history of the last two days.
+`rthot` shows active torrents every 10 seconds (until you hit CTRL-C), `rtmsg` lists all torrents that have a non-trivial tracker message, `rtmsgstats` prints a count of how many messages there are per unique combination of tracker and message text, and finally `rt2days` gives the completion history of the last 48 hours.
 
 
 = Statistics =
