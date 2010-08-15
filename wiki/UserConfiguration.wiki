@@ -146,5 +146,5 @@ rtcontrol \* path=\! -q -o '# $(name)s\nrtxmlrpc d.set_custom $(hash)s tm_comple
     ls -ld --time-style "+%%s" "$(realpath)s" \
     | cut -f6 -d" ")\nrtxmlrpc d.save_session $(hash)s' | bash
 }}}
-  # Call `pyroadmin --create-config` and check your `config.ini` against `config.ini.default` as described above; among other things, the default `output_format` has changed.
+  # Call `pyroadmin --create-config` and check your `config.ini` against `config.ini.default` as described above. Among other things, the default `output_format` has changed.
   # Enjoy.
