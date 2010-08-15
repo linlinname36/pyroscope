@@ -1,4 +1,4 @@
-#summary PyroScope CLI Tool Overview.
+#summary PyroScope CLI Tools Overview.
 #labels cli,shell
 <wiki:toc max_depth="2" />
 
