@@ -117,7 +117,9 @@ For `rtorrent`, to mass-change the announce URL for a tracker, you would do this
   * `chtor -a http://example.com/new/announce/url watch/*.torrent .session/*.torrent`
   * restart `rtorrent`
  
-Note that `chtor` automatically changes only those metafiles whose existing announce URL starts with the scheme and location of the new URL (`http://example.com/` in the above example) — unless the `--force` option is also given. It only rewrites metafiles that were actually changed, and those changes are first written to a temporary file, which is then renamed.
+Note that `chtor` automatically changes only those metafiles whose existing announce URL starts with the scheme and location of the new URL (`http://example.com/` in the above example). To change all given metafiles unconditionally, use the `--reannounce-all` option and be very sure you provide only those files you actually want to be changed.
+
+`chtor` only rewrites metafiles that were actually changed, and those changes are first written to a temporary file, which is then renamed.
 
 
 == rtcontrol ==
