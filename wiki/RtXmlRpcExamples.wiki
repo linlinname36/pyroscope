@@ -95,13 +95,13 @@ reason="at full throttle"
 test -z "$hosts" || reason="for$hosts"
 
 # Set chosen bandwidth
-if test $(rtxmlrpc -q get_upload_rate) -ne $up; then
+if test $(rtxmlrpc get_upload_rate) -ne $up; then
     echo "Setting upload rate to $(( $up / 1024 )) KiB/s $reason"
-    rtxmlrpc -q set_upload_rate $up >/dev/null
+    rtxmlrpc -q set_upload_rate $up
 fi
-if test $(rtxmlrpc -q get_download_rate) -ne $down; then
+if test $(rtxmlrpc get_download_rate) -ne $down; then
     echo "Setting download rate to $(( $down / 1024 )) KiB/s $reason"
-    rtxmlrpc -q set_download_rate $down >/dev/null
+    rtxmlrpc -q set_download_rate $down
 fi
 }}}
 Add it to your crontab and run it every few minutes.
