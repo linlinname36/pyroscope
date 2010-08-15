@@ -32,9 +32,9 @@ The following conditions give you a hint on what you can do, and some building b
 Note that the `!` character has to be escaped in shell commands. For a current full list of all the field names and their meaning, see the output of `rtcontrol --help-fields`.
 
 In time filtering conditions (e.g. for the `completed` and `loaded` fields), you have three possible options to specify the value:
-  # time deltas in the form `<number><unit>...`, where unit is a single upper- or lower-case letter and one of `Y`ear, `M`onth, `W`eek, `D`ay, `H`our, M`i`nute, or `S`econd). The order is important (`y` before `m`), and a `+` before the delta means _older than_, while `-` means _younger than_. Example: `-1m2w3d`.
-  # a certain date and time in human readable form, where the date can be given in ISO (``), American (``), or European (``) format. A date can be followed by a time, with minutes and seconds optional and separazed by `:`. Put either a space or a `T` between the date and the time. Example: `+2010-08-15t14:50`.
-  # absolute numerical UNIX timestamp, i.e. what "`ls -l --time-style '+%s'`" returns. Example: `+1281876597`.
+  # time deltas in the form "`<number><unit>...`", where unit is a single upper- or lower-case letter and one of `Y`ear, `M`onth, `W`eek, `D`ay, `H`our, M`i`nute, or `S`econd. The order is important (`y` before `m`), and a `+` before the delta means _older than_, while `-` means _younger than_. Example: `-1m2w3d`.
+  # a certain date and time in human readable form, where the date can be given in ISO (`Y-M-D`), American (`M/D/Y`), or European (`D.M.Y`) format. A date can be followed by a time, with minutes and seconds optional and separated by `:`. Put either a space or a `T` between the date and the time. Example: `+2010-08-15t14:50`.
+  # absolute numerical UNIX timestamp, i.e. what `ls -l --time-style '+%s'` returns. Example: `+1281876597`.
 
 
 = Reports =
