@@ -32,7 +32,7 @@ The following conditions give you a hint on what you can do, and some building b
 || `is_ghost=yes`     || Torrents that have no data (were never started or lost their data; _since v0.3.3_) ||
 || `alias=obt`        || Torrents tracked by `openbittorrent.com` (see UserConfiguration on how to add aliases for trackers) ||
 || `ratio=+1 realpath=\!/mnt/*` || 1:1 seeds not on a mounted path (i.e. likely on localhost) ||
-|| `completed=+2w`    || Completed more than 2 weeks ago (added in 0.3.4) ||
+|| `completed=+2w`    || Completed more than 2 weeks ago (_since v0.3.4_) ||
 || `kind=flac,mp3`    || Music downloads (_not implemented yet_) ||
 
 Note that the `!` character has to be escaped in shell commands. For a current full list of all the field names and their meaning, see the output of `rtcontrol --help-fields`.
