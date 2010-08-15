@@ -127,6 +127,8 @@ After you installed a new version of the software, you can easily check whether 
 
 You can then use the `diff` tool to check for the differences between your current configuration and the new default one, and add any changes you want to adopt.
 
+And remember to *always read the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog]*!
+
 == Migrating to version 0.3.4 ==
 To fully make use of the new features, you need to do the following:
   # Read and follow the section _Extending your `.rtorrent.rc`_ from above and restart rTorrent.
