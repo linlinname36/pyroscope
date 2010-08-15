@@ -44,9 +44,10 @@ You might want to add the following alias definitions to your `~/.bashrc`:
 alias rthot="watch -n10 'rtcontrol -rs up,down,name xfer=+0 2>&1'"
 alias rtmsg="rtcontrol -s alias,message,name 'message=?*' message=\!*Tried?all?trackers*"
 alias rtmsgstats="rtcontrol -q -s alias,message -o alias,message 'message=?*' message=\!*Tried?all?trackers* | uniq -c"
+alias rt2days="rtcontrol -scompleted -ocompleted,is_open,up.sz,ratio,alias,name completed=-2d"
 }}}
 
-`rthot` shows active torrents every 10 seconds (until you hit CTRL-C), `rtmsg` lists all torrents that have a non-trivial tracker message, and `rtmsgstats` prints a count of how many messages there are per unique combination of tracker and message text.
+`rthot` shows active torrents every 10 seconds (until you hit CTRL-C), `rtmsg` lists all torrents that have a non-trivial tracker message, `rtmsgstats` prints a count of how many messages there are per unique combination of tracker and message text, and finally `rt2days` gives the completion history of the last two days.
 
 
 = Statistics =
