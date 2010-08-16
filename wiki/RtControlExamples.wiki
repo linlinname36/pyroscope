@@ -33,6 +33,9 @@ The following conditions give you a hint on what you can do, and some building b
 || `alias=obt`        || Torrents tracked by `openbittorrent.com` (see UserConfiguration on how to add aliases for trackers) ||
 || `ratio=+1 realpath=\!/mnt/*` || 1:1 seeds not on a mounted path (i.e. likely on localhost) ||
 || `completed=+2w`    || Completed more than 2 weeks ago (_since v0.3.4_) ||
+|| `tagged=`          || Not tagged at all (_since v0.3.5_) ||
+|| `tagged=!`         || Has at least one tag (_since v0.3.5_) ||
+|| `tagged=foo`       || Tagged with "foo" (_since v0.3.5_) — tags are white-space separated lists in the custom attribute "tags" ||
 || `kind=flac,mp3`    || Music downloads (_not implemented yet_) ||
 
 Note that the `!` character has to be escaped in shell commands. For a current full list of all the field names and their meaning, see the output of `rtcontrol --help-fields`.
