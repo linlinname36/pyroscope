@@ -90,10 +90,10 @@ if test -z "$1"; then
     test -e "$rtorrent_rc" || rtorrent_rc="$(rtxmlrpc system.get_cwd)/rtorrent.rc"
     if test -e "$rtorrent_rc"; then
         throttles="$(grep ^throttle_ $rtorrent_rc | tr _=, ' ' | cut -f3 -d" " | sort | uniq)"
-        echo >&2
-        echo >&2 "CURRENT THROTTLE SETTINGS"
+        echo
+        echo "CURRENT THROTTLE SETTINGS"
         for throttle in $throttles; do
-            echo >&2 -e "  $throttle\t" \
+            echo -e "  $throttle\t" \
                 "U: $(rtxmlrpc to_kb $(rtxmlrpc get_throttle_up_rate $throttle)) /" \
                 "$(rtxmlrpc to_kb $(rtxmlrpc get_throttle_up_max $throttle | sed 's/^-1$/0/')) KiB/s\t" \
                 "D: $(rtxmlrpc to_kb $(rtxmlrpc get_throttle_down_rate $throttle)) /" \
