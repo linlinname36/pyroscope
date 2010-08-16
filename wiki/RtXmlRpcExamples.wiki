@@ -57,7 +57,7 @@ rtxmlrpc get_throttle_down_rate slow
 }}}
 Note that the speed is specified in KiB/s as a string when setting it but returned in bytes/s as an integer on queries.
 
-The following script makes this available in an easy usable form, e.g. `throttle slow 42`: 
+The following script makes this available in an easy usable form, e.g. "`throttle slow 42`" — it also shows the current rate and settings of all defined throttles when called without arguments: 
 {{{
 #! /bin/bash
 # Set speed of named throttle
@@ -85,6 +85,21 @@ fi
 
 if test -z "$1"; then
     echo >&2 "Usage: $0 [-d] [<throttle-name=$throttle_name>] <rate>"
+
+    rtorrent_rc=~/.rtorrent.rc
+    test -e "$rtorrent_rc" || rtorrent_rc="$(rtxmlrpc system.get_cwd)/rtorrent.rc"
+    if test -e "$rtorrent_rc"; then
+        throttles="$(grep ^throttle_ $rtorrent_rc | tr _=, ' ' | cut -f3 -d" " | sort | uniq)"
+        echo >&2
+        echo >&2 "CURRENT THROTTLE SETTINGS"
+        for throttle in $throttles; do
+            echo >&2 -e "  $throttle\t" \
+                "U: $(rtxmlrpc to_kb $(rtxmlrpc get_throttle_up_rate $throttle)) /" \
+                "$(rtxmlrpc to_kb $(rtxmlrpc get_throttle_up_max $throttle | sed 's/^-1$/0/')) KiB/s\t" \
+                "D: $(rtxmlrpc to_kb $(rtxmlrpc get_throttle_down_rate $throttle)) /" \
+                "$(rtxmlrpc to_kb $(rtxmlrpc get_throttle_down_max $throttle | sed 's/^-1$/0/')) KiB/s"
+        done
+    fi
     exit 2
 fi
 
