@@ -5,12 +5,10 @@ See also RtXmlRpcExamples.
 _Contents_ <wiki:toc max_depth="2" />
 
 = Fundamentals =
-`rtcontrol`'s main purpose is to take filter conditions on the command line of the form "_field_`=`_value_" and select a set of torrents according to them. All given conditions must be met (AND), and if a field name is omitted, "`name`" is assumed.
+`rtcontrol`'s main purpose is to take filter conditions on the command line of the form "_field_`=`_value_" and select a set of torrents according to them. All given conditions must be met (AND), and if a field name is omitted, "`name`" is assumed. Multiple values separated by a comma indicate several possible choices (OR). "`!`" in front of a filter value negates it (NOT).
 
 For numeric fields, a leading "`+`" means greater than, a leading "`-`" means less 
 than (just like with the standard `find` command). For string fields, the value is a glob pattern which you are used to from shell filename patterns (`*`, `?`, `[a-z]`, `[!a-z]`).
-Multiple values separated by a comma indicate several possible choices (OR).
-"`!`" in front of a filter value negates it (NOT).
 
 Selection on fields that are lists of tags or names (e.g. `tagged` and `views`) work by just providing the tags you want to search for. The difference to the glob patterns for string fields is that tagged search respects word boundaries (whitespace), and to get a match the given tag just has to appear anywhere in the list (`bar` matches on `foo bar baz`).
 
@@ -36,8 +34,8 @@ The following conditions give you a hint on what you can do, and some building b
 || `ratio=+1 realpath=\!/mnt/*` || 1:1 seeds not on a mounted path (i.e. likely on localhost) ||
 || `completed=+2w`    || Completed more than 2 weeks ago (_since v0.3.4_) ||
 || `tagged=`          || Not tagged at all (_since v0.3.5_) ||
-|| `tagged=\!`         || Has at least one tag (_since v0.3.5_) ||
-|| `tagged=foo`       || Tagged with "foo" (_since v0.3.5_) — tags are white-space separated lists in the custom attribute "tags" ||
+|| `tagged=\!`        || Has at least one tag (_since v0.3.5_) ||
+|| `tagged=foo,bar`   || Tagged with "foo" or "bar" (_since v0.3.5_) — tags are white-space separated lists of names in the field "custom_tags" ||
 || `kind=flac,mp3`    || Music downloads (_not implemented yet_) ||
 
 Note that the `!` character has to be escaped in shell commands. For a current full list of all the field names and their meaning, see the output of `rtcontrol --help-fields`.
