@@ -163,7 +163,7 @@ RT_SOCKET='eval echo $HOME/rtorrent/.scgi_local'
 BW_SEED_MAX=900
 BW_SEED_SLOW=200
 
-# Throttle torrents that are seeded 1:1 and prioritize other active ones
+# Throttle torrents that are seeded 1:1 when there are other active ones
 *	* * * * 	test -S $($RT_SOCKET) && rtxmlrpc -q throttle_up seed $(test $(rtcontrol -q is_active=1 xfer=+1 throttle=\!seed -ohash | wc -l) -eq 0 && echo $BW_SEED_MAX || echo $BW_SEED_SLOW)
 
 # Put torrents seeded above 1:1 into the seed throttle
