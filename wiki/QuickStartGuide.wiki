@@ -36,7 +36,7 @@ If you like PyroScope after using it for a while, click on the following button 
 
 
 == Installing from Source (SVN) ==
-If you have experience with the shell prompt and possibly a bit of Python you might want to install the development version to gain early access to new features. Since that version is constantly used in cron jobs, chances that it is unstable at any point in time are slim.
+If you have experience with the shell prompt and possibly a bit of Python you might want to install the development version to gain early access to new features. Since that version is constantly used in cron jobs, chances that it is unstable at any point in time are slim. Please *monitor the [http://code.google.com/p/pyroscope/source/list SVN log] and the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog]* if you run from source.
 
 Requirements:
  * An existing rTorrent installation, _with the xmlrpc option compiled in_.
