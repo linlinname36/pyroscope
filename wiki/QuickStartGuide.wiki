@@ -43,7 +43,7 @@ Requirements:
  * Python 2.5 or a higher 2.x version (2.5 is recommended).
  * A proper build environment and a subversion client. On Debian and Ubuntu, you'll need the following packages installed:
  {{{
-aptitude install python2.5 python-virtualenv python-dev
+aptitude install python python-virtualenv python-dev
 aptitude install build-essential devtools subversion
 aptitude install inkscape # ONLY for the web-ui
 }}}
