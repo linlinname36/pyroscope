@@ -4,7 +4,7 @@
 
 = Installing the command line tools =
 
-*WARNING:* Older xmlrpc-c libraries on Ubuntu have a bug regarding integer overflows (causing bigger data sizes like those of Linux distribution DVDs to be misreported), see [http://code.google.com/p/rtgui/wiki/CompilingRtorrent this page] for details on how to fix it.
+*WARNING:* Older xmlrpc-c libraries on Ubuntu have a bug regarding integer overflows (causing bigger data sizes like those of Linux distribution DVDs to be misreported), see [http://code.google.com/p/rtgui/wiki/CompilingRtorrent this page] for details on how to fix it. If your installation has that problem, `rtxmlrpc` and `rtcontrol` will emit a warning every time you start them.
 
 == Installing a release version ==
 Requirements:
