@@ -41,7 +41,7 @@ If you have experience with the shell prompt and possibly a bit of Python you mi
 Requirements:
  * An existing rTorrent installation, _with the xmlrpc option compiled in_.
  * Python 2.5 or a higher 2.x version (2.5 is recommended).
- * Currently, a proper build environment and a subversion client. On Debian and Ubuntu, you'll need the following packages installed:
+ * A proper build environment and a subversion client. On Debian and Ubuntu, you'll need the following packages installed:
  {{{
 aptitude install python2.5 python-virtualenv python-dev
 aptitude install build-essential devtools subversion
