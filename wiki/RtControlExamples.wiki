@@ -42,6 +42,7 @@ Note that the `!` character has to be escaped in shell commands. For a current f
 
 
 = Reports =
+== Using bash aliases for common reports ==
 You might want to add the following alias definitions to your `~/.bashrc`:
 {{{
 alias rthot="watch -n10 'rtcontrol -rs up,down,name xfer=+0 2>&1'"
@@ -51,6 +52,27 @@ alias rt2days="rtcontrol -scompleted -ocompleted,is_open,up.sz,ratio,alias,name 
 }}}
 
 `rthot` shows active torrents every 10 seconds (until you hit CTRL-C), `rtmsg` lists all torrents that have a non-trivial tracker message, `rtmsgstats` prints a count of how many messages there are per unique combination of tracker and message text, and finally `rt2days` gives the completion history of the last 48 hours.
+
+== Defining and using custom output formats ==
+
+Starting with version 0.3.5, you can also define custom output formats and print column headers, then the `rt2days` example from above becomes this:
+{{{
+alias rt2days="rtcontrol -scompleted -ocompletion completed=-2d"
+}}}
+
+You need to define the custom output format used there, so also add this to your `~/.pyroscope/config.ini`:
+{{{
+[FORMATS]
+# Custom output formats
+completion = $(completed)-19s $(is_open)7s $(up.sz)10s/s $(ratio)8.2f $(alias)-8s $(name)s
+}}}
+See [http://docs.python.org/release/2.5.2/lib/typesseq-strings.html String Formatting Operations] for a description how the formatting options work, and notice that we use `$` instead of `%` here, because `%` has a special meaning in INI files.
+
+Then, calling `rt2days -q` will print something like this;
+{{{
+COMPLETED           IS_OPEN         UP/s    RATIO ALIAS    NAME
+2010-08-18 15:35:16     CLS    0 bytes/s     1.00 SeedBox  lab-rats
+}}}
 
 
 = Statistics =
