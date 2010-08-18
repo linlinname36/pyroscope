@@ -64,14 +64,14 @@ You need to define the custom output format used there, so also add this to your
 {{{
 [FORMATS]
 # Custom output formats
-completion = $(completed)-19s $(is_open)7s $(up.sz)10s/s $(ratio.pc)5d%%%% $(alias)-8s $(name)s
+completion = $(completed)-16.16s $(is_open)7s $(up.sz)10s/s $(ratio.pc)5d%%%% $(alias)-8s $(name)s
 }}}
 See [http://docs.python.org/release/2.5.2/lib/typesseq-strings.html String Formatting Operations] for a description how the formatting options work, and notice that `$` is used instead of `%` here, because `%` has a special meaning in INI files. For the same reason, a single `%` in the final output becomes `%%%%` in the configuration (it needs to be escaped twice).
 
 Then, calling `rt2days -q` will print something like this;
 {{{
-COMPLETED           IS_OPEN         UP/s RATIO% ALIAS    NAME
-2010-08-18 15:35:16     CLS    0 bytes/s   100% SeedBox  lab-rats
+COMPLETED        IS_OPEN         UP/s RATIO% ALIAS    NAME
+2010-08-18 15:35     CLS    0 bytes/s   100% SeedBox  lab-rats
 }}}
 
 
