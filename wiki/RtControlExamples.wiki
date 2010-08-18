@@ -1,5 +1,5 @@
 #summary Real-world use-cases for rtcontrol.
-#labels cli,shell,cron
+#labels shell,cron
 See also RtXmlRpcExamples.
 
 _Contents_ <wiki:toc max_depth="2" />
@@ -124,6 +124,31 @@ To that you can add anything you think fits your needs, and also use several com
 If you then put these commands into a script that runs every few minutes via `cron`, you have a very flexible form of ratio management that can be changed on a whim. 
 
 To complete your command line, you add the action you want to take on the torrents found, in the above example `--stop`. Later versions will also allow you to delete or move your data.
+
+
+== Bandwidth Management ==
+
+Say you want to have torrents that are already seeded back take a back-seat when other torrents with a ratio less than one are active — but when they're not, all torrents should take full advantage of the available bandwidth. The last part is not possible with the built-in throttle groups, but here's a fix that works by setting the maximum rate on the `seed` throttle dynamically.
+
+Put this into your `.rtorrent.rc`:
+{{{
+throttle_up=seed,900
+}}}
+
+Then extend your crontab with these lines (`crontab -e`):
+{{{
+RT_SOCKET=~/rtorrent/.scgi_local
+BW_SEED_MAX=900
+BW_SEED_SLOW=200
+
+# Throttle torrents that are seeded in favour of other active ones
+*	* * * * 	test -S $RT_SOCKET && rtxmlrpc -q throttle_up seed $(test $(rtcontrol -q is_active=1 xfer=+1 throttle=\!seed -ohash | wc -l) -gt 0 && echo $BW_SEED_MAX || echo $BW_SEED_SLOW)
+
+# Put torrents seeded above 1:1 into the seed throttle
+*/10	* * * * 	test -S $RT_SOCKET && rtcontrol ratio=+1.05 is_complete=1 is_ignored=0 throttle=none -q -T seed --yes
+}}}
+
+The `900` and `200` in the above examples are the bandwdith limits in KiB/s, you need to adapt them to your connection of course.
 
 
 == Other uses of rtcontrol with cron ==
