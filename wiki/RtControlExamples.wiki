@@ -148,7 +148,7 @@ BW_SEED_SLOW=200
 */10	* * * * 	test -S $($RT_SOCKET) && rtcontrol ratio=+1.05 is_complete=1 is_ignored=0 throttle=none -q -T seed --yes
 }}}
 
-The `900` and `200` in the above examples are the bandwdith limits in KiB/s, you need to adapt them to your connection of course.
+The `900` and `200` in the above examples are the bandwidth limits in KiB/s, you need to adapt them to your connection of course.
 
 
 == Other uses of rtcontrol with cron ==
