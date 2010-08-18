@@ -112,10 +112,6 @@ Using `crontab -e`, add the following to your cron schedule:
 * * * * *   test -S ~/lib/rtorrent/.scgi_local && ~/lib/pyroscope/bin/pyro-qm
 }}}
 
-
-= Maintenance Tasks =
-The following information helps you to keep your software up-to-date and use all of its features...
-
 == Updating to the Latest SVN Version ==
 To update the software after initial installation, use these commands:
 {{{
