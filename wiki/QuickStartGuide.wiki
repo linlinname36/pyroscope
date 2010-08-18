@@ -2,7 +2,7 @@
 #labels installation,configuration,cli,web.ui
 <wiki:toc max_depth="2" />
 
-= Installation of the command line tools =
+= Installing the command line tools =
 
 *WARNING:* Older xmlrpc-c libraries on Ubuntu have a bug regarding integer overflows (causing bigger data sizes like those of Linux distribution DVDs to be misreported), see [http://code.google.com/p/rtgui/wiki/CompilingRtorrent this page] for details on how to fix it.
 
@@ -35,7 +35,7 @@ If you like PyroScope after using it for a while, click on the following button 
 <wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_users_logo.xml" height="43"  border="0" />
 
 
-== Installing from Source (SVN) ==
+== Installing from source (SVN) ==
 If you have experience with the shell prompt and possibly a bit of Python you might want to install the development version to gain early access to new features. Since that version is constantly used in cron jobs, chances that it is unstable at any point in time are slim. Please *monitor the [http://code.google.com/p/pyroscope/source/list SVN log] and the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog]* if you run from source.
 
 Requirements:
@@ -76,13 +76,13 @@ If you want to use the web interface, see "_Installing the Web Interface_" below
 *What follows is the more complex installation of the yet-incomplete web interface and currently has a chance of being broken...*
 ----
 
-= Installing the Web Interface =
+= Installing the web interface =
 
 Currently, the only way to install and use the web interface is from source, so you first need to follow the "_Installing from Source (SVN)_" section above. Note that the web-ui is currently unsupported and on hold — if it doesn't work for you, it just doesn't.
 
 _The file system paths in the following sections can be adapted to your installation, of course, but avoid that unless you have a good reason. It's recommended to put the SCGI socket into the `~/lib/rtorrent` directory, just create it if your rTorrent installation is located elsewhere. These instructions work best if PyroScope is installed into the same user account as rTorrent._
 
-== `PyroScope` Basic Configuration ==
+== `PyroScope` basic configuration ==
 Set up the `pyroscope` subproject, create the `~/.pyroscope` directory and the necessary sub directories.
 {{{
 cd ~/lib/pyroscope/pyroscope
@@ -90,7 +90,7 @@ source bootstrap.sh
 mkdir -p ~/.pyroscope/{log,data,www-data}
 }}}
 
-== Starting the Web Interface ==
+== Starting the web interface ==
 To use the web server, you first have to make a config file as follows:
 {{{
 cd ~/lib/pyroscope/pyroscope
@@ -104,15 +104,7 @@ cd ~/lib/pyroscope/pyroscope
 }}}
 If you did not change the web server parameters, you can now view the start page at http://127.0.0.1:8042/. You can use the `paver status` command to check on the server status, and `paver stop` to stop a running server.
 
-== Enabling the Queue Manager ==
-*NOT IMPLEMENTED YET*
-
-Using `crontab -e`, add the following to your cron schedule:
-{{{
-* * * * *   test -S ~/lib/rtorrent/.scgi_local && ~/lib/pyroscope/bin/pyro-qm
-}}}
-
-== Updating to the Latest SVN Version ==
+== Updating to the latest SVN revision ==
 To update the software after initial installation, use these commands:
 {{{
 cd ~/lib/pyroscope
@@ -121,4 +113,13 @@ source bin/activate
 svn update
 ( cd pyrocore && source bootstrap.sh )
 ( cd pyroscope && paver develop -U && paver bootstrap && paver start )
+}}}
+
+
+= Enabling the queue manager =
+*NOT IMPLEMENTED YET*
+
+Using `crontab -e`, add the following to your cron schedule:
+{{{
+* * * * *   test -S ~/lib/rtorrent/.scgi_local && ~/lib/pyroscope/bin/pyro-qm
 }}}
