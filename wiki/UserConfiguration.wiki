@@ -59,7 +59,7 @@ _For advanced users:_ Values can contain format strings of the form `%(name)s` w
 
 = Extending your `.rtorrent.rc` =
 
-You need either a `scgi_local` or `scgi_port` specification in your rTorrent configuration; `scgi_local` is preferable since more secure. Furthermore, you need to provide the path to a `session` directory. See the rTorrent manual for details.
+You need either a `scgi_local` or `scgi_port` specification in your rTorrent configuration; `scgi_local` is preferable since more secure. Furthermore, you need to provide the path to a `session` directory. See the [http://libtorrent.rakshasa.no/rtorrent/rtorrent.1.html rTorrent man page] for details.
 
 For the `loaded` and `completed` fields to work (added in version 0.3.4), you also have to add this:
 {{{
