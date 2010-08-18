@@ -55,7 +55,7 @@ mkdir -p ~/lib
 svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
 cd ~/lib/pyroscope/pyrocore
 source bootstrap.sh
-ln -s ~/lib/pyroscope/bin/{chtor,lstor,mktor,pyroadmin,rtcontrol,rtxmlrpc} ~/bin/
+ln -nfs ~/lib/pyroscope/bin/{chtor,lstor,mktor,pyroadmin,rtcontrol,rtxmlrpc} ~/bin/
 }}}
 
 After that, the CommandLineTools are available in the `~/lib/pyroscope/bin` directory, and also added to your user's bin directory.
