@@ -69,7 +69,7 @@ svn update
 ( cd pyrocore && source bootstrap.sh )
 }}}
 
-If you want to use the web interface, see "_Installing the Web Interface_" below.
+If you want to use the web interface, see "_Installing the web interface_" below.
 
 
 ----
@@ -78,7 +78,7 @@ If you want to use the web interface, see "_Installing the Web Interface_" below
 
 = Installing the web interface =
 
-Currently, the only way to install and use the web interface is from source, so you first need to follow the "_Installing from Source (SVN)_" section above. Note that the web-ui is currently unsupported and on hold — if it doesn't work for you, it just doesn't.
+Currently, the only way to install and use the web interface is from source, so you first need to follow the "_Installing from source (SVN)_" section above. Note that the web-ui is currently unsupported and on hold — if it doesn't work for you, it just doesn't.
 
 _The file system paths in the following sections can be adapted to your installation, of course, but avoid that unless you have a good reason. It's recommended to put the SCGI socket into the `~/lib/rtorrent` directory, just create it if your rTorrent installation is located elsewhere. These instructions work best if PyroScope is installed into the same user account as rTorrent._
 
