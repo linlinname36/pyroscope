@@ -128,7 +128,7 @@ To complete your command line, you add the action you want to take on the torren
 
 == Bandwidth Management ==
 
-Say you want to have torrents that are already seeded back take a back-seat when other torrents with a ratio less than one are active — but when they're not, all torrents should take full advantage of the available bandwidth. The last part is not possible with the built-in throttle groups, but here's a fix that works by setting the maximum rate on the `seed` throttle dynamically.
+Say you want to have torrents that are already seeded back take a back-seat when other torrents with a ratio less than 100% are active — but when they're not, all torrents should take full advantage of the available bandwidth. The last part is not possible with the built-in throttle groups, but here's a fix that works by setting the maximum rate on the `seed` throttle dynamically.
 
 Put this into your `.rtorrent.rc`:
 {{{
