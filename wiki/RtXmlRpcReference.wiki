@@ -23,25 +23,92 @@ Also see these pages for similar ressources:
 These commands are typically used in the `.rtorrent.rc` file, but many of them are also suitable for scripting, e.g. dynamically setting the global bandwidth throttles.
 
 || *Command* || *Example* || *Description* ||
+|| `import(string) ⇒ int` ||  || Read an options file, e.g. to include shared configuration in several instances. ||
+|| `try_import(string) ⇒ int` ||  || Like `import`, but I/O errors are ignored. ||
 ||  ||  ||  ||
+scgi_local(string) ⇒ int
+scgi_port(string) ⇒ int
+|| get_xmlrpc_size_limit() ⇒ int || 524288 || Get the maximum XMLRPC payload size. ||
+|| set_xmlrpc_size_limit(int) ⇒ int ||  || Set the maximum XMLRPC payload size. ||
+|| xmlrpc_dialect(string) ⇒ int ||  || Set the XMLRPC dialect to use (_details ==> source code_) ||
+system.set_cwd(string) ⇒ int
+system.set_umask(int) ⇒ int
+
 
 == System information ==
 || *Command* || *Example* || *Description* ||
+|| get_ip() ⇒ string || '0.0.0.0' ||  ||
+|| get_key_layout() ⇒ int || qwerty || Current keyboard layout. ||
+|| system.pid() ⇒ int || 11848 || Process ID. ||
+|| system.time() ⇒ int || <1282251105 || Current time in seconds since 1970-01-01. ||
+|| system.time_seconds() ⇒ int || 1282251105 || Current time in seconds since 1970-01-01.  ||
+|| system.time_usec() ⇒ int || 1282251105786209L || Current time in µs since 1970-01-01.  ||
+|| system.client_version() ⇒ string || '0.8.6' || rTorrent version. ||
+|| system.library_version() ⇒ string || '0.12.6' || libtorrent version. ||
+|| system.get_cwd() ⇒ string || '~/rtorrent' || Current working directory, ||
+|| system.hostname() ⇒ string  || 'example' || System's hostname. ||
 ||  ||  ||  ||
 
-== Formatting ==
+
+system.capabilities() ⇒ struct
+    Return the capabilities of XML-RPC server.
+    This includes the version number of the XML-RPC For C/C++ software
+system.getCapabilities() ⇒ struct
+    Return the list of standard capabilities of XML-RPC server.
+    See http://tech.groups.yahoo.com/group/xml-rpc/message/2897
+system.listMethods() ⇒ array
+    Return an array of all available XML-RPC methods on this server.
+
+
+== Logging and formatting ==
 || *Command* || *Example* || *Description* ||
 ||  ||  ||  ||
+to_date(int) ⇒ int
+to_time(int) ⇒ int
+to_elapsed_time(int) ⇒ int
+to_gm_date(int) ⇒ int
+to_gm_time(int) ⇒ int
+to_kb(int) ⇒ int
+to_mb(int) ⇒ int
+to_xb(int) ⇒ int
+to_throttle(int) ⇒ int
+cat() ⇒ int
+print(arg,...) ⇒ int
+
 
 
 = Events =
 || *Command* || *Example* || *Description* ||
 ||  ||  ||  ||
+event.download.closed() ⇒ undef
+event.download.erased() ⇒ undef
+event.download.finished() ⇒ undef
+event.download.hash_done() ⇒ undef
+event.download.hash_queued() ⇒ undef
+event.download.hash_removed() ⇒ undef
+event.download.inserted() ⇒ undef
+event.download.inserted_new() ⇒ undef
+event.download.inserted_session() ⇒ undef
+event.download.opened() ⇒ undef
+event.download.paused() ⇒ undef
+event.download.resumed() ⇒ undef
 
 
 = Control flow =
+== Conditions ==
 || *Command* || *Example* || *Description* ||
 ||  ||  ||  ||
+or() ⇒ int
+and() ⇒ int
+false() ⇒ int
+not() ⇒ int
+
+
+== Conditional execution ==
+|| *Command* || *Example* || *Description* ||
+||  ||  ||  ||
+branch() ⇒ int
+if() ⇒ int
 
 
 = Download items =
@@ -49,74 +116,10 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 == Attributes ==
 || *Command* || *Example* || *Description* ||
 ||  ||  ||  ||
-
-== Files ==
-|| *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-
-== Trackers ==
-|| *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-
-== Peers ==
-|| *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-
-== Management ==
-|| *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-
-
-= Views =
-|| *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-
-
-= Ratio management =
-|| *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-
-
-= Bandwidth management =
-|| *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-
-
-= Miscellaneous =
-|| *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-
-
-
-= Unsorted material =
-This is what introspection on the rTorrent interfaces returns — a lot of this information, especially the signatures and return types, are probably not 100% correct.
-
-{{{
-A
-and() ⇒ int
-argument.0() ⇒ undef
-argument.1() ⇒ undef
-argument.2() ⇒ undef
-argument.3() ⇒ undef
-
-B
-branch() ⇒ int
-
-C
-call_download() ⇒ int
-cat() ⇒ int
-close_low_diskspace(int) ⇒ int
-close_untied() ⇒ int
-create_link() ⇒ int
-
-D
 d.add_peer(string) ⇒ int
-d.check_hash() ⇒ int
-d.close() ⇒ int
 d.create_link() ⇒ int
 d.delete_link() ⇒ int
 d.delete_tied() ⇒ int
-d.erase() ⇒ int
 d.get_base_filename() ⇒ int
 d.get_base_path() ⇒ int
 d.get_bitfield() ⇒ int
@@ -216,47 +219,16 @@ d.set_throttle_name(string) ⇒ int
 d.set_tied_to_file(string) ⇒ int
 d.set_tracker_numwant(int) ⇒ int
 d.set_uploads_max(int) ⇒ int
-d.start() ⇒ undef
-d.stop() ⇒ undef
-d.try_close() ⇒ undef
-d.try_start() ⇒ undef
-d.try_stop() ⇒ undef
 d.update_priorities() ⇒ int
 d.views() ⇒ int
 d.views.has() ⇒ int
 d.views.push_back() ⇒ int
 d.views.push_back_unique() ⇒ int
 d.views.remove() ⇒ int
-delete_link() ⇒ int
-dht(string) ⇒ int
-dht_add_node(string) ⇒ int
-dht_statistics() ⇒ int <type 'dict'> {'active': 0, 'dht': 'disable', 'throttle': ''}
-download_list() ⇒ int
 
-E
-enable_trackers(int) ⇒ int
-encoding_list(string) ⇒ int
-encryption() ⇒ int
-event.download.closed() ⇒ undef
-event.download.erased() ⇒ undef
-event.download.finished() ⇒ undef
-event.download.hash_done() ⇒ undef
-event.download.hash_queued() ⇒ undef
-event.download.hash_removed() ⇒ undef
-event.download.inserted() ⇒ undef
-event.download.inserted_new() ⇒ undef
-event.download.inserted_session() ⇒ undef
-event.download.opened() ⇒ undef
-event.download.paused() ⇒ undef
-event.download.resumed() ⇒ undef
-execute() ⇒ int
-execute_capture() ⇒ int
-execute_capture_nothrow() ⇒ int
-execute_nothrow() ⇒ int
-execute_raw() ⇒ int
-execute_raw_nothrow() ⇒ int
-
-F
+== Files ==
+|| *Command* || *Example* || *Description* ||
+||  ||  ||  ||
 f.get_completed_chunks() ⇒ int
 f.get_frozen_path() ⇒ string
 f.get_last_touched() ⇒ int
@@ -281,7 +253,147 @@ f.set_priority(int) ⇒ int
 f.set_resize_queued() ⇒ int
 f.unset_create_queued() ⇒ int
 f.unset_resize_queued() ⇒ int
-false() ⇒ int
+
+== Trackers ==
+|| *Command* || *Example* || *Description* ||
+||  ||  ||  ||
+t.get_group() ⇒ int
+t.get_id() ⇒ string
+t.get_min_interval() ⇒ int
+t.get_normal_interval() ⇒ int
+t.get_scrape_complete() ⇒ int
+t.get_scrape_downloaded() ⇒ int
+t.get_scrape_incomplete() ⇒ int
+t.get_scrape_time_last() ⇒ int
+t.get_type() ⇒ int
+t.get_url() ⇒ string
+t.is_enabled() ⇒ int
+t.is_open() ⇒ int
+t.multicall() ⇒ int
+t.set_enabled(int) ⇒ int
+
+== Peers ==
+|| *Command* || *Example* || *Description* ||
+||  ||  ||  ||
+p.get_address() ⇒ string
+p.get_client_version() ⇒ string
+p.get_completed_percent() ⇒ int
+p.get_down_rate() ⇒ int
+p.get_down_total() ⇒ int
+p.get_id() ⇒ string
+p.get_id_html() ⇒ string
+p.get_options_str() ⇒ string
+p.get_peer_rate() ⇒ int
+p.get_peer_total() ⇒ int
+p.get_port() ⇒ int
+p.get_up_rate() ⇒ int
+p.get_up_total() ⇒ int
+p.is_encrypted() ⇒ int
+p.is_incoming() ⇒ int
+p.is_obfuscated() ⇒ int
+p.is_snubbed() ⇒ int
+p.multicall() ⇒ int
+
+== Management ==
+|| *Command* || *Example* || *Description* ||
+||  ||  ||  ||
+d.start() ⇒ undef
+d.stop() ⇒ undef
+d.try_close() ⇒ undef
+d.try_start() ⇒ undef
+d.try_stop() ⇒ undef
+d.check_hash() ⇒ int
+d.close() ⇒ int
+d.erase() ⇒ int
+
+
+= Views =
+|| *Command* || *Example* || *Description* ||
+||  ||  ||  ||
+ui.current_view.set() ⇒ int
+view.event_added() ⇒ int
+view.event_removed() ⇒ int
+view.filter_download() ⇒ int
+view.persistent() ⇒ int
+view.set_not_visible() ⇒ int
+view.set_visible() ⇒ int
+view.size() ⇒ int
+view.size_not_visible() ⇒ int
+view_add(string) ⇒ int
+view_filter() ⇒ int
+view_filter_on() ⇒ int
+view_list() ⇒ array <type 'list'> 
+    ['main', 'default', 'name', 'active', 'started', 'stopped', 'complete', 'incomplete', 'hashing', 'seeding']
+view_set() ⇒ array
+view_sort() ⇒ int
+view_sort_current() ⇒ int
+view_sort_new() ⇒ int
+
+
+= Ratio management =
+|| *Command* || *Example* || *Description* ||
+||  ||  ||  ||
+ratio.disable() ⇒ undef
+ratio.enable() ⇒ undef
+ratio.max() ⇒ undef
+ratio.max.set() ⇒ undef
+ratio.min() ⇒ undef
+ratio.min.set() ⇒ undef
+ratio.upload() ⇒ undef
+ratio.upload.set() ⇒ undef
+
+
+= Bandwidth management =
+|| *Command* || *Example* || *Description* ||
+||  ||  ||  ||
+throttle_down() ⇒ int
+throttle_ip() ⇒ int
+throttle_up() ⇒ int
+
+
+= Miscellaneous =
+|| *Command* || *Example* || *Description* ||
+||  ||  ||  ||
+
+
+
+= Unsorted material =
+This is what introspection on the rTorrent interfaces returns — a lot of this information, especially the signatures and return types, are probably not 100% correct.
+
+{{{
+A
+argument.0() ⇒ undef
+argument.1() ⇒ undef
+argument.2() ⇒ undef
+argument.3() ⇒ undef
+
+B
+
+C
+call_download() ⇒ int
+close_low_diskspace(int) ⇒ int
+close_untied() ⇒ int
+create_link() ⇒ int
+
+D
+delete_link() ⇒ int
+dht(string) ⇒ int
+dht_add_node(string) ⇒ int
+dht_statistics() ⇒ int <type 'dict'> {'active': 0, 'dht': 'disable', 'throttle': ''}
+download_list() ⇒ int
+
+E
+enable_trackers(int) ⇒ int
+encoding_list(string) ⇒ int
+encryption() ⇒ int
+execute() ⇒ int
+execute_capture() ⇒ int
+execute_capture_nothrow() ⇒ int
+execute_nothrow() ⇒ int
+execute_raw() ⇒ int
+execute_raw_nothrow() ⇒ int
+
+F
 fi.get_filename_last() ⇒ int
 fi.is_file() ⇒ int
 
@@ -303,8 +415,6 @@ get_hash_read_ahead() ⇒ int
 get_http_cacert() ⇒ string
 get_http_capath() ⇒ string
 get_http_proxy() ⇒ string
-get_ip() ⇒ string
-get_key_layout() ⇒ int
 get_log.tracker() ⇒ int
 get_max_downloads_div() ⇒ int <type 'int'> 1
 get_max_downloads_global() ⇒ int <type 'int'> 50
@@ -353,8 +463,8 @@ get_up_rate() ⇒ int <type 'int'> 61111
 get_up_total() ⇒ int <type 'long'> 6535528158L
 get_upload_rate() ⇒ int <type 'int'> 63488
 get_use_udp_trackers() ⇒ int <type 'int'> 0
-get_xmlrpc_size_limit() ⇒ int <type 'int'> 524288
 greater(int) ⇒ int
+
 group.insert() ⇒ int
 group.insert_persistent_view() ⇒ undef
 group.seeding.ratio.command() ⇒ undef
@@ -369,9 +479,6 @@ group.seeding.ratio.upload.set() ⇒ undef
 group.seeding.view() ⇒ undef
 group.seeding.view.set() ⇒ undef
 
-I
-if() ⇒ int
-import(string) ⇒ int
 
 L
 less(int) ⇒ int
@@ -385,9 +492,6 @@ load_verbose() ⇒ int
 log.execute(string) ⇒ int
 log.xmlrpc(string) ⇒ int
 
-N
-not() ⇒ int
-
 O
 on_close() ⇒ int
 on_erase() ⇒ int
@@ -399,43 +503,11 @@ on_open() ⇒ int
 on_ratio(string) ⇒ int
 on_start() ⇒ int
 on_stop() ⇒ int
-or() ⇒ int
-
-P
-p.get_address() ⇒ string
-p.get_client_version() ⇒ string
-p.get_completed_percent() ⇒ int
-p.get_down_rate() ⇒ int
-p.get_down_total() ⇒ int
-p.get_id() ⇒ string
-p.get_id_html() ⇒ string
-p.get_options_str() ⇒ string
-p.get_peer_rate() ⇒ int
-p.get_peer_total() ⇒ int
-p.get_port() ⇒ int
-p.get_up_rate() ⇒ int
-p.get_up_total() ⇒ int
-p.is_encrypted() ⇒ int
-p.is_incoming() ⇒ int
-p.is_obfuscated() ⇒ int
-p.is_snubbed() ⇒ int
-p.multicall() ⇒ int
-print() ⇒ int
 
 R
-ratio.disable() ⇒ undef
-ratio.enable() ⇒ undef
-ratio.max() ⇒ undef
-ratio.max.set() ⇒ undef
-ratio.min() ⇒ undef
-ratio.min.set() ⇒ undef
-ratio.upload() ⇒ undef
-ratio.upload.set() ⇒ undef
 remove_untied() ⇒ int
 
 S
-scgi_local(string) ⇒ int
-scgi_port(string) ⇒ int
 schedule() ⇒ int
 schedule_remove(string) ⇒ int
 scheduler.max_active() ⇒ undef
@@ -443,7 +515,6 @@ scheduler.max_active.set() ⇒ undef
 scheduler.simple.added() ⇒ int
 scheduler.simple.removed() ⇒ int
 scheduler.simple.update() ⇒ int
-session_save() ⇒ int
 set_bind(string) ⇒ int
 set_check_hash() ⇒ int
 set_connection_leech() ⇒ int
@@ -499,25 +570,12 @@ set_timeout_sync(int) ⇒ int
 set_tracker_numwant() ⇒ int
 set_upload_rate(int) ⇒ int
 set_use_udp_trackers() ⇒ int
-set_xmlrpc_size_limit(int) ⇒ int
 start_tied() ⇒ int
 stop_untied() ⇒ int
-system.capabilities() ⇒ struct
-    Return the capabilities of XML-RPC server.
-    This includes the version number of the XML-RPC For C/C++ software
-system.client_version() ⇒ int <type 'str'> '0.8.6'
 system.file_allocate() ⇒ undef
 system.file_allocate.set() ⇒ undef
 system.file_status_cache.prune() ⇒ int
 system.file_status_cache.size() ⇒ int
-system.getCapabilities() ⇒ struct
-    Return the list of standard capabilities of XML-RPC server.
-    See http://tech.groups.yahoo.com/group/xml-rpc/message/2897
-system.get_cwd() ⇒ string <type 'str'> '~/rtorrent'
-system.hostname() ⇒ int <type 'str'> 'example'
-system.library_version() ⇒ int <type 'str'> '0.12.6'
-system.listMethods() ⇒ array
-    Return an array of all available XML-RPC methods on this server.
 system.method.erase() ⇒ int
 system.method.get() ⇒ int
 system.method.has_key() ⇒ int
@@ -540,70 +598,18 @@ system.multicall(array) ⇒ array
     Each result will either be a single-item array containg the result value, 
     or a struct of the form {'faultCode': int, 'faultString': string}. 
     This is useful when you need to make lots of small calls without lots of round trips.
-system.pid() ⇒ int <type 'int'> 11848
-system.set_cwd(string) ⇒ int
-system.set_umask(int) ⇒ int
+
 system.shutdown(string) ⇒ int 
     Shut down the server. Return code is always zero.
-system.time() ⇒ int <type 'int'> 1282251105
-system.time_seconds() ⇒ int <type 'int'> 1282251105
-system.time_usec() ⇒ int <type 'long'> 1282251105786209L
+session_save() ⇒ int
 
 T
-t.get_group() ⇒ int
-t.get_id() ⇒ string
-t.get_min_interval() ⇒ int
-t.get_normal_interval() ⇒ int
-t.get_scrape_complete() ⇒ int
-t.get_scrape_downloaded() ⇒ int
-t.get_scrape_incomplete() ⇒ int
-t.get_scrape_time_last() ⇒ int
-t.get_type() ⇒ int
-t.get_url() ⇒ string
-t.is_enabled() ⇒ int
-t.is_open() ⇒ int
-t.multicall() ⇒ int
-t.set_enabled(int) ⇒ int
-throttle_down() ⇒ int
-throttle_ip() ⇒ int
-throttle_up() ⇒ int
-to_date(int) ⇒ int
-to_elapsed_time(int) ⇒ int
-to_gm_date(int) ⇒ int
-to_gm_time(int) ⇒ int
-to_kb(int) ⇒ int
-to_mb(int) ⇒ int
-to_throttle(int) ⇒ int
-to_time(int) ⇒ int
-to_xb(int) ⇒ int
 tos(string) ⇒ int
-try_import(string) ⇒ int
 
 U
-ui.current_view.set() ⇒ int
 ui.unfocus_download() ⇒ int
 
-V
-view.event_added() ⇒ int
-view.event_removed() ⇒ int
-view.filter_download() ⇒ int
-view.persistent() ⇒ int
-view.set_not_visible() ⇒ int
-view.set_visible() ⇒ int
-view.size() ⇒ int
-view.size_not_visible() ⇒ int
-view_add(string) ⇒ int
-view_filter() ⇒ int
-view_filter_on() ⇒ int
-view_list() ⇒ array <type 'list'> 
-    ['main', 'default', 'name', 'active', 'started', 'stopped', 'complete', 'incomplete', 'hashing', 'seeding']
-view_set() ⇒ array
-view_sort() ⇒ int
-view_sort_current() ⇒ int
-view_sort_new() ⇒ int
 
-X
-xmlrpc_dialect(string) ⇒ int 
 }}}
 
 || *Command* || *Example* || *Description* ||
