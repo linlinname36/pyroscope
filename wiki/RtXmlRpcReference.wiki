@@ -40,12 +40,12 @@ system.set_umask(int) ⇒ int
 || get_ip() ⇒ string || '0.0.0.0' ||  ||
 || get_key_layout() ⇒ int || qwerty || Current keyboard layout. ||
 || system.pid() ⇒ int || 11848 || Process ID. ||
-|| system.time() ⇒ int || <1282251105 || Current time in seconds since 1970-01-01. ||
+|| system.time() ⇒ int || 1282251105 || Current time in seconds since 1970-01-01. ||
 || system.time_seconds() ⇒ int || 1282251105 || Current time in seconds since 1970-01-01.  ||
 || system.time_usec() ⇒ int || 1282251105786209L || Current time in µs since 1970-01-01.  ||
 || system.client_version() ⇒ string || '0.8.6' || rTorrent version. ||
 || system.library_version() ⇒ string || '0.12.6' || libtorrent version. ||
-|| system.get_cwd() ⇒ string || '~/rtorrent' || Current working directory, ||
+|| system.get_cwd() ⇒ string || '~/lib/rtorrent' || Current working directory, ||
 || system.hostname() ⇒ string  || 'example' || System's hostname. ||
 ||  ||  ||  ||
 
