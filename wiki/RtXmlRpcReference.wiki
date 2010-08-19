@@ -1,0 +1,14 @@
+#summary A reference of the rTorrent XMLRPC interface
+#labels reference,xmlrpc,rtorrent
+
+= Introduction =
+The following is intended to become a comprehensive reference of all the rToorent XMLRPC commands, a thing which is sorely missing from rTorrent'S own documentation.
+The information here pertains to version 0.8.6 of rTorrent.
+
+See also these pages for similar ressources:
+  * [ ]
+  * [ ]
+  * [ ]
+  * [ ]
+  
+  

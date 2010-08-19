@@ -25,3 +25,4 @@ if __name__ == "__main__":
 }}}
 
 For simple calls, you can also use the `rtxmlrpc` command on a shell prompt, see RtXmlRpcExamples for that.
+For a reference of the rTorrent XMLRPC interface, see RtXmlRpcReference.
