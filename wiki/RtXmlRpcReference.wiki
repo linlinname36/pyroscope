@@ -13,6 +13,12 @@ Also see these pages for similar ressources:
 = Global commands =
 
 
+= Events =
+
+
+= Control flow =
+
+
 = Download items =
 
 == Attributes ==
@@ -27,9 +33,6 @@ Also see these pages for similar ressources:
 
 
 = Views =
-
-
-= Events =
 
 
 = Ratio management =
