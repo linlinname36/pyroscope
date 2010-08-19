@@ -4,7 +4,7 @@
 
 = Introduction =
 The following is intended to become a comprehensive reference of all the rTorrent XMLRPC commands, a thing which is sorely missing from rTorrent's own documentation.
-The information here pertains to version 0.8.6 of rTorrent, which has 460 built-in methods.
+The information here pertains to version 0.8.6 of rTorrent, which has about 500 built-in methods.
 
 Also see these pages for similar ressources:
   * the rTorrent wiki has a very incomplete [http://libtorrent.rakshasa.no/wiki/RTorrentCommands list of commands]; other information is scattered over the other wiki pages, and Trac tickets.
@@ -53,3 +53,519 @@ Also see these pages for similar ressources:
 
 
 = Unsorted material =
+This is what introspection on the rTorrent interfaces returns — a lot of this information, especially the signatures and return types, are probably not 100% correct.
+
+{{{
+A
+and() ⇒ int
+argument.0() ⇒ undef
+argument.1() ⇒ undef
+argument.2() ⇒ undef
+argument.3() ⇒ undef
+
+B
+branch() ⇒ int
+
+C
+call_download() ⇒ int
+cat() ⇒ int
+close_low_diskspace(int) ⇒ int
+close_untied() ⇒ int
+create_link() ⇒ int
+
+D
+d.add_peer(string) ⇒ int
+d.check_hash() ⇒ int
+d.close() ⇒ int
+d.create_link() ⇒ int
+d.delete_link() ⇒ int
+d.delete_tied() ⇒ int
+d.erase() ⇒ int
+d.get_base_filename() ⇒ int
+d.get_base_path() ⇒ int
+d.get_bitfield() ⇒ int
+d.get_bytes_done() ⇒ int
+d.get_chunk_size() ⇒ int
+d.get_chunks_hashed() ⇒ int
+d.get_complete() ⇒ int
+d.get_completed_bytes() ⇒ int
+d.get_completed_chunks() ⇒ int
+d.get_connection_current() ⇒ string
+d.get_connection_leech() ⇒ int
+d.get_connection_seed() ⇒ int
+d.get_creation_date() ⇒ int
+d.get_custom(string) ⇒ string
+d.get_custom1() ⇒ int
+d.get_custom2() ⇒ int
+d.get_custom3() ⇒ int
+d.get_custom4() ⇒ int
+d.get_custom5() ⇒ int
+d.get_custom_throw(string) ⇒ string
+d.get_directory() ⇒ string
+d.get_directory_base() ⇒ string
+d.get_down_rate() ⇒ int
+d.get_down_total() ⇒ int
+d.get_free_diskspace() ⇒ int
+d.get_hash() ⇒ int
+d.get_hashing() ⇒ int
+d.get_hashing_failed() ⇒ int
+d.get_ignore_commands() ⇒ int
+d.get_left_bytes() ⇒ int
+d.get_loaded_file() ⇒ int
+d.get_local_id() ⇒ int
+d.get_local_id_html() ⇒ int
+d.get_max_file_size() ⇒ int
+d.get_max_size_pex() ⇒ int
+d.get_message() ⇒ string
+d.get_mode() ⇒ int
+d.get_name() ⇒ string
+d.get_peer_exchange() ⇒ int
+d.get_peers_accounted() ⇒ int
+d.get_peers_complete() ⇒ int
+d.get_peers_connected() ⇒ int
+d.get_peers_max() ⇒ int
+d.get_peers_min() ⇒ int
+d.get_peers_not_connected() ⇒ int
+d.get_priority() ⇒ int
+d.get_priority_str() ⇒ string
+d.get_ratio() ⇒ int
+d.get_size_bytes() ⇒ int
+d.get_size_chunks() ⇒ int
+d.get_size_files() ⇒ int
+d.get_size_pex() ⇒ int
+d.get_skip_rate() ⇒ int
+d.get_skip_total() ⇒ int
+d.get_state() ⇒ int
+d.get_state_changed() ⇒ int
+d.get_state_counter() ⇒ int
+d.get_throttle_name() ⇒ int
+d.get_tied_to_file() ⇒ int
+d.get_tracker_focus() ⇒ int
+d.get_tracker_numwant() ⇒ int
+d.get_tracker_size() ⇒ int
+d.get_up_rate() ⇒ int
+d.get_up_total() ⇒ int
+d.get_uploads_max() ⇒ int
+d.initialize_logs() ⇒ int
+d.is_active() ⇒ int
+d.is_hash_checked() ⇒ int
+d.is_hash_checking() ⇒ int
+d.is_multi_file() ⇒ int
+d.is_open() ⇒ int
+d.is_pex_active() ⇒ int
+d.is_private() ⇒ int
+d.multicall() ⇒ int
+d.open() ⇒ int
+d.pause() ⇒ int
+d.resume() ⇒ int
+d.save_session() ⇒ int
+d.set_connection_current(string) ⇒ int
+d.set_custom() ⇒ int
+d.set_custom1(string) ⇒ int
+d.set_custom2(string) ⇒ int
+d.set_custom3(string) ⇒ int
+d.set_custom4(string) ⇒ int
+d.set_custom5(string) ⇒ int
+d.set_directory(string) ⇒ int
+d.set_directory_base(string) ⇒ int
+d.set_hashing_failed(int) ⇒ int
+d.set_ignore_commands(int) ⇒ int
+d.set_max_file_size(int) ⇒ int
+d.set_message(string) ⇒ int
+d.set_peer_exchange(int) ⇒ int
+d.set_peers_max(int) ⇒ int
+d.set_peers_min(int) ⇒ int
+d.set_priority(int) ⇒ int
+d.set_throttle_name(string) ⇒ int
+d.set_tied_to_file(string) ⇒ int
+d.set_tracker_numwant(int) ⇒ int
+d.set_uploads_max(int) ⇒ int
+d.start() ⇒ undef
+d.stop() ⇒ undef
+d.try_close() ⇒ undef
+d.try_start() ⇒ undef
+d.try_stop() ⇒ undef
+d.update_priorities() ⇒ int
+d.views() ⇒ int
+d.views.has() ⇒ int
+d.views.push_back() ⇒ int
+d.views.push_back_unique() ⇒ int
+d.views.remove() ⇒ int
+delete_link() ⇒ int
+dht(string) ⇒ int
+dht_add_node(string) ⇒ int
+dht_statistics() ⇒ int <type 'dict'> {'active': 0, 'dht': 'disable', 'throttle': ''}
+download_list() ⇒ int
+
+E
+enable_trackers(int) ⇒ int
+encoding_list(string) ⇒ int
+encryption() ⇒ int
+event.download.closed() ⇒ undef
+event.download.erased() ⇒ undef
+event.download.finished() ⇒ undef
+event.download.hash_done() ⇒ undef
+event.download.hash_queued() ⇒ undef
+event.download.hash_removed() ⇒ undef
+event.download.inserted() ⇒ undef
+event.download.inserted_new() ⇒ undef
+event.download.inserted_session() ⇒ undef
+event.download.opened() ⇒ undef
+event.download.paused() ⇒ undef
+event.download.resumed() ⇒ undef
+execute() ⇒ int
+execute_capture() ⇒ int
+execute_capture_nothrow() ⇒ int
+execute_nothrow() ⇒ int
+execute_raw() ⇒ int
+execute_raw_nothrow() ⇒ int
+
+F
+f.get_completed_chunks() ⇒ int
+f.get_frozen_path() ⇒ string
+f.get_last_touched() ⇒ int
+f.get_match_depth_next() ⇒ int
+f.get_match_depth_prev() ⇒ int
+f.get_offset() ⇒ int
+f.get_path() ⇒ string
+f.get_path_components() ⇒ string
+f.get_path_depth() ⇒ string
+f.get_priority() ⇒ int
+f.get_range_first() ⇒ int
+f.get_range_second() ⇒ int
+f.get_size_bytes() ⇒ int
+f.get_size_chunks() ⇒ int
+f.is_create_queued() ⇒ int
+f.is_created() ⇒ int
+f.is_open() ⇒ int
+f.is_resize_queued() ⇒ int
+f.multicall() ⇒ int
+f.set_create_queued() ⇒ int
+f.set_priority(int) ⇒ int
+f.set_resize_queued() ⇒ int
+f.unset_create_queued() ⇒ int
+f.unset_resize_queued() ⇒ int
+false() ⇒ int
+fi.get_filename_last() ⇒ int
+fi.is_file() ⇒ int
+
+G
+get_bind() ⇒ string <type 'str'> '0.0.0.0'
+get_check_hash() ⇒ int <type 'int'> 1
+get_connection_leech() ⇒ int <type 'str'> 'leech'
+get_connection_seed() ⇒ int <type 'str'> 'seed'
+get_dht_port() ⇒ int <type 'int'> 6881
+get_dht_throttle() ⇒ string
+get_directory() ⇒ int <type 'str'> '~/lib/rtorrent/work'
+get_down_rate() ⇒ int <type 'int'> 306
+get_down_total() ⇒ int <type 'long'> 4718667514L
+get_download_rate() ⇒ int <type 'int'> 634880
+get_handshake_log() ⇒ int
+get_hash_interval() ⇒ int
+get_hash_max_tries() ⇒ int
+get_hash_read_ahead() ⇒ int
+get_http_cacert() ⇒ string
+get_http_capath() ⇒ string
+get_http_proxy() ⇒ string
+get_ip() ⇒ string
+get_key_layout() ⇒ int
+get_log.tracker() ⇒ int
+get_max_downloads_div() ⇒ int <type 'int'> 1
+get_max_downloads_global() ⇒ int <type 'int'> 50
+get_max_file_size() ⇒ int <type 'int'> -1
+get_max_memory_usage() ⇒ int <type 'int'> 858993459
+get_max_open_files() ⇒ int <type 'int'> 128
+get_max_open_http() ⇒ int <type 'int'> 32
+get_max_open_sockets() ⇒ int <type 'int'> 300
+get_max_peers() ⇒ int <type 'int'> 40
+get_max_peers_seed() ⇒ int <type 'int'> 30
+get_max_uploads() ⇒ int <type 'int'> 15
+get_max_uploads_div() ⇒ int <type 'int'> 1
+get_max_uploads_global() ⇒ int <type 'int'> 10
+get_memory_usage() ⇒ int <type 'int'> 786432
+get_min_peers() ⇒ int <type 'int'> 40
+get_min_peers_seed() ⇒ int <type 'int'> -1
+get_name() ⇒ int <type 'str'> 'example:11848'
+get_peer_exchange() ⇒ int <type 'int'> 0
+get_port_open() ⇒ int <type 'int'> 1
+get_port_random() ⇒ int <type 'int'> 0
+get_port_range() ⇒ int <type 'str'> '54300-54399'
+get_preload_min_size() ⇒ int
+get_preload_required_rate() ⇒ int
+get_preload_type() ⇒ int
+get_proxy_address() ⇒ string
+get_receive_buffer_size() ⇒ int
+get_safe_free_diskspace() ⇒ int <type 'int'> 537657344
+get_safe_sync() ⇒ int
+get_scgi_dont_route() ⇒ int
+get_send_buffer_size() ⇒ int <type 'int'> 0
+get_session() ⇒ string <type 'str'> '~/lib/rtorrent/.session/'
+get_session_lock() ⇒ int <type 'int'> 1
+get_session_on_completion() ⇒ int
+get_split_file_size() ⇒ int
+get_split_suffix() ⇒ int
+get_stats_not_preloaded() ⇒ int <type 'int'> 81787
+get_stats_preloaded() ⇒ int <type 'int'> 0
+get_throttle_down_max(string) ⇒ int
+get_throttle_down_rate(string) ⇒ int
+get_throttle_up_max(string) ⇒ int
+get_throttle_up_rate(string) ⇒ int
+get_timeout_safe_sync() ⇒ int
+get_timeout_sync() ⇒ int
+get_tracker_numwant() ⇒ int
+get_up_rate() ⇒ int <type 'int'> 61111
+get_up_total() ⇒ int <type 'long'> 6535528158L
+get_upload_rate() ⇒ int <type 'int'> 63488
+get_use_udp_trackers() ⇒ int <type 'int'> 0
+get_xmlrpc_size_limit() ⇒ int <type 'int'> 524288
+greater(int) ⇒ int
+group.insert() ⇒ int
+group.insert_persistent_view() ⇒ undef
+group.seeding.ratio.command() ⇒ undef
+group.seeding.ratio.disable() ⇒ undef
+group.seeding.ratio.enable() ⇒ undef
+group.seeding.ratio.max() ⇒ undef
+group.seeding.ratio.max.set() ⇒ undef
+group.seeding.ratio.min() ⇒ undef
+group.seeding.ratio.min.set() ⇒ undef
+group.seeding.ratio.upload() ⇒ undef
+group.seeding.ratio.upload.set() ⇒ undef
+group.seeding.view() ⇒ undef
+group.seeding.view.set() ⇒ undef
+
+I
+if() ⇒ int
+import(string) ⇒ int
+
+L
+less(int) ⇒ int
+load() ⇒ int
+load_raw() ⇒ int
+load_raw_start() ⇒ int
+load_raw_verbose() ⇒ int
+load_start() ⇒ int
+load_start_verbose() ⇒ int
+load_verbose() ⇒ int
+log.execute(string) ⇒ int
+log.xmlrpc(string) ⇒ int
+
+N
+not() ⇒ int
+
+O
+on_close() ⇒ int
+on_erase() ⇒ int
+on_finished() ⇒ int
+on_hash_queued() ⇒ int
+on_hash_removed() ⇒ int
+on_insert() ⇒ int
+on_open() ⇒ int
+on_ratio(string) ⇒ int
+on_start() ⇒ int
+on_stop() ⇒ int
+or() ⇒ int
+
+P
+p.get_address() ⇒ string
+p.get_client_version() ⇒ string
+p.get_completed_percent() ⇒ int
+p.get_down_rate() ⇒ int
+p.get_down_total() ⇒ int
+p.get_id() ⇒ string
+p.get_id_html() ⇒ string
+p.get_options_str() ⇒ string
+p.get_peer_rate() ⇒ int
+p.get_peer_total() ⇒ int
+p.get_port() ⇒ int
+p.get_up_rate() ⇒ int
+p.get_up_total() ⇒ int
+p.is_encrypted() ⇒ int
+p.is_incoming() ⇒ int
+p.is_obfuscated() ⇒ int
+p.is_snubbed() ⇒ int
+p.multicall() ⇒ int
+print() ⇒ int
+
+R
+ratio.disable() ⇒ undef
+ratio.enable() ⇒ undef
+ratio.max() ⇒ undef
+ratio.max.set() ⇒ undef
+ratio.min() ⇒ undef
+ratio.min.set() ⇒ undef
+ratio.upload() ⇒ undef
+ratio.upload.set() ⇒ undef
+remove_untied() ⇒ int
+
+S
+scgi_local(string) ⇒ int
+scgi_port(string) ⇒ int
+schedule() ⇒ int
+schedule_remove(string) ⇒ int
+scheduler.max_active() ⇒ undef
+scheduler.max_active.set() ⇒ undef
+scheduler.simple.added() ⇒ int
+scheduler.simple.removed() ⇒ int
+scheduler.simple.update() ⇒ int
+session_save() ⇒ int
+set_bind(string) ⇒ int
+set_check_hash() ⇒ int
+set_connection_leech() ⇒ int
+set_connection_seed() ⇒ int
+set_dht_port() ⇒ int
+set_dht_throttle(string) ⇒ int
+set_directory() ⇒ int
+set_download_rate(int) ⇒ int
+set_handshake_log() ⇒ int
+set_hash_interval(int) ⇒ int
+set_hash_max_tries(int) ⇒ int
+set_hash_read_ahead(int) ⇒ int
+set_http_cacert(string) ⇒ int
+set_http_capath(string) ⇒ int
+set_http_proxy(string) ⇒ int
+set_ip(string) ⇒ int
+set_key_layout() ⇒ int
+set_log.tracker() ⇒ int
+set_max_downloads_div() ⇒ int
+set_max_downloads_global() ⇒ int
+set_max_file_size() ⇒ int
+set_max_memory_usage(int) ⇒ int
+set_max_open_files(int) ⇒ int
+set_max_open_http(int) ⇒ int
+set_max_open_sockets(int) ⇒ int
+set_max_peers() ⇒ int
+set_max_peers_seed() ⇒ int
+set_max_uploads() ⇒ int
+set_max_uploads_div() ⇒ int
+set_max_uploads_global() ⇒ int
+set_min_peers() ⇒ int
+set_min_peers_seed() ⇒ int
+set_name() ⇒ int
+set_peer_exchange() ⇒ int
+set_port_open() ⇒ int
+set_port_random() ⇒ int
+set_port_range() ⇒ int
+set_preload_min_size(int) ⇒ int
+set_preload_required_rate(int) ⇒ int
+set_preload_type(int) ⇒ int
+set_proxy_address(string) ⇒ int
+set_receive_buffer_size(int) ⇒ int
+set_safe_sync(int) ⇒ int
+set_scgi_dont_route() ⇒ int
+set_send_buffer_size(int) ⇒ int
+set_session(string) ⇒ int
+set_session_lock() ⇒ int
+set_session_on_completion() ⇒ int
+set_split_file_size() ⇒ int
+set_split_suffix() ⇒ int
+set_timeout_safe_sync(int) ⇒ int
+set_timeout_sync(int) ⇒ int
+set_tracker_numwant() ⇒ int
+set_upload_rate(int) ⇒ int
+set_use_udp_trackers() ⇒ int
+set_xmlrpc_size_limit(int) ⇒ int
+start_tied() ⇒ int
+stop_untied() ⇒ int
+system.capabilities() ⇒ struct
+    Return the capabilities of XML-RPC server.
+    This includes the version number of the XML-RPC For C/C++ software
+system.client_version() ⇒ int <type 'str'> '0.8.6'
+system.file_allocate() ⇒ undef
+system.file_allocate.set() ⇒ undef
+system.file_status_cache.prune() ⇒ int
+system.file_status_cache.size() ⇒ int
+system.getCapabilities() ⇒ struct
+    Return the list of standard capabilities of XML-RPC server.
+    See http://tech.groups.yahoo.com/group/xml-rpc/message/2897
+system.get_cwd() ⇒ string <type 'str'> '~/rtorrent'
+system.hostname() ⇒ int <type 'str'> 'example'
+system.library_version() ⇒ int <type 'str'> '0.12.6'
+system.listMethods() ⇒ array
+    Return an array of all available XML-RPC methods on this server.
+system.method.erase() ⇒ int
+system.method.get() ⇒ int
+system.method.has_key() ⇒ int
+system.method.insert() ⇒ int
+system.method.list_keys() ⇒ int
+system.method.set() ⇒ int
+system.method.set_key() ⇒ int
+system.methodExist(boolean) ⇒ string 
+    Tell whether a method by a specified name exists on this server
+system.methodHelp(string) ⇒ string 
+    Given the name of a method, return a help string.
+system.methodSignature(string) ⇒ array 
+    Given the name of a method, return an array of legal signatures. 
+    Each signature is an array of strings. 
+    The first item of each signature is the return type, 
+    and any others items are parameter types.
+system.multicall(array) ⇒ array 
+    Process an array of calls, and return an array of results. 
+    Calls should be structs of the form {'methodName': string, 'params': array}. 
+    Each result will either be a single-item array containg the result value, 
+    or a struct of the form {'faultCode': int, 'faultString': string}. 
+    This is useful when you need to make lots of small calls without lots of round trips.
+system.pid() ⇒ int <type 'int'> 11848
+system.set_cwd(string) ⇒ int
+system.set_umask(int) ⇒ int
+system.shutdown(string) ⇒ int 
+    Shut down the server. Return code is always zero.
+system.time() ⇒ int <type 'int'> 1282251105
+system.time_seconds() ⇒ int <type 'int'> 1282251105
+system.time_usec() ⇒ int <type 'long'> 1282251105786209L
+
+T
+t.get_group() ⇒ int
+t.get_id() ⇒ string
+t.get_min_interval() ⇒ int
+t.get_normal_interval() ⇒ int
+t.get_scrape_complete() ⇒ int
+t.get_scrape_downloaded() ⇒ int
+t.get_scrape_incomplete() ⇒ int
+t.get_scrape_time_last() ⇒ int
+t.get_type() ⇒ int
+t.get_url() ⇒ string
+t.is_enabled() ⇒ int
+t.is_open() ⇒ int
+t.multicall() ⇒ int
+t.set_enabled(int) ⇒ int
+throttle_down() ⇒ int
+throttle_ip() ⇒ int
+throttle_up() ⇒ int
+to_date(int) ⇒ int
+to_elapsed_time(int) ⇒ int
+to_gm_date(int) ⇒ int
+to_gm_time(int) ⇒ int
+to_kb(int) ⇒ int
+to_mb(int) ⇒ int
+to_throttle(int) ⇒ int
+to_time(int) ⇒ int
+to_xb(int) ⇒ int
+tos(string) ⇒ int
+try_import(string) ⇒ int
+
+U
+ui.current_view.set() ⇒ int
+ui.unfocus_download() ⇒ int
+
+V
+view.event_added() ⇒ int
+view.event_removed() ⇒ int
+view.filter_download() ⇒ int
+view.persistent() ⇒ int
+view.set_not_visible() ⇒ int
+view.set_visible() ⇒ int
+view.size() ⇒ int
+view.size_not_visible() ⇒ int
+view_add(string) ⇒ int
+view_filter() ⇒ int
+view_filter_on() ⇒ int
+view_list() ⇒ array <type 'list'> 
+    ['main', 'default', 'name', 'active', 'started', 'stopped', 'complete', 'incomplete', 'hashing', 'seeding']
+view_set() ⇒ array
+view_sort() ⇒ int
+view_sort_current() ⇒ int
+view_sort_new() ⇒ int
+
+X
+xmlrpc_dialect(string) ⇒ int 
+}}}
