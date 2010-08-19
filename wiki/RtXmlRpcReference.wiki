@@ -4,7 +4,7 @@
 
 = Introduction =
 The following is intended to become a comprehensive reference of all the rTorrent XMLRPC commands, a thing which is sorely missing from rTorrent's own documentation.
-The information here pertains to version 0.8.6 of rTorrent.
+The information here pertains to version 0.8.6 of rTorrent, which has 460 built-in methods.
 
 Also see these pages for similar ressources:
   * the rTorrent wiki has a very incomplete [http://libtorrent.rakshasa.no/wiki/RTorrentCommands list of commands]; other information is scattered over the other wiki pages, and Trac tickets.
