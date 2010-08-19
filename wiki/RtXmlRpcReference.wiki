@@ -2,13 +2,11 @@
 #labels reference,xmlrpc,rtorrent
 
 = Introduction =
-The following is intended to become a comprehensive reference of all the rToorent XMLRPC commands, a thing which is sorely missing from rTorrent'S own documentation.
+The following is intended to become a comprehensive reference of all the rTorrent XMLRPC commands, a thing which is sorely missing from rTorrent's own documentation.
 The information here pertains to version 0.8.6 of rTorrent.
 
-See also these pages for similar ressources:
-  * [ ]
-  * [ ]
-  * [ ]
-  * [ ]
+Also see these pages for similar ressources:
+  * the rTorrent wiki has a very incomplete [http://libtorrent.rakshasa.no/wiki/RTorrentCommands list of commands]; other information is scattered over the other wiki pages, and Trac tickets.
+  * [http://code.google.com/p/gi-torrent/wiki/rTorrent_XMLRPC_reference gi-torrrent's draft reference]
   
   
