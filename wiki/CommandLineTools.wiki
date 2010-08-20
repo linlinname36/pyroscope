@@ -77,8 +77,16 @@ pyroscope tests/
 {{{
   --reveal       show full announce URL including keys
   --raw          print the metafile's raw content in all detail
+  --output KEY,KEY1.KEY2,...
+                 select fields to print, output is separated by TABs;
+                 note that __file__ is the path to the metafile
 }}}
 
+Starting with v0.3.6, you can select to output specific fields from the metafile, like this:
+{{{
+$ lstor -qo info.piece\ length,info.name *.torrent
+262144	Execute My Liberty - The Cursed Way -- Jamendo - OGG Vorbis q7 - 2010.07.29 [www.jamendo.com]
+}}}
 
 == chtor ==
 {{{
