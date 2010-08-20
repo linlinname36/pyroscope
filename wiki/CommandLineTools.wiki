@@ -79,13 +79,14 @@ pyroscope tests/
   --raw          print the metafile's raw content in all detail
   --output KEY,KEY1.KEY2,...
                  select fields to print, output is separated by TABs;
-                 note that __file__ is the path to the metafile
+                 note that __file__ is the path to the metafile and
+                 __hash__ is the info hash
 }}}
 
 Starting with v0.3.6, you can select to output specific fields from the metafile, like this:
 {{{
-$ lstor -qo info.piece\ length,info.name *.torrent
-262144	Execute My Liberty - The Cursed Way -- Jamendo - OGG Vorbis q7 - 2010.07.29 [www.jamendo.com]
+$ lstor -qo __hash__,info.piece\ length,info.name *.torrent
+00319ED92914E30C9104DA30BF39AF862513C4C8	262144	Execute My Liberty - The Cursed Way -- Jamendo - OGG Vorbis q7 - 2010.07.29 [www.jamendo.com]
 }}}
 
 == chtor ==
