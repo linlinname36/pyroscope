@@ -354,7 +354,7 @@ view.event_added() ⇒ int ||  ||  *TODO* ||
 
 = Bandwidth management =
 Throttles work by sharing from the global bandwidth limits, i.e. those have to be set for throttles to actually work.
-Your can set the global limits to values higher than your actually available bandwidth if you want "unlimited".
+You can set the global limits to values higher than your actually available bandwidth if you want "unlimited".
 
 || *Command* || *Example* || *Description* ||
 || throttle_down(string name, string limit) ⇒ int || || Create or reset a download throttle. The limit is a string and in `KiB`. ||
