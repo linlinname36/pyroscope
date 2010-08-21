@@ -181,7 +181,6 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || d.get_priority_str() ⇒ string ||  ||  *TODO* ||
 || d.get_size_bytes() ⇒ int ||  ||  *TODO* ||
 || d.get_size_chunks() ⇒ int ||  ||  *TODO* ||
-|| d.get_size_files() ⇒ int ||  ||  *TODO* ||
 || d.get_size_pex() ⇒ int ||  ||  *TODO* ||
 || d.get_skip_rate() ⇒ int ||  ||  *TODO* ||
 || d.get_skip_total() ⇒ int ||  ||  *TODO* ||
@@ -221,32 +220,29 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || d.views.remove() ⇒ int ||  ||  *TODO* ||
 
 == Files ==
+You need to call the file related methods with the info hash and the zero-based file index as arguments.
+
 || *Command* || *Example* || *Description* ||
-|| f.multicall() ⇒ int ||  ||  *TODO* ||
-||  ||  ||  *TODO* ||
-|| f.get_completed_chunks() ⇒ int ||  ||  *TODO* ||
-|| f.get_frozen_path() ⇒ string ||  ||  *TODO* ||
-|| f.get_last_touched() ⇒ int ||  ||  *TODO* ||
+|| d.get_size_files() ⇒ int ||  || Number of files in item. ||
+|| f.multicall() ⇒ array ||  || *Doesn't seems to work!* ||
+|| f.get_path() ⇒ string || `'a/b'` || Relative path as a string. ||
+|| f.get_path_components() ⇒ array of string || `['a', 'b']` || Relative path as an array. ||
+|| f.get_path_depth() ⇒ int || `'2'` || Number of path components. ||
+|| f.get_frozen_path() ⇒ string || `'/dir/base/a/b'` || Full path to the file. ||
+|| f.is_created() ⇒ int || `0` or `1` || File created? ||
+|| f.is_open() ⇒ int || `0` or `1` || File opened? ||
+|| f.get_size_bytes() ⇒ int || `6` || Exact size on bytes. ||
+|| f.get_size_chunks() ⇒ int || `2760726` || Size in chunks. ||
+|| f.get_last_touched() ⇒ int || `1282422238906187` || File modification date (UNIX timestamp). ||
+|| f.get_priority() ⇒ int <br/> f.set_priority(int) ⇒ int || `1` || Priority (0=off, 1=normal, 2=high) || 
+|| f.get_completed_chunks() ⇒ int || `6` || Number of chunks already completed. ||
 || f.get_match_depth_next() ⇒ int ||  ||  *TODO* ||
 || f.get_match_depth_prev() ⇒ int ||  ||  *TODO* ||
 || f.get_offset() ⇒ int ||  ||  *TODO* ||
-|| f.get_path() ⇒ string ||  ||  *TODO* ||
-|| f.get_path_components() ⇒ string ||  ||  *TODO* ||
-|| f.get_path_depth() ⇒ string ||  ||  *TODO* ||
-|| f.get_priority() ⇒ int ||  ||  *TODO* ||
 || f.get_range_first() ⇒ int ||  ||  *TODO* ||
 || f.get_range_second() ⇒ int ||  ||  *TODO* ||
-|| f.get_size_bytes() ⇒ int ||  ||  *TODO* ||
-|| f.get_size_chunks() ⇒ int ||  ||  *TODO* ||
-|| f.is_create_queued() ⇒ int ||  ||  *TODO* ||
-|| f.is_created() ⇒ int ||  ||  *TODO* ||
-|| f.is_open() ⇒ int ||  ||  *TODO* ||
-|| f.is_resize_queued() ⇒ int ||  ||  *TODO* ||
-|| f.set_create_queued() ⇒ int ||  ||  *TODO* ||
-|| f.set_priority(int) ⇒ int ||  ||  *TODO* ||
-|| f.set_resize_queued() ⇒ int ||  ||  *TODO* ||
-|| f.unset_create_queued() ⇒ int ||  ||  *TODO* ||
-|| f.unset_resize_queued() ⇒ int ||  ||  *TODO* ||
+|| f.is_create_queued() ⇒ int <br/> f.set_create_queued() ⇒ int <br/> f.unset_create_queued() ⇒ int ||  ||  *TODO* ||
+|| f.is_resize_queued() ⇒ int <br/> f.set_resize_queued() ⇒ int <br/> f.unset_resize_queued() ⇒ int ||  ||  *TODO* ||
 
 == Trackers ==
 || *Command* || *Example* || *Description* ||
