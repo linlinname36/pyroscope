@@ -46,11 +46,11 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || system.library_version() ⇒ string || '0.12.6' || libtorrent version. ||
 || system.get_cwd() ⇒ string <br/> system.set_cwd(string path) ⇒ int || '~/lib/rtorrent' || Current working directory, ||
 || system.hostname() ⇒ string  || 'example' || System's hostname. ||
-|| system.capabilities() ⇒ struct ||  || Return the capabilities of XML-RPC server. This includes the version number of the XML-RPC For C/C++ software. ||
-|| system.getCapabilities() ⇒ struct ||  || Return the list of standard capabilities of XML-RPC server. See http://tech.groups.yahoo.com/group/xml-rpc/message/2897. ||
-|| system.listMethods() ⇒ array ||  || Return an array of all available XML-RPC methods on this server. ||
-|| system.methodExist(boolean) ⇒ string ||  || Tell whether a method by a specified name exists on this server ||
-|| system.methodHelp(string) ⇒ string ||  || Given the name of a method, return a help string. ||
+|| system.capabilities() ⇒ struct || {'facility': 'xmlrpc-c', <br/> 'protocol_version': 2, <br/> 'version_major': 1, <br/> 'version_minor': 21, <br/> 'version_point': 2} || Return the capabilities of this XML-RPC server. ||
+|| system.getCapabilities() ⇒ struct || {'introspect': <br/> {'specUrl': <br/> 'http://xmlrpc-c.....html', <br/> 'specVersion': 1}} || Return the list of standard capabilities of this XML-RPC server. See http://tech.groups.yahoo.com/group/xml-rpc/message/2897. ||
+|| system.listMethods() ⇒ array || ['system.listMethods', ...] || Return an array of all available XML-RPC methods on this server. ||
+|| system.methodExist(string name) ⇒ boolean || `True` (called on itself) || Tell whether a method by a specified name exists on this server. ||
+|| system.methodHelp(string) ⇒ string || || Given the name of a method, return a help string. ||
 || system.methodSignature(string) ⇒ array ||  || Given the name of a method, return an array of legal signatures. Each signature is an array of strings. The first item of each signature is the return type, and any others items are parameter types. ||
 || system.multicall(array) ⇒ array ||  || Process an array of calls, and return an array of results. Calls should be structs of the form `{'methodName': string, 'params': array}`. Each result will either be a single-item array containg the result value, or a struct of the form `{'faultCode': int, 'faultString': string}`. This is useful when you need to make lots of small calls without lots of round trips. ||
 ||  ||  ||  *TODO* ||
