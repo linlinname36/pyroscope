@@ -8,7 +8,7 @@ The information here pertains to version 0.8.6 of rTorrent, which has about 500 
 
 Also see these pages for similar ressources:
   * the rTorrent wiki has a very incomplete [http://libtorrent.rakshasa.no/wiki/RTorrentCommands list of commands]; other information is scattered over the other wiki pages, Trac tickets, and the mailing list.
-  * [http://code.google.com/p/gi-torrent/wiki/rTorrent_XMLRPC_reference gi-torrrent's draft reference]
+  * [http://code.google.com/p/gi-torrent/wiki/rTorrent_XMLRPC_reference gi-torrent's draft reference]
 
 = Command syntax =
 `command=arg1,arg2,...`
