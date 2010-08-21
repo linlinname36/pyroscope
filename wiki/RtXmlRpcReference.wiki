@@ -37,7 +37,7 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 == System information ==
 || *Command* || *Example* || *Description* ||
 || get_ip() ⇒ string <br/> set_ip(string) ⇒ int || '0.0.0.0' ||  ||
-|| get_key_layout() ⇒ string <br/> set_key_layout(string) ⇒ int || qwerty || Current keyboard layout. ||
+|| get_key_layout() ⇒ string <br/> set_key_layout(string) ⇒ int || 'qwerty' || Current keyboard layout. ||
 || system.pid() ⇒ int || 11848 || Process ID. ||
 || system.time() ⇒ int || 1282251105 || Current time in seconds since 1970-01-01. ||
 || system.time_seconds() ⇒ int || 1282251105 || Current time in seconds since 1970-01-01.  ||
@@ -57,19 +57,20 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 
 
 == Logging and formatting ==
+*NOTE:* The conversion functions take either strings or longs.
+
 || *Command* || *Example* || *Description* ||
-|| print(string arg, ...) ⇒ int ||  ||  *TODO* ||
-|| cat() ⇒ int ||  ||  *TODO* ||
-|| to_date(int) ⇒ int ||  ||  *TODO* ||
-|| to_time(int) ⇒ int ||  ||  *TODO* ||
-|| to_elapsed_time(int) ⇒ int ||  ||  *TODO* ||
-|| to_gm_date(int) ⇒ int ||  ||  *TODO* ||
-|| to_gm_time(int) ⇒ int ||  ||  *TODO* ||
-|| to_kb(int) ⇒ int ||  ||  *TODO* ||
-|| to_mb(int) ⇒ int ||  ||  *TODO* ||
-|| to_xb(int) ⇒ int ||  ||  *TODO* ||
-|| to_throttle(int) ⇒ int ||  ||  *TODO* ||
-||  ||  ||  *TODO* ||
+|| print(string arg, ...) ⇒ int ||  || Dump the string arguments into the log. ||
+|| cat(arg) ⇒ string ||  || Convert `arg` to string. ||
+|| to_date(int) ⇒ string || `1282398703` ⇒ `'21/08/2010'` || Convert UNIX localtime to date string. ||
+|| to_time(int) ⇒ string || `1282398703` ⇒ `'15:51:43'` || Convert UNIX localtime to time string. ||
+|| to_elapsed_time(int) ⇒ string || `' 0:02:11'` || Time delta between UNIX timestamp and now. ||
+|| to_gm_date(int) ⇒ string || `1282398703` ⇒ `'21/08/2010'` || Convert UNIX UTC time to date string. ||
+|| to_gm_time(int) ⇒ string || `1282398703` ⇒ `'13:51:43'` || Convert UNIX UTC time to time string. ||
+|| to_kb(int) ⇒ string || -1024 ⇒ `' -1,0'` || Convert bytes to `KiB` (length 5). ||
+|| to_mb(int) ⇒ string || 2000000 ⇒ `'     1,9'` || Convert bytes to `MiB` (length 8). ||
+|| to_xb(int) ⇒ string || 4000000000 ⇒ `'  3,7 GB'` || Convert bytes to auto-scaled value (length 8). ||
+|| to_throttle(int) ⇒ string || 65535 ⇒ `' 63'` || Convert bytes to `KiB` (length 3). ||
 
 
 = Events =
