@@ -128,6 +128,7 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 *NOTE:* All the calls working on download items take the hash of the item as their first parameter. The following table omits this parameter, and in multicalls you have to actually leave it out since it's provided by the system.
 
 || *Command* || *Example* || *Description* ||
+|| d.multicall(string view, commands...) ⇒ 2-dim array || `[['00...C8', 0],` ...`]]` || Call a set of `d.` commands on all items in a view, e.g. `rtxmlrpc d.multicall main d.get_hash= d.get_up_rate=`. ||
 || d.get_custom(string key) ⇒ string <br/> d.get_custom_throw(string key) ⇒ string <br/> d.set_custom(string key, string val) ⇒ int ||  || Get and set arbitrary amounts of custom attributes. The `throw` variant returns a `<Fault -503: 'No such custom value.'>` for unknown keys, else an empty string is returned as a default. ||
 || d.get_custom1() ⇒ string <br/> d.set_custom1(string val) <br/> (and 2, 3, 4, 5) ⇒ int ||  ||  Get and set up to 5 custom values. *TODO: Document what these are typically used for, there is a de-facto standard.* ||
 ||  ||  ||  *TODO* ||
@@ -201,7 +202,6 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || d.is_open() ⇒ int ||  ||  *TODO* ||
 || d.is_pex_active() ⇒ int ||  ||  *TODO* ||
 || d.is_private() ⇒ int ||  ||  *TODO* ||
-|| d.multicall() ⇒ int ||  ||  *TODO* ||
 || d.open() ⇒ int ||  ||  *TODO* ||
 || d.pause() ⇒ int ||  ||  *TODO* ||
 || d.resume() ⇒ int ||  ||  *TODO* ||
