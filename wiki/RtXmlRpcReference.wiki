@@ -129,15 +129,19 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 
 || *Command* || *Example* || *Description* ||
 || d.multicall(string view, commands...) ⇒ 2-dim array || `[['00...C8', 0],` ...`]]` || Call a set of `d.` commands on all items in a view, e.g. `rtxmlrpc d.multicall main d.get_hash= d.get_up_rate=`. ||
+|| d.get_hash() ⇒ string ||  || The info hash. ||
+|| d.get_ratio() ⇒ int || 1000 || Ratio [‰]. ||
+|| d.get_base_filename() ⇒ string || `'base'` || File or root directory name of torrent. ||
+|| d.get_base_path() ⇒ string || `'/dir/base'` || Path to download directory or file. ||
+|| d.get_directory() ⇒ string || `'/dir'` or `'/dir/multi'` || Path containing the download ||
+|| d.get_directory_base() ⇒ string || `'/dir'` or `'/dir/multi'` || *Difference to d.get_directory?* ||
+|| d.get_loaded_file() ⇒ string ||  || Path to the session file. ||
+|| d.get_message() ⇒ string <br/> d.set_message(string) ⇒ int ||  || Current tracker message. ||
 || d.get_custom(string key) ⇒ string <br/> d.get_custom_throw(string key) ⇒ string <br/> d.set_custom(string key, string val) ⇒ int ||  || Get and set arbitrary amounts of custom attributes. The `throw` variant returns a `<Fault -503: 'No such custom value.'>` for unknown keys, else an empty string is returned as a default. ||
 || d.get_custom1() ⇒ string <br/> d.set_custom1(string val) ⇒ int <br/> (and 2, 3, 4, 5) ||  ||  Get and set up to 5 custom values. *TODO: Document what these are typically used for, there is a de-facto standard.* ||
 ||  ||  ||  *TODO* ||
-|| d.add_peer(string) ⇒ int ||  ||  *TODO* ||
-|| d.create_link() ⇒ int ||  ||  *TODO* ||
-|| d.delete_link() ⇒ int ||  ||  *TODO* ||
-|| d.delete_tied() ⇒ int ||  ||  *TODO* ||
-|| d.get_base_filename() ⇒ int ||  ||  *TODO* ||
-|| d.get_base_path() ⇒ int ||  ||  *TODO* ||
+
+
 || d.get_bitfield() ⇒ int ||  ||  *TODO* ||
 || d.get_bytes_done() ⇒ int ||  ||  *TODO* ||
 || d.get_chunk_size() ⇒ int ||  ||  *TODO* ||
@@ -149,34 +153,32 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || d.get_connection_leech() ⇒ int ||  ||  *TODO* ||
 || d.get_connection_seed() ⇒ int ||  ||  *TODO* ||
 || d.get_creation_date() ⇒ int ||  ||  *TODO* ||
-|| d.get_directory() ⇒ string ||  ||  *TODO* ||
-|| d.get_directory_base() ⇒ string ||  ||  *TODO* ||
 || d.get_down_rate() ⇒ int ||  ||  *TODO* ||
 || d.get_down_total() ⇒ int ||  ||  *TODO* ||
 || d.get_free_diskspace() ⇒ int ||  ||  *TODO* ||
-|| d.get_hash() ⇒ int ||  ||  *TODO* ||
 || d.get_hashing() ⇒ int ||  ||  *TODO* ||
 || d.get_hashing_failed() ⇒ int ||  ||  *TODO* ||
 || d.get_ignore_commands() ⇒ int ||  ||  *TODO* ||
 || d.get_left_bytes() ⇒ int ||  ||  *TODO* ||
-|| d.get_loaded_file() ⇒ int ||  ||  *TODO* ||
 || d.get_local_id() ⇒ int ||  ||  *TODO* ||
 || d.get_local_id_html() ⇒ int ||  ||  *TODO* ||
 || d.get_max_file_size() ⇒ int ||  ||  *TODO* ||
 || d.get_max_size_pex() ⇒ int ||  ||  *TODO* ||
-|| d.get_message() ⇒ string ||  ||  *TODO* ||
 || d.get_mode() ⇒ int ||  ||  *TODO* ||
 || d.get_name() ⇒ string ||  ||  *TODO* ||
 || d.get_peer_exchange() ⇒ int ||  ||  *TODO* ||
+|| d.set_peer_exchange(int) ⇒ int ||  ||  *TODO* ||
 || d.get_peers_accounted() ⇒ int ||  ||  *TODO* ||
 || d.get_peers_complete() ⇒ int ||  ||  *TODO* ||
 || d.get_peers_connected() ⇒ int ||  ||  *TODO* ||
 || d.get_peers_max() ⇒ int ||  ||  *TODO* ||
+|| d.set_peers_max(int) ⇒ int ||  ||  *TODO* ||
 || d.get_peers_min() ⇒ int ||  ||  *TODO* ||
+|| d.set_peers_min(int) ⇒ int ||  ||  *TODO* ||
 || d.get_peers_not_connected() ⇒ int ||  ||  *TODO* ||
 || d.get_priority() ⇒ int ||  ||  *TODO* ||
+|| d.set_priority(int) ⇒ int ||  ||  *TODO* ||
 || d.get_priority_str() ⇒ string ||  ||  *TODO* ||
-|| d.get_ratio() ⇒ int ||  ||  *TODO* ||
 || d.get_size_bytes() ⇒ int ||  ||  *TODO* ||
 || d.get_size_chunks() ⇒ int ||  ||  *TODO* ||
 || d.get_size_files() ⇒ int ||  ||  *TODO* ||
@@ -194,7 +196,6 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || d.get_up_rate() ⇒ int ||  ||  *TODO* ||
 || d.get_up_total() ⇒ int ||  ||  *TODO* ||
 || d.get_uploads_max() ⇒ int ||  ||  *TODO* ||
-|| d.initialize_logs() ⇒ int ||  ||  *TODO* ||
 || d.is_active() ⇒ int ||  ||  *TODO* ||
 || d.is_hash_checked() ⇒ int ||  ||  *TODO* ||
 || d.is_hash_checking() ⇒ int ||  ||  *TODO* ||
@@ -202,21 +203,12 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || d.is_open() ⇒ int ||  ||  *TODO* ||
 || d.is_pex_active() ⇒ int ||  ||  *TODO* ||
 || d.is_private() ⇒ int ||  ||  *TODO* ||
-|| d.open() ⇒ int ||  ||  *TODO* ||
-|| d.pause() ⇒ int ||  ||  *TODO* ||
-|| d.resume() ⇒ int ||  ||  *TODO* ||
-|| d.save_session() ⇒ int ||  ||  *TODO* ||
 || d.set_connection_current(string) ⇒ int ||  ||  *TODO* ||
 || d.set_directory(string) ⇒ int ||  ||  *TODO* ||
 || d.set_directory_base(string) ⇒ int ||  ||  *TODO* ||
 || d.set_hashing_failed(int) ⇒ int ||  ||  *TODO* ||
 || d.set_ignore_commands(int) ⇒ int ||  ||  *TODO* ||
 || d.set_max_file_size(int) ⇒ int ||  ||  *TODO* ||
-|| d.set_message(string) ⇒ int ||  ||  *TODO* ||
-|| d.set_peer_exchange(int) ⇒ int ||  ||  *TODO* ||
-|| d.set_peers_max(int) ⇒ int ||  ||  *TODO* ||
-|| d.set_peers_min(int) ⇒ int ||  ||  *TODO* ||
-|| d.set_priority(int) ⇒ int ||  ||  *TODO* ||
 || d.set_throttle_name(string) ⇒ int ||  ||  *TODO* ||
 || d.set_tied_to_file(string) ⇒ int ||  ||  *TODO* ||
 || d.set_tracker_numwant(int) ⇒ int ||  ||  *TODO* ||
@@ -230,6 +222,7 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 
 == Files ==
 || *Command* || *Example* || *Description* ||
+|| f.multicall() ⇒ int ||  ||  *TODO* ||
 ||  ||  ||  *TODO* ||
 || f.get_completed_chunks() ⇒ int ||  ||  *TODO* ||
 || f.get_frozen_path() ⇒ string ||  ||  *TODO* ||
@@ -249,7 +242,6 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || f.is_created() ⇒ int ||  ||  *TODO* ||
 || f.is_open() ⇒ int ||  ||  *TODO* ||
 || f.is_resize_queued() ⇒ int ||  ||  *TODO* ||
-|| f.multicall() ⇒ int ||  ||  *TODO* ||
 || f.set_create_queued() ⇒ int ||  ||  *TODO* ||
 || f.set_priority(int) ⇒ int ||  ||  *TODO* ||
 || f.set_resize_queued() ⇒ int ||  ||  *TODO* ||
@@ -258,6 +250,7 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 
 == Trackers ==
 || *Command* || *Example* || *Description* ||
+|| t.multicall() ⇒ int ||  ||  *TODO* ||
 ||  ||  ||  *TODO* ||
 || t.get_group() ⇒ int ||  ||  *TODO* ||
 || t.get_id() ⇒ string ||  ||  *TODO* ||
@@ -271,11 +264,12 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || t.get_url() ⇒ string ||  ||  *TODO* ||
 || t.is_enabled() ⇒ int ||  ||  *TODO* ||
 || t.is_open() ⇒ int ||  ||  *TODO* ||
-|| t.multicall() ⇒ int ||  ||  *TODO* ||
 || t.set_enabled(int) ⇒ int ||  ||  *TODO* ||
 
 == Peers ==
 || *Command* || *Example* || *Description* ||
+|| d.add_peer(string) ⇒ int ||  ||  *TODO* ||
+|| p.multicall() ⇒ int ||  ||  *TODO* ||
 ||  ||  ||  *TODO* ||
 || p.get_address() ⇒ string ||  ||  *TODO* ||
 || p.get_client_version() ⇒ string ||  ||  *TODO* ||
@@ -294,7 +288,6 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || p.is_incoming() ⇒ int ||  ||  *TODO* ||
 || p.is_obfuscated() ⇒ int ||  ||  *TODO* ||
 || p.is_snubbed() ⇒ int ||  ||  *TODO* ||
-|| p.multicall() ⇒ int ||  ||  *TODO* ||
 
 == Management ==
 || *Command* || *Example* || *Description* ||
@@ -307,6 +300,14 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || d.check_hash() ⇒ int ||  ||  *TODO* ||
 || d.close() ⇒ int ||  ||  *TODO* ||
 || d.erase() ⇒ int ||  ||  *TODO* ||
+|| d.open() ⇒ int ||  ||  *TODO* ||
+|| d.pause() ⇒ int ||  ||  *TODO* ||
+|| d.resume() ⇒ int ||  ||  *TODO* ||
+|| d.save_session() ⇒ int ||  ||  *TODO* ||
+|| d.create_link() ⇒ int ||  ||  *TODO* ||
+|| d.delete_link() ⇒ int ||  ||  *TODO* ||
+|| d.delete_tied() ⇒ int ||  ||  *TODO* ||
+|| d.initialize_logs() ⇒ int ||  ||  *TODO* ||
 
 = Views =
 || *Command* || *Example* || *Description* ||
