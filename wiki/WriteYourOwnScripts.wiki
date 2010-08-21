@@ -3,25 +3,57 @@
 
 = Introduction =
 
-The `pyrocore` Python package contains powerful helper classes that make remote access to rTorrent child's play. See for yourself:
+The `pyrocore` Python package contains powerful helper classes that make remote access to rTorrent child's play. And your tools get the same Look & Feel like the built-in PyroScope commands, as long as your use th provided base classes.
+
+See for yourself:
 {{{
 #! /usr/bin/env python
+
 # Enter the magic kingdom
 from pyrocore import config
-from pyrocore.util import load_config
+from pyrocore.scripts import base
+
+
+class UserScript(base.ScriptBaseWithConfig):
+    """ 
+        Just some script you wrote.
+    """
+
+    # argument description for the usage information
+    ARGS_HELP = "<arg_1>... <arg_n>"
+
+
+    def add_options(self):
+        """ Add program options.
+        """
+        super(UserScript, self).add_options()
+
+        # basic options
+        ##self.add_bool_option("-n", "--dry-run",
+        ##    help="don't do anything, just tell what would happen")
+
+
+    def mainloop(self):
+        """ The main loop.
+        """
+        # Grab your magic wand
+        proxy = config.engine.open()
+
+        # Wave it
+        torrents = list(config.engine.items())
+
+        # Abracadabra
+        print "You have loaded %d torrents tracked by %d trackers." % (
+            len(torrents), 
+            len(set(i.alias for i in torrents)),
+        )
+        
+        self.LOG.info("XMLRPC stats: %s" % proxy)
+
 
 if __name__ == "__main__":
-    # Grab your magic wand
-    load_config.ConfigLoader().load()
-    
-    # Wave it
-    torrents = list(config.engine.items())
-
-    # Abracadabra
-    print "You have loaded %d torrents tracked by %d trackers." % (
-        len(torrents), 
-        len(set(i.alias for i in torrents)),
-    )
+    base.ScriptBase.setup()
+    UserScript().run()
 }}}
 
 For simple calls, you can also use the `rtxmlrpc` command on a shell prompt, see RtXmlRpcExamples for that.
