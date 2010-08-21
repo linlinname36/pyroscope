@@ -136,7 +136,9 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || d.get_directory() ⇒ string || `'/dir'` or `'/dir/multi'` || Path containing the download ||
 || d.get_directory_base() ⇒ string || `'/dir'` or `'/dir/multi'` || *Difference to d.get_directory?* ||
 || d.get_loaded_file() ⇒ string ||  || Path to the session file. ||
-|| d.get_message() ⇒ string <br/> d.set_message(string) ⇒ int ||  || Current tracker message. ||
+|| d.get_size_bytes() ⇒ int ||  || Exact total size in bytes. ||
+|| d.get_size_chunks() ⇒ int ||  || Total size in chunks. ||
+|| d.get_message() ⇒ string <br/> d.set_message(string) ⇒ int || `'Tracker: [Tried all trackers.]'` || Current (tracker) message. ||
 || d.get_custom(string key) ⇒ string <br/> d.get_custom_throw(string key) ⇒ string <br/> d.set_custom(string key, string val) ⇒ int ||  || Get and set arbitrary amounts of custom attributes. The `throw` variant returns a `<Fault -503: 'No such custom value.'>` for unknown keys, else an empty string is returned as a default. ||
 || d.get_custom1() ⇒ string <br/> d.set_custom1(string val) ⇒ int <br/> (and 2, 3, 4, 5) ||  ||  Get and set up to 5 custom values. *TODO: Document what these are typically used for, there is a de-facto standard.* ||
 ||  ||  ||  *TODO* ||
@@ -179,8 +181,6 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || d.get_priority() ⇒ int ||  ||  *TODO* ||
 || d.set_priority(int) ⇒ int ||  ||  *TODO* ||
 || d.get_priority_str() ⇒ string ||  ||  *TODO* ||
-|| d.get_size_bytes() ⇒ int ||  ||  *TODO* ||
-|| d.get_size_chunks() ⇒ int ||  ||  *TODO* ||
 || d.get_size_pex() ⇒ int ||  ||  *TODO* ||
 || d.get_skip_rate() ⇒ int ||  ||  *TODO* ||
 || d.get_skip_total() ⇒ int ||  ||  *TODO* ||
@@ -220,10 +220,10 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || d.views.remove() ⇒ int ||  ||  *TODO* ||
 
 == Files ==
-You need to call the file related methods with the info hash and the zero-based file index as arguments.
+*NOTE:* You need to call the file related methods with the info hash and the zero-based file index as the first two arguments.
 
 || *Command* || *Example* || *Description* ||
-|| d.get_size_files() ⇒ int ||  || Number of files in item. ||
+|| d.get_size_files() ⇒ int ||  || Number of files in item. This returns 1 for single-file torrents. ||
 || f.multicall() ⇒ array ||  || *Doesn't seems to work!* ||
 || f.get_path() ⇒ string || `'a/b'` || Relative path as a string. ||
 || f.get_path_components() ⇒ array of string || `['a', 'b']` || Relative path as an array. ||
@@ -231,7 +231,7 @@ You need to call the file related methods with the info hash and the zero-based 
 || f.get_frozen_path() ⇒ string || `'/dir/base/a/b'` || Full path to the file. ||
 || f.is_created() ⇒ int || `0` or `1` || File created? ||
 || f.is_open() ⇒ int || `0` or `1` || File opened? ||
-|| f.get_size_bytes() ⇒ int || `6` || Exact size on bytes. ||
+|| f.get_size_bytes() ⇒ int || `6` || Exact size in bytes. ||
 || f.get_size_chunks() ⇒ int || `2760726` || Size in chunks. ||
 || f.get_last_touched() ⇒ int || `1282422238906187` || File modification date (UNIX timestamp). ||
 || f.get_priority() ⇒ int <br/> f.set_priority(int) ⇒ int || `1` || Priority (0=off, 1=normal, 2=high) || 
@@ -243,6 +243,7 @@ You need to call the file related methods with the info hash and the zero-based 
 || f.get_range_second() ⇒ int ||  ||  *TODO* ||
 || f.is_create_queued() ⇒ int <br/> f.set_create_queued() ⇒ int <br/> f.unset_create_queued() ⇒ int ||  ||  *TODO* ||
 || f.is_resize_queued() ⇒ int <br/> f.set_resize_queued() ⇒ int <br/> f.unset_resize_queued() ⇒ int ||  ||  *TODO* ||
+
 
 == Trackers ==
 || *Command* || *Example* || *Description* ||
@@ -261,6 +262,7 @@ You need to call the file related methods with the info hash and the zero-based 
 || t.is_enabled() ⇒ int ||  ||  *TODO* ||
 || t.is_open() ⇒ int ||  ||  *TODO* ||
 || t.set_enabled(int) ⇒ int ||  ||  *TODO* ||
+
 
 == Peers ==
 || *Command* || *Example* || *Description* ||
