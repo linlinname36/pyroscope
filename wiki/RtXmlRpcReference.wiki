@@ -125,6 +125,8 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 
 == Attributes ==
 || *Command* || *Example* || *Description* ||
+|| d.get_custom(string key) ⇒ string <br/> d.get_custom_throw(string key) ⇒ string <br/> d.set_custom(string key, string val) ⇒ int ||  || Get and set arbitrary amounts of custom attributes. The `throw` variant returns a `<Fault -503: 'No such custom value.'>` for unknown keys, else an empty string is returned as a default. ||
+|| d.get_custom1() ⇒ string <br/> d.set_custom1(string val) <br/> (and 2, 3, 4, 5) ⇒ int ||  ||  Get and set up to 5 custom values. *TODO: Document what these are typically used for, there is a de-facto standard.* ||
 ||  ||  ||  *TODO* ||
 || d.add_peer(string) ⇒ int ||  ||  *TODO* ||
 || d.create_link() ⇒ int ||  ||  *TODO* ||
@@ -143,13 +145,6 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || d.get_connection_leech() ⇒ int ||  ||  *TODO* ||
 || d.get_connection_seed() ⇒ int ||  ||  *TODO* ||
 || d.get_creation_date() ⇒ int ||  ||  *TODO* ||
-|| d.get_custom(string) ⇒ string ||  ||  *TODO* ||
-|| d.get_custom1() ⇒ int ||  ||  *TODO* ||
-|| d.get_custom2() ⇒ int ||  ||  *TODO* ||
-|| d.get_custom3() ⇒ int ||  ||  *TODO* ||
-|| d.get_custom4() ⇒ int ||  ||  *TODO* ||
-|| d.get_custom5() ⇒ int ||  ||  *TODO* ||
-|| d.get_custom_throw(string) ⇒ string ||  ||  *TODO* ||
 || d.get_directory() ⇒ string ||  ||  *TODO* ||
 || d.get_directory_base() ⇒ string ||  ||  *TODO* ||
 || d.get_down_rate() ⇒ int ||  ||  *TODO* ||
@@ -209,12 +204,6 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || d.resume() ⇒ int ||  ||  *TODO* ||
 || d.save_session() ⇒ int ||  ||  *TODO* ||
 || d.set_connection_current(string) ⇒ int ||  ||  *TODO* ||
-|| d.set_custom() ⇒ int ||  ||  *TODO* ||
-|| d.set_custom1(string) ⇒ int ||  ||  *TODO* ||
-|| d.set_custom2(string) ⇒ int ||  ||  *TODO* ||
-|| d.set_custom3(string) ⇒ int ||  ||  *TODO* ||
-|| d.set_custom4(string) ⇒ int ||  ||  *TODO* ||
-|| d.set_custom5(string) ⇒ int ||  ||  *TODO* ||
 || d.set_directory(string) ⇒ int ||  ||  *TODO* ||
 || d.set_directory_base(string) ⇒ int ||  ||  *TODO* ||
 || d.set_hashing_failed(int) ⇒ int ||  ||  *TODO* ||
@@ -386,7 +375,7 @@ D
 || delete_link() ⇒ int ||  ||  *TODO* ||
 || dht(string) ⇒ int ||  ||  *TODO* ||
 || dht_add_node(string) ⇒ int ||  ||  *TODO* ||
-|| dht_statistics() ⇒ int <type 'dict'> {'active': 0, 'dht': 'disable', 'throttle': ''}
+|| dht_statistics() ⇒ struct || {'active': 0, 'dht': 'disable', 'throttle': ''} || *TODO* ||
 || download_list() ⇒ int ||  ||  *TODO* ||
 
 E
