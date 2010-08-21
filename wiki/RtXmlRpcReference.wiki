@@ -30,7 +30,7 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || get_xmlrpc_size_limit() ⇒ int <br/> set_xmlrpc_size_limit(int) ⇒ int || 524288 || The maximum XMLRPC payload size. ||
 || xmlrpc_dialect(string) ⇒ int ||  || Set the XMLRPC dialect to use (_details ==> source code_) ||
 || system.set_umask(int) ⇒ int ||  ||  ||
-||  ||  ||  ||
+||  ||  ||  *TODO* ||
 
 
 
@@ -46,568 +46,547 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || system.library_version() ⇒ string || '0.12.6' || libtorrent version. ||
 || system.get_cwd() ⇒ string <br/> system.set_cwd(string path) ⇒ int || '~/lib/rtorrent' || Current working directory, ||
 || system.hostname() ⇒ string  || 'example' || System's hostname. ||
-||  ||  ||  ||
-
-
-system.capabilities() ⇒ struct
-    Return the capabilities of XML-RPC server.
-    This includes the version number of the XML-RPC For C/C++ software
-system.getCapabilities() ⇒ struct
-    Return the list of standard capabilities of XML-RPC server.
-    See http://tech.groups.yahoo.com/group/xml-rpc/message/2897
-system.listMethods() ⇒ array
-    Return an array of all available XML-RPC methods on this server.
+|| system.capabilities() ⇒ struct ||  || Return the capabilities of XML-RPC server. This includes the version number of the XML-RPC For C/C++ software. ||
+|| system.getCapabilities() ⇒ struct ||  || Return the list of standard capabilities of XML-RPC server. See http://tech.groups.yahoo.com/group/xml-rpc/message/2897. ||
+|| system.listMethods() ⇒ array ||  || Return an array of all available XML-RPC methods on this server. ||
+|| system.methodExist(boolean) ⇒ string ||  || Tell whether a method by a specified name exists on this server ||
+|| system.methodHelp(string) ⇒ string ||  || Given the name of a method, return a help string. ||
+|| system.methodSignature(string) ⇒ array ||  || Given the name of a method, return an array of legal signatures. Each signature is an array of strings. The first item of each signature is the return type, and any others items are parameter types. ||
+|| system.multicall(array) ⇒ array ||  || Process an array of calls, and return an array of results. Calls should be structs of the form `{'methodName': string, 'params': array}`. Each result will either be a single-item array containg the result value, or a struct of the form `{'faultCode': int, 'faultString': string}`. This is useful when you need to make lots of small calls without lots of round trips. ||
+||  ||  ||  *TODO* ||
 
 
 == Logging and formatting ==
 || *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-to_date(int) ⇒ int
-to_time(int) ⇒ int
-to_elapsed_time(int) ⇒ int
-to_gm_date(int) ⇒ int
-to_gm_time(int) ⇒ int
-to_kb(int) ⇒ int
-to_mb(int) ⇒ int
-to_xb(int) ⇒ int
-to_throttle(int) ⇒ int
-cat() ⇒ int
-print(arg,...) ⇒ int
-
+|| print(string arg, ...) ⇒ int ||  ||  *TODO* ||
+|| cat() ⇒ int ||  ||  *TODO* ||
+|| to_date(int) ⇒ int ||  ||  *TODO* ||
+|| to_time(int) ⇒ int ||  ||  *TODO* ||
+|| to_elapsed_time(int) ⇒ int ||  ||  *TODO* ||
+|| to_gm_date(int) ⇒ int ||  ||  *TODO* ||
+|| to_gm_time(int) ⇒ int ||  ||  *TODO* ||
+|| to_kb(int) ⇒ int ||  ||  *TODO* ||
+|| to_mb(int) ⇒ int ||  ||  *TODO* ||
+|| to_xb(int) ⇒ int ||  ||  *TODO* ||
+|| to_throttle(int) ⇒ int ||  ||  *TODO* ||
+||  ||  ||  *TODO* ||
 
 
 = Events =
-|| *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-event.download.closed() ⇒ undef
-event.download.erased() ⇒ undef
-event.download.finished() ⇒ undef
-event.download.hash_done() ⇒ undef
-event.download.hash_queued() ⇒ undef
-event.download.hash_removed() ⇒ undef
-event.download.inserted() ⇒ undef
-event.download.inserted_new() ⇒ undef
-event.download.inserted_session() ⇒ undef
-event.download.opened() ⇒ undef
-event.download.paused() ⇒ undef
-event.download.resumed() ⇒ undef
 
+== State changes ==
+|| *Command* || *Example* || *Description* ||
+|| close_low_diskspace(*TODO*) ⇒ int ||  || *TODO* ||
+||  ||  ||  *TODO* ||
+|| event.download.closed() ⇒ undef ||  ||  *TODO* ||
+|| event.download.erased() ⇒ undef ||  ||  *TODO* ||
+|| event.download.finished() ⇒ undef ||  ||  *TODO* ||
+|| event.download.hash_done() ⇒ undef ||  ||  *TODO* ||
+|| event.download.hash_queued() ⇒ undef ||  ||  *TODO* ||
+|| event.download.hash_removed() ⇒ undef ||  ||  *TODO* ||
+|| event.download.inserted() ⇒ undef ||  ||  *TODO* ||
+|| event.download.inserted_new() ⇒ undef ||  ||  *TODO* ||
+|| event.download.inserted_session() ⇒ undef ||  ||  *TODO* ||
+|| event.download.opened() ⇒ undef ||  ||  *TODO* ||
+|| event.download.paused() ⇒ undef ||  ||  *TODO* ||
+|| event.download.resumed() ⇒ undef ||  ||  *TODO* ||
+
+== Scheduling ==
+schedule() ⇒ int ||  ||  *TODO* ||
+|| schedule_remove(string) ⇒ int ||  ||  *TODO* ||
+|| scheduler.max_active() ⇒ undef ||  ||  *TODO* ||
+|| scheduler.max_active.set() ⇒ undef ||  ||  *TODO* ||
+|| scheduler.simple.added() ⇒ int ||  ||  *TODO* ||
+|| scheduler.simple.removed() ⇒ int ||  ||  *TODO* ||
+|| scheduler.simple.update() ⇒ int ||  ||  *TODO* ||
 
 = Control flow =
 == Conditions ==
 || *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-or() ⇒ int
-and() ⇒ int
-false() ⇒ int
-not() ⇒ int
+|| false() ⇒ int ||  || *TODO* ||
+|| or() ⇒ int ||  || *TODO* ||
+|| and() ⇒ int ||  || *TODO* ||
+|| not() ⇒ int ||  || *TODO* ||
+|| less(int) ⇒ int ||  || *TODO* ||
+|| greater(int) ⇒ int ||  || *TODO* ||
+|| equal ||  || _SVN head only?!_ *TODO* ||
+||  ||  ||  *TODO* ||
 
 
 == Conditional execution ==
 || *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-branch() ⇒ int
-if() ⇒ int
+|| branch() ⇒ int ||  || *TODO* ||
+|| if() ⇒ int ||  || *TODO* ||
+||  ||  ||  *TODO* ||
 
 
 = Download items =
 
 == Attributes ==
 || *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-d.add_peer(string) ⇒ int
-d.create_link() ⇒ int
-d.delete_link() ⇒ int
-d.delete_tied() ⇒ int
-d.get_base_filename() ⇒ int
-d.get_base_path() ⇒ int
-d.get_bitfield() ⇒ int
-d.get_bytes_done() ⇒ int
-d.get_chunk_size() ⇒ int
-d.get_chunks_hashed() ⇒ int
-d.get_complete() ⇒ int
-d.get_completed_bytes() ⇒ int
-d.get_completed_chunks() ⇒ int
-d.get_connection_current() ⇒ string
-d.get_connection_leech() ⇒ int
-d.get_connection_seed() ⇒ int
-d.get_creation_date() ⇒ int
-d.get_custom(string) ⇒ string
-d.get_custom1() ⇒ int
-d.get_custom2() ⇒ int
-d.get_custom3() ⇒ int
-d.get_custom4() ⇒ int
-d.get_custom5() ⇒ int
-d.get_custom_throw(string) ⇒ string
-d.get_directory() ⇒ string
-d.get_directory_base() ⇒ string
-d.get_down_rate() ⇒ int
-d.get_down_total() ⇒ int
-d.get_free_diskspace() ⇒ int
-d.get_hash() ⇒ int
-d.get_hashing() ⇒ int
-d.get_hashing_failed() ⇒ int
-d.get_ignore_commands() ⇒ int
-d.get_left_bytes() ⇒ int
-d.get_loaded_file() ⇒ int
-d.get_local_id() ⇒ int
-d.get_local_id_html() ⇒ int
-d.get_max_file_size() ⇒ int
-d.get_max_size_pex() ⇒ int
-d.get_message() ⇒ string
-d.get_mode() ⇒ int
-d.get_name() ⇒ string
-d.get_peer_exchange() ⇒ int
-d.get_peers_accounted() ⇒ int
-d.get_peers_complete() ⇒ int
-d.get_peers_connected() ⇒ int
-d.get_peers_max() ⇒ int
-d.get_peers_min() ⇒ int
-d.get_peers_not_connected() ⇒ int
-d.get_priority() ⇒ int
-d.get_priority_str() ⇒ string
-d.get_ratio() ⇒ int
-d.get_size_bytes() ⇒ int
-d.get_size_chunks() ⇒ int
-d.get_size_files() ⇒ int
-d.get_size_pex() ⇒ int
-d.get_skip_rate() ⇒ int
-d.get_skip_total() ⇒ int
-d.get_state() ⇒ int
-d.get_state_changed() ⇒ int
-d.get_state_counter() ⇒ int
-d.get_throttle_name() ⇒ int
-d.get_tied_to_file() ⇒ int
-d.get_tracker_focus() ⇒ int
-d.get_tracker_numwant() ⇒ int
-d.get_tracker_size() ⇒ int
-d.get_up_rate() ⇒ int
-d.get_up_total() ⇒ int
-d.get_uploads_max() ⇒ int
-d.initialize_logs() ⇒ int
-d.is_active() ⇒ int
-d.is_hash_checked() ⇒ int
-d.is_hash_checking() ⇒ int
-d.is_multi_file() ⇒ int
-d.is_open() ⇒ int
-d.is_pex_active() ⇒ int
-d.is_private() ⇒ int
-d.multicall() ⇒ int
-d.open() ⇒ int
-d.pause() ⇒ int
-d.resume() ⇒ int
-d.save_session() ⇒ int
-d.set_connection_current(string) ⇒ int
-d.set_custom() ⇒ int
-d.set_custom1(string) ⇒ int
-d.set_custom2(string) ⇒ int
-d.set_custom3(string) ⇒ int
-d.set_custom4(string) ⇒ int
-d.set_custom5(string) ⇒ int
-d.set_directory(string) ⇒ int
-d.set_directory_base(string) ⇒ int
-d.set_hashing_failed(int) ⇒ int
-d.set_ignore_commands(int) ⇒ int
-d.set_max_file_size(int) ⇒ int
-d.set_message(string) ⇒ int
-d.set_peer_exchange(int) ⇒ int
-d.set_peers_max(int) ⇒ int
-d.set_peers_min(int) ⇒ int
-d.set_priority(int) ⇒ int
-d.set_throttle_name(string) ⇒ int
-d.set_tied_to_file(string) ⇒ int
-d.set_tracker_numwant(int) ⇒ int
-d.set_uploads_max(int) ⇒ int
-d.update_priorities() ⇒ int
-d.views() ⇒ int
-d.views.has() ⇒ int
-d.views.push_back() ⇒ int
-d.views.push_back_unique() ⇒ int
-d.views.remove() ⇒ int
+||  ||  ||  *TODO* ||
+|| d.add_peer(string) ⇒ int ||  ||  *TODO* ||
+|| d.create_link() ⇒ int ||  ||  *TODO* ||
+|| d.delete_link() ⇒ int ||  ||  *TODO* ||
+|| d.delete_tied() ⇒ int ||  ||  *TODO* ||
+|| d.get_base_filename() ⇒ int ||  ||  *TODO* ||
+|| d.get_base_path() ⇒ int ||  ||  *TODO* ||
+|| d.get_bitfield() ⇒ int ||  ||  *TODO* ||
+|| d.get_bytes_done() ⇒ int ||  ||  *TODO* ||
+|| d.get_chunk_size() ⇒ int ||  ||  *TODO* ||
+|| d.get_chunks_hashed() ⇒ int ||  ||  *TODO* ||
+|| d.get_complete() ⇒ int ||  ||  *TODO* ||
+|| d.get_completed_bytes() ⇒ int ||  ||  *TODO* ||
+|| d.get_completed_chunks() ⇒ int ||  ||  *TODO* ||
+|| d.get_connection_current() ⇒ string ||  ||  *TODO* ||
+|| d.get_connection_leech() ⇒ int ||  ||  *TODO* ||
+|| d.get_connection_seed() ⇒ int ||  ||  *TODO* ||
+|| d.get_creation_date() ⇒ int ||  ||  *TODO* ||
+|| d.get_custom(string) ⇒ string ||  ||  *TODO* ||
+|| d.get_custom1() ⇒ int ||  ||  *TODO* ||
+|| d.get_custom2() ⇒ int ||  ||  *TODO* ||
+|| d.get_custom3() ⇒ int ||  ||  *TODO* ||
+|| d.get_custom4() ⇒ int ||  ||  *TODO* ||
+|| d.get_custom5() ⇒ int ||  ||  *TODO* ||
+|| d.get_custom_throw(string) ⇒ string ||  ||  *TODO* ||
+|| d.get_directory() ⇒ string ||  ||  *TODO* ||
+|| d.get_directory_base() ⇒ string ||  ||  *TODO* ||
+|| d.get_down_rate() ⇒ int ||  ||  *TODO* ||
+|| d.get_down_total() ⇒ int ||  ||  *TODO* ||
+|| d.get_free_diskspace() ⇒ int ||  ||  *TODO* ||
+|| d.get_hash() ⇒ int ||  ||  *TODO* ||
+|| d.get_hashing() ⇒ int ||  ||  *TODO* ||
+|| d.get_hashing_failed() ⇒ int ||  ||  *TODO* ||
+|| d.get_ignore_commands() ⇒ int ||  ||  *TODO* ||
+|| d.get_left_bytes() ⇒ int ||  ||  *TODO* ||
+|| d.get_loaded_file() ⇒ int ||  ||  *TODO* ||
+|| d.get_local_id() ⇒ int ||  ||  *TODO* ||
+|| d.get_local_id_html() ⇒ int ||  ||  *TODO* ||
+|| d.get_max_file_size() ⇒ int ||  ||  *TODO* ||
+|| d.get_max_size_pex() ⇒ int ||  ||  *TODO* ||
+|| d.get_message() ⇒ string ||  ||  *TODO* ||
+|| d.get_mode() ⇒ int ||  ||  *TODO* ||
+|| d.get_name() ⇒ string ||  ||  *TODO* ||
+|| d.get_peer_exchange() ⇒ int ||  ||  *TODO* ||
+|| d.get_peers_accounted() ⇒ int ||  ||  *TODO* ||
+|| d.get_peers_complete() ⇒ int ||  ||  *TODO* ||
+|| d.get_peers_connected() ⇒ int ||  ||  *TODO* ||
+|| d.get_peers_max() ⇒ int ||  ||  *TODO* ||
+|| d.get_peers_min() ⇒ int ||  ||  *TODO* ||
+|| d.get_peers_not_connected() ⇒ int ||  ||  *TODO* ||
+|| d.get_priority() ⇒ int ||  ||  *TODO* ||
+|| d.get_priority_str() ⇒ string ||  ||  *TODO* ||
+|| d.get_ratio() ⇒ int ||  ||  *TODO* ||
+|| d.get_size_bytes() ⇒ int ||  ||  *TODO* ||
+|| d.get_size_chunks() ⇒ int ||  ||  *TODO* ||
+|| d.get_size_files() ⇒ int ||  ||  *TODO* ||
+|| d.get_size_pex() ⇒ int ||  ||  *TODO* ||
+|| d.get_skip_rate() ⇒ int ||  ||  *TODO* ||
+|| d.get_skip_total() ⇒ int ||  ||  *TODO* ||
+|| d.get_state() ⇒ int ||  ||  *TODO* ||
+|| d.get_state_changed() ⇒ int ||  ||  *TODO* ||
+|| d.get_state_counter() ⇒ int ||  ||  *TODO* ||
+|| d.get_throttle_name() ⇒ int ||  ||  *TODO* ||
+|| d.get_tied_to_file() ⇒ int ||  ||  *TODO* ||
+|| d.get_tracker_focus() ⇒ int ||  ||  *TODO* ||
+|| d.get_tracker_numwant() ⇒ int ||  ||  *TODO* ||
+|| d.get_tracker_size() ⇒ int ||  ||  *TODO* ||
+|| d.get_up_rate() ⇒ int ||  ||  *TODO* ||
+|| d.get_up_total() ⇒ int ||  ||  *TODO* ||
+|| d.get_uploads_max() ⇒ int ||  ||  *TODO* ||
+|| d.initialize_logs() ⇒ int ||  ||  *TODO* ||
+|| d.is_active() ⇒ int ||  ||  *TODO* ||
+|| d.is_hash_checked() ⇒ int ||  ||  *TODO* ||
+|| d.is_hash_checking() ⇒ int ||  ||  *TODO* ||
+|| d.is_multi_file() ⇒ int ||  ||  *TODO* ||
+|| d.is_open() ⇒ int ||  ||  *TODO* ||
+|| d.is_pex_active() ⇒ int ||  ||  *TODO* ||
+|| d.is_private() ⇒ int ||  ||  *TODO* ||
+|| d.multicall() ⇒ int ||  ||  *TODO* ||
+|| d.open() ⇒ int ||  ||  *TODO* ||
+|| d.pause() ⇒ int ||  ||  *TODO* ||
+|| d.resume() ⇒ int ||  ||  *TODO* ||
+|| d.save_session() ⇒ int ||  ||  *TODO* ||
+|| d.set_connection_current(string) ⇒ int ||  ||  *TODO* ||
+|| d.set_custom() ⇒ int ||  ||  *TODO* ||
+|| d.set_custom1(string) ⇒ int ||  ||  *TODO* ||
+|| d.set_custom2(string) ⇒ int ||  ||  *TODO* ||
+|| d.set_custom3(string) ⇒ int ||  ||  *TODO* ||
+|| d.set_custom4(string) ⇒ int ||  ||  *TODO* ||
+|| d.set_custom5(string) ⇒ int ||  ||  *TODO* ||
+|| d.set_directory(string) ⇒ int ||  ||  *TODO* ||
+|| d.set_directory_base(string) ⇒ int ||  ||  *TODO* ||
+|| d.set_hashing_failed(int) ⇒ int ||  ||  *TODO* ||
+|| d.set_ignore_commands(int) ⇒ int ||  ||  *TODO* ||
+|| d.set_max_file_size(int) ⇒ int ||  ||  *TODO* ||
+|| d.set_message(string) ⇒ int ||  ||  *TODO* ||
+|| d.set_peer_exchange(int) ⇒ int ||  ||  *TODO* ||
+|| d.set_peers_max(int) ⇒ int ||  ||  *TODO* ||
+|| d.set_peers_min(int) ⇒ int ||  ||  *TODO* ||
+|| d.set_priority(int) ⇒ int ||  ||  *TODO* ||
+|| d.set_throttle_name(string) ⇒ int ||  ||  *TODO* ||
+|| d.set_tied_to_file(string) ⇒ int ||  ||  *TODO* ||
+|| d.set_tracker_numwant(int) ⇒ int ||  ||  *TODO* ||
+|| d.set_uploads_max(int) ⇒ int ||  ||  *TODO* ||
+|| d.update_priorities() ⇒ int ||  ||  *TODO* ||
+|| d.views() ⇒ int ||  ||  *TODO* ||
+|| d.views.has() ⇒ int ||  ||  *TODO* ||
+|| d.views.push_back() ⇒ int ||  ||  *TODO* ||
+|| d.views.push_back_unique() ⇒ int ||  ||  *TODO* ||
+|| d.views.remove() ⇒ int ||  ||  *TODO* ||
 
 == Files ==
 || *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-f.get_completed_chunks() ⇒ int
-f.get_frozen_path() ⇒ string
-f.get_last_touched() ⇒ int
-f.get_match_depth_next() ⇒ int
-f.get_match_depth_prev() ⇒ int
-f.get_offset() ⇒ int
-f.get_path() ⇒ string
-f.get_path_components() ⇒ string
-f.get_path_depth() ⇒ string
-f.get_priority() ⇒ int
-f.get_range_first() ⇒ int
-f.get_range_second() ⇒ int
-f.get_size_bytes() ⇒ int
-f.get_size_chunks() ⇒ int
-f.is_create_queued() ⇒ int
-f.is_created() ⇒ int
-f.is_open() ⇒ int
-f.is_resize_queued() ⇒ int
-f.multicall() ⇒ int
-f.set_create_queued() ⇒ int
-f.set_priority(int) ⇒ int
-f.set_resize_queued() ⇒ int
-f.unset_create_queued() ⇒ int
-f.unset_resize_queued() ⇒ int
+||  ||  ||  *TODO* ||
+|| f.get_completed_chunks() ⇒ int ||  ||  *TODO* ||
+|| f.get_frozen_path() ⇒ string ||  ||  *TODO* ||
+|| f.get_last_touched() ⇒ int ||  ||  *TODO* ||
+|| f.get_match_depth_next() ⇒ int ||  ||  *TODO* ||
+|| f.get_match_depth_prev() ⇒ int ||  ||  *TODO* ||
+|| f.get_offset() ⇒ int ||  ||  *TODO* ||
+|| f.get_path() ⇒ string ||  ||  *TODO* ||
+|| f.get_path_components() ⇒ string ||  ||  *TODO* ||
+|| f.get_path_depth() ⇒ string ||  ||  *TODO* ||
+|| f.get_priority() ⇒ int ||  ||  *TODO* ||
+|| f.get_range_first() ⇒ int ||  ||  *TODO* ||
+|| f.get_range_second() ⇒ int ||  ||  *TODO* ||
+|| f.get_size_bytes() ⇒ int ||  ||  *TODO* ||
+|| f.get_size_chunks() ⇒ int ||  ||  *TODO* ||
+|| f.is_create_queued() ⇒ int ||  ||  *TODO* ||
+|| f.is_created() ⇒ int ||  ||  *TODO* ||
+|| f.is_open() ⇒ int ||  ||  *TODO* ||
+|| f.is_resize_queued() ⇒ int ||  ||  *TODO* ||
+|| f.multicall() ⇒ int ||  ||  *TODO* ||
+|| f.set_create_queued() ⇒ int ||  ||  *TODO* ||
+|| f.set_priority(int) ⇒ int ||  ||  *TODO* ||
+|| f.set_resize_queued() ⇒ int ||  ||  *TODO* ||
+|| f.unset_create_queued() ⇒ int ||  ||  *TODO* ||
+|| f.unset_resize_queued() ⇒ int ||  ||  *TODO* ||
 
 == Trackers ==
 || *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-t.get_group() ⇒ int
-t.get_id() ⇒ string
-t.get_min_interval() ⇒ int
-t.get_normal_interval() ⇒ int
-t.get_scrape_complete() ⇒ int
-t.get_scrape_downloaded() ⇒ int
-t.get_scrape_incomplete() ⇒ int
-t.get_scrape_time_last() ⇒ int
-t.get_type() ⇒ int
-t.get_url() ⇒ string
-t.is_enabled() ⇒ int
-t.is_open() ⇒ int
-t.multicall() ⇒ int
-t.set_enabled(int) ⇒ int
+||  ||  ||  *TODO* ||
+|| t.get_group() ⇒ int ||  ||  *TODO* ||
+|| t.get_id() ⇒ string ||  ||  *TODO* ||
+|| t.get_min_interval() ⇒ int ||  ||  *TODO* ||
+|| t.get_normal_interval() ⇒ int ||  ||  *TODO* ||
+|| t.get_scrape_complete() ⇒ int ||  ||  *TODO* ||
+|| t.get_scrape_downloaded() ⇒ int ||  ||  *TODO* ||
+|| t.get_scrape_incomplete() ⇒ int ||  ||  *TODO* ||
+|| t.get_scrape_time_last() ⇒ int ||  ||  *TODO* ||
+|| t.get_type() ⇒ int ||  ||  *TODO* ||
+|| t.get_url() ⇒ string ||  ||  *TODO* ||
+|| t.is_enabled() ⇒ int ||  ||  *TODO* ||
+|| t.is_open() ⇒ int ||  ||  *TODO* ||
+|| t.multicall() ⇒ int ||  ||  *TODO* ||
+|| t.set_enabled(int) ⇒ int ||  ||  *TODO* ||
 
 == Peers ==
 || *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-p.get_address() ⇒ string
-p.get_client_version() ⇒ string
-p.get_completed_percent() ⇒ int
-p.get_down_rate() ⇒ int
-p.get_down_total() ⇒ int
-p.get_id() ⇒ string
-p.get_id_html() ⇒ string
-p.get_options_str() ⇒ string
-p.get_peer_rate() ⇒ int
-p.get_peer_total() ⇒ int
-p.get_port() ⇒ int
-p.get_up_rate() ⇒ int
-p.get_up_total() ⇒ int
-p.is_encrypted() ⇒ int
-p.is_incoming() ⇒ int
-p.is_obfuscated() ⇒ int
-p.is_snubbed() ⇒ int
-p.multicall() ⇒ int
+||  ||  ||  *TODO* ||
+|| p.get_address() ⇒ string ||  ||  *TODO* ||
+|| p.get_client_version() ⇒ string ||  ||  *TODO* ||
+|| p.get_completed_percent() ⇒ int ||  ||  *TODO* ||
+|| p.get_down_rate() ⇒ int ||  ||  *TODO* ||
+|| p.get_down_total() ⇒ int ||  ||  *TODO* ||
+|| p.get_id() ⇒ string ||  ||  *TODO* ||
+|| p.get_id_html() ⇒ string ||  ||  *TODO* ||
+|| p.get_options_str() ⇒ string ||  ||  *TODO* ||
+|| p.get_peer_rate() ⇒ int ||  ||  *TODO* ||
+|| p.get_peer_total() ⇒ int ||  ||  *TODO* ||
+|| p.get_port() ⇒ int ||  ||  *TODO* ||
+|| p.get_up_rate() ⇒ int ||  ||  *TODO* ||
+|| p.get_up_total() ⇒ int ||  ||  *TODO* ||
+|| p.is_encrypted() ⇒ int ||  ||  *TODO* ||
+|| p.is_incoming() ⇒ int ||  ||  *TODO* ||
+|| p.is_obfuscated() ⇒ int ||  ||  *TODO* ||
+|| p.is_snubbed() ⇒ int ||  ||  *TODO* ||
+|| p.multicall() ⇒ int ||  ||  *TODO* ||
 
 == Management ==
 || *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-d.start() ⇒ undef
-d.stop() ⇒ undef
-d.try_close() ⇒ undef
-d.try_start() ⇒ undef
-d.try_stop() ⇒ undef
-d.check_hash() ⇒ int
-d.close() ⇒ int
-d.erase() ⇒ int
-
+||  ||  ||  *TODO* ||
+|| d.start() ⇒ undef ||  ||  *TODO* ||
+|| d.stop() ⇒ undef ||  ||  *TODO* ||
+|| d.try_close() ⇒ undef ||  ||  *TODO* ||
+|| d.try_start() ⇒ undef ||  ||  *TODO* ||
+|| d.try_stop() ⇒ undef ||  ||  *TODO* ||
+|| d.check_hash() ⇒ int ||  ||  *TODO* ||
+|| d.close() ⇒ int ||  ||  *TODO* ||
+|| d.erase() ⇒ int ||  ||  *TODO* ||
 
 = Views =
 || *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-ui.current_view.set() ⇒ int
-view.event_added() ⇒ int
-view.event_removed() ⇒ int
-view.filter_download() ⇒ int
-view.persistent() ⇒ int
-view.set_not_visible() ⇒ int
-view.set_visible() ⇒ int
-view.size() ⇒ int
-view.size_not_visible() ⇒ int
-view_add(string) ⇒ int
-view_filter() ⇒ int
-view_filter_on() ⇒ int
-view_list() ⇒ array <type 'list'> 
-    ['main', 'default', 'name', 'active', 'started', 'stopped', 'complete', 'incomplete', 'hashing', 'seeding']
-view_set() ⇒ array
-view_sort() ⇒ int
-view_sort_current() ⇒ int
-view_sort_new() ⇒ int
+|| ui.current_view.set(string name) ⇒ int ||  || Change currently visible view. ||
+|| view_list() ⇒ array || ['main', 'default', 'name', 'active', 'started', 'stopped', 'complete', 'incomplete', 'hashing', 'seeding']  || Return all currently defined views. ||
+|| view_add(string) ⇒ int ||  || Add a _new_ view. *Do NOT try to add an already defined view!* ||
+|| view_sort(string view) ⇒ int ||  || Sort again in the defined order. ||
+|| view_sort_current(string view, string comparator) ⇒ int ||  || Sort current view content now. ||
+|| view_sort_new(string view, string comparator) ⇒ int ||  || Define sort order for newly added items. ||
+|| view_filter(string view, string condition) ⇒ int ||  || Filter items by condition once. Use a schedule or events to keep it up to date. ||
+|| view_filter_on(string view, string event) ⇒ int ||  || Sort again on event. *OR EVENT LIST?! ARRAY? MULTI-ARG?* ||
+||  ||  ||  *TODO* ||
+||  ||  ||  *TODO* ||
+
+view.event_added() ⇒ int ||  ||  *TODO* ||
+|| view.event_removed() ⇒ int ||  ||  *TODO* ||
+|| view.filter_download() ⇒ int ||  ||  *TODO* ||
+|| view.persistent() ⇒ int ||  ||  *TODO* ||
+|| view.set_not_visible() ⇒ int ||  ||  *TODO* ||
+|| view.set_visible() ⇒ int ||  ||  *TODO* ||
+|| view.size() ⇒ int ||  ||  *TODO* ||
+|| view.size_not_visible() ⇒ int ||  ||  *TODO* ||
+|| view_set() ⇒ array ||  ||  *TODO* ||
 
 
 = Ratio management =
 || *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-ratio.disable() ⇒ undef
-ratio.enable() ⇒ undef
-ratio.max() ⇒ undef
-ratio.max.set() ⇒ undef
-ratio.min() ⇒ undef
-ratio.min.set() ⇒ undef
-ratio.upload() ⇒ undef
-ratio.upload.set() ⇒ undef
-
+||  ||  ||  *TODO* ||
+|| ratio.disable() ⇒ undef ||  ||  *TODO* ||
+|| ratio.enable() ⇒ undef ||  ||  *TODO* ||
+|| ratio.max() ⇒ undef ||  ||  *TODO* ||
+|| ratio.max.set() ⇒ undef ||  ||  *TODO* ||
+|| ratio.min() ⇒ undef ||  ||  *TODO* ||
+|| ratio.min.set() ⇒ undef ||  ||  *TODO* ||
+|| ratio.upload() ⇒ undef ||  ||  *TODO* ||
+|| ratio.upload.set() ⇒ undef ||  ||  *TODO* ||
 
 = Bandwidth management =
+Throttles work by sharing from the global bandwidth limits, i.e. those have to be set for throttles to actually work.
+Your can set the global limits to values higher than your actually available bandwidth if you want "unlimited".
+
 || *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-throttle_down() ⇒ int
-throttle_ip() ⇒ int
-throttle_up() ⇒ int
+|| throttle_down(string name, string limit) ⇒ int || || Create or reset a download throttle. The limit is a string and in `KiB`. ||
+|| throttle_up(string name, string limit) ⇒ int ||  || Create or reset an upload throttle. The limit is a string and in `KiB`. ||
+|| throttle_ip(*TODO*) ⇒ int ||  || *TODO* ||
+||  ||  ||  *TODO* ||
 
 
 = Miscellaneous =
 || *Command* || *Example* || *Description* ||
-||  ||  ||  ||
-
+|| system.shutdown(string ???) ⇒ int || 0 || Shut down the server. Return code is always zero. ||
+|| session_save() ⇒ int ||  || Save session data for all items right now. ||
+||  ||  ||  *TODO* ||
 
 
 = Unsorted material =
 This is what introspection on the rTorrent interfaces returns — a lot of this information, especially the signatures and return types, are probably not 100% correct.
 
-{{{
-A
-argument.0() ⇒ undef
-argument.1() ⇒ undef
-argument.2() ⇒ undef
-argument.3() ⇒ undef
-
-B
+[clue at all what these are]
+|| argument.0() ⇒ undef ||  ||  *TODO* ||
+|| argument.1() ⇒ undef ||  ||  *TODO* ||
+|| argument.2() ⇒ undef ||  ||  *TODO* ||
+|| argument.3() ⇒ undef ||  ||  *TODO* ||
 
 C
-call_download() ⇒ int
-close_low_diskspace(int) ⇒ int
-close_untied() ⇒ int
-create_link() ⇒ int
+|| call_download() ⇒ int ||  ||  *TODO* ||
+|| close_untied() ⇒ int ||  ||  *TODO* ||
+|| create_link() ⇒ int ||  ||  *TODO* ||
 
 D
-delete_link() ⇒ int
-dht(string) ⇒ int
-dht_add_node(string) ⇒ int
-dht_statistics() ⇒ int <type 'dict'> {'active': 0, 'dht': 'disable', 'throttle': ''}
-download_list() ⇒ int
+|| delete_link() ⇒ int ||  ||  *TODO* ||
+|| dht(string) ⇒ int ||  ||  *TODO* ||
+|| dht_add_node(string) ⇒ int ||  ||  *TODO* ||
+|| dht_statistics() ⇒ int <type 'dict'> {'active': 0, 'dht': 'disable', 'throttle': ''}
+|| download_list() ⇒ int ||  ||  *TODO* ||
 
 E
-enable_trackers(int) ⇒ int
-encoding_list(string) ⇒ int
-encryption() ⇒ int
-execute() ⇒ int
-execute_capture() ⇒ int
-execute_capture_nothrow() ⇒ int
-execute_nothrow() ⇒ int
-execute_raw() ⇒ int
-execute_raw_nothrow() ⇒ int
+|| enable_trackers(int) ⇒ int ||  ||  *TODO* ||
+|| encoding_list(string) ⇒ int ||  ||  *TODO* ||
+|| encryption() ⇒ int ||  ||  *TODO* ||
+|| execute() ⇒ int ||  ||  *TODO* ||
+|| execute_capture() ⇒ int ||  ||  *TODO* ||
+|| execute_capture_nothrow() ⇒ int ||  ||  *TODO* ||
+|| execute_nothrow() ⇒ int ||  ||  *TODO* ||
+|| execute_raw() ⇒ int ||  ||  *TODO* ||
+|| execute_raw_nothrow() ⇒ int ||  ||  *TODO* ||
 
 F
-fi.get_filename_last() ⇒ int
-fi.is_file() ⇒ int
+|| fi.get_filename_last() ⇒ int ||  ||  *TODO* ||
+|| fi.is_file() ⇒ int ||  ||  *TODO* ||
 
 G
-get_bind() ⇒ string <type 'str'> '0.0.0.0'
-get_check_hash() ⇒ int <type 'int'> 1
-get_connection_leech() ⇒ int <type 'str'> 'leech'
-get_connection_seed() ⇒ int <type 'str'> 'seed'
-get_dht_port() ⇒ int <type 'int'> 6881
-get_dht_throttle() ⇒ string
-get_directory() ⇒ int <type 'str'> '~/lib/rtorrent/work'
-get_down_rate() ⇒ int <type 'int'> 306
-get_down_total() ⇒ int <type 'long'> 4718667514L
-get_download_rate() ⇒ int <type 'int'> 634880
-get_handshake_log() ⇒ int
-get_hash_interval() ⇒ int
-get_hash_max_tries() ⇒ int
-get_hash_read_ahead() ⇒ int
-get_http_cacert() ⇒ string
-get_http_capath() ⇒ string
-get_http_proxy() ⇒ string
-get_log.tracker() ⇒ int
-get_max_downloads_div() ⇒ int <type 'int'> 1
-get_max_downloads_global() ⇒ int <type 'int'> 50
-get_max_file_size() ⇒ int <type 'int'> -1
-get_max_memory_usage() ⇒ int <type 'int'> 858993459
-get_max_open_files() ⇒ int <type 'int'> 128
-get_max_open_http() ⇒ int <type 'int'> 32
-get_max_open_sockets() ⇒ int <type 'int'> 300
-get_max_peers() ⇒ int <type 'int'> 40
-get_max_peers_seed() ⇒ int <type 'int'> 30
-get_max_uploads() ⇒ int <type 'int'> 15
-get_max_uploads_div() ⇒ int <type 'int'> 1
-get_max_uploads_global() ⇒ int <type 'int'> 10
-get_memory_usage() ⇒ int <type 'int'> 786432
-get_min_peers() ⇒ int <type 'int'> 40
-get_min_peers_seed() ⇒ int <type 'int'> -1
-get_name() ⇒ int <type 'str'> 'example:11848'
-get_peer_exchange() ⇒ int <type 'int'> 0
-get_port_open() ⇒ int <type 'int'> 1
-get_port_random() ⇒ int <type 'int'> 0
-get_port_range() ⇒ int <type 'str'> '54300-54399'
-get_preload_min_size() ⇒ int
-get_preload_required_rate() ⇒ int
-get_preload_type() ⇒ int
-get_proxy_address() ⇒ string
-get_receive_buffer_size() ⇒ int
-get_safe_free_diskspace() ⇒ int <type 'int'> 537657344
-get_safe_sync() ⇒ int
-get_scgi_dont_route() ⇒ int
-get_send_buffer_size() ⇒ int <type 'int'> 0
-get_session() ⇒ string <type 'str'> '~/lib/rtorrent/.session/'
-get_session_lock() ⇒ int <type 'int'> 1
-get_session_on_completion() ⇒ int
-get_split_file_size() ⇒ int
-get_split_suffix() ⇒ int
-get_stats_not_preloaded() ⇒ int <type 'int'> 81787
-get_stats_preloaded() ⇒ int <type 'int'> 0
-get_throttle_down_max(string) ⇒ int
-get_throttle_down_rate(string) ⇒ int
-get_throttle_up_max(string) ⇒ int
-get_throttle_up_rate(string) ⇒ int
-get_timeout_safe_sync() ⇒ int
-get_timeout_sync() ⇒ int
-get_tracker_numwant() ⇒ int
-get_up_rate() ⇒ int <type 'int'> 61111
-get_up_total() ⇒ int <type 'long'> 6535528158L
-get_upload_rate() ⇒ int <type 'int'> 63488
-get_use_udp_trackers() ⇒ int <type 'int'> 0
-greater(int) ⇒ int
+|| get_bind() ⇒ string <type 'str'> '0.0.0.0' ||  ||  *TODO* ||
+|| get_check_hash() ⇒ int <type 'int'> 1 ||  ||  *TODO* ||
+|| get_connection_leech() ⇒ int <type 'str'> 'leech' ||  ||  *TODO* ||
+|| get_connection_seed() ⇒ int <type 'str'> 'seed' ||  ||  *TODO* ||
+|| get_dht_port() ⇒ int <type 'int'> 6881 ||  ||  *TODO* ||
+|| get_dht_throttle() ⇒ string ||  ||  *TODO* ||
+|| get_directory() ⇒ int <type 'str'> '~/lib/rtorrent/work' ||  ||  *TODO* ||
+|| get_down_rate() ⇒ int <type 'int'> 306 ||  ||  *TODO* ||
+|| get_down_total() ⇒ int <type 'long'> 4718667514L ||  ||  *TODO* ||
+|| get_download_rate() ⇒ int <type 'int'> 634880 ||  ||  *TODO* ||
+|| get_handshake_log() ⇒ int ||  ||  *TODO* ||
+|| get_hash_interval() ⇒ int ||  ||  *TODO* ||
+|| get_hash_max_tries() ⇒ int ||  ||  *TODO* ||
+|| get_hash_read_ahead() ⇒ int ||  ||  *TODO* ||
+|| get_http_cacert() ⇒ string ||  ||  *TODO* ||
+|| get_http_capath() ⇒ string ||  ||  *TODO* ||
+|| get_http_proxy() ⇒ string ||  ||  *TODO* ||
+|| get_log.tracker() ⇒ int ||  ||  *TODO* ||
+|| get_max_downloads_div() ⇒ int <type 'int'> 1 ||  ||  *TODO* ||
+|| get_max_downloads_global() ⇒ int <type 'int'> 50 ||  ||  *TODO* ||
+|| get_max_file_size() ⇒ int <type 'int'> -1 ||  ||  *TODO* ||
+|| get_max_memory_usage() ⇒ int <type 'int'> 858993459 ||  ||  *TODO* ||
+|| get_max_open_files() ⇒ int <type 'int'> 128 ||  ||  *TODO* ||
+|| get_max_open_http() ⇒ int <type 'int'> 32 ||  ||  *TODO* ||
+|| get_max_open_sockets() ⇒ int <type 'int'> 300 ||  ||  *TODO* ||
+|| get_max_peers() ⇒ int <type 'int'> 40 ||  ||  *TODO* ||
+|| get_max_peers_seed() ⇒ int <type 'int'> 30 ||  ||  *TODO* ||
+|| get_max_uploads() ⇒ int <type 'int'> 15 ||  ||  *TODO* ||
+|| get_max_uploads_div() ⇒ int <type 'int'> 1 ||  ||  *TODO* ||
+|| get_max_uploads_global() ⇒ int <type 'int'> 10 ||  ||  *TODO* ||
+|| get_memory_usage() ⇒ int <type 'int'> 786432 ||  ||  *TODO* ||
+|| get_min_peers() ⇒ int <type 'int'> 40 ||  ||  *TODO* ||
+|| get_min_peers_seed() ⇒ int <type 'int'> -1 ||  ||  *TODO* ||
+|| get_name() ⇒ int <type 'str'> 'example:11848' ||  ||  *TODO* ||
+|| get_peer_exchange() ⇒ int <type 'int'> 0 ||  ||  *TODO* ||
+|| get_port_open() ⇒ int <type 'int'> 1 ||  ||  *TODO* ||
+|| get_port_random() ⇒ int <type 'int'> 0 ||  ||  *TODO* ||
+|| get_port_range() ⇒ int <type 'str'> '54300-54399' ||  ||  *TODO* ||
+|| get_preload_min_size() ⇒ int ||  ||  *TODO* ||
+|| get_preload_required_rate() ⇒ int ||  ||  *TODO* ||
+|| get_preload_type() ⇒ int ||  ||  *TODO* ||
+|| get_proxy_address() ⇒ string ||  ||  *TODO* ||
+|| get_receive_buffer_size() ⇒ int ||  ||  *TODO* ||
+|| get_safe_free_diskspace() ⇒ int <type 'int'> 537657344 ||  ||  *TODO* ||
+|| get_safe_sync() ⇒ int ||  ||  *TODO* ||
+|| get_scgi_dont_route() ⇒ int ||  ||  *TODO* ||
+|| get_send_buffer_size() ⇒ int <type 'int'> 0 ||  ||  *TODO* ||
+|| get_session() ⇒ string <type 'str'> '~/lib/rtorrent/.session/' ||  ||  *TODO* ||
+|| get_session_lock() ⇒ int <type 'int'> 1 ||  ||  *TODO* ||
+|| get_session_on_completion() ⇒ int ||  ||  *TODO* ||
+|| get_split_file_size() ⇒ int ||  ||  *TODO* ||
+|| get_split_suffix() ⇒ int ||  ||  *TODO* ||
+|| get_stats_not_preloaded() ⇒ int <type 'int'> 81787 ||  ||  *TODO* ||
+|| get_stats_preloaded() ⇒ int <type 'int'> 0 ||  ||  *TODO* ||
+|| get_throttle_down_max(string) ⇒ int ||  ||  *TODO* ||
+|| get_throttle_down_rate(string) ⇒ int ||  ||  *TODO* ||
+|| get_throttle_up_max(string) ⇒ int ||  ||  *TODO* ||
+|| get_throttle_up_rate(string) ⇒ int ||  ||  *TODO* ||
+|| get_timeout_safe_sync() ⇒ int ||  ||  *TODO* ||
+|| get_timeout_sync() ⇒ int ||  ||  *TODO* ||
+|| get_tracker_numwant() ⇒ int ||  ||  *TODO* ||
+|| get_up_rate() ⇒ int <type 'int'> 61111 ||  ||  *TODO* ||
+|| get_up_total() ⇒ int <type 'long'> 6535528158L ||  ||  *TODO* ||
+|| get_upload_rate() ⇒ int <type 'int'> 63488 ||  ||  *TODO* ||
+|| get_use_udp_trackers() ⇒ int <type 'int'> 0 ||  ||  *TODO* ||
 
-group.insert() ⇒ int
-group.insert_persistent_view() ⇒ undef
-group.seeding.ratio.command() ⇒ undef
-group.seeding.ratio.disable() ⇒ undef
-group.seeding.ratio.enable() ⇒ undef
-group.seeding.ratio.max() ⇒ undef
-group.seeding.ratio.max.set() ⇒ undef
-group.seeding.ratio.min() ⇒ undef
-group.seeding.ratio.min.set() ⇒ undef
-group.seeding.ratio.upload() ⇒ undef
-group.seeding.ratio.upload.set() ⇒ undef
-group.seeding.view() ⇒ undef
-group.seeding.view.set() ⇒ undef
+|| group.insert() ⇒ int ||  ||  *TODO* ||
+|| group.insert_persistent_view() ⇒ undef ||  ||  *TODO* ||
+|| group.seeding.ratio.command() ⇒ undef ||  ||  *TODO* ||
+|| group.seeding.ratio.disable() ⇒ undef ||  ||  *TODO* ||
+|| group.seeding.ratio.enable() ⇒ undef ||  ||  *TODO* ||
+|| group.seeding.ratio.max() ⇒ undef ||  ||  *TODO* ||
+|| group.seeding.ratio.max.set() ⇒ undef ||  ||  *TODO* ||
+|| group.seeding.ratio.min() ⇒ undef ||  ||  *TODO* ||
+|| group.seeding.ratio.min.set() ⇒ undef ||  ||  *TODO* ||
+|| group.seeding.ratio.upload() ⇒ undef ||  ||  *TODO* ||
+|| group.seeding.ratio.upload.set() ⇒ undef ||  ||  *TODO* ||
+|| group.seeding.view() ⇒ undef ||  ||  *TODO* ||
+|| group.seeding.view.set() ⇒ undef ||  ||  *TODO* ||
 
 
 L
-less(int) ⇒ int
-load() ⇒ int
-load_raw() ⇒ int
-load_raw_start() ⇒ int
-load_raw_verbose() ⇒ int
-load_start() ⇒ int
-load_start_verbose() ⇒ int
-load_verbose() ⇒ int
-log.execute(string) ⇒ int
-log.xmlrpc(string) ⇒ int
+|| load() ⇒ int ||  ||  *TODO* ||
+|| load_raw() ⇒ int ||  ||  *TODO* ||
+|| load_raw_start() ⇒ int ||  ||  *TODO* ||
+|| load_raw_verbose() ⇒ int ||  ||  *TODO* ||
+|| load_start() ⇒ int ||  ||  *TODO* ||
+|| load_start_verbose() ⇒ int ||  ||  *TODO* ||
+|| load_verbose() ⇒ int ||  ||  *TODO* ||
+|| log.execute(string) ⇒ int ||  ||  *TODO* ||
+|| log.xmlrpc(string) ⇒ int ||  ||  *TODO* ||
 
 O
-on_close() ⇒ int
-on_erase() ⇒ int
-on_finished() ⇒ int
-on_hash_queued() ⇒ int
-on_hash_removed() ⇒ int
-on_insert() ⇒ int
-on_open() ⇒ int
-on_ratio(string) ⇒ int
-on_start() ⇒ int
-on_stop() ⇒ int
+|| on_close() ⇒ int ||  ||  *TODO* ||
+|| on_erase() ⇒ int ||  ||  *TODO* ||
+|| on_finished() ⇒ int ||  ||  *TODO* ||
+|| on_hash_queued() ⇒ int ||  ||  *TODO* ||
+|| on_hash_removed() ⇒ int ||  ||  *TODO* ||
+|| on_insert() ⇒ int ||  ||  *TODO* ||
+|| on_open() ⇒ int ||  ||  *TODO* ||
+|| on_ratio(string) ⇒ int ||  ||  *TODO* ||
+|| on_start() ⇒ int ||  ||  *TODO* ||
+|| on_stop() ⇒ int ||  ||  *TODO* ||
 
 R
-remove_untied() ⇒ int
+|| remove_untied() ⇒ int ||  ||  *TODO* ||
 
 S
-schedule() ⇒ int
-schedule_remove(string) ⇒ int
-scheduler.max_active() ⇒ undef
-scheduler.max_active.set() ⇒ undef
-scheduler.simple.added() ⇒ int
-scheduler.simple.removed() ⇒ int
-scheduler.simple.update() ⇒ int
-set_bind(string) ⇒ int
-set_check_hash() ⇒ int
-set_connection_leech() ⇒ int
-set_connection_seed() ⇒ int
-set_dht_port() ⇒ int
-set_dht_throttle(string) ⇒ int
-set_directory() ⇒ int
-set_download_rate(int) ⇒ int
-set_handshake_log() ⇒ int
-set_hash_interval(int) ⇒ int
-set_hash_max_tries(int) ⇒ int
-set_hash_read_ahead(int) ⇒ int
-set_http_cacert(string) ⇒ int
-set_http_capath(string) ⇒ int
-set_http_proxy(string) ⇒ int
-set_log.tracker() ⇒ int
-set_max_downloads_div() ⇒ int
-set_max_downloads_global() ⇒ int
-set_max_file_size() ⇒ int
-set_max_memory_usage(int) ⇒ int
-set_max_open_files(int) ⇒ int
-set_max_open_http(int) ⇒ int
-set_max_open_sockets(int) ⇒ int
-set_max_peers() ⇒ int
-set_max_peers_seed() ⇒ int
-set_max_uploads() ⇒ int
-set_max_uploads_div() ⇒ int
-set_max_uploads_global() ⇒ int
-set_min_peers() ⇒ int
-set_min_peers_seed() ⇒ int
-set_name() ⇒ int
-set_peer_exchange() ⇒ int
-set_port_open() ⇒ int
-set_port_random() ⇒ int
-set_port_range() ⇒ int
-set_preload_min_size(int) ⇒ int
-set_preload_required_rate(int) ⇒ int
-set_preload_type(int) ⇒ int
-set_proxy_address(string) ⇒ int
-set_receive_buffer_size(int) ⇒ int
-set_safe_sync(int) ⇒ int
-set_scgi_dont_route() ⇒ int
-set_send_buffer_size(int) ⇒ int
-set_session(string) ⇒ int
-set_session_lock() ⇒ int
-set_session_on_completion() ⇒ int
-set_split_file_size() ⇒ int
-set_split_suffix() ⇒ int
-set_timeout_safe_sync(int) ⇒ int
-set_timeout_sync(int) ⇒ int
-set_tracker_numwant() ⇒ int
-set_upload_rate(int) ⇒ int
-set_use_udp_trackers() ⇒ int
-start_tied() ⇒ int
-stop_untied() ⇒ int
-system.file_allocate() ⇒ undef
-system.file_allocate.set() ⇒ undef
-system.file_status_cache.prune() ⇒ int
-system.file_status_cache.size() ⇒ int
-system.method.erase() ⇒ int
-system.method.get() ⇒ int
-system.method.has_key() ⇒ int
-system.method.insert() ⇒ int
-system.method.list_keys() ⇒ int
-system.method.set() ⇒ int
-system.method.set_key() ⇒ int
-system.methodExist(boolean) ⇒ string 
-    Tell whether a method by a specified name exists on this server
-system.methodHelp(string) ⇒ string 
-    Given the name of a method, return a help string.
-system.methodSignature(string) ⇒ array 
-    Given the name of a method, return an array of legal signatures. 
-    Each signature is an array of strings. 
-    The first item of each signature is the return type, 
-    and any others items are parameter types.
-system.multicall(array) ⇒ array 
-    Process an array of calls, and return an array of results. 
-    Calls should be structs of the form {'methodName': string, 'params': array}. 
-    Each result will either be a single-item array containg the result value, 
-    or a struct of the form {'faultCode': int, 'faultString': string}. 
-    This is useful when you need to make lots of small calls without lots of round trips.
-
-system.shutdown(string) ⇒ int 
-    Shut down the server. Return code is always zero.
-session_save() ⇒ int
+|| set_bind(string) ⇒ int ||  ||  *TODO* ||
+|| set_check_hash() ⇒ int ||  ||  *TODO* ||
+|| set_connection_leech() ⇒ int ||  ||  *TODO* ||
+|| set_connection_seed() ⇒ int ||  ||  *TODO* ||
+|| set_dht_port() ⇒ int ||  ||  *TODO* ||
+|| set_dht_throttle(string) ⇒ int ||  ||  *TODO* ||
+|| set_directory() ⇒ int ||  ||  *TODO* ||
+|| set_download_rate(int) ⇒ int ||  ||  *TODO* ||
+|| set_handshake_log() ⇒ int ||  ||  *TODO* ||
+|| set_hash_interval(int) ⇒ int ||  ||  *TODO* ||
+|| set_hash_max_tries(int) ⇒ int ||  ||  *TODO* ||
+|| set_hash_read_ahead(int) ⇒ int ||  ||  *TODO* ||
+|| set_http_cacert(string) ⇒ int ||  ||  *TODO* ||
+|| set_http_capath(string) ⇒ int ||  ||  *TODO* ||
+|| set_http_proxy(string) ⇒ int ||  ||  *TODO* ||
+|| set_log.tracker() ⇒ int ||  ||  *TODO* ||
+|| set_max_downloads_div() ⇒ int ||  ||  *TODO* ||
+|| set_max_downloads_global() ⇒ int ||  ||  *TODO* ||
+|| set_max_file_size() ⇒ int ||  ||  *TODO* ||
+|| set_max_memory_usage(int) ⇒ int ||  ||  *TODO* ||
+|| set_max_open_files(int) ⇒ int ||  ||  *TODO* ||
+|| set_max_open_http(int) ⇒ int ||  ||  *TODO* ||
+|| set_max_open_sockets(int) ⇒ int ||  ||  *TODO* ||
+|| set_max_peers() ⇒ int ||  ||  *TODO* ||
+|| set_max_peers_seed() ⇒ int ||  ||  *TODO* ||
+|| set_max_uploads() ⇒ int ||  ||  *TODO* ||
+|| set_max_uploads_div() ⇒ int ||  ||  *TODO* ||
+|| set_max_uploads_global() ⇒ int ||  ||  *TODO* ||
+|| set_min_peers() ⇒ int ||  ||  *TODO* ||
+|| set_min_peers_seed() ⇒ int ||  ||  *TODO* ||
+|| set_name() ⇒ int ||  ||  *TODO* ||
+|| set_peer_exchange() ⇒ int ||  ||  *TODO* ||
+|| set_port_open() ⇒ int ||  ||  *TODO* ||
+|| set_port_random() ⇒ int ||  ||  *TODO* ||
+|| set_port_range() ⇒ int ||  ||  *TODO* ||
+|| set_preload_min_size(int) ⇒ int ||  ||  *TODO* ||
+|| set_preload_required_rate(int) ⇒ int ||  ||  *TODO* ||
+|| set_preload_type(int) ⇒ int ||  ||  *TODO* ||
+|| set_proxy_address(string) ⇒ int ||  ||  *TODO* ||
+|| set_receive_buffer_size(int) ⇒ int ||  ||  *TODO* ||
+|| set_safe_sync(int) ⇒ int ||  ||  *TODO* ||
+|| set_scgi_dont_route() ⇒ int ||  ||  *TODO* ||
+|| set_send_buffer_size(int) ⇒ int ||  ||  *TODO* ||
+|| set_session(string) ⇒ int ||  ||  *TODO* ||
+|| set_session_lock() ⇒ int ||  ||  *TODO* ||
+|| set_session_on_completion() ⇒ int ||  ||  *TODO* ||
+|| set_split_file_size() ⇒ int ||  ||  *TODO* ||
+|| set_split_suffix() ⇒ int ||  ||  *TODO* ||
+|| set_timeout_safe_sync(int) ⇒ int ||  ||  *TODO* ||
+|| set_timeout_sync(int) ⇒ int ||  ||  *TODO* ||
+|| set_tracker_numwant() ⇒ int ||  ||  *TODO* ||
+|| set_upload_rate(int) ⇒ int ||  ||  *TODO* ||
+|| set_use_udp_trackers() ⇒ int ||  ||  *TODO* ||
+|| start_tied() ⇒ int ||  ||  *TODO* ||
+|| stop_untied() ⇒ int ||  ||  *TODO* ||
+|| system.file_allocate() ⇒ undef ||  ||  *TODO* ||
+|| system.file_allocate.set() ⇒ undef ||  ||  *TODO* ||
+|| system.file_status_cache.prune() ⇒ int ||  ||  *TODO* ||
+|| system.file_status_cache.size() ⇒ int ||  ||  *TODO* ||
+|| system.method.erase() ⇒ int ||  ||  *TODO* ||
+|| system.method.get() ⇒ int ||  ||  *TODO* ||
+|| system.method.has_key() ⇒ int ||  ||  *TODO* ||
+|| system.method.insert() ⇒ int ||  ||  *TODO* ||
+|| system.method.list_keys() ⇒ int ||  ||  *TODO* ||
+|| system.method.set() ⇒ int ||  ||  *TODO* ||
+|| system.method.set_key() ⇒ int ||  ||  *TODO* ||
 
 T
-tos(string) ⇒ int
+|| tos(string) ⇒ int ||  ||  *TODO* ||
 
 U
-ui.unfocus_download() ⇒ int
-
-
-}}}
+|| ui.unfocus_download() ⇒ int ||  ||  *TODO* ||
 
 || *Command* || *Example* || *Description* ||
-||  ||  ||  ||
+||  ||  ||  *TODO* ||
+
