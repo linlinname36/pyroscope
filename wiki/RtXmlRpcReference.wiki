@@ -129,20 +129,18 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 
 || *Command* || *Example* || *Description* ||
 || d.multicall(string view, commands...) ⇒ 2-dim array || `[['00...C8', 0],` ...`]]` || Call a set of `d.` commands on all items in a view, e.g. `rtxmlrpc d.multicall main d.get_hash= d.get_up_rate=`. ||
-|| d.get_hash() ⇒ string ||  || The info hash. ||
-|| d.get_ratio() ⇒ int || 1000 || Ratio [‰]. ||
+|| d.get_hash() ⇒ string || `'00...C8'` || The info hash. ||
+|| d.get_ratio() ⇒ int || `1000` || Ratio [‰]. ||
 || d.get_base_filename() ⇒ string || `'base'` || File or root directory name of torrent. ||
 || d.get_base_path() ⇒ string || `'/dir/base'` || Path to download directory or file. ||
 || d.get_directory() ⇒ string || `'/dir'` or `'/dir/multi'` || Path containing the download ||
 || d.get_directory_base() ⇒ string || `'/dir'` or `'/dir/multi'` || *Difference to d.get_directory?* ||
-|| d.get_loaded_file() ⇒ string ||  || Path to the session file. ||
-|| d.get_size_bytes() ⇒ int ||  || Exact total size in bytes. ||
-|| d.get_size_chunks() ⇒ int ||  || Total size in chunks. ||
+|| d.get_loaded_file() ⇒ string || `'.../.session/00...C8.torrent'` || Path to the session file. ||
+|| d.get_size_bytes() ⇒ int || `123456` || Exact total size in bytes. ||
+|| d.get_size_chunks() ⇒ int || `4` || Total size in chunks. ||
 || d.get_message() ⇒ string <br/> d.set_message(string) ⇒ int || `'Tracker: [Tried all trackers.]'` || Current (tracker) message. ||
 || d.get_custom(string key) ⇒ string <br/> d.get_custom_throw(string key) ⇒ string <br/> d.set_custom(string key, string val) ⇒ int ||  || Get and set arbitrary amounts of custom attributes. The `throw` variant returns a `<Fault -503: 'No such custom value.'>` for unknown keys, else an empty string is returned as a default. ||
 || d.get_custom1() ⇒ string <br/> d.set_custom1(string val) ⇒ int <br/> (and 2, 3, 4, 5) ||  ||  Get and set up to 5 custom values. *TODO: Document what these are typically used for, there is a de-facto standard.* ||
-||  ||  ||  *TODO* ||
-
 
 || d.get_bitfield() ⇒ int ||  ||  *TODO* ||
 || d.get_bytes_done() ⇒ int ||  ||  *TODO* ||
