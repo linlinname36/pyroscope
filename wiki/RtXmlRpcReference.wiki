@@ -37,7 +37,7 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 == System information ==
 || *Command* || *Example* || *Description* ||
 || get_ip() ⇒ string <br/> set_ip(string) ⇒ int || '0.0.0.0' ||  ||
-|| get_key_layout() ⇒ int <br/> set_key_layout() ⇒ int || qwerty || Current keyboard layout. ||
+|| get_key_layout() ⇒ string <br/> set_key_layout(string) ⇒ int || qwerty || Current keyboard layout. ||
 || system.pid() ⇒ int || 11848 || Process ID. ||
 || system.time() ⇒ int || 1282251105 || Current time in seconds since 1970-01-01. ||
 || system.time_seconds() ⇒ int || 1282251105 || Current time in seconds since 1970-01-01.  ||
