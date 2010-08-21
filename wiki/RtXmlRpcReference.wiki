@@ -319,7 +319,7 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 = Views =
 || *Command* || *Example* || *Description* ||
 || ui.current_view.set(string name) ⇒ int ||  || Change currently visible view. ||
-|| view_list() ⇒ array || `['main', ..., 'seeding']` || Return all currently defined views. ||
+|| view_list() ⇒ array || `['main',` ...`,` <br/> `'seeding']` || Return all currently defined views. ||
 || view_add(string) ⇒ int ||  || Add a _new_ view. *Do NOT try to add an already defined view!* ||
 || view_sort(string view) ⇒ int ||  || Sort again in the defined order. ||
 || view_sort_current(string view, string comparator) ⇒ int ||  || Sort current view content now. ||
@@ -327,9 +327,7 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || view_filter(string view, string condition) ⇒ int ||  || Filter items by condition once. Use a schedule or events to keep it up to date. ||
 || view_filter_on(string view, string event) ⇒ int ||  || Sort again on event. *OR EVENT LIST?! ARRAY? MULTI-ARG?* ||
 ||  ||  ||  *TODO* ||
-||  ||  ||  *TODO* ||
-
-view.event_added() ⇒ int ||  ||  *TODO* ||
+|| view.event_added() ⇒ int ||  ||  *TODO* ||
 || view.event_removed() ⇒ int ||  ||  *TODO* ||
 || view.filter_download() ⇒ int ||  ||  *TODO* ||
 || view.persistent() ⇒ int ||  ||  *TODO* ||
