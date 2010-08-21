@@ -92,7 +92,8 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || event.download.resumed() ⇒ undef ||  ||  *TODO* ||
 
 == Scheduling ==
-schedule() ⇒ int ||  ||  *TODO* ||
+|| *Command* || *Example* || *Description* ||
+|| schedule() ⇒ int ||  ||  *TODO* ||
 || schedule_remove(string) ⇒ int ||  ||  *TODO* ||
 || scheduler.max_active() ⇒ undef ||  ||  *TODO* ||
 || scheduler.max_active.set() ⇒ undef ||  ||  *TODO* ||
@@ -318,7 +319,7 @@ schedule() ⇒ int ||  ||  *TODO* ||
 = Views =
 || *Command* || *Example* || *Description* ||
 || ui.current_view.set(string name) ⇒ int ||  || Change currently visible view. ||
-|| view_list() ⇒ array || ['main', 'default', 'name', 'active', 'started', 'stopped', 'complete', 'incomplete', 'hashing', 'seeding']  || Return all currently defined views. ||
+|| view_list() ⇒ array || `['main', ..., 'seeding']` || Return all currently defined views. ||
 || view_add(string) ⇒ int ||  || Add a _new_ view. *Do NOT try to add an already defined view!* ||
 || view_sort(string view) ⇒ int ||  || Sort again in the defined order. ||
 || view_sort_current(string view, string comparator) ⇒ int ||  || Sort current view content now. ||
@@ -589,4 +590,3 @@ U
 
 || *Command* || *Example* || *Description* ||
 ||  ||  ||  *TODO* ||
-
