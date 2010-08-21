@@ -124,6 +124,8 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 = Download items =
 
 == Attributes ==
+*NOTE:* All the calls working on download items take the hash of the item as their first parameter. The following table omits this parameter, and in multicalls you have to actually leave it out since it's provided by the system.
+
 || *Command* || *Example* || *Description* ||
 || d.get_custom(string key) ⇒ string <br/> d.get_custom_throw(string key) ⇒ string <br/> d.set_custom(string key, string val) ⇒ int ||  || Get and set arbitrary amounts of custom attributes. The `throw` variant returns a `<Fault -503: 'No such custom value.'>` for unknown keys, else an empty string is returned as a default. ||
 || d.get_custom1() ⇒ string <br/> d.set_custom1(string val) <br/> (and 2, 3, 4, 5) ⇒ int ||  ||  Get and set up to 5 custom values. *TODO: Document what these are typically used for, there is a de-facto standard.* ||
