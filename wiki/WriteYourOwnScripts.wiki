@@ -90,7 +90,7 @@ result = multicall(calls)
 
 # Print the results
 for infohash, (files,) in zip(self.args, result):
-    print ("~~~ %s " % infohash).ljust(78, '~')
+    print ("~~~ %s [%d file(s)] " % (infohash, len(files))).ljust(78, '~')
     pprint(files)
 self.LOG.info("Multicall stats: %s" % multicall)
 }}}
