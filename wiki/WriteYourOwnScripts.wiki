@@ -1,5 +1,6 @@
 #summary How to write your own XMLRPC scripts in Python.
 #labels python,xmlrpc
+<wiki:toc max_depth="2" />
 
 = Introduction =
 
@@ -58,3 +59,38 @@ if __name__ == "__main__":
 
 For simple calls, you can also use the `rtxmlrpc` command on a shell prompt, see RtXmlRpcExamples for that.
 For a reference of the rTorrent XMLRPC interface, see RtXmlRpcReference.
+
+= Code snippets =
+_Note that the following snippets are meant to be placed and executed within the `mainloop` of the above script skeleton._
+
+== Accessing the files in a download item ==
+To get all the files for several items at once, we combine `system.multicall` and `f.multicall` to one big efficient mess. :D
+{{{
+from pprint import pprint, pformat
+
+# The attributes we want to fetch
+methods = [
+    "f.get_path",
+    "f.get_size_bytes",
+    "f.get_last_touched",
+    "f.get_priority",
+    "f.is_created",
+    "f.is_open",
+]
+
+# Build the multicall argument
+f_calls = [method + '=' for method in methods]
+calls = [{"methodName": "f.multicall", "params": [infohash, 0] + f_calls}
+    for infohash in self.args
+]
+
+# Make the calls
+multicall = proxy.system.multicall
+result = multicall(calls)
+
+# Print the results
+for infohash, (files,) in zip(self.args, result):
+    print ("~~~ %s " % infohash).ljust(78, '~')
+    pprint(files)
+self.LOG.info("Multicall stats: %s" % multicall)
+}}}
