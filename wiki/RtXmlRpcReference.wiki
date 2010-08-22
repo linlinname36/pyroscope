@@ -222,7 +222,7 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 
 || *Command* || *Example* || *Description* ||
 || d.get_size_files() ⇒ int ||  || Number of files in item. This returns 1 for single-file torrents. ||
-|| f.multicall() ⇒ array ||  || Call several file-related methods at once on all the files in an item, e.g. "`rtxmlrpc f.multicall 00...C8 +0 f.get_size_bytes= f.get_path=`". ||
+|| f.multicall(method=, ...) ⇒ array ||  || Call several file-related methods at once on all the files in an item, e.g. "`rtxmlrpc f.multicall 00...C8 +0 f.get_size_bytes= f.get_path=`". ||
 || f.get_path() ⇒ string || `'a/b'` || Relative path as a string. ||
 || f.get_path_components() ⇒ array of string || `['a', 'b']` || Relative path as an array. ||
 || f.get_path_depth() ⇒ int || `'2'` || Number of path components. ||
