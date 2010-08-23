@@ -4,7 +4,7 @@
 
 = Introduction =
 
-The `pyrocore` Python package contains powerful helper classes that make remote access to rTorrent child's play. And your tools get the same Look & Feel like the built-in PyroScope commands, as long as your use th provided base classes.
+The `pyrocore` Python package contains powerful helper classes that make remote access to rTorrent child's play. And your tools get the same Look & Feel like the built-in PyroScope commands, as long as you use the provided base classes.
 
 See for yourself:
 {{{
