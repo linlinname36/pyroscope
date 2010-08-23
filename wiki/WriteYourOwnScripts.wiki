@@ -60,6 +60,25 @@ if __name__ == "__main__":
 For simple calls, you can also use the `rtxmlrpc` command on a shell prompt, see RtXmlRpcExamples for that.
 For a reference of the rTorrent XMLRPC interface, see RtXmlRpcReference.
 
+
+== Using `pyrocore` as a library in other projects ==
+The example in the first section is an easy way to create user-defined scripts. If you want to use `pyrocore`'s features in another runtime environment, you just have to load the configuration manually (what `ScriptBaseWithConfig` does for you otherwise).
+{{{
+# Details depend on the system you want to extend, of course
+from some_system import plugin
+from pyrocore.util import load_config
+
+def my_rtorrent_plugin():
+    """ Initialize plugin.
+    """
+    load_config.ConfigLoader().load()
+
+    # do some other stuff...
+
+plugin.register(my_rtorrent_plugin)
+}}}
+
+
 = Code snippets =
 _Note that the following snippets are meant to be placed and executed within the `mainloop` of the above script skeleton._
 
