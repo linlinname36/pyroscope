@@ -61,19 +61,23 @@ For simple calls, you can also use the `rtxmlrpc` command on a shell prompt, see
 For a reference of the rTorrent XMLRPC interface, see RtXmlRpcReference.
 
 
-== Using `pyrocore` as a library in other projects ==
+= Using `pyrocore` as a library in other projects =
 The example in the first section is an easy way to create user-defined scripts. If you want to use `pyrocore`'s features in another runtime environment, you just have to load the configuration manually (what `ScriptBaseWithConfig` does for you otherwise).
 {{{
 # Details depend on the system you want to extend, of course
 from some_system import plugin
+from pyrocore import error
 from pyrocore.util import load_config
 
 def my_rtorrent_plugin():
     """ Initialize plugin.
     """
-    load_config.ConfigLoader().load()
-
-    # do some other stuff...
+    try:
+        load_config.ConfigLoader().load()
+    except error.LoggableError, exc:
+        # Handle accordingly...
+    else:
+        # Do some other stuff...
 
 plugin.register(my_rtorrent_plugin)
 }}}
