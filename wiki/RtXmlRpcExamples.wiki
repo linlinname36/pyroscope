@@ -40,8 +40,7 @@ If you connect via `scgi_port`, touch a file in `/tmp` in your startup script an
 Here are some commands that can help with managing your rTorrent instance:
 {{{
 # Flush ALL session data NOW, use this before you make a backup of your session directory
-rtxmlrpc d.multicall main d.save_session=
-# [[1], [1], ..., [1]]
+rtxmlrpc session_save
 }}}
 
 
