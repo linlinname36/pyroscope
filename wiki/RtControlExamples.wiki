@@ -36,7 +36,7 @@ The following conditions give you a hint on what you can do, and some building b
 || `tagged=`          || Not tagged at all (_since v0.3.5_) ||
 || `tagged=\!`        || Has at least one tag (_since v0.3.5_) ||
 || `tagged=foo,bar`   || Tagged with "foo" or "bar" (_since v0.3.5_) — tags are white-space separated lists of names in the field "custom_tags" ||
-|| `tagged=highlander`|| _Only_ tagged with "highlander" and nothing else (_since v0.3.6_) ||
+|| `tagged==highlander`|| _Only_ tagged with "highlander" and nothing else (_since v0.3.6_) ||
 || `kind=flac,mp3`    || Music downloads (_since v0.3.6_) ||
 || `files=sample/*`   || Items with a top-level `sample` folder (_since v0.3.6_) ||
 
