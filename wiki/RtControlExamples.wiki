@@ -10,7 +10,7 @@ _Contents_ <wiki:toc max_depth="2" />
 For numeric fields, a leading "`+`" means greater than, a leading "`-`" means less 
 than (just like with the standard `find` command). For string fields, the value is a glob pattern which you are used to from shell filename patterns (`*`, `?`, `[a-z]`, `[!a-z]`).
 
-Selection on fields that are lists of tags or names (e.g. `tagged` and `views`) work by just providing the tags you want to search for. The difference to the glob patterns for string fields is that tagged search respects word boundaries (whitespace), and to get a match the given tag just has to appear anywhere in the list (`bar` matches on `foo bar baz`).
+Selection on fields that are lists of tags or names (e.g. `tagged` and `views`) works by just providing the tags you want to search for. The difference to the glob patterns for string fields is that tagged search respects word boundaries (whitespace), and to get a match the given tag just has to appear anywhere in the list (`bar` matches on `foo bar baz`).
 
 In time filtering conditions (e.g. for the `completed` and `loaded` fields), you have three possible options to specify the value:
   # time deltas in the form "`<number><unit>...`", where unit is a single upper- or lower-case letter and one of `Y`ear, `M`onth, `W`eek, `D`ay, `H`our, m`I`nute, or `S`econd. The order is important (`y` before `m`), and a `+` before the delta means _older than_, while `-` means _younger than_. Example: `-1m2w3d`.
