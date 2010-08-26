@@ -36,7 +36,8 @@ The following conditions give you a hint on what you can do, and some building b
 || `tagged=`          || Not tagged at all (_since v0.3.5_) ||
 || `tagged=\!`        || Has at least one tag (_since v0.3.5_) ||
 || `tagged=foo,bar`   || Tagged with "foo" or "bar" (_since v0.3.5_) — tags are white-space separated lists of names in the field "custom_tags" ||
-|| `kind=flac,mp3`    || Music downloads (_not implemented yet_) ||
+|| `kind=flac,mp3`    || Music downloads (_since v0.3.6_) ||
+|| `files=sample/*`   || Items with a top-level `sample` folder (_since v0.3.6_) ||
 
 Note that the `!` character has to be escaped in shell commands. For a current full list of all the field names and their meaning, see the output of `rtcontrol --help-fields`.
 
@@ -72,6 +73,17 @@ Then, calling `rt2days -q` will print something like this;
 {{{
 COMPLETED        IS_OPEN         UP/s RATIO% ALIAS    NAME
 2010-08-18 15:35     CLS    0 bytes/s   100% SeedBox  lab-rats
+}}}
+
+And with version 0.3.6 installed, you can create a full listing of all the files you have loaded into rTorrent using the built-in format "`files`":
+{{{
+$ rtcontrol \* -ofiles | less
+STP    1970-01-01 01:00:00   25.6 MiB Execute My Liberty - The Cursed Way -- Jamendo - OGG Vorbis q7 - 2010.07.29 [www.jamendo.com] {Jamendo}
+       2010-08-21 01:25:27    2.0 MiB | 01 - Midnight (Intro).ogg
+       ...
+       2010-08-21 01:25:27   48.7 KiB | [cover] Execute My Liberty - The Cursed Way.jpg
+                                      = 9 file(s) [ogg txt]
+...
 }}}
 
 
