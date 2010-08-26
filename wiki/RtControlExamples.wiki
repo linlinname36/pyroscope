@@ -5,7 +5,7 @@ See also RtXmlRpcExamples.
 _Contents_ <wiki:toc max_depth="2" />
 
 = Fundamentals =
-`rtcontrol`'s main purpose is to take filter conditions on the command line of the form "_field_`=`_value_" and select a set of torrents according to them. All given conditions must be met (AND), and if a field name is omitted, "`name`" is assumed. Multiple values separated by a comma indicate several possible choices (OR). "`!`" in front of a filter value negates it (NOT).
+`rtcontrol`'s main purpose is to take filter conditions on the command line of the form "_field_`=`_value_" and select a set of torrents according to them — and then either print the result according to a specified format or take some action on the selected items. All given conditions must be met (AND), and if a field name is omitted, "`name`" is assumed. Multiple values separated by a comma indicate several possible choices (OR). "`!`" in front of a filter value negates it (NOT).
 
 For numeric fields, a leading "`+`" means greater than, a leading "`-`" means less 
 than (just like with the standard `find` command). For string fields, the value is a glob pattern which you are used to from shell filename patterns (`*`, `?`, `[a-z]`, `[!a-z]`).
