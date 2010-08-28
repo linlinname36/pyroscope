@@ -23,7 +23,8 @@ On Debian or other Debian-based distributions, the same commands should work. Fo
 
 On Windows, just use `easy_install pyrocore` in `cmd.exe` after [http://www.python.org/download/ installing Python] and `setuptools` as [http://pypi.python.org/pypi/setuptools/ described here].
 
-After installation, you might want to adapt things to your local setup using the instructions on the UserConfiguration page. You should at least *create a configuration* as described there, using the `pyroadmin --create-config` command.
+After installation, you might want to adapt things to your local setup using the instructions on the UserConfiguration page. You should at least *create a configuration* as described there, using the `pyroadmin --create-config` command. If you encounter any problems during installation not covered by the documentation, join the [http://groups.google.com/group/pyroscope-users pyroscope-users] mailing list to get help from the community.
+
 
 To later *update* an existing installation, use this command:
 {{{
@@ -62,7 +63,7 @@ ln -nfs ~/lib/pyroscope/bin/{chtor,lstor,mktor,pyroadmin,rtcontrol,rtxmlrpc} ~/b
 
 After that, the CommandLineTools are available in the `~/lib/pyroscope/bin` directory, and also added to your user's bin directory.
 
-After installation, you might want to adapt things to your local setup using the instructions on the UserConfiguration page. You should at least *create a configuration* as described there, using the `pyroadmin --create-config` command.
+After installation, you might want to adapt things to your local setup using the instructions on the UserConfiguration page. You should at least *create a configuration* as described there, using the `pyroadmin --create-config` command. If you encounter any problems during installation not covered by the documentation, join the [http://groups.google.com/group/pyroscope-users pyroscope-users] mailing list to get help from the community.
 
 To later *update* an existing installation, use these commands:
 {{{
