@@ -70,6 +70,8 @@ completion = $(completed.raw.delta)13.13s $(leechtime)9.9s $(is_open)4.4s $(up.s
 }}}
 See [http://docs.python.org/release/2.5.2/lib/typesseq-strings.html String Formatting Operations] for a description how the formatting options work, and notice that `$` is used instead of `%` here, because `%` has a special meaning in INI files. For the same reason, a single `%` in the final output becomes `$(pc)s` in the configuration (`pc` is a system field that is simply a percent sign).
 
+You can also append one or more format specifiers to a field name, separated by a '`.`'. These take the current value and transform it — in the above example `.raw.delta` means "take an unformatted time value and then convert it into a time delta relative to just now". The option `--help-fields` lists the available format specifiers.
+
 Then, calling `rt2days -q` will print something like this;
 {{{
     COMPLETED LEECHTIME IS_O         UP/s RATIO% ALIAS    KIND  NAME
