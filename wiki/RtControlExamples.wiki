@@ -39,7 +39,7 @@ The following conditions give you a hint on what you can do, and some building b
 || `tagged==highlander`|| _Only_ tagged with "highlander" and nothing else (_since v0.3.6_) ||
 || `kind=flac,mp3`    || Music downloads (_since v0.3.6_) ||
 || `files=sample/*`   || Items with a top-level `sample` folder (_since v0.3.6_) ||
-|| `ratio=+2.5 OR completed=+5d` || Items seeded to 5:2 or completed more than 5 days ago (_since v0.3.6_) — note that this is *not* necessarily the same as "_seeded_ for 5 days" ||
+|| `ratio=+2.5 OR seedtime=+1w` || Items seeded to 5:2 *or* for more than a week (_since v0.3.6_) ||
 
 
 Note that the `!` character has to be escaped in shell commands. For a current full list of all the field names and their meaning, see the output of `rtcontrol --help-fields`.
