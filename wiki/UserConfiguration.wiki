@@ -9,6 +9,8 @@ Configuration is loaded from the directory `~/.pyroscope` containing the files `
 
 The script `config.py` allows much more detailed control over complex setups, at the price of you knowing at least the basics of the Python programming language.
 
+If you have any problems with or questions about your configuration, join the [http://groups.google.com/group/pyroscope-users pyroscope-users] mailing list to get help from the community.
+
 
 = Creating a set of default configuration files =
 
