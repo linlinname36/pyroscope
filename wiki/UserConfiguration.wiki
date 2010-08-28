@@ -67,8 +67,8 @@ For the `loaded` and `completed` fields to work (added in version 0.3.4), you al
 #   tm_loaded = time loaded into client
 #   tm_started = time of *first* start
 #   tm_completed = time of completion
-system.method.insert = pyro.tm_started,simple,"d.set_custom=tm_started,$cat=$system.time= ;d.save_session="
-system.method.set_key = event.download.resumed,time_stamp,"branch=d.get_custom=tm_started,false=,pyro.tm_started="
+system.method.insert = pyro.tm_started.now,simple,"d.set_custom=tm_started,$cat=$system.time= ;d.save_session="
+system.method.set_key = event.download.resumed,time_stamp,"branch=d.get_custom=tm_started,false=,pyro.tm_started.now="
 system.method.set_key = event.download.inserted_new,time_stamp,"d.set_custom=tm_loaded,$cat=$system.time= ;d.save_session="
 system.method.set_key = event.download.finished,time_stamp,"d.set_custom=tm_completed,$cat=$system.time= ;d.save_session="
 }}}
