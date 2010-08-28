@@ -173,4 +173,5 @@ tar cvfz ~/session-backup-0.3.6.tgz $(echo $(rtxmlrpc get_session)/ | tr -s / /)
   # Read and follow the section _Extending your `.rtorrent.rc`_ from above and restart rTorrent. Users that already added the extensions for previous versions should replace the relevant parts of their configuration with the new snippets.
   # Call `pyroadmin --create-config` and check your `config.ini` against `config.ini.default` as described above. Among other things, some output formats have changed.
   # The command "`rtcontrol \* -qostarted | sort | uniq -c`" should now, for the majority of your torrents, show the start time of rTorrent after adding the `tm_started` configuration bits (stopped ones will get counted under `1970-01-01`).
+  # Assuming you have incomplete torrents, "`rtcontrol is_complete=0 -ostarted.raw.delta,leechtime,name --column-headers`" should show identical values in the `STARTED` and `LEECHTIME` columns.
   # Enjoy.
