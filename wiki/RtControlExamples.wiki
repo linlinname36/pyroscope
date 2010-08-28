@@ -66,14 +66,14 @@ You need to define the custom output format used there, so also add this to your
 {{{
 [FORMATS]
 # Custom output formats
-completion = $(completed)-16.16s $(is_open)7s $(up.sz)10s/s $(ratio.pc)5d%%%% $(alias)-8s $(name)s
+completion = $(completed.raw.delta)13.13s $(leechtime)9.9s $(is_open)4.4s $(up.sz)10s/s $(ratio.pc)5d$(pc)s $(alias)-8s $(kind_50)-4.4s  $(name)s
 }}}
-See [http://docs.python.org/release/2.5.2/lib/typesseq-strings.html String Formatting Operations] for a description how the formatting options work, and notice that `$` is used instead of `%` here, because `%` has a special meaning in INI files. For the same reason, a single `%` in the final output becomes `%%%%` in the configuration (it needs to be escaped twice).
+See [http://docs.python.org/release/2.5.2/lib/typesseq-strings.html String Formatting Operations] for a description how the formatting options work, and notice that `$` is used instead of `%` here, because `%` has a special meaning in INI files. For the same reason, a single `%` in the final output becomes `$(pc)s` in the configuration (`pc` is a system field that is simply a percent sign).
 
 Then, calling `rt2days -q` will print something like this;
 {{{
-COMPLETED        IS_OPEN         UP/s RATIO% ALIAS    NAME
-2010-08-18 15:35     CLS    0 bytes/s   100% SeedBox  lab-rats
+    COMPLETED LEECHTIME IS_O         UP/s RATIO% ALIAS    KIND  NAME
+   1d 21h ago   10m  2s  OPN    0 bytes/s   100% SeedBox  rar   lab-rats
 }}}
 
 And with version 0.3.6 installed, you can create a full listing of all the files you have loaded into rTorrent using the built-in format "`files`":
