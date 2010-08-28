@@ -5,7 +5,7 @@ See also RtXmlRpcExamples.
 _Contents_ <wiki:toc max_depth="2" />
 
 = Fundamentals =
-`rtcontrol`'s main purpose is to take filter conditions on the command line of the form "_field_`=`_value_" and select a set of torrents according to them — and then either print the result according to a specified format or take some action on the selected items. All given conditions must be met (AND), and if a field name is omitted, "`name`" is assumed. Multiple values separated by a comma indicate several possible choices (OR). "`!`" in front of a filter value negates it (NOT).
+`rtcontrol`'s main purpose is to take filter conditions on the command line of the form "_field_`=`_value_" and select a set of torrents according to them — and then either print the result according to a specified format or take some action on the selected items. All given conditions must be met (AND), and if a field name is omitted, "`name`" is assumed. Multiple values separated by a comma indicate several possible choices (OR). "`!`" in front of a filter value negates it (NOT). Use uppercase `OR` to combine multiple alternative sets of conditions.
 
 For numeric fields, a leading "`+`" means greater than, a leading "`-`" means less 
 than (just like with the standard `find` command). For string fields, the value is a glob pattern which you are used to from shell filename patterns (`*`, `?`, `[a-z]`, `[!a-z]`).
@@ -39,6 +39,8 @@ The following conditions give you a hint on what you can do, and some building b
 || `tagged==highlander`|| _Only_ tagged with "highlander" and nothing else (_since v0.3.6_) ||
 || `kind=flac,mp3`    || Music downloads (_since v0.3.6_) ||
 || `files=sample/*`   || Items with a top-level `sample` folder (_since v0.3.6_) ||
+|| `ratio=+2.5 OR completed=+5d` || Items seeded to 5:2 or completed more than 5 days ago (_since v0.3.6_) — note that this is *not* necessarily the same as "_seeded_ for 5 days" ||
+
 
 Note that the `!` character has to be escaped in shell commands. For a current full list of all the field names and their meaning, see the output of `rtcontrol --help-fields`.
 
