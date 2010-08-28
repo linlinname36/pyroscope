@@ -135,6 +135,8 @@ You can then use the `diff` tool to check for the differences between your curre
 And remember to *always read the [http://pyroscope.googlecode.com/svn/trunk/debian/changelog changelog]*!
 
 == Migrating to version 0.3.4 ==
+*NOTE: These instructions also apply if you freshly installed version 0.3.4!*
+
 To fully make use of the new features, you need to do the following:
   # Read and follow the section _Extending your `.rtorrent.rc`_ from above and restart rTorrent.
   # To add the new custom keys to your existing session data, call these commands in a shell: 
