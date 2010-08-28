@@ -122,6 +122,21 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 ||  ||  ||  *TODO* ||
 
 
+== Macros (user-defined commands) ==
+|| *Command* || *Example* || *Description* ||
+|| system.method.erase() ⇒ int ||  ||  *TODO* ||
+|| system.method.get() ⇒ int ||  ||  *TODO* ||
+|| system.method.has_key() ⇒ int ||  ||  *TODO* ||
+|| system.method.insert() ⇒ int ||  ||  *TODO* ||
+|| system.method.list_keys() ⇒ int ||  ||  *TODO* ||
+|| system.method.set() ⇒ int ||  ||  *TODO* ||
+|| system.method.set_key() ⇒ int ||  ||  *TODO* ||
+|| argument.0() ⇒ any ||  ||  *TODO* ||
+|| argument.1() ⇒ any ||  ||  *TODO* ||
+|| argument.2() ⇒ any ||  ||  *TODO* ||
+|| argument.3() ⇒ any ||  ||  *TODO* ||
+
+
 = Download items =
 
 == Attributes ==
@@ -360,11 +375,6 @@ You can set the global limits to values higher than your actually available band
 = Unsorted material =
 This is what introspection on the rTorrent interfaces returns — a lot of this information, especially the signatures and return types, are probably not 100% correct.
 
-*no clue at all what these are*
-|| argument.0() ⇒ undef ||  ||  *TODO* ||
-|| argument.1() ⇒ undef ||  ||  *TODO* ||
-|| argument.2() ⇒ undef ||  ||  *TODO* ||
-|| argument.3() ⇒ undef ||  ||  *TODO* ||
 
 C
 || call_download() ⇒ int ||  ||  *TODO* ||
@@ -561,13 +571,6 @@ S
 || system.file_allocate.set() ⇒ undef ||  ||  *TODO* ||
 || system.file_status_cache.prune() ⇒ int ||  ||  *TODO* ||
 || system.file_status_cache.size() ⇒ int ||  ||  *TODO* ||
-|| system.method.erase() ⇒ int ||  ||  *TODO* ||
-|| system.method.get() ⇒ int ||  ||  *TODO* ||
-|| system.method.has_key() ⇒ int ||  ||  *TODO* ||
-|| system.method.insert() ⇒ int ||  ||  *TODO* ||
-|| system.method.list_keys() ⇒ int ||  ||  *TODO* ||
-|| system.method.set() ⇒ int ||  ||  *TODO* ||
-|| system.method.set_key() ⇒ int ||  ||  *TODO* ||
 
 T
 || tos(string) ⇒ int ||  ||  *TODO* ||
