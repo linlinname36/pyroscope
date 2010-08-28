@@ -330,16 +330,19 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || view_sort_new(string view, string comparator) ⇒ int ||  || Define sort order for newly added items. ||
 || view_filter(string view, string condition) ⇒ int ||  || Filter items by condition once. Use a schedule or events to keep it up to date. ||
 || view_filter_on(string view, string event) ⇒ int ||  || Sort again on event. *OR EVENT LIST?! ARRAY? MULTI-ARG?* ||
+|| `view.set_visible(infohash, viewname) ⇒ int` <br/> `view.set_not_visible(infohash, viewname) ⇒ int` ||  || Add or remove single item. ||
 ||  ||  ||  *TODO* ||
 || view.event_added() ⇒ int ||  ||  *TODO* ||
 || view.event_removed() ⇒ int ||  ||  *TODO* ||
 || view.filter_download() ⇒ int ||  ||  *TODO* ||
 || view.persistent() ⇒ int ||  ||  *TODO* ||
-|| view.set_not_visible() ⇒ int ||  ||  *TODO* ||
-|| view.set_visible() ⇒ int ||  ||  *TODO* ||
 || view.size() ⇒ int ||  ||  *TODO* ||
 || view.size_not_visible() ⇒ int ||  ||  *TODO* ||
 || view_set() ⇒ array ||  ||  *TODO* ||
+
+Some handy commands:
+  * To clear a view, use `view_filter=NAME,false=`.
+  * To make a view visible, execute `ui.current_view.set=NAME`.
 
 
 = Ratio management =
