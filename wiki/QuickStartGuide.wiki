@@ -33,7 +33,7 @@ If you like PyroScope after using it for a while, click on the following button 
 
 == Updating to a new release version ==
 
-Remember to *read any [http://code.google.com/p/pyroscope/wiki/UserConfiguration#Updating_your_existing_configuration_for_a_new_software_version migration instructions], and the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog] BEFORE installing any new version*.
+Remember to *read any [http://code.google.com/p/pyroscope/wiki/UserConfiguration#Updating_your_existing_configuration_for_a_new_software_version migration instructions], and the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog], BEFORE installing any new version*.
 
 Then to *update* an existing installation, use this command:
 {{{
@@ -74,7 +74,7 @@ If you want to use the web interface, see "_Installing the web interface_" below
 
 == Updating to SVN HEAD ==
 
-*BEFORE any update, read any [http://code.google.com/p/pyroscope/wiki/UserConfiguration#Updating_your_existing_configuration_for_a_new_software_version migration instructions], the [http://code.google.com/p/pyroscope/source/list SVN log] and the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog].*
+*BEFORE any update, read the relevant [http://code.google.com/p/pyroscope/wiki/UserConfiguration#Updating_your_existing_configuration_for_a_new_software_version migration instructions], the [http://code.google.com/p/pyroscope/source/list SVN log] and the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog].*
 
 Then to *update* an existing installation, use these commands:
 {{{
