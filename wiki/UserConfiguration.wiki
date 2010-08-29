@@ -65,6 +65,13 @@ You need either a `scgi_local` or `scgi_port` specification in your rTorrent con
 
 For the `loaded` and `completed` fields to work (added in version 0.3.4), you also have to add this:
 {{{
+#
+# PyroScope SETTINGS
+#
+
+# VIEW: Default view for filtering results
+view_add = rtcontrol
+
 # EVENTS: Timestamps
 #   tm_loaded = time loaded into client
 #   tm_started = time of *first* start
