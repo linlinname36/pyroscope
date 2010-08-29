@@ -66,6 +66,9 @@ After that, the CommandLineTools are available in the `~/lib/pyroscope/bin` dire
 
 After installation, you might want to adapt things to your local setup using the instructions on the UserConfiguration page. You should at least *create a configuration* as described there, using the `pyroadmin --create-config` command. If you encounter any problems during installation not covered by the documentation, join the [http://groups.google.com/group/pyroscope-users pyroscope-users] mailing list to get help from the community.
 
+If you want to use the web interface, see "_Installing the web interface_" below — but note that it is _on hold and unsupported_ right now.
+
+
 == Updating to SVN HEAD ==
 
 To later *update* an existing installation, use these commands:
@@ -75,7 +78,8 @@ svn update
 ( cd pyrocore && source bootstrap.sh )
 }}}
 
-If you want to use the web interface, see "_Installing the web interface_" below.
+Remember to *read any [http://code.google.com/p/pyroscope/wiki/UserConfiguration#Updating_your_existing_configuration_for_a_new_software_version migration instructions], the [http://code.google.com/p/pyroscope/source/list SVN log] and the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog]*.
+
 
 
 ----
