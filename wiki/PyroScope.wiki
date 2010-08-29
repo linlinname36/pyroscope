@@ -1,5 +1,6 @@
 #summary Python Torrent Tools.
 #labels introduction,overview
+<wiki:toc max_depth="2" />
 
 == Introduction ==
 
