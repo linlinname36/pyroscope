@@ -25,17 +25,20 @@ On Windows, just use `easy_install pyrocore` in `cmd.exe` after [http://www.pyth
 
 After installation, you might want to adapt things to your local setup using the instructions on the UserConfiguration page. You should at least *create a configuration* as described there, using the `pyroadmin --create-config` command. If you encounter any problems during installation not covered by the documentation, join the [http://groups.google.com/group/pyroscope-users pyroscope-users] mailing list to get help from the community.
 
-== Updating to a new release version ==
-
-To later *update* an existing installation, use this command:
-{{{
-sudo easy_install --prefix /usr/local -U pyrocore
-}}}
-
 If `easy_install` prints a message containing `error: bad install directory or PYTHONPATH`, try to use `--prefix /usr` in the above command.
 
 If you like PyroScope after using it for a while, click on the following button to support it.
 <wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_users_logo.xml" height="43"  border="0" />
+
+
+== Updating to a new release version ==
+
+Remember to *read any [http://code.google.com/p/pyroscope/wiki/UserConfiguration#Updating_your_existing_configuration_for_a_new_software_version migration instructions], and the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog] BEFORE installing any new version*.
+
+Then to *update* an existing installation, use this command:
+{{{
+sudo easy_install --prefix /usr/local -U pyrocore
+}}}
 
 
 == Installing from source (SVN) ==
@@ -71,14 +74,14 @@ If you want to use the web interface, see "_Installing the web interface_" below
 
 == Updating to SVN HEAD ==
 
-To later *update* an existing installation, use these commands:
+*BEFORE any update, read any [http://code.google.com/p/pyroscope/wiki/UserConfiguration#Updating_your_existing_configuration_for_a_new_software_version migration instructions], the [http://code.google.com/p/pyroscope/source/list SVN log] and the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog].*
+
+Then to *update* an existing installation, use these commands:
 {{{
 cd ~/lib/pyroscope
 svn update
 ( cd pyrocore && source bootstrap.sh )
 }}}
-
-Remember to *read any [http://code.google.com/p/pyroscope/wiki/UserConfiguration#Updating_your_existing_configuration_for_a_new_software_version migration instructions], the [http://code.google.com/p/pyroscope/source/list SVN log] and the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog]*.
 
 
 
