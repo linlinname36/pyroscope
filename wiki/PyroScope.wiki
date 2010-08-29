@@ -4,9 +4,7 @@
 
 = Introduction =
 
-PyroScope is a collection of tools for the BitTorrent protocol and especially the rTorrent client.
-
-It offers the following components:
+PyroScope is a collection of tools for the BitTorrent protocol and especially the rTorrent client. It offers the following components:
  * CommandLineTools for automation of common tasks, like metafile creation
  * rTorrent extensions like a queue manager and statistics
  * a modern and versatile rTorrent web interface
