@@ -20,7 +20,7 @@ If you like PyroScope, click on the following button to support it.
 = News =
 <dl>
 <dt>*29 Aug 2010*</dt><dd>[http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.3.6 pyrocore 0.3.6] released,
-featuring selection into rTorrent views, more torrent life-cycle field, 
+featuring more torrent life-cycle fields, selecting into rTorrent views, 
 file listings and filtering based on file type, and finer control over 
 formatting pathname fields.</dd>
 
@@ -36,7 +36,7 @@ additional fields containing load and completion time,
 and action options to delete or throttle items, or put them under manual control.</dd>
 
 <dt>*20 Mar 2010*</dt>
-<dd>[http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.3.3 pyrocore 0.3.3] released
+<dd>[http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.3.3 pyrocore 0.3.3] released,
 including many new `chtor` options, and some `rtcontrol` improvements.</dd>
 
 <dt>*14 Mar 2010*</dt>
