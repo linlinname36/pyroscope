@@ -25,6 +25,7 @@ On Windows, just use `easy_install pyrocore` in `cmd.exe` after [http://www.pyth
 
 After installation, you might want to adapt things to your local setup using the instructions on the UserConfiguration page. You should at least *create a configuration* as described there, using the `pyroadmin --create-config` command. If you encounter any problems during installation not covered by the documentation, join the [http://groups.google.com/group/pyroscope-users pyroscope-users] mailing list to get help from the community.
 
+== Updating to a new release version ==
 
 To later *update* an existing installation, use this command:
 {{{
@@ -64,6 +65,8 @@ ln -nfs ~/lib/pyroscope/bin/{chtor,lstor,mktor,pyroadmin,rtcontrol,rtxmlrpc} ~/b
 After that, the CommandLineTools are available in the `~/lib/pyroscope/bin` directory, and also added to your user's bin directory.
 
 After installation, you might want to adapt things to your local setup using the instructions on the UserConfiguration page. You should at least *create a configuration* as described there, using the `pyroadmin --create-config` command. If you encounter any problems during installation not covered by the documentation, join the [http://groups.google.com/group/pyroscope-users pyroscope-users] mailing list to get help from the community.
+
+== Updating to SVN HEAD ==
 
 To later *update* an existing installation, use these commands:
 {{{
@@ -107,8 +110,8 @@ cd ~/lib/pyroscope/pyroscope
 }}}
 If you did not change the web server parameters, you can now view the start page at http://127.0.0.1:8042/. You can use the `paver status` command to check on the server status, and `paver stop` to stop a running server.
 
-== Updating to the latest SVN revision ==
-To update the software after initial installation, use these commands:
+== Updating the WEB-UI to the latest SVN revision ==
+To update the software including the web-ui after initial installation, use these commands:
 {{{
 cd ~/lib/pyroscope
 source bin/activate
