@@ -27,7 +27,7 @@ formatting pathname fields.</dd>
 <dt>*28 Aug 2010*</dt><dd>Published the [http://packages.python.org/pyrocore/apidocs/index.html API documentation] in Javadoc style including class diagrams and cross-referenced source code.</dd>
 
 <dt>*20 Aug 2010*</dt><dd>[http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.3.5 pyrocore 0.3.5] released,
-adding custom attributes and item tagging, adding column headers to result listings.</dd>
+adding custom attributes and item tagging, and column headers to result listings.</dd>
 
 <dt>*16 Aug 2010*</dt>
 <dd>[http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.3.4 pyrocore 0.3.4] released,
