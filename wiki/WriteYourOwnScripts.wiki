@@ -4,7 +4,7 @@
 
 = Introduction =
 
-The `pyrocore` Python package contains powerful helper classes that make remote access to rTorrent child's play. And your tools get the same Look & Feel like the built-in PyroScope commands, as long as you use the provided base classes.
+The `pyrocore` Python package contains powerful helper classes that make remote access to rTorrent child's play (see [http://packages.python.org/pyrocore/apidocs/index.html API documentation]). And your tools get the same Look & Feel like the built-in PyroScope commands, as long as you use the provided base class [http://packages.python.org/pyrocore/apidocs/index.html ScriptBaseWithConfig].
 
 See for yourself:
 {{{
@@ -62,7 +62,7 @@ For a reference of the rTorrent XMLRPC interface, see RtXmlRpcReference.
 
 
 = Using `pyrocore` as a library in other projects =
-The example in the first section is an easy way to create user-defined scripts. If you want to use `pyrocore`'s features in another runtime environment, you just have to load the configuration manually (what `ScriptBaseWithConfig` does for you otherwise).
+The example in the first section is an easy way to create user-defined scripts. If you want to use `pyrocore`'s features in another runtime environment, you just have to load the configuration manually (what [http://packages.python.org/pyrocore/apidocs/index.html ScriptBaseWithConfig] does for you otherwise).
 {{{
 # Details depend on the system you want to extend, of course
 from some_system import plugin
