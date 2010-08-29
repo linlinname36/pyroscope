@@ -2,7 +2,7 @@
 #labels introduction,overview
 <wiki:toc max_depth="2" />
 
-== Introduction ==
+= Introduction =
 
 PyroScope is a collection of tools for the BitTorrent protocol and especially the rTorrent client.
 
@@ -17,7 +17,7 @@ If you want to get a first impression without installing the software, look at t
 If you like PyroScope, click on the following button to support it.
 <wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_users.xml?style=red" height="100"  border="0" />
 
-== News ==
+= News =
 <dl>
 <dt>*29 Aug 2010*</dt><dd>[http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.3.6 pyrocore 0.3.6] released,
 featuring selection into rTorrent views, more torrent life-cycle field, 
@@ -54,7 +54,7 @@ including many new `chtor` options, and some `rtcontrol` improvements.</dd>
 </dl>
 
 
-== Project Status ==
+= Project Status =
 PyroScope is implemented in [http://www.python.org/ Python] using the [http://pylonshq.com/ Pylons] web framework. The main build tool is [http://www.blueskyonmars.com/projects/paver/ Paver], which is based on `setuptools`.
 
 This is the status of various parts of the project:
