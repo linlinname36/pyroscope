@@ -107,6 +107,20 @@ The total amount of data you have loaded in GB:
 rtcontrol -qosize \* | awk '{ SUM += $1} END { print SUM/1024/1024/1024 }'
 }}}
 
+= Performing management tasks =
+== Fixing items with an empty "Base path" ==
+Sometimes rTorrent loses track of where it stores the data for an item, leading to an empty `Base path` in the `Info` panel. You can try to fix this by selectively rehashing those, with these commands:
+{{{
+rtcontrol path= is_complete=y -V
+rtcontrol path= is_complete=y --hash -i
+}}}
+The first command selects the broken items into a rTorrent view, so that you can watch the progress of hashing and the results afterwards. If all of them are finished, you can then start those that were successfully restored like so:
+{{{
+rtcontrol path=\! done=100 --from-view rtcontrol --start
+}}}
+(note that the `--from-view` option needs version 0.3.7)
+
+
 = Performing periodic tasks (cron jobs) =
 
 == Simple Queue Management ==
