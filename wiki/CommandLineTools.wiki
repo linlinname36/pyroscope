@@ -143,3 +143,7 @@ For example, the command `rtcontrol up=+0 up=-10k` will list all torrents that a
 The method name and optional arguments are provided using standard shell rules, i.e. where you would use "^X `throttle_down=slow,120`" in rTorrent you just list the arguments in the usual shell way (`rtxmlrpc throttle_down slow 120`). The rTorrent format is also recognized though, but without any escaping rules (i.e. you cannot have a '`,`' in your arguments then).
 
 To get a list of available methods, just call `rtxmlrpc system.listMethods`. See RtXmlRpcExamples for a list of useful calls.
+
+
+== rtmv ==
+With `rtmv`, you can move actively seeded data around at will. *... TODO*
