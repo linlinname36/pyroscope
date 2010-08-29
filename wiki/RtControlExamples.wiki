@@ -163,6 +163,12 @@ rtcontrol is_complete=yes 'realpath=!*/completed/*' -qo '
     ' | bash
 }}}
 
+Afterwards, you can always move and rename stuff at will _and still continue seeding_, by using the `rtmv` tool in version 0.3.7 ­— this will rename the data file or directory at its current location and automatically fix the symlink in the download directory to point at the new path. Example:
+{{{
+cd ~/completed/OBT/2010-08
+rtmv foo bar
+}}}
+
 
 == Ratio Management ==
 
