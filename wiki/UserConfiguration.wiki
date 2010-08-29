@@ -72,6 +72,9 @@ For the `loaded` and `completed` fields to work (added in version 0.3.4), you al
 # VIEW: Default view for filtering results
 view_add = rtcontrol
 
+# VIEW: Show active torrents (in view #9) and update every 20 seconds
+schedule = filter_active,20,20,"view_filter = active,\"or={d.get_up_rate=,d.get_down_rate=}\""
+
 # EVENTS: Timestamps
 #   tm_loaded = time loaded into client
 #   tm_started = time of *first* start
