@@ -220,11 +220,11 @@ The `900` and `200` in the above examples are the bandwidth limits in KiB/s, you
 
 There are other useful commands you can perform on a regular basis, i.e. using a crontab. This one stops any torrent that isn't known by the tracker anymore or has other authorization problems:
 {{{
-rtcontrol is_open=yes 'message=*not?registered*,*unregistered*,*not?authorized*' --stop
+rtcontrol is_open=yes 'message=*not?registered*,*unregistered*,*not?authorized*' --stop --cron
 }}}
 
 And the following stops completed torrents that lost their data:
 {{{
-rtcontrol is_complete=yes is_open=yes is_ghost=yes --stop
+rtcontrol is_complete=yes is_open=yes is_ghost=yes --stop --cron
 }}}
 Note that this means you can simply stop torrents by removing their data and calling this command afterwards, either manually or via `cron`.
