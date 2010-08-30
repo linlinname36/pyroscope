@@ -82,6 +82,8 @@ def my_rtorrent_plugin():
 plugin.register(my_rtorrent_plugin)
 }}}
 
+A full example is the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/rt_cron_throttle_seed dynamic seed throttle] script.
+
 
 = Code snippets =
 _Note that the following snippets are meant to be placed and executed within the `mainloop` of the above script skeleton._
