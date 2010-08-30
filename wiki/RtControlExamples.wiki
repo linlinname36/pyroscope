@@ -201,20 +201,19 @@ Then save the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples
 Finally, extend your crontab with these lines (`crontab -e`):
 {{{
 RT_SOCKET=/home/bt/rtorrent/.scgi_local'
-RT_CRON_LOG=/home/bt/rtorrent/logs/cron.log
 BW_SEED_MAX=900
 BW_SEED_SLOW=200
 
 # Throttle torrents that are seeded 1:1 when there are other active ones
-*	* * * * 	test -S $RT_SOCKET && ~/bin/rt_cron_throttle_seed seed $BW_SEED_MAX $BW_SEED_SLOW >>$RT_CRON_LOG
+*	* * * * 	test -S $RT_SOCKET && ~/bin/rt_cron_throttle_seed seed $BW_SEED_MAX $BW_SEED_SLOW --cron
 
 # Put torrents seeded above 1:1 into the seed throttle
-*/10	* * * * 	test -S $RT_SOCKET && rtcontrol ratio=+1.05 is_complete=1 is_ignored=0 throttle=none -q -T seed --yes >>$RT_CRON_LOG
+*/10	* * * * 	test -S $RT_SOCKET && rtcontrol ratio=+1.05 is_complete=1 is_ignored=0 throttle=none -q -T seed --yes --cron
 }}}
 
-The `900` and `200` in the above examples are the bandwidth limits in KiB/s, you need to adapt them to your connection of course. And all paths need to be changed to fit your system. Each time the throttle rate is changed, the `cron.log` will contain a line like this:
+The `900` and `200` in the above examples are the bandwidth limits in KiB/s, you need to adapt them to your connection of course, and all paths need to be changed to fit your system. Each time the throttle rate is changed, a line like the following will be appended to the file `~/.pyroscope/log/cron.log`:
 {{{
-INFO     THROTTLE 'seed' up=200.0 KiB/s [2 prioritized]
+2010-08-30 14:16:01 INFO     THROTTLE 'seed' up=200.0 KiB/s [2 prioritized] [__main__.SeedThrottle]
 }}}
 
 == Other uses of rtcontrol with cron ==
