@@ -42,7 +42,7 @@ The following conditions give you a hint on what you can do, and some building b
 || `kind=flac,mp3`    || Music downloads (_since v0.3.6_) ||
 || `files=sample/*`   || Items with a top-level `sample` folder (_since v0.3.6_) ||
 || `ratio=+2.5 OR seedtime=+1w` || Items seeded to 5:2 *or* for more than a week (_since v0.3.6_) ||
-|| `alias=foo [ ratio=+2.5 OR seedtime=+7d ]' || The same as above, but for one tracker only (_since v0.3.7_) ||
+|| `alias=foo [ ratio=+2.5 OR seedtime=+7d ]` || The same as above, but for one tracker only (_since v0.3.7_) ||
 
 Note that the `!` character has to be escaped in shell commands. For a current full list of all the field names and their meaning, see the output of `rtcontrol --help-fields`.
 
