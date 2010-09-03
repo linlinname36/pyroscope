@@ -57,6 +57,8 @@ if __name__ == "__main__":
     UserScript().run()
 }}}
 
+Another full example is the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/rt_cron_throttle_seed dynamic seed throttle] script.
+
 For simple calls, you can also use the `rtxmlrpc` command on a shell prompt, see RtXmlRpcExamples for that.
 For a reference of the rTorrent XMLRPC interface, see RtXmlRpcReference.
 
@@ -81,8 +83,6 @@ def my_rtorrent_plugin():
 
 plugin.register(my_rtorrent_plugin)
 }}}
-
-A full example is the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/rt_cron_throttle_seed dynamic seed throttle] script.
 
 
 = Code snippets =
