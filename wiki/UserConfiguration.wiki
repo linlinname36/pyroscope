@@ -18,6 +18,7 @@ To create your own configuration, the best way is to start from the default file
 {{{
 pyroadmin --create-config
 }}}
+Note that you can delete anything you don't want changed, since the defaults are _always_ loaded first. Deleting unchanged defaults has the advantage that on software updates, you'll automatically get the newer version of settings, if they're updated.
 
 If you need several distinct configuration sets, just add the `--config-dir` option like so:
 {{{
