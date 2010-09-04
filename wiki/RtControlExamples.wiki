@@ -100,7 +100,7 @@ Create a list of all your trackers and how many torrents are loaded for each:
 {{{
 rtcontrol -q -o alias -s alias \* | uniq -c
 }}}
-You can easily modify this by using conditions other than `*`, e.g. show the count of fully seeded downloads using `ratio=+1`.
+You can easily modify this by using conditions other than `*`, e.g. show the count of fully seeded downloads using `ratio=+1`. Or try the same command with `traits` instead of `alias` (version 0.3.7 only).
 
 The total amount of data you have loaded in GB:
 {{{
