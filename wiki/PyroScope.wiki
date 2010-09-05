@@ -60,7 +60,7 @@ PyroScope is implemented in [http://www.python.org/ Python] using the [http://py
 
 This is the status of various parts of the project:
 || *ohloh.net Statistics* || <wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_thin_badge.xml" height="36"  border="0" /> ||
-|| *CommandLineTools* || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png mktor, lstor, chtor, rtcontrol, rtxmlrpc, pyroadmin ||
+|| *CommandLineTools* || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png mktor, lstor, chtor, rtcontrol, rtxmlrpc, rtmv, pyroadmin ||
 || *UserConfiguration* || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png loaded from `config.ini` and `config.py` ||
 || *QueueManager* || _not yet implemented_ ||
 || *Web Interface* || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png usable alpha ||
