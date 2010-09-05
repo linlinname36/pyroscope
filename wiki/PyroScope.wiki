@@ -17,6 +17,9 @@ If you like PyroScope, click on the following button to support it.
 
 = News =
 <dl>
+<dt>*05 Sep 2010*</dt><dd>[http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.3.7 pyrocore 0.3.7] released,
+offering automatic classification for completion paths, a working `rtmv` in symlinked mode, grouping of filter conditions, rTorrent fast-resume support, and better cron logging.</dd>
+
 <dt>*29 Aug 2010*</dt><dd>[http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.3.6 pyrocore 0.3.6] released,
 featuring more torrent life-cycle fields, selecting into rTorrent views, 
 file listings and filtering based on file type, and finer control over 
