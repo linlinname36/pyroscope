@@ -84,7 +84,7 @@ svn update
 }}}
 
 
-== Installing rTorrent and PyroScope on Debian from source ==
+== Installing rTorrent and !PyroScope on Debian from source ==
 See DebianInstallFromSource.
 
 
