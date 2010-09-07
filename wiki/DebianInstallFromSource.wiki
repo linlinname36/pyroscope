@@ -1,0 +1,27 @@
+#summary How to compile and configure rTorrent + PyroScope on Debian.
+<wiki:toc max_depth="2" />
+
+= Introduction =
+
+...
+
+
+= Preparatory steps =
+{{{
+}}}
+
+= rTorrent installation =
+{{{
+}}}
+
+= rTorrent configuration =
+{{{
+}}}
+
+= !PyroScope installation =
+{{{
+}}}
+
+= !PyroScope configuration =
+{{{
+}}}
