@@ -3,7 +3,11 @@
 
 = Introduction =
 
-...
+The following shows installation instructions for a working rTorrent instance in combination with PyroScope, on Debian Server 5.0 (Lenny). While the package names and the use of `aptitude` are somewhat dependant on (that version of) Debian, the commands for other distributions are similar, and the compilation instructions should work as-is on practically any Linux.
+
+Non-packaged software is installed exclusively into your normal user account, i.e. this description works OK for non-root users as long as the required packages are installed before-hand.
+
+Most of the command blocks can be cut & pasted wholesale into a terminal. Note that `bash` _here documents_ (`... <<'EOF'`) *MUST* be pasted at once.
 
 
 = Preparatory steps =
@@ -20,26 +24,219 @@ Note that you can always show Debian's current build dependencies for rTorrent u
 echo $(apt-cache showsrc rtorrent | grep Build-Depends: | cut -f2 -d: | tr ",)" " \\n" | cut -f1 -d"(")
 }}}
 
+If you later want to use trackers with `https` announce URLs, this script is useful to easily add the needed certificates to the system:
+{{{
+cat >/usr/local/sbin/load-domain-certificate <<'EOF'
+#! /bin/bash
+if test -z "$1"; then
+    echo "usage: $0 <domainname_or_url>"
+    exit 1
+fi
+DOMAINNAME=$(sed -re 's%^(https://)?([^/]+)(.*)$%\2%' <<<$1)
+set -x
+openssl s_client -connect ${DOMAINNAME}:443 </dev/null | tee /tmp/${DOMAINNAME}.crt
+openssl x509 -inform PEM -in /tmp/${DOMAINNAME}.crt -text -out /usr/share/ca-certificates/${DOMAINNAME}.crt
+grep ${DOMAINNAME}.crt /etc/ca-certificates.conf >/dev/null || echo ${DOMAINNAME}.crt >>/etc/ca-certificates.conf
+update-ca-certificates
+ls -l /etc/ssl/certs | grep ${DOMAINNAME}
+EOF
+chmod a+x /usr/local/sbin/load-domain-certificate
+}}}
+
+
 = rTorrent installation =
-You need to set up a few environment variables so that compilation and installtion into your user account works;
+You need to set up a few environment variables so that compilation and installation into your user account works;
 {{{
 export CFLAGS="-I $HOME/include"
 export CXXFLAGS="$CFLAGS"
 export LDFLAGS="-L$HOME/lib"
 export PKG_CONFIG_PATH="$HOME/lib/pkgconfig"
 }}}
+These can be added permanently to your `~/.bashrc`, so that you don't forget them when you install an update.
 
+Next, download and unpack the sources:
 {{{
+mkdir ~/src; cd ~/src
+svn co https://xmlrpc-c.svn.sourceforge.net/svnroot/xmlrpc-c/advanced@1971 xmlrpc-c-advanced
+curl -O http://libtorrent.rakshasa.no/downloads/libtorrent-0.12.6.tar.gz
+curl -O http://libtorrent.rakshasa.no/downloads/rtorrent-0.8.6.tar.gz
+ls -1 *.tar.gz | xargs -n1 tar xfz
 }}}
+
+After that, compile and install `xmlrpc-c`, `libtorrent` and `rtorrent`, in that order:
+{{{
+( cd xmlrpc-c-advanced && ./configure --with-libwww-ssl && make && make install PREFIX=$HOME )
+( cd libtorrent-*[0-9] && ./configure && make && make prefix=$HOME install )
+( cd rtorrent-*[0-9] && ./configure --with-xmlrpc-c=$HOME/bin/xmlrpc-c-config && make && make prefix=$HOME install )
+}}}
+Now you should have a working `rtorrent` executable in you `~/bin`. You can make sure everything worked so far by using the command `ldd ~/bin/rtorrent | egrep "libxmlrpc|libtorrent"`, check that all the libraries are indeed loaded from you home directory.
+
 
 = rTorrent configuration =
+To be able to use several different instances of rTorrent (e.g. a second one for experimental configuration changes), this setup doesn't use `~/.rtorrent.rc` at all, but keeps everything in one place under the `~/rtorrent` directory. If you change the assignment to `RT_HOME`, you can place it anywhere you like, or create alternate instances with ease.
+
+Fist, create the instance directories and a simple start script:
 {{{
+export RT_HOME=$HOME/rtorrent
+mkdir -p $RT_HOME/{.session,work,done,log,watch/start,watch/load}
+cd $RT_HOME
+
+# make simple start script
+cat >./start <<'EOF'
+#! /bin/bash
+umask 0027
+cd $(dirname $0)
+rtorrent -n -o import=$PWD/rtorrent.rc 
+EOF
+chmod a+x ./start
 }}}
+
+Next, a not-so-simple `rtorrent.rc` is created, it already contains everything needed to use all features of PyroScope — you should check at least the first section and adapt the values to your environment.
+{{{
+sed -e "s:RT_HOME:$RT_HOME:" >$RT_HOME/rtorrent.rc <<'EOF'
+### rtorrent settings #######################################################
+
+#
+# OPTIONAL settings (check these)
+#
+upload_rate = 12000
+download_rate = 12000
+max_open_files = 384
+max_open_sockets = 512
+encryption = allow_incoming,try_outgoing,enable_retry
+umask = 0027
+key_layout = qwertz
+check_hash = no
+##hash_interval = 100
+##hash_max_tries = 2
+
+max_peers = 100
+min_peers = 80
+min_peers_seed = -1
+max_peers_seed = -1
+
+
+#
+# CORE settings (keep these)
+#
+http_capath = /etc/ssl/certs
+encoding_list = utf8
+dht = disable
+peer_exchange = no
+use_udp_trackers = no
+
+directory = RT_HOME/work
+session = RT_HOME/.session
+scgi_local = RT_HOME/.scgi_local
+##schedule = scgi_permissions,0,0,"execute=chmod,660,RT_HOME/.scgi_local"
+##scgi_port = localhost:5099
+log.execute = RT_HOME/log/execute.log
+
+# range for listening port
+port_range = 64000-64042
+port_random = no
+
+
+# SCHEDULE: watch directories
+schedule = watch_start_directory,10,10,load_start=RT_HOME/watch/start/*.torrent
+schedule = watch_load_directory,15,20,load=RT_HOME/watch/load/*.torrent
+schedule = untied_directory,30,30,close_untied=
+
+# SCHEDULE: watch disk space
+schedule = low_diskspace,15,60,close_low_diskspace=1000M
+
+# VIEW: Sort incomplete by date added
+view_sort_current = incomplete,greater=d.get_custom=tm_loaded
+view_filter_on = incomplete,event.download.inserted_new
+
+# VIEW: Show recently completed top-most in "main"
+view_sort_current = main,greater=d.get_custom=tm_completed
+view_filter_on = main,event.download.finished
+
+# VIEW: Sort "seeding" by ratio
+view_sort_current = seeding,greater=d.get_ratio= 
+
+# VIEW: Show current messages (^X m=)
+view_add = messages
+view_filter = messages,d.get_message=
+view_sort_current = messages,less=d.get_message= 
+system.method.insert = m,simple,"ui.current_view.set=messages ;view_filter=messages,d.get_message= ;view_sort=messages ;print=$view.size=messages,\" messages!\""
+
+# EVENTS: Logging (don't log "opened", or you get swamped at startup)
+system.method.set_key = event.download.inserted_new,log,"print=\"LOADED \",$d.get_name=,\" [\",$to_date=$system.time=,\"]\""
+system.method.set_key = event.download.finished,log,"print=\"COMPLETED \",$d.get_name=,\" [\",$to_date=$system.time=,\"]\""
+system.method.set_key = event.download.closed,log,"print=\"CLOSED \",$d.get_name=,\" [\",$to_date=$system.time=,\"]\""
+
+
+#
+# PyroScope SETTINGS
+#
+
+# VIEW: Default view for filtering results
+view_add = rtcontrol
+
+# VIEW: Show active torrents (in view #9) and update every 20 seconds
+schedule = filter_active,20,20,"view_filter = active,\"or={d.get_up_rate=,d.get_down_rate=}\""
+
+# EVENTS: Timestamps
+#   tm_loaded = time loaded into client
+#   tm_started = time of *first* start
+#   tm_completed = time of completion
+system.method.insert = pyro.tm_started.now,simple|private,"d.set_custom=tm_started,$cat=$system.time= ;d.save_session="
+system.method.set_key = event.download.resumed,time_stamp,"branch=d.get_custom=tm_started,false=,pyro.tm_started.now="
+system.method.set_key = event.download.inserted_new,time_stamp,"d.set_custom=tm_loaded,$cat=$system.time= ;d.save_session="
+system.method.set_key = event.download.finished,time_stamp,"d.set_custom=tm_completed,$cat=$system.time= ;d.save_session="
+
+# EVENTS: Activation intervals
+system.method.insert = pyro.activations.append,simple|private,"d.set_custom=activations,\"$cat=$d.get_custom=activations,$argument.0=,$system.time=\" ;d.save_session="
+system.method.set_key = event.download.paused,activations,"pyro.activations.append=P"
+system.method.set_key = event.download.resumed,activations,"pyro.activations.append=R"
+
+### END rtorrent.rc #########################################################
+EOF
+}}}
+
+You're now ready to start your rtorrent, so just do that:
+{{{
+screen -S rtorrent $PWD/start
+}}}
+You can of course add more elaborate start scripts, like a cron watchdog or init.d scripts, see the rTorrent wiki for examples.
+
 
 = !PyroScope installation =
+The installation of `pyrocore` is done from SVN, see the QuickStartGuide for more details.
 {{{
+mkdir -p ~/lib
+svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
+cd ~/lib/pyroscope/pyrocore
+source bootstrap.sh
+ln -nfs ~/lib/pyroscope/bin/{chtor,lstor,mktor,pyroadmin,rtcontrol,rtxmlrpc,rtmv} ~/bin/
+cd
 }}}
 
+
 = !PyroScope configuration =
+This adds a minimal configuration, so that the defaults are taken from the installed software, which makes later updates a lot easier.
 {{{
+pyroadmin --create-config
+
+cat >~/.pyroscope/config.ini <<EOF
+# PyroScope configuration file
+#
+# For details, see http://code.google.com/p/pyroscope/wiki/UserConfiguration
+#
+
+[GLOBAL]
+# Location of your rtorrent configuration
+rtorrent_rc = ~/rtorrent/rtorrent.rc
+
+[ANNOUNCE]
+# Add alias names for announce URLs to this section; those aliases are used
+# at many places, e.g. by the "mktor" tool and to shorten URLs to these aliases
+EOF
+}}}
+
+Finally, test the XMLRPC connection by using this command:
+{{{
+rtxmlrpc system.time_usec
 }}}
