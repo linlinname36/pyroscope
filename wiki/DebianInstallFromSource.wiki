@@ -7,7 +7,17 @@
 
 
 = Preparatory steps =
+First, you need to install a few needed packages, these are the only steps that need to be done as the `root` user:
 {{{
+aptitude install screen curl build-essential subversion 
+aptitude install python-setuptools python-virtualenv
+aptitude install libsigc++-2.0-dev libcurl4-openssl-dev libwww-ssl-dev
+aptitude install libncurses-dev libncursesw5-dev
+}}}
+
+Note that you can always show Debian's current build dependencies for rTorrent using the command
+{{{
+echo $(apt-cache showsrc rtorrent | grep Build-Depends: | cut -f2 -d: | tr ",)" " \\n" | cut -f1 -d"(")
 }}}
 
 = rTorrent installation =
