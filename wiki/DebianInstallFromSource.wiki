@@ -240,3 +240,5 @@ Finally, test the XMLRPC connection by using this command:
 {{{
 rtxmlrpc system.time_usec
 }}}
+
+Continue by reading the UserConfiguration and the RtControlExamples pages.
