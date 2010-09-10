@@ -147,3 +147,9 @@ To get a list of available methods, just call `rtxmlrpc system.listMethods`. See
 
 == rtmv ==
 With `rtmv`, you can move actively seeded data around at will. *... TODO*
+
+{{{
+  -n, --dry-run         don't move data, just tell what would happen
+  -F, --force-incomplete
+                        force a move of incomplete data
+}}}
