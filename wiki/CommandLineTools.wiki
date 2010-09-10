@@ -132,7 +132,7 @@ Note that `chtor` automatically changes only those metafiles whose existing anno
 
 
 == rtcontrol ==
-`rtcontrol` allows you to select torrents loaded into rTorrent using various filter conditions. You can then either list the matches found using flexible output formatting, or perform some management action like starting and stopping torrents. 
+`rtcontrol` allows you to select torrents loaded into rTorrent using various filter conditions. You can then either display the matches found in any rTorrent view, list them to the console using flexible output formatting, or perform some management action like starting and stopping torrents. 
 
 For example, the command `rtcontrol up=+0 up=-10k` will list all torrents that are currently uploading any data, but at a rate of below 10 KiB/s. See the RtControlExamples page for more real-world examples.
 
