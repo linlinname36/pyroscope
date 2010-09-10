@@ -244,9 +244,9 @@ These commands are typically used in the `.rtorrent.rc` file, but many of them a
 || f.get_frozen_path() ⇒ string || `'/dir/base/a/b'` || Full path to the file. ||
 || f.is_created() ⇒ int || `0` or `1` || File created? ||
 || f.is_open() ⇒ int || `0` or `1` || File opened? ||
-|| f.get_size_bytes() ⇒ int || `6` || Exact size in bytes. ||
-|| f.get_size_chunks() ⇒ int || `2760726` || Size in chunks. ||
-|| f.get_last_touched() ⇒ int || `1282422238906187` || File modification date (UNIX timestamp). ||
+|| f.get_size_bytes() ⇒ int || `2760726` || Exact size in bytes. ||
+|| f.get_size_chunks() ⇒ int || `6` || Size in chunks. ||
+|| f.get_last_touched() ⇒ int || `1282422238906187` || File modification date (UNIX timestamp). *TODO: ...or something else, maybe the last time rT checked the file* ||
 || f.get_priority() ⇒ int <br/> f.set_priority(int) ⇒ int || `1` || Priority (0=off, 1=normal, 2=high) || 
 || f.get_completed_chunks() ⇒ int || `6` || Number of chunks already completed. ||
 || f.get_match_depth_next() ⇒ int ||  ||  *TODO* ||
