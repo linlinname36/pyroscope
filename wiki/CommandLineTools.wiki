@@ -100,13 +100,21 @@ Options:
                         happen
   --no-skip             do not skip broken metafiles that fail the integrity
                         check
+  -o PATH, --output-directory=PATH
+                        optional output directory for the modified metafile(s)
   -p, --make-private    make torrent private (DHT/PEX disabled)
   -P, --make-public     make torrent public (DHT/PEX enabled)
+  -s KEY=VAL [-s ...], --set=KEY=VAL [-s ...]
+                        set a specific key to the given value
   -C, --clean           remove all non-standard data from metafile outside the
                         info dict
   -A, --clean-all       remove all non-standard data from metafile including
-                        the info dict
+                        inside the info dict
+  -X, --clean-xseed     like --clean-all, but keep libtorrent resume
+                        information
   -R, --clean-rtorrent  remove all rTorrent session data from metafile
+  -H DATAPATH, --hashed=DATAPATH, --fast-resume=DATAPATH
+                        add libtorrent fast-resume information
   -a URL, --reannounce=URL
                         set a new announce URL, but only if the old announce
                         URL matches the new one
@@ -146,10 +154,37 @@ To get a list of available methods, just call `rtxmlrpc system.listMethods`. See
 
 
 == rtmv ==
-With `rtmv`, you can move actively seeded data around at will. *... TODO*
-
 {{{
+Usage: rtmv [options] <source>... <target>
+
+Move data actively seeded in rTorrent.
+
   -n, --dry-run         don't move data, just tell what would happen
   -F, --force-incomplete
                         force a move of incomplete data
 }}}
+
+With `rtmv`, you can move actively seeded data around at will. Currently, it only knows one mode of operation, namely moving the data directory or file and leave a symlink behind in its place (or fixing the symlink if you move data around a second time). Watch this example that shows what's going on internally:
+{{{
+~/bt/rtorrent/work$ rtmv lab-rats /tmp/ -v
+DEBUG    Found "lab-rats" for 'lab-rats'
+INFO     Moving to "/tmp/lab-rats"...
+DEBUG    Symlinking "~/bt/rtorrent/work/lab-rats"
+DEBUG    rename("~/bt/rtorrent/work/lab-rats", "/tmp/lab-rats")
+DEBUG    symlink("/tmp/lab-rats", "~/bt/rtorrent/work/lab-rats")
+INFO     Moved 1 path (skipped 0)
+
+$ rtmv /tmp/lab-rats /tmp/lab-mice -v
+DEBUG    Item path "~/bt/rtorrent/work/lab-rats" resolved to "/tmp/lab-rats"
+DEBUG    Found "lab-rats" for '/tmp/lab-rats'
+INFO     Moving to "/tmp/lab-mice"...
+DEBUG    Re-linking "~/bt/rtorrent/work/lab-rats"
+DEBUG    rename("/tmp/lab-rats", "/tmp/lab-mice")
+DEBUG    remove("~/bt/rtorrent/work/lab-rats")
+DEBUG    symlink("/tmp/lab-mice", "~/bt/rtorrent/work/lab-rats")
+}}}
+From the second example you can see that you can rename actively seeding downloads in mid-flight, i.e. to fix a bad root directory name.
+
+You can use `rtmv` in combination with `rtcontrol` for very flexible completion moving, see RtControlExamples#Move_on_Completion for details. To facilitate this, if there is a double slash `//` in the target path, it is always interpreted as a directory (i.e. you cannot rename the source file in that case), and the partial path after the `//` is automatically created. This can be used in completion moving, to create hierarchies for dynamic paths built from `rtcontrol` fields. Since the part before the `//` has to exists beforehand, this won't go haywire and create directory structures just anywhere.
+
+Future modes of operation will include copying instead of moving, moving and fixing the download directory in rTorrent (like classical rtorrent completion event handling), and moving across devices (i.e. copying and then deleting).
