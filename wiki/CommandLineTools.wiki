@@ -30,9 +30,15 @@ Options:
   -r NAME, --root-name=NAME
                         optional root name (default is basename of the data
                         path)
-  -x PATTERN, --exclude=PATTERN
+  -x PATTERN [-x ...], --exclude=PATTERN [-x ...]
                         exclude files matching a glob pattern from hashing
   --comment=TEXT        optional human-readable comment
+  -X LABEL, --cross-seed=LABEL
+                        set explicit label for cross-seeding (changes info
+                        hash)
+  -H, --hashed, --fast-resume
+                        create second metafile containing libtorrent fast-
+                        resume information
 }}}
 
 `mktor` creates `*.torrent` files (metafiles), given the path to a file, directory, or named pipe (more on that below) and a tracker URL or alias name (see UserConfiguration on how to define them). Optionally, you can also set an additional comment and a different name for the resulting torrent file. Peer exchange and DHT can be disabled by using the `--private` option. 
