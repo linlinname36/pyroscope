@@ -139,43 +139,27 @@ Note that this means you can exempt items from queue management easily by using 
 
 == Move on Completion ==
 
-The following moves completed downloads to another directory (note that you can
-restrict this further, e.g. to a specific tracker by using "alias=NAME").
-You don't need any multiple watch folders or other prerequisites for this.
-
+The following moves completed downloads _still physically residing_ in a `work` directory (change the `realpath` filter when you named your download directory differently), to another directory (note that you can restrict this further, e.g. to a specific tracker by using "alias=NAME"). You don't need any multiple watch folders or other prerequisites for this.
+{{{
+rtcontrol --from-view complete 'realpath=*/work/*' -qo '~/bin/rtmv "$(path)s" ~/rtorrent/done --cron' | bash
+}}}
 Test it first *without the "`| bash`" part* at the end, to make sure it'll in fact do what you intended.
-{{{
-rtcontrol is_complete=yes 'realpath=!*/completed/*' -qo '
-        echo "Moving %(name)s..." \
-        && mv -u "%(path)s" ~/completed \
-        && ln -s "~/completed/\$(basename "%(path)s")" "%(directory)s"
-    ' | bash
-}}}
-Another advantage is that in case you ever wanted to switch clients, or exchange the drive you host the data on, you can do so easily since all the active downloads still reside at one place in your download directory (in form of a bunch of symlinks).
 
-You can also extend it to create more organized completion structures, e.g. by adding the tracker and the month of completion:
-{{{
-rtcontrol is_complete=yes 'realpath=!*/completed/*' -qo '
-        echo "Moving %(name)s..." \
-        && export target="$HOME/completed/%(alias)s/\$(date +"%%Y-%%m")" \
-        && mkdir -p $target \
-        && mv -u "%(path)s" $target \
-        && ln -s "$target/\$(basename "%(path)s")" "%(directory)s"
-    ' | bash
-}}}
-The equivalent using version 0.3.7 (currently SVN only), creating a directory tree organized by month and item type, is as follows:
+Another advantage is that in case you ever wanted to switch clients, or exchange the drive you host the data on, you can do so easily since all the active downloads still reside at one place in your download directory (in form of a bunch of symlinks) — even if their data is scattered all over the place in reality.
+
+You can also extend it to create more organized completion structures, e.g. creating a directory tree organized by month and item type, as follows:
 {{{
 RT_SOCKET=/home/bt/rtorrent/.scgi_local
 
 # Move completed torrents to "done", organized by month and item type (e.g. "2010-09/tv/avi")
 */15    * * * *         test -S $RT_SOCKET && ~/bin/rtcontrol --from-view complete 'realpath=*/work/*' -qo '~/bin/rtmv "$(path)s" ~/rtorrent/done//$(now.iso).7s/$(traits)s --cron' | bash
 }}}
-This one only moves completed items _still physically residing_ in a `work` directory (change the `realpath` filter when you named your download directory differently).
+The above is a fully working crontab example, you just have to adapt the paths to your system.
 
 Afterwards, you can always move and rename stuff at will _and still continue seeding_, by using the `rtmv` tool in version 0.3.7 ­— this will rename the data file or directory at its current location and automatically fix the symlink in the download directory to point at the new path. Example:
 {{{
-cd ~/completed/OBT/2010-08
-rtmv foo bar
+cd ~/rtorrent/done/2010-09/tv/avi
+rtmv foo.avi bar.avi
 }}}
 
 
