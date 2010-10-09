@@ -109,6 +109,7 @@ def _custom_fields():
     """
     import os
     from pyrocore.torrent import engine, matching
+    from pyrocore.util import fmt
 
     def has_nfo(obj):
         "Check for .NFO file."
@@ -126,6 +127,11 @@ def _custom_fields():
         else:
             return False
 
+    def get_tracker_field(obj, name):
+        "Get a field from tracker in focus."
+        idx = obj.fetch("tracker_focus") % obj._fields["tracker_size"]
+        return getattr(obj._engine._rpc.t, name)(obj._fields["hash"], idx)
+
     # Add file checkers
     yield engine.DynamicField(bool, "has_nfo", "does download have a .NFO file?", 
         matcher=matching.BoolFilter, accessor=has_nfo, 
@@ -134,16 +140,15 @@ def _custom_fields():
         matcher=matching.BoolFilter, accessor=has_thumb, 
         formatter=lambda val: "THMB" if val else "----")
 
-    # Add a rTorrent attribute not available by default
+    # Add rTorrent attributes not available by default
     yield engine.OnDemandField(int, "peers_connected", "number of connected peers", matcher=matching.FloatFilter)
     yield engine.DynamicField(int, "seeds", "number of seeds", matcher=matching.FloatFilter,
-        accessor=lambda o: sum(o._engine._rpc.t.get_scrape_complete(o._fields["hash"], i)
-            for i in range(o._fields["tracker_size"])
-        ))
+        accessor=lambda o: get_tracker_field(o, "get_scrape_complete"))
     yield engine.DynamicField(int, "leeches", "number of leeches", matcher=matching.FloatFilter,
-        accessor=lambda o: sum(o._engine._rpc.t.get_scrape_incomplete(o._fields["hash"], i)
-            for i in range(o._fields["tracker_size"])
-        ))
+        accessor=lambda o: get_tracker_field(o, "get_scrape_incomplete"))
+    yield engine.DynamicField(engine.untyped, "lastscraped", "time of last scrape", matcher=matching.TimeFilter,
+        accessor=lambda o: get_tracker_field(o, "get_scrape_time_last"), 
+        formatter=lambda dt: fmt.human_duration(float(dt), precision=2, short=True))
 
 # Register our factory with the system
 custom_field_factories.append(_custom_fields)
