@@ -136,6 +136,14 @@ def _custom_fields():
 
     # Add a rTorrent attribute not available by default
     yield engine.OnDemandField(int, "peers_connected", "number of connected peers", matcher=matching.FloatFilter)
+    yield engine.DynamicField(int, "seeds", "number of seeds", matcher=matching.FloatFilter,
+        accessor=lambda o: sum(o._engine._rpc.t.get_scrape_complete(o._fields["hash"], i)
+            for i in range(o._fields["tracker_size"])
+        ))
+    yield engine.DynamicField(int, "leeches", "number of leeches", matcher=matching.FloatFilter,
+        accessor=lambda o: sum(o._engine._rpc.t.get_scrape_incomplete(o._fields["hash"], i)
+            for i in range(o._fields["tracker_size"])
+        ))
 
 # Register our factory with the system
 custom_field_factories.append(_custom_fields)
