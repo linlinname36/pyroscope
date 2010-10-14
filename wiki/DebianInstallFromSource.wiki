@@ -13,9 +13,9 @@ Most of the command blocks can be cut & pasted wholesale into a terminal. Note t
 = Preparatory steps =
 First, you need to install a few needed packages, these are the only steps that need to be done as the `root` user:
 {{{
-aptitude install screen curl build-essential subversion \
+aptitude install screen wget build-essential subversion \
     python-setuptools python-virtualenv \
-    libsigc++-2.0-dev libssl-dev libwww-ssl-dev libcurl4-openssl-dev \
+    libsigc++-2.0-dev libssl-dev libwww-ssl-dev \
     libncurses-dev libncursesw5-dev libcppunit-dev
 }}}
 
@@ -58,13 +58,19 @@ Next, download and unpack the sources:
 {{{
 mkdir ~/src; cd ~/src
 svn co https://xmlrpc-c.svn.sourceforge.net/svnroot/xmlrpc-c/advanced@1971 xmlrpc-c-advanced
-curl -O http://libtorrent.rakshasa.no/downloads/libtorrent-0.12.6.tar.gz
-curl -O http://libtorrent.rakshasa.no/downloads/rtorrent-0.8.6.tar.gz
+wget http://c-ares.haxx.se/c-ares-1.7.3.tar.gz
+wget http://curl.haxx.se/download/curl-7.21.1.tar.gz 
+wget http://libtorrent.rakshasa.no/downloads/libtorrent-0.12.6.tar.gz
+wget http://libtorrent.rakshasa.no/downloads/rtorrent-0.8.6.tar.gz
 ls -1 *.tar.gz | xargs -n1 tar xfz
 }}}
 
-After that, compile and install `xmlrpc-c`, `libtorrent` and `rtorrent`, in that order:
+After that, compile and install `c-ares`, `curl`, `xmlrpc-c`, `libtorrent` and `rtorrent`, in that order:
 {{{
+( cd c-ares-1.7.3/ && ./configure && make && make prefix=$HOME install )
+sed -ie s:/usr/local:$HOME: ~/lib/pkgconfig/libcares.pc
+(cd curl-7.21.1/ && ./configure --enable-ares && make && make prefix=$HOME install)
+sed -ie s:/usr/local:$HOME: ~/lib/pkgconfig/libcurl.pc 
 ( cd xmlrpc-c-advanced && ./configure --with-libwww-ssl && make && make install PREFIX=$HOME )
 ( cd libtorrent-*[0-9] && ./configure && make && make prefix=$HOME install )
 ( cd rtorrent-*[0-9] && ./configure --with-xmlrpc-c=$HOME/bin/xmlrpc-c-config && make && make prefix=$HOME install )
