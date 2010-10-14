@@ -69,7 +69,7 @@ After that, compile and install `c-ares`, `curl`, `xmlrpc-c`, `libtorrent` and `
 {{{
 ( cd c-ares-1.7.3/ && ./configure && make && make prefix=$HOME install )
 sed -ie s:/usr/local:$HOME: ~/lib/pkgconfig/libcares.pc
-(cd curl-7.21.1/ && ./configure --enable-ares && make && make prefix=$HOME install)
+( cd curl-7.21.1/ && ./configure --enable-ares && make && make prefix=$HOME install )
 sed -ie s:/usr/local:$HOME: ~/lib/pkgconfig/libcurl.pc 
 ( cd xmlrpc-c-advanced && ./configure --with-libwww-ssl && make && make install PREFIX=$HOME )
 ( cd libtorrent-*[0-9] && ./configure && make && make prefix=$HOME install )
