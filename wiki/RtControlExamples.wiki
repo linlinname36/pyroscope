@@ -48,6 +48,25 @@ The following conditions give you a hint on what you can do, and some building b
 Note that the `!` character has to be escaped in shell commands. For a current full list of all the field names and their meaning, see the output of `rtcontrol --help-fields`.
 
 
+= Integrating rtcontrol into the curses UI =
+Anyone who ever dreamt about a _search box_ in their rtorrent UI, dream no more... just add this to your `.rtorrent.rc`:
+{{{
+# VIEW: Use rtcontrol filter (^X s=KEYWORD, ^X t=TRACKER)
+system.method.insert = s,simple,"execute_nothrow=rt-search,\"$cat=*,$argument.0=,*\""
+system.method.insert = t,simple,"execute_nothrow=rt-search,\"$cat=\\\"alias=\\\",$argument.0=\""
+}}}
+You can of course add as many commands as you like, and include sorting options and whatever else rtcontrol offers.
+To make it work, you'll also need a helper script, create it like this:
+{{{
+cat >~/bin/rt-search <<'EOF'
+#! /bin/bash
+# Helper to call rtcontrol filtering from within the rtorrent curses UI
+( set +x && sleep .05 && rtcontrol -q -V "$@" ) &
+EOF
+chmod a+x ~/bin/rt-search
+}}}
+
+
 = Reports =
 == Using bash aliases for common reports ==
 You might want to add the following alias definitions to your `~/.bashrc`:
