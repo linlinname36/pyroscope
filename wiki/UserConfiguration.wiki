@@ -64,6 +64,8 @@ _For advanced users:_ Values can contain format strings of the form `%(name)s` w
 
 You need either a `scgi_local` or `scgi_port` specification in your rTorrent configuration; `scgi_local` is preferable since more secure. Furthermore, you need to provide the path to a `session` directory. See the [http://libtorrent.rakshasa.no/rtorrent/rtorrent.1.html rTorrent man page] for details.
 
+*Note that if you just freshly installed PyroScope into an existing rTorrent installation, you must also follow the "migration" instructions below to add missing data to your already loaded downloads. Else, those items will NOT be filtered correctly.*
+
 For the `loaded` and `completed` fields to work (added in version 0.3.4), you also have to add this:
 {{{
 #
