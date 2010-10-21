@@ -176,13 +176,13 @@ To fully make use of the new features, you need to do the following:
 rtxmlrpc -q session_save
 tar cvfz ~/session-backup-0.3.4.tgz $(echo $(rtxmlrpc get_session)/ | tr -s / /)*.torrent
 
-# Set loaded time to that of the .torrent file
-rtcontrol '!*"*' -q -sname -o 'echo "$(name)s"\ntest -f "$(metafile)s" && rtxmlrpc -q d.set_custom $(hash)s tm_loaded \$(\
+# Set missing "loaded" times to that of the .torrent file
+rtcontrol '!*"*' loaded=0 -q -sname -o 'echo "$(name)s"\ntest -f "$(metafile)s" && rtxmlrpc -q d.set_custom $(hash)s tm_loaded \$(\
     ls -l --time-style "+%%s" "$(metafile)s" \
     | cut -f6 -d" ")\nrtxmlrpc -q d.save_session $(hash)s' | bash
 
-# Set completed time to that of the data file or directory
-rtcontrol '!*"*' path=\! is_ghost=no -q -sname -o 'echo "$(name)s"\ntest -e "$(realpath)s" && rtxmlrpc -q d.set_custom $(hash)s tm_completed \$(\
+# Set missing "completed" times to that of the data file or directory
+rtcontrol '!*"*' completed=0 path=\! is_ghost=no -q -sname -o 'echo "$(name)s"\ntest -e "$(realpath)s" && rtxmlrpc -q d.set_custom $(hash)s tm_completed \$(\
     ls -ld --time-style "+%%s" "$(realpath)s" \
     | cut -f6 -d" ")\nrtxmlrpc -q d.save_session $(hash)s' | bash
 }}}
