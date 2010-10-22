@@ -72,7 +72,9 @@ sed -ie s:/usr/local:$HOME: ~/lib/pkgconfig/libcares.pc
 ( cd curl-7.21.1/ && ./configure --enable-ares && make && make prefix=$HOME install )
 sed -ie s:/usr/local:$HOME: ~/lib/pkgconfig/libcurl.pc 
 ( cd xmlrpc-c-advanced && ./configure --with-libwww-ssl && make && make install PREFIX=$HOME )
+sed -ie s:/usr/local:$HOME: ~/bin/xmlrpc-c-config
 ( cd libtorrent-*[0-9] && ./configure && make && make prefix=$HOME install )
+sed -ie s:/usr/local:$HOME: ~/lib/pkgconfig/libtorrent.pc
 ( cd rtorrent-*[0-9] && ./configure --with-xmlrpc-c=$HOME/bin/xmlrpc-c-config && make && make prefix=$HOME install )
 }}}
 Now you should have a working `rtorrent` executable in your `~/bin`. You can make sure everything worked so far by using the command `ldd ~/bin/rtorrent | egrep "libxmlrpc|libtorrent"` — check that all the libraries are indeed loaded from you home directory.
