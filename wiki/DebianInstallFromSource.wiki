@@ -15,7 +15,7 @@ First, you need to install a few needed packages, these are the only steps that 
 {{{
 aptitude install screen wget build-essential subversion \
     python-setuptools python-virtualenv \
-    libsigc++-2.0-dev libssl-dev libwww-ssl-dev \
+    libsigc++-2.0-dev libssl-dev \
     libncurses-dev libncursesw5-dev libcppunit-dev
 }}}
 
