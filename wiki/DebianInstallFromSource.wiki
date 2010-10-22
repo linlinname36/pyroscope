@@ -21,7 +21,7 @@ aptitude install screen wget build-essential subversion \
 
 Note that you can always show Debian's current build dependencies for rTorrent using the command
 {{{
-echo $(apt-cache showsrc rtorrent | grep Build-Depends: | cut -f2 -d: | tr ",)" " \\n" | cut -f1 -d"(")
+echo $(apt-cache showsrc rtorrent libtorrent-dev | grep Build-Depends: | cut -f2 -d: | tr ",)" " \\n" | cut -f1 -d"(")
 }}}
 
 If you later want to use trackers with `https` announce URLs, this script is useful to easily add the needed certificates to the system:
