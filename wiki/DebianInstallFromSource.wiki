@@ -97,6 +97,14 @@ cd $(dirname $0)
 rtorrent -n -o import=$PWD/rtorrent.rc 
 EOF
 chmod a+x ./start
+
+# make helper script
+cat >./rt-search <<'EOF'
+#! /bin/bash
+# Helper to call rtcontrol filtering from within the rtorrent curses UI
+( set +x && sleep .05 && rtcontrol -q -V "$@" ) &
+EOF
+chmod a+x ./rt-search
 }}}
 
 Next, a not-so-simple `rtorrent.rc` is created, it already contains everything needed to use all features of PyroScope — you should check at least the first section and adapt the values to your environment.
@@ -169,6 +177,11 @@ view_add = messages
 view_filter = messages,d.get_message=
 view_sort_current = messages,less=d.get_message= 
 system.method.insert = m,simple,"ui.current_view.set=messages ;view_filter=messages,d.get_message= ;view_sort=messages ;print=$view.size=messages,\" messages!\""
+
+# VIEW: Use rtcontrol filter (^X s=KEYWORD, ^X t=TRACKER, ^X f="FILTER")
+system.method.insert = s,simple,"execute_nothrow=RT_HOME/rt-search,\"$cat=*,$argument.0=,*\""
+system.method.insert = t,simple,"execute_nothrow=RT_HOME/rt-search,\"$cat=\\\"alias=\\\",$argument.0=\""
+system.method.insert = f,simple,"execute_nothrow=RT_HOME/rt-search,$argument.0="
 
 # EVENTS: Logging (don't log "opened", or you get swamped at startup)
 system.method.set_key = event.download.inserted_new,log,"print=\"LOADED \",$d.get_name=,\" [\",$to_date=$system.time=,\"]\""
