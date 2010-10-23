@@ -51,9 +51,10 @@ Note that the `!` character has to be escaped in shell commands. For a current f
 = Integrating rtcontrol into the curses UI =
 Anyone who ever dreamt about a _search box_ in their rtorrent UI, dream no more... just add this to your `.rtorrent.rc`:
 {{{
-# VIEW: Use rtcontrol filter (^X s=KEYWORD, ^X t=TRACKER)
+# VIEW: Use rtcontrol filter (^X s=KEYWORD, ^X t=TRACKER, ^X f="FILTER")
 system.method.insert = s,simple,"execute_nothrow=rt-search,\"$cat=*,$argument.0=,*\""
 system.method.insert = t,simple,"execute_nothrow=rt-search,\"$cat=\\\"alias=\\\",$argument.0=\""
+system.method.insert = f,simple,"execute_nothrow=rt-search,$argument.0="
 }}}
 You can of course add as many commands as you like, and include sorting options and whatever else rtcontrol offers.
 To make it work, you'll also need a helper script, create it like this:
