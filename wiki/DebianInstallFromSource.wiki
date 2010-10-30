@@ -117,8 +117,8 @@ sed -e "s:RT_HOME:$RT_HOME:" >$RT_HOME/rtorrent.rc <<'EOF'
 #
 upload_rate = 12000
 download_rate = 12000
-max_open_files = 384
-max_open_sockets = 512
+max_open_files = 512
+max_open_sockets = 384
 encryption = allow_incoming,try_outgoing,enable_retry
 umask = 0027
 key_layout = qwertz
