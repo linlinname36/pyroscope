@@ -126,8 +126,8 @@ check_hash = no
 ##hash_interval = 100
 ##hash_max_tries = 2
 
-max_peers = 100
-min_peers = 80
+min_peers = 20
+max_peers = 200
 min_peers_seed = -1
 max_peers_seed = -1
 max_uploads = 50
