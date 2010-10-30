@@ -130,6 +130,9 @@ max_peers = 100
 min_peers = 80
 min_peers_seed = -1
 max_peers_seed = -1
+max_uploads = 50
+max_uploads_global = 200
+max_memory_usage = 734003200
 
 
 #
