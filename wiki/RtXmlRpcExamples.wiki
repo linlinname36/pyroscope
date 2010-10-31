@@ -10,7 +10,7 @@ The `rtuptime` script shows you essential information about your rTorrent instan
 #! /bin/bash
 SCGI_SOCKET=~/bt/rtorrent/.scgi_local
 
-if test ! -S $SCGI_SOCKET; then
+if test \! -S $SCGI_SOCKET; then
     echo >&2 "rTorrent is not running (no socket $SCGI_SOCKET)"
     exit 1
 fi
