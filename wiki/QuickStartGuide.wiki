@@ -44,7 +44,7 @@ sudo easy_install --prefix /usr/local -U pyrocore
 == Installing from source (SVN) ==
 If you have experience with the shell prompt and possibly a bit of Python you might want to install the development version to gain early access to new features. Since that version is constantly used in cron jobs, chances that it is unstable at any point in time are slim. Please *monitor the [http://code.google.com/p/pyroscope/source/list SVN log] and the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog]* if you run from source.
 
-Requirements:
+For a working installation, you have to meet these requirements first:
  * Python 2.5 or a higher 2.x version (2.5 is recommended).
  * A proper build environment and a subversion client. On Debian and Ubuntu, you'll need the following packages installed:
  {{{
