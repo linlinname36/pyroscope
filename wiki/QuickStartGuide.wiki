@@ -58,7 +58,7 @@ aptitude install inkscape # ONLY for the web-ui
 
 Initial installation to `~/lib/pyroscope`:
 {{{
-mkdir -p ~/lib
+mkdir -p ~/bin ~/lib
 svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
 cd ~/lib/pyroscope/pyrocore
 source bootstrap.sh
