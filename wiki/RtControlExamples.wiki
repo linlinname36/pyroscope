@@ -49,7 +49,11 @@ Note that the `!` character has to be escaped in shell commands. For a current f
 
 
 = Integrating rtcontrol into the curses UI =
-Anyone who ever dreamt about a _[http://www.youtube.com/watch?v=y8gHEfA1w3Y search box]_ in their rtorrent UI, dream no more... just add this to your `.rtorrent.rc`:
+Anyone who ever dreamt about a _[http://www.youtube.com/watch?v=y8gHEfA1w3Y search box]_ in their rtorrent UI, dream no more... 
+
+https://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/videos/rtcontrol-curses.gif
+
+Just add this to your `.rtorrent.rc`:
 {{{
 # VIEW: Use rtcontrol filter (^X s=KEYWORD, ^X t=TRACKER, ^X f="FILTER")
 system.method.insert = s,simple,"execute_nothrow=rt-search,\"$cat=*,$argument.0=,*\""
