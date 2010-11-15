@@ -9,11 +9,12 @@ PyroScope is a collection of tools for the BitTorrent protocol and especially th
  * rTorrent extensions like a queue manager and statistics
  * a modern and versatile rTorrent web interface
 
-To get started right away, see the QuickStartGuide.
-If you want to get a first impression without installing the software, look at the ScreenShotGallery. It's also very easy to WriteYourOwnScripts to automate anything that the standard commands can't do. To get in contact and share your experiences with other users of PyroScope, join the [http://groups.google.com/group/pyroscope-users pyroscope-users] mailing list.
+To get started right away, see the QuickStartGuide. It's also very easy to WriteYourOwnScripts to automate anything that the standard commands can't do. To get in contact and share your experiences with other users of PyroScope, join the [http://groups.google.com/group/pyroscope-users pyroscope-users] mailing list.
 
 If you like PyroScope, click on the following button to support it.
 <wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_users.xml?style=red" height="100"  border="0" />
+
+The ScreenShotGallery has some older shots of the web interface (currently not actively developed), if you want to get a first impression without installing the software.
 
 = News =
 <dl>
