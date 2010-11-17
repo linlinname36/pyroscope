@@ -168,7 +168,7 @@ You can then use the `diff` tool to check for the differences between your curre
 And remember to *always read the [http://pyroscope.googlecode.com/svn/trunk/debian/changelog changelog]*!
 
 == Migrating to version 0.3.4 ==
-*NOTE: These instructions also apply if you freshly installed version 0.3.4!*
+*NOTE: These instructions also apply if you freshly installed version 0.3.4 or higher!*
 
 To fully make use of the new features, you need to do the following:
   # Read and follow the section _Extending your `.rtorrent.rc`_ from above and restart rTorrent.
@@ -193,9 +193,9 @@ rtcontrol '!*"*' completed=0 path=\! is_ghost=no -q -sname -o 'echo "$(name)s"\n
   # Enjoy.
 
 == Migrating to version 0.3.6 ==
-To fully make use of the new features, you need to change your rTorrent configuration and execute a few commands. Users that did *not* yet follow the 0.3.4 migration instructions should do so first.
+To fully make use of the new features, you need to change your rTorrent configuration and execute a few commands. Users that did *not* yet follow the 0.3.4 migration instructions should do so *first*.
 
-*NOTE: These instructions also apply if you freshly installed version 0.3.6!*
+*NOTE: These instructions also apply if you freshly installed version 0.3.6 or higher!*
 
 After you're "on the 0.3.4 level", this will get you ready for 0.3.6:
   # Make a full, current backup of the session data:
