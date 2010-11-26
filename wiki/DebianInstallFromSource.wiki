@@ -77,7 +77,7 @@ sed -ie s:/usr/local:$HOME: ~/bin/xmlrpc-c-config
 sed -ie s:/usr/local:$HOME: ~/lib/pkgconfig/*.pc ~/lib/*.la 
 ( cd rtorrent-*[0-9] && ./configure --with-xmlrpc-c=$HOME/bin/xmlrpc-c-config && make && make prefix=$HOME install )
 }}}
-Now you should have a working `rtorrent` executable in your `~/bin`. You can make sure everything worked so far by using the command `ldd ~/bin/rtorrent | egrep "libxmlrpc|libtorrent"` — check that all the libraries are indeed loaded from you home directory.
+Now you should have a working `rtorrent` executable in your `~/bin`. You can make sure everything worked so far by using the command `ldd ~/bin/rtorrent | egrep "lib(cares|curl|xmlrpc|torrent)"` — check that all the libraries are indeed loaded from you home directory.
 
 
 = rTorrent configuration =
