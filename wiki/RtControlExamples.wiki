@@ -178,7 +178,7 @@ RT_SOCKET=/home/bt/rtorrent/.scgi_local
 # Move completed torrents to "done", organized by month and item type (e.g. "2010-09/tv/avi")
 */15    * * * *         test -S $RT_SOCKET && ~/bin/rtcontrol --from-view complete 'realpath=*/work/*' -qo '~/bin/rtmv "$(path)s" ~/rtorrent/done//$(now.iso).7s/$(traits)s --cron' | bash
 }}}
-The above is a fully working crontab example, you just have to adapt the paths to your system.
+The above is a fully working crontab example, you just have to adapt the paths to your system. If you want to create other organizational hierarchies, like "by tracker", just replace the `$(now.iso).7s/$(traits)s` part by `$(alias)s`.
 
 Afterwards, you can always move and rename stuff at will _and still continue seeding_, by using the `rtmv` tool in version 0.3.7 ­— this will rename the data file or directory at its current location and automatically fix the symlink in the download directory to point at the new path. Example:
 {{{
