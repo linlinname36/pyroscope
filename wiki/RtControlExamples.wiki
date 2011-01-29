@@ -150,7 +150,7 @@ rtcontrol path=\! done=100 --from-view rtcontrol --start
 
 == Simple Queue Management ==
 
-This is a queue management one-liner (well, logically one line). Before you run it automatically, add a trailing "-n" to test it out, e.g. play with the queue size parameter and check out what would be started. Then put it into a crontab and run it every (few) minute(s).
+This is a queue management one-liner (well, logically one line). Before you run it automatically, add a trailing "-n" to test it out, e.g. play with the queue size parameter and check out what would be started. Then put it into a script, crontab that and run it every (few) minute(s).
 {{{
 export rt_max_start=6; rtcontrol -q --start --yes hash=$(echo $( \
     rtcontrol -qrs is_active -o is_open,hash is_complete=no is_ignored=no \
