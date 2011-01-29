@@ -121,6 +121,7 @@ STP    1970-01-01 01:00:00   25.6 MiB Execute My Liberty - The Cursed Way -- Jam
 
 = Statistics =
 
+== Printing some statistics to the terminal ==
 Create a list of all your trackers and how many torrents are loaded for each:
 {{{
 rtcontrol -q -o alias -s alias \* | uniq -c
@@ -131,6 +132,19 @@ The total amount of data you have loaded in GB:
 {{{
 rtcontrol -qosize \* | awk '{ SUM += $1} END { print SUM/1024/1024/1024 }'
 }}}
+
+== Normalized histogram of ratio distribution ==
+The following will create a normalized histogram of ratio distribution of your loaded torrents. Each bar indicates the percentage of items in a ratio class (e.g. the first bar shows ratios lower than 1).
+{{{
+rtcontrol alias=* -qo ratio -s ratio >/tmp/data \
+ && octave -q --persist --eval \
+           "load /tmp/data; hist(data, $(tail -n1 /tmp/data), 100); print -dpng /tmp/ratio.png"
+}}}
+
+https://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/ratio_histo.png
+
+You need to have [http://www.gnu.org/software/octave/ Octave] installed, on Debian/Ubuntu all you need is `sudo aptitude install octave3.0`.
+
 
 = Performing management tasks =
 == Fixing items with an empty "Base path" ==
