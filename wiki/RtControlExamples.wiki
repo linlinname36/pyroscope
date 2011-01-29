@@ -134,7 +134,7 @@ rtcontrol -qosize \* | awk '{ SUM += $1} END { print SUM/1024/1024/1024 }'
 }}}
 
 == Normalized histogram of ratio distribution ==
-The following will create a normalized histogram of ratio distribution of your loaded torrents. Each bar indicates the percentage of items in a ratio class (e.g. the first bar shows ratios lower than 1).
+The following will create a normalized histogram of ratio distribution of your loaded torrents. Each bar indicates the percentage of items in a ratio class (i.e. the first bar shows ratios up to 1).
 {{{
 rtcontrol alias=* -qo ratio -s ratio >/tmp/data \
  && octave -q --persist --eval \
