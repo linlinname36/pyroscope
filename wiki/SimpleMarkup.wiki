@@ -27,7 +27,7 @@ WikiWordLink
 http://example.com/page
 
 Image
-https://s3.amazonaws.com/bits.ohloh.net/attachments/20048/ohloh_med.png
+https://s3.amazonaws.com/cloud.ohloh.net/attachments/20048/ohloh_med.png
 
 Horizontal rule
 ----
@@ -61,7 +61,7 @@ WikiWordLink
 http://example.com/page
 
 Image
-https://s3.amazonaws.com/bits.ohloh.net/attachments/20048/ohloh_med.png
+https://s3.amazonaws.com/cloud.ohloh.net/attachments/20048/ohloh_med.png
 
 Horizontal rule
 ----
