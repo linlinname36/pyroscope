@@ -161,9 +161,11 @@ rtcontrol path=\! done=100 --from-view rtcontrol --start
 
 == Pruning partial downloads ==
 
-Starting with version 0.3.10, the `--purge` option (a/k/a `--delete-partial`) allows you to delete incomplete items from the client, and at the same time delete any incomplete files contained in it (i.e. files that are part of an incomplete chunk).
+Starting with version 0.3.10, the `--purge` option (a/k/a `--delete-partial`) allows you to not only delete the selected items from the client, but at the same time delete any incomplete files contained in them (i.e. files that are part of an incomplete chunk).
 
 For technical reasons, rTorrent has to create files that you have deselected from download to save data of chunks that border selected files, and this option can be a great time saver, especially on large torrents containing hundreds of files.
+
+So, unless you have filtered out incomplete items by the appropriate conditions, using `--prune` instead of `--delete` is always the better option.
 
 
 = Performing periodic tasks (cron jobs) =
