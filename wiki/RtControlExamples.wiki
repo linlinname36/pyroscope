@@ -159,6 +159,12 @@ rtcontrol path=\! done=100 --from-view rtcontrol --start
 }}}
 (note that the `--from-view` option needs version 0.3.7)
 
+== Pruning partial downloads ==
+
+Starting with version 0.3.10, the `--purge` option (a/k/a `--delete-partial`) allows you to delete incomplete items from the client, and at the same time delete any incomplete files contained in it (i.e. files that are part of an incomplete chunk).
+
+For technical reasons, rTorrent has to create files that you have deselected from download to save data of chunks that border selected files, and this option can be a great time saver, especially on large torrents containing hundreds of files.
+
 
 = Performing periodic tasks (cron jobs) =
 
@@ -215,7 +221,7 @@ To that you can add anything you think fits your needs, and also use several com
 
 If you then put these commands into a script that runs every few minutes via `cron`, you have a very flexible form of ratio management that can be changed on a whim. 
 
-To complete your command line, you add the action you want to take on the torrents found, in the above example `--stop`; `--delete` is another possibility. Later versions will also allow you to erase or move your data.
+To complete your command line, you add the action you want to take on the torrents found, in the above example `--stop`; `--delete` is another possibility, which removes the item from the client, but leaves the data intact. Starting with version 0.3.10, you can also delete the downloaded data by using the `--cull` option.
 
 
 == Bandwidth Management ==
