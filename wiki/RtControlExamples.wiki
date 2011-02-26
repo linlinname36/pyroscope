@@ -165,7 +165,7 @@ Starting with version 0.3.10, the `--purge` option (a/k/a `--delete-partial`) al
 
 For technical reasons, rTorrent has to create files that you have deselected from download to save data of chunks that border selected files, and this option can be a great time saver, especially on large torrents containing hundreds of files.
 
-So, unless you have filtered out incomplete items by the appropriate conditions, using `--prune` instead of `--delete` is always the better option.
+So, unless you have filtered out incomplete items by the appropriate conditions, using `--purge` instead of `--delete` is always the better option.
 
 
 = Performing periodic tasks (cron jobs) =
