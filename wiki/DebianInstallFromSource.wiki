@@ -234,7 +234,7 @@ mkdir -p ~/lib
 svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
 cd ~/lib/pyroscope/pyrocore
 source bootstrap.sh
-ln -nfs ~/lib/pyroscope/bin/{chtor,lstor,mktor,pyroadmin,rtcontrol,rtxmlrpc,rtmv} ~/bin/
+ln -nfs ~/lib/pyroscope/bin/{chtor,hashcheck,lstor,mktor,pyroadmin,rtcontrol,rtmv,rtxmlrpc} ~/bin/
 cd
 }}}
 
