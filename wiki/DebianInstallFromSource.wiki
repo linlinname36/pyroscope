@@ -164,27 +164,17 @@ schedule = untied_directory,30,30,close_untied=
 # SCHEDULE: watch disk space
 schedule = low_diskspace,15,60,close_low_diskspace=1000M
 
-# VIEW: Sort incomplete by date added
-view_sort_current = incomplete,greater=d.get_custom=tm_loaded
-view_filter_on = incomplete,event.download.inserted_new
-
-# VIEW: Show recently completed top-most in "main"
-view_sort_current = main,greater=d.get_custom=tm_completed
-view_filter_on = main,event.download.finished
-
 # VIEW: Sort "seeding" by ratio
 view_sort_current = seeding,greater=d.get_ratio= 
+
+# VIEW: Show active torrents (in view #9) and update every 20 seconds
+schedule = filter_active,20,20,"view_filter = active,\"or={d.get_up_rate=,d.get_down_rate=}\""
 
 # VIEW: Show current messages (^X m=)
 view_add = messages
 view_filter = messages,d.get_message=
 view_sort_current = messages,less=d.get_message= 
 system.method.insert = m,simple,"ui.current_view.set=messages ;view_filter=messages,d.get_message= ;view_sort=messages ;print=$view.size=messages,\" messages!\""
-
-# VIEW: Use rtcontrol filter (^X s=KEYWORD, ^X t=TRACKER, ^X f="FILTER")
-system.method.insert = s,simple,"execute_nothrow=RT_HOME/rt-search,\"$cat=*,$argument.0=,*\""
-system.method.insert = t,simple,"execute_nothrow=RT_HOME/rt-search,\"$cat=\\\"alias=\\\",$argument.0=\""
-system.method.insert = f,simple,"execute_nothrow=RT_HOME/rt-search,$argument.0="
 
 # EVENTS: Logging (don't log "opened", or you get swamped at startup)
 system.method.set_key = event.download.inserted_new,log,"print=\"LOADED \",$d.get_name=,\" [\",$to_date=$system.time=,\"]\""
@@ -195,12 +185,6 @@ system.method.set_key = event.download.closed,log,"print=\"CLOSED \",$d.get_name
 #
 # PyroScope SETTINGS
 #
-
-# VIEW: Default view for filtering results
-view_add = rtcontrol
-
-# VIEW: Show active torrents (in view #9) and update every 20 seconds
-schedule = filter_active,20,20,"view_filter = active,\"or={d.get_up_rate=,d.get_down_rate=}\""
 
 # EVENTS: Timestamps
 #   tm_loaded = time loaded into client
@@ -215,6 +199,22 @@ system.method.set_key = event.download.finished,time_stamp,"d.set_custom=tm_comp
 system.method.insert = pyro.activations.append,simple|private,"d.set_custom=activations,\"$cat=$d.get_custom=activations,$argument.0=,$system.time=\" ;d.save_session="
 system.method.set_key = event.download.paused,activations,"pyro.activations.append=P"
 system.method.set_key = event.download.resumed,activations,"pyro.activations.append=R"
+
+# VIEW: Default view for filtering results
+view_add = rtcontrol
+
+# VIEW: Sort incomplete by date added
+view_sort_current = incomplete,greater=d.get_custom=tm_loaded
+view_filter_on = incomplete,event.download.inserted_new
+
+# VIEW: Show recently completed top-most in "main"
+view_sort_current = main,greater=d.get_custom=tm_completed
+view_filter_on = main,event.download.finished
+
+# VIEW: Use rtcontrol filter (^X s=KEYWORD, ^X t=TRACKER, ^X f="FILTER")
+system.method.insert = s,simple,"execute_nothrow=RT_HOME/rt-search,\"$cat=*,$argument.0=,*\""
+system.method.insert = t,simple,"execute_nothrow=RT_HOME/rt-search,\"$cat=\\\"alias=\\\",$argument.0=\""
+system.method.insert = f,simple,"execute_nothrow=RT_HOME/rt-search,$argument.0="
 
 ### END rtorrent.rc #########################################################
 EOF
