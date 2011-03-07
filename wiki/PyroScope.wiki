@@ -16,46 +16,6 @@ If you like PyroScope, click on the following button to support it.
 
 The ScreenShotGallery has some older shots of the web interface (currently not actively developed), if you want to get a first impression without installing the software.
 
-= News =
-<dl>
-<dt>*05 Sep 2010*</dt><dd>[http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.3.7 pyrocore 0.3.7] released,
-offering automatic classification for completion paths, a working `rtmv` in symlinked mode, grouping of filter conditions, rTorrent fast-resume support, and better cron logging.</dd>
-
-<dt>*29 Aug 2010*</dt><dd>[http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.3.6 pyrocore 0.3.6] released,
-featuring more torrent life-cycle fields, selecting into rTorrent views, 
-file listings and filtering based on file type, and finer control over 
-formatting pathname fields.</dd>
-
-<dt>*28 Aug 2010*</dt><dd>Published the [http://packages.python.org/pyrocore/apidocs/index.html API documentation] in Javadoc style including class diagrams and cross-referenced source code.</dd>
-
-<dt>*20 Aug 2010*</dt><dd>[http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.3.5 pyrocore 0.3.5] released,
-adding custom attributes and item tagging, and column headers to result listings.</dd>
-
-<dt>*16 Aug 2010*</dt>
-<dd>[http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.3.4 pyrocore 0.3.4] released,
-with a finished `chtor` and new `rtxmlrpc` tool, 
-additional fields containing load and completion time,
-and action options to delete or throttle items, or put them under manual control.</dd>
-
-<dt>*20 Mar 2010*</dt>
-<dd>[http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.3.3 pyrocore 0.3.3] released,
-including many new `chtor` options, and some `rtcontrol` improvements.</dd>
-
-<dt>*14 Mar 2010*</dt>
-<dd>[http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.3.2 pyrocore 0.3.2] released, allowing you to mass-start/stop items in a selection result.</dd>
-
-<dt>*13 Mar 2010*</dt>
-<dd>[http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.3.1 pyrocore 0.3.1] released, adding filtering, sorting and output formatting to `rtcontrol`.</dd>
-
-<dt>*08 Mar 2010*</dt>
-<dd>[http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.2.1 pyrocore 0.2.1] released, with new tools `chtor` and `pyroadmin`, and a finished configuration system.</dd>
-
-<dt>*19 Feb 2010*</dt>
-<dd>First release of `pyrocore` ([http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.1.1 0.1.1]), containing the `lstor` and `mktor` utilities.</dd>
-
-</dl>
-
-
 = Project Status =
 PyroScope is implemented in [http://www.python.org/ Python] using the [http://pylonshq.com/ Pylons] web framework. The main build tool is [http://www.blueskyonmars.com/projects/paver/ Paver], which is based on `setuptools`.
 
