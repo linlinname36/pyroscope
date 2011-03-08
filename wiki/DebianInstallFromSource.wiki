@@ -133,6 +133,7 @@ max_peers_seed = -1
 max_uploads = 50
 max_uploads_global = 200
 max_memory_usage = 734003200
+xmlrpc_size_limit = 1048576
 
 
 #
