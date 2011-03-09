@@ -121,7 +121,7 @@ def _custom_fields():
         if pathname and os.path.isdir(pathname):
             return any(i.lower().endswith(".nfo") for i in os.listdir(pathname))
         else:
-            return False
+            return False if pathname else None
 
     def has_thumb(obj):
         "Check for folder.jpg file."
@@ -129,7 +129,7 @@ def _custom_fields():
         if pathname and os.path.isdir(pathname):
             return any(i.lower() == "folder.jpg" for i in os.listdir(pathname))
         else:
-            return False
+            return False if pathname else None
 
     def get_tracker_field(obj, name):
         "Get a field from tracker in focus."
@@ -137,12 +137,12 @@ def _custom_fields():
         return getattr(obj._engine._rpc.t, name)(obj._fields["hash"], idx)
 
     # Add file checkers
-    yield engine.DynamicField(bool, "has_nfo", "does download have a .NFO file?", 
+    yield engine.DynamicField(engine.untyped, "has_nfo", "does download have a .NFO file?", 
         matcher=matching.BoolFilter, accessor=has_nfo, 
-        formatter=lambda val: "NFO" if val else "---")
-    yield engine.DynamicField(bool, "has_thumb", "does download have a folder.jpg file?", 
+        formatter=lambda val: "NFO" if val else "!DTA" if val is None else "----")
+    yield engine.DynamicField(engine.untyped, "has_thumb", "does download have a folder.jpg file?", 
         matcher=matching.BoolFilter, accessor=has_thumb, 
-        formatter=lambda val: "THMB" if val else "----")
+        formatter=lambda val: "THMB" if val else "!DTA" if val is None else "----")
 
     # Add rTorrent attributes not available by default
     yield engine.OnDemandField(int, "peers_connected", "number of connected peers", matcher=matching.FloatFilter)
