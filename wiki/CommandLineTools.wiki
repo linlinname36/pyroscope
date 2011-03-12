@@ -97,6 +97,50 @@ $ lstor -qo __hash__,info.piece\ length,info.name *.torrent
 00319ED92914E30C9104DA30BF39AF862513C4C8	262144	Execute My Liberty - The Cursed Way -- Jamendo - OGG Vorbis q7 - 2010.07.29 [www.jamendo.com]
 }}}
 
+And to see a metafile with all the guts hanging out, use the `--raw` option:
+{{{
+{'announce': 'http://tracker.example.com/announce',
+ 'created by': 'PyroScope 0.3.2dev-r410',
+ 'creation date': 1268581272,
+ 'info': {'length': 10,
+          'name': 'lab-rats',
+          'piece length': 32768,
+          'pieces': '<1 piece hashes>',
+          'x_cross_seed': '142e0ae6d40bd9d3bcccdc8a9683e2fb'},
+ 'libtorrent_resume': {'bitfield': 0,
+                       'files': [{'completed': 0,
+                                  'mtime': 1283007315,
+                                  'priority': 1}],
+                       'peers': [],
+                       'trackers': {'http://tracker.example.com/announce': {'enabled': 1}}},
+ 'rtorrent': {'chunks_done': 0,
+              'complete': 0,
+              'connection_leech': 'leech',
+              'connection_seed': 'seed',
+              'custom': {'activations': 'R1283007474P1283007494R1283007529P1283007537',
+                         'kind': '100%_',
+                         'tm_loaded': '1283007442',
+                         'tm_started': '1283007474'},
+              'custom1': '',
+              'custom2': '',
+              'custom3': '',
+              'custom4': '',
+              'custom5': '',
+              'directory': '~/rtorrent/work',
+              'hashing': 0,
+              'ignore_commands': 1,
+              'key': 357633323,
+              'loaded_file': '~/rtorrent/.session/38DE398D332AE856B509EF375C875FACFA1C939F.torrent',
+              'priority': 2,
+              'state': 0,
+              'state_changed': 1283017194,
+              'state_counter': 4,
+              'throttle_name': '',
+              'tied_to_file': '~/rtorrent/watch/lab-rats.torrent',
+              'total_uploaded': 0,
+              'views': []}}
+}}}
+
 == chtor ==
 {{{
 Usage: chtor [options] <metafile>...
