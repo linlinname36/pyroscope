@@ -168,6 +168,18 @@ rtcontrol path=\! done=100 --from-view rtcontrol --start
 }}}
 (note that the `--from-view` option needs version 0.3.7)
 
+== Deleting download items and their data ==
+
+Using the option `--cull` of version 0.3.10, an item can be deleted including its data. You can do this either manually, or automatically as a part of ratio management (see the section further below on that topic).
+
+Called from the shell, you will first be presented with the number of items found and then asked for each of them whether you want to delete it (interactive mode is on by default). Therefor, for automatic uses in cron, you should also specify the `--yes` option.
+
+If you define the following command shortcut, you can also delete the current item directly from ncurses (needs version 0.4.1 to work):
+{{{
+system.method.insert = cull,simple,"execute_nothrow=rtcontrol,-q,--detach,--cull,--yes,\"$cat=hash=,$d.get_hash=\""
+}}}
+Just select the item you want to annihilate and enter `cull=` into the command prompt (`Ctrl-X`).
+
 == Pruning partial downloads ==
 
 Starting with version 0.3.10, the `--purge` option (a/k/a `--delete-partial`) allows you to not only delete the selected items from the client, but at the same time delete any incomplete files contained in them (i.e. files that are part of an incomplete chunk).
