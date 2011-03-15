@@ -85,10 +85,13 @@ pyroscope tests/
 {{{
   --reveal       show full announce URL including keys
   --raw          print the metafile's raw content in all detail
-  --output KEY,KEY1.KEY2,...
+  -V, --skip-validation
+                 show broken metafiles with an invalid structure
+  --output=KEY,KEY1.KEY2,...
                  select fields to print, output is separated by TABs;
-                 note that __file__ is the path to the metafile and
-                 __hash__ is the info hash
+                 note that __file__ is the path to the metafile,
+                 __hash__ is the info hash, and __size__ is the data
+                 size in byte
 }}}
 
 Starting with v0.3.6, you can select to output specific fields from the metafile, like this:
