@@ -8,20 +8,14 @@ For a working installation, you have to meet these requirements first:
  * for `rtcontrol` and `rtxmlrpc`, an existing rTorrent installation, _with the xmlrpc option compiled in_ and the `scgi_local` or `scgi_port` command added to your `~/.rtorrent.rc`.
  * Using rTorrent *0.8.6* is recommended — PyroScope _should_ work together with older versions though, up to a point.
 
-On Ubuntu, do this (tested on Hardy 8.04 LTS):
+On Debian, Ubuntu, and other Debian-derived distributions, do this (tested on Hardy 8.04 LTS):
 {{{
-sudo aptitude install python-setuptools
+sudo apt-get install python-setuptools
 sudo easy_install --prefix /usr/local pyrocore
 }}}
-After that, the CommandLineTools should be immediately available in your shell prompt. 
+After that, the CommandLineTools should be immediately available in your shell prompt. If `easy_install` prints a message containing »`error: bad install directory or PYTHONPATH`«, try to use `--prefix /usr` instead in the above command.
 
-On Debian or other Debian-based distributions, the same commands should work. For non-Debian distributions, use the appropriate package management tools — the package names should be similar (contain the word "`setuptools`"). If you're unable to find a `setuptools` package for your distribution, download it [http://pypi.python.org/pypi/setuptools/ from here] and install it according to the given instructions. Then use the `easy_install` command shown above to download and install the `pyrocore` package.
-
-On Windows, just use `easy_install pyrocore` in `cmd.exe` after [http://www.python.org/download/ installing Python] and `setuptools` as [http://pypi.python.org/pypi/setuptools/ described here].
-
-After installation, you *must change your `rtorrent.rc`* using the instructions on the UserConfiguration page, else many features of `rtcontrol` won't work as expected. You should at least *create a configuration* as described there, using the `pyroadmin --create-config` command. If you encounter any problems during installation not covered by the documentation, subscribe to the [http://groups.google.com/group/pyroscope-users pyroscope-users] mailing list to get help from the community, or join the inofficial <a href="irc://irc.freenode.net/rtorrent">`#rtorrent`</a> channel on `irc.freenode.net`.
-
-If `easy_install` prints a message containing `error: bad install directory or PYTHONPATH`, try to use `--prefix /usr` in the above command.
+To complete your setup, you *must change your `rtorrent.rc`* using the instructions on the UserConfiguration page, else many features of `rtcontrol` won't work as expected. You should at least *create a configuration* as described there, using the `pyroadmin --create-config` command. If you encounter any problems during installation not covered by the documentation, subscribe to the [http://groups.google.com/group/pyroscope-users pyroscope-users] mailing list to get help from the community, or join the inofficial <a href="irc://irc.freenode.net/rtorrent">`#rtorrent`</a> channel on `irc.freenode.net`.
 
 If you like PyroScope after using it for a while, click on the following button to support it.
 <wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_users_logo.xml" height="43"  border="0" />
@@ -35,3 +29,15 @@ Then to *update* an existing installation, use this command:
 {{{
 sudo easy_install --prefix /usr/local -U pyrocore
 }}}
+
+
+= Other Linux variants and Mac OSX =
+
+For non-Debian distributions, use the appropriate package management tools to install the aforementioned prerequisites — the package names should be similar (contain the word "`setuptools`"). If you're unable to find a `setuptools` package for your distribution, download it [http://pypi.python.org/pypi/setuptools/ from here] and install it according to the given instructions. 
+
+Then use the `easy_install` command shown above to download and install the `pyrocore` package.
+
+
+= Windows =
+
+On Windows, just use `easy_install pyrocore` in `cmd.exe` after [http://www.python.org/download/ installing Python] and `setuptools` as [http://pypi.python.org/pypi/setuptools/ described here].
