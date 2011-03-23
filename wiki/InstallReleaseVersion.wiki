@@ -17,9 +17,6 @@ After that, the CommandLineTools should be immediately available in your shell p
 
 To complete your setup, you *must change your `rtorrent.rc`* using the instructions on the UserConfiguration page, else many features of `rtcontrol` won't work as expected. You should at least *create a configuration* as described there, using the `pyroadmin --create-config` command. If you encounter any problems during installation not covered by the documentation, subscribe to the [http://groups.google.com/group/pyroscope-users pyroscope-users] mailing list to get help from the community, or join the inofficial <a href="irc://irc.freenode.net/rtorrent">`#rtorrent`</a> channel on `irc.freenode.net`.
 
-If you like PyroScope after using it for a while, click on the following button to support it.
-<wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_users_logo.xml" height="43"  border="0" />
-
 
 = Updating to a new release version =
 
