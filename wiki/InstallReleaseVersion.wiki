@@ -31,11 +31,16 @@ sudo easy_install --prefix /usr/local -U pyrocore
 }}}
 
 
+= Arch Linux =
+
+See this [https://aur.archlinux.org/packages.php?ID=47197 AUR package] and take note of the hints regarding configuration, in the first section.
+
+
 = Other Linux variants and Mac OSX =
 
 For non-Debian distributions, use the appropriate package management tools to install the aforementioned prerequisites — the package names should be similar (contain the word "`setuptools`"). If you're unable to find a `setuptools` package for your distribution, download it [http://pypi.python.org/pypi/setuptools/ from here] and install it according to the given instructions. 
 
-Then use the `easy_install` command shown above to download and install the `pyrocore` package.
+Then use the `easy_install` command shown in the first section to download and install the `pyrocore` package, and take note of the hints regarding configuration.
 
 
 = Windows =
