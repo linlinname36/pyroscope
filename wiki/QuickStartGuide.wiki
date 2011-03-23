@@ -3,7 +3,7 @@
 
 = Installing the command line tools =
 
-Choose your preferred way of how to install PyroScope, either using a release version or directly from the sources.
+Choose your preferred way of how to install PyroScope ►
 
 || *✰ Install an official release* || *✰ Install current development version * || *✰ Install RTorrent and PyroScope from scratch* ||
 || ✔ For normal users <br/>✔ Hassle-free <br/>✔ Easy download || ✔ For power users and developers <br/>✔ All the new features <br/>✔ Get fixes immediately || ✔ For users that start out with RTorrent <br/>✔ For Debian and other Linux distributions <br/>✔ Compile RTorrent yourself, get a current version ||
