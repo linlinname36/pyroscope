@@ -10,5 +10,5 @@ This page offers you different ways of how to install PyroScope, either using a 
 || ✔ Hassle-free <br/>✔ Easy download || ✔ All the new features <br/>✔ Get fixes immediately || ✔ For Debian and other Linux distributions <br/>✔ For users that start out with RTorrent <br/>✔ Compile RTorrent yourself, get a current version ||
 || *➫ InstallReleaseVersion* || *➫ InstallFromSource* || *➫ DebianInstallFromSource* ||
 
-
+<br/>
 *⚠ WARNING:* Older xmlrpc-c libraries on Ubuntu have a bug regarding integer overflows (causing bigger data sizes like those of Linux distribution DVDs to be misreported), see [http://code.google.com/p/rtgui/wiki/CompilingRtorrent this page] for details on how to fix it. If your installation has that problem, `rtxmlrpc` and `rtcontrol` will emit a warning every time you start them.
