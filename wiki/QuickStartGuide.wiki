@@ -6,8 +6,8 @@
 Choose your preferred way of how to install PyroScope, either using a release version or directly from the sources.
 
 || *✰ Install an official release* || *✰ Install current development version * || *✰ Install RTorrent and PyroScope from scratch* ||
-|| ✔ Hassle-free <br/>✔ Easy download || ✔ All the new features <br/>✔ Get fixes immediately || ✔ For Debian and other Linux distributions <br/>✔ For users that start out with RTorrent <br/>✔ Compile RTorrent yourself, get a current version ||
+|| ✔ For normal users <br/>✔ Hassle-free <br/>✔ Easy download || ✔ For power users and developers <br/>✔ All the new features <br/>✔ Get fixes immediately || ✔ For users that start out with RTorrent <br/>✔ For Debian and other Linux distributions <br/>✔ Compile RTorrent yourself, get a current version ||
 || *➫ InstallReleaseVersion* || *➫ InstallFromSource* || *➫ DebianInstallFromSource* ||
 
 <br/>
-*⚠ WARNING:* Older xmlrpc-c libraries on Ubuntu have a bug regarding integer overflows (causing bigger data sizes like those of Linux distribution DVDs to be misreported), see [http://code.google.com/p/rtgui/wiki/CompilingRtorrent this page] for details on how to fix it. If your installation has that problem, `rtxmlrpc` and `rtcontrol` will emit a warning every time you start them.
+*⚠ WARNING:* Older xmlrpc-c libraries on Ubuntu have a bug regarding integer overflows (causing bigger data sizes like those of Linux distribution DVDs to be misreported), see [http://code.google.com/p/rtgui/wiki/CompilingRtorrent this page] for details on how to fix it. If your installation has that problem, the `rtxmlrpc` and `rtcontrol` commands will emit a warning every time you start them.
