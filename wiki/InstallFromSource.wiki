@@ -1,0 +1,47 @@
+#summary How to get started - installation and first steps.
+#labels installation,configuration,cli
+<wiki:toc max_depth="2" />
+
+= Installing from source =
+If you have experience with the shell prompt and possibly a bit of Python you might want to install the development version to gain early access to new features. Since that version is constantly used in cron jobs, chances that it is unstable at any point in time are slim. Please *monitor the [http://code.google.com/p/pyroscope/source/list SVN log] and the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog]* if you run from source.
+
+For a working installation, you have to meet these requirements first:
+ * Python 2.5 or a higher 2.x version (2.5 is recommended).
+ * A proper build environment and a subversion + git client. On Debian and Ubuntu, you'll need the following packages installed (if there are packages missing from that list, please leave a comment):
+{{{
+aptitude install python python-virtualenv python-dev
+aptitude install build-essential devtools subversion git-core
+aptitude install inkscape # ONLY for the web-ui
+}}}
+ * For `rtcontrol` and `rtxmlrpc`, an existing rTorrent installation, _with the xmlrpc option compiled in_ and the `scgi_local` or `scgi_port` command added to your `~/.rtorrent.rc`.
+ * Using rTorrent *0.8.6* is recommended — PyroScope _should_ work together with older versions though, up to a point.
+
+Initial installation to `~/lib/pyroscope`:
+{{{
+mkdir -p ~/bin ~/lib
+svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
+git clone git://github.com/pyroscope/pyrobase.git ~/lib/pyroscope/pyrobase
+cd ~/lib/pyroscope/pyrocore
+source bootstrap.sh
+ln -nfs $(grep -l 'entry_point.*pyrocore==' ~/lib/pyroscope/bin/*) ~/bin/
+}}}
+
+After that, the CommandLineTools are available in the `~/lib/pyroscope/bin` directory, and also added to your user's bin directory.
+
+After installation, you *must change your `rtorrent.rc`* using the instructions on the UserConfiguration page, else many features of `rtcontrol` won't work as expected. You should at least *create a configuration* as described there, using the `pyroadmin --create-config` command. If you encounter any problems during installation not covered by the documentation, subscribe to the [http://groups.google.com/group/pyroscope-users pyroscope-users] mailing list to get help from the community, or join the inofficial <a href="irc://irc.freenode.net/rtorrent">`#rtorrent`</a> channel on `irc.freenode.net`.
+
+If you want to use the web interface, see "_Installing the web interface_" below — but note that it is _on hold and unsupported_ right now.
+
+
+= Updating to the newest code =
+
+*BEFORE any update, read the relevant [http://code.google.com/p/pyroscope/wiki/UserConfiguration#Updating_your_existing_configuration_for_a_new_software_version migration instructions], the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog] and the [http://code.google.com/p/pyroscope/source/list SVN log].*
+
+Then to *update* an existing installation, use these commands:
+ {{{
+cd ~/lib/pyroscope
+source bin/activate
+svn update
+( cd pyrobase && git pull && paver develop -U )
+( cd pyrocore && source bootstrap.sh )
+}}}
