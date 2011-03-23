@@ -49,10 +49,10 @@ If you have experience with the shell prompt and possibly a bit of Python you mi
 
 For a working installation, you have to meet these requirements first:
  * Python 2.5 or a higher 2.x version (2.5 is recommended).
- * A proper build environment and a subversion client. On Debian and Ubuntu, you'll need the following packages installed:
+ * A proper build environment and a subversion + git client. On Debian and Ubuntu, you'll need the following packages installed:
  {{{
 aptitude install python python-virtualenv python-dev
-aptitude install build-essential devtools subversion
+aptitude install build-essential devtools subversion git-core
 aptitude install inkscape # ONLY for the web-ui
 }}}
  If there are packages missing from that list, leave a comment.
@@ -63,6 +63,7 @@ Initial installation to `~/lib/pyroscope`:
 {{{
 mkdir -p ~/bin ~/lib
 svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
+git clone git://github.com/pyroscope/pyrobase.git ~/lib/pyroscope/pyrobase
 cd ~/lib/pyroscope/pyrocore
 source bootstrap.sh
 ln -nfs $(grep -l 'entry_point.*pyrocore==' ~/lib/pyroscope/bin/*) ~/bin/
@@ -82,7 +83,9 @@ If you want to use the web interface, see "_Installing the web interface_" below
 Then to *update* an existing installation, use these commands:
 {{{
 cd ~/lib/pyroscope
+source bin/activate
 svn update
+( cd pyrobase && git pull && paver develop -U )
 ( cd pyrocore && source bootstrap.sh )
 }}}
 
