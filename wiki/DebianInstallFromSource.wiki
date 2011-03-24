@@ -1,9 +1,9 @@
-#summary How to compile and configure rTorrent + PyroScope on Debian.
+#summary How to compile and configure RTorrent + PyroScope on Debian.
 <wiki:toc max_depth="2" />
 
 = Introduction =
 
-The following shows installation instructions for a working rTorrent instance in combination with PyroScope, on Debian Server 5.0 (Lenny). While the package names and the use of `aptitude` are somewhat dependant on (that version of) Debian, the commands for other distributions are similar, and the compilation instructions should work as-is on practically any Linux.
+The following shows installation instructions for a working RTorrent instance in combination with PyroScope, on Debian Server 5.0 (Lenny). While the package names and the use of `aptitude` are somewhat dependant on (that version of) Debian, the commands for other distributions are similar, and the compilation instructions should work as-is on practically any Linux.
 
 Non-packaged software is installed exclusively into your normal user account, i.e. this description works OK for non-root users as long as the required packages are installed before-hand.
 
@@ -13,13 +13,13 @@ Most of the command blocks can be cut & pasted wholesale into a terminal. Note t
 = Preparatory steps =
 First, you need to install a few needed packages, these are the only steps that need to be done as the `root` user:
 {{{
-aptitude install screen wget build-essential subversion \
+aptitude install screen wget build-essential subversion git-core \
     python-setuptools python-virtualenv \
     libsigc++-2.0-dev libssl-dev \
     libncurses-dev libncursesw5-dev libcppunit-dev
 }}}
 
-Note that you can always show Debian's current build dependencies for rTorrent using the command
+Note that you can always show Debian's current build dependencies for RTorrent using the command
 {{{
 echo $(apt-cache showsrc rtorrent libtorrent-dev | grep Build-Depends: | cut -f2 -d: | tr ",)" " \\n" | cut -f1 -d"(")
 }}}
@@ -44,7 +44,7 @@ chmod a+x /usr/local/sbin/load-domain-certificate
 }}}
 
 
-= rTorrent installation =
+= RTorrent installation =
 You need to set up a few environment variables so that compilation and installation into your user account works;
 {{{
 export CFLAGS="-I $HOME/include"
@@ -57,7 +57,7 @@ These can be added permanently to your `~/.bashrc`, so that you don't forget the
 Next, download and unpack the sources:
 {{{
 mkdir ~/src; cd ~/src
-svn co https://xmlrpc-c.svn.sourceforge.net/svnroot/xmlrpc-c/advanced@1971 xmlrpc-c-advanced
+svn checkout https://xmlrpc-c.svn.sourceforge.net/svnroot/xmlrpc-c/advanced@1971 xmlrpc-c-advanced
 wget http://c-ares.haxx.se/c-ares-1.7.3.tar.gz
 wget http://curl.haxx.se/download/curl-7.21.1.tar.gz 
 wget http://libtorrent.rakshasa.no/downloads/libtorrent-0.12.6.tar.gz
@@ -80,8 +80,8 @@ sed -ie s:/usr/local:$HOME: ~/lib/pkgconfig/*.pc ~/lib/*.la
 Now you should have a working `rtorrent` executable in your `~/bin`. You can make sure everything worked so far by using the command `ldd ~/bin/rtorrent | egrep "lib(cares|curl|xmlrpc|torrent)"` — check that all the libraries are indeed loaded from you home directory.
 
 
-= rTorrent configuration =
-To be able to use several different instances of rTorrent (e.g. a second one for experimental configuration changes), this setup doesn't use `~/.rtorrent.rc` at all, but keeps everything in one place under the `~/rtorrent` directory. If you change the assignment to `RT_HOME`, you can place it anywhere you like, or create alternate instances with ease.
+= RTorrent configuration =
+To be able to use several different instances of RTorrent (e.g. a second one for experimental configuration changes), this setup doesn't use `~/.rtorrent.rc` at all, but keeps everything in one place under the `~/rtorrent` directory. If you change the assignment to `RT_HOME`, you can place it anywhere you like, or create alternate instances with ease.
 
 First, create the instance directories and a simple start script:
 {{{
@@ -225,14 +225,15 @@ You're now ready to start your rtorrent, so just do that:
 {{{
 screen -S rtorrent $PWD/start
 }}}
-You can of course add more elaborate start scripts, like a cron watchdog or init.d scripts, see the rTorrent wiki for examples.
+You can of course add more elaborate start scripts, like a cron watchdog or init.d scripts, see the RTorrent wiki for examples.
 
 
 = !PyroScope installation =
-The installation of `pyrocore` is done from SVN, see the QuickStartGuide for more details.
+The installation of `pyrocore` is done from source, see InstallFromSource for more details.
 {{{
-mkdir -p ~/lib
+mkdir -p ~/bin ~/lib
 svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
+git clone git://github.com/pyroscope/pyrobase.git ~/lib/pyroscope/pyrobase
 cd ~/lib/pyroscope/pyrocore
 source bootstrap.sh
 ln -nfs $(grep -l 'entry_point.*pyrocore==' ~/lib/pyroscope/bin/*) ~/bin/
