@@ -13,7 +13,14 @@ On Debian, Ubuntu, and other Debian-derived distributions, do this (tested on Ha
 sudo apt-get install python-setuptools
 sudo easy_install --prefix /usr/local pyrocore
 }}}
-After that, the CommandLineTools should be immediately available in your shell prompt. If `easy_install` prints a message containing »`error: bad install directory or PYTHONPATH`«, try to use `--prefix /usr` instead in the above command.
+After that, the CommandLineTools should be immediately available in your shell prompt. In case `easy_install` prints a message containing »`error: bad install directory or PYTHONPATH`«, try to use the following commands instead:
+{{{
+export PYTHONPATH=/usr/local/lib/python$(python -c "import sys; print sys.version[:3]")/site-packages
+sudo -E easy_install --prefix /usr/local pyrocore
+
+# ... and only if that also doesn't succeed...
+sudo easy_install pyrocore
+}}}
 
 To complete your setup, you *must change your `rtorrent.rc`* using the instructions on the UserConfiguration page, else many features of `rtcontrol` won't work as expected. You should at least *create a configuration* as described there, using the `pyroadmin --create-config` command. If you encounter any problems during installation not covered by the documentation, subscribe to the [http://groups.google.com/group/pyroscope-users pyroscope-users] mailing list to get help from the community, or join the inofficial <a href="irc://irc.freenode.net/rtorrent">`#rtorrent`</a> channel on `irc.freenode.net`.
 
