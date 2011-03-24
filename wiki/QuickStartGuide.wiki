@@ -6,7 +6,7 @@
 Choose your preferred way of how to install PyroScope ►
 
 || *✰ Install an official release* || *✰ Install current development version * || *✰ Install RTorrent and PyroScope from scratch* ||
-|| ✔ For normal users <br/>✔ Hassle-free <br/>✔ Easy download || ✔ For power users and developers <br/>✔ All the new features <br/>✔ Get fixes immediately || ✔ For users that start out with RTorrent <br/>✔ For Debian and other Linux distributions <br/>✔ Compile RTorrent yourself, get a current version ||
+|| ✔ For normal users <br/>✔ Hassle-free <br/>✔ Easy download and update || ✔ For power users and developers <br/>✔ All the new features <br/>✔ Get fixes immediately || ✔ For users that start out with RTorrent <br/>✔ For Debian and other Linux distributions <br/>✔ Compile RTorrent yourself, get a current version ||
 || *➫ InstallReleaseVersion* || *➫ InstallFromSource* || *➫ DebianInstallFromSource* ||
 
 If you like PyroScope after using it for a while, click on the following button to show your support.
