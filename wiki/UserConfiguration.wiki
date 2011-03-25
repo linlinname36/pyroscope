@@ -210,3 +210,17 @@ tar cvfz ~/session-backup-0.3.6.tgz $(echo $(rtxmlrpc get_session)/ | tr -s / /)
   # The command "`rtcontrol \* -qostarted | sort | uniq -c`" should now, for the majority of your torrents, show the start time of rTorrent after adding the `tm_started` configuration bits (cf. step 2, stopped ones will get counted under `1970-01-01`).
   # Assuming you have incomplete torrents, "`rtcontrol is_complete=0 -ostarted.raw.delta,leechtime,name --column-headers`" should show identical values in the `STARTED` and `LEECHTIME` columns.
   # Enjoy.
+
+
+== Migrating to version 0.4.1 ==
+There is a new dependency on the `pyrobase` package, and for *release version installations*, it will be managed transparently — you have nothing to worry about, just follow the updating instructions from InstallReleaseVersion.
+
+On the other hand, if you have an *installation from source*, it's important that you add the new dependency _also_ from source, because otherwise your installation will break during further development (since then, you'd remain on the _released_ version of `pyrobase`). So, call these commands (assuming the standard installation paths):
+{{{
+cd ~/lib/pyroscope
+source bin/activate
+svn update
+git clone git://github.com/pyroscope/pyrobase.git pyrobase
+( cd pyrobase && paver develop -U )
+( cd pyrocore && source bootstrap.sh )
+}}}
