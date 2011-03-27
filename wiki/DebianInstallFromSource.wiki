@@ -160,7 +160,7 @@ port_random = no
 # SCHEDULE: watch directories
 schedule = watch_start_directory,10,10,load_start=RT_HOME/watch/start/*.torrent
 schedule = watch_load_directory,15,20,load=RT_HOME/watch/load/*.torrent
-schedule = untied_directory,30,30,close_untied=
+schedule = untied_closing,30,30,close_untied=
 
 # SCHEDULE: watch disk space
 schedule = low_diskspace,15,60,close_low_diskspace=1000M
