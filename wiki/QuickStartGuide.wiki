@@ -13,4 +13,4 @@ If you like PyroScope after using it for a while, click on the following button 
 <wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_users_logo.xml" height="43"  border="0" />
 
 <br/>
-*⚠ WARNING:* Older xmlrpc-c libraries on Ubuntu have a bug regarding integer overflows (causing bigger data sizes like those of Linux distribution DVDs to be misreported), see [http://code.google.com/p/rtgui/wiki/CompilingRtorrent this page] for details on how to fix it. If your installation has that problem, the `rtxmlrpc` and `rtcontrol` commands will emit a warning every time you start them.
+*⚠ WARNING:* `xmlrpc-c` libraries on Ubuntu tend to have a bug regarding integer overflows, causing bigger data sizes like those of Linux distribution DVDs to be misreported. If your installation has that problem, the `rtxmlrpc` and `rtcontrol` commands will emit a warning every time you start them. In that case follow DebianInstallFromSource or [http://code.google.com/p/rtgui/wiki/CompilingRtorrent the rtgui instructions] to compile your own correct version.
