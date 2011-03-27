@@ -1,0 +1,7 @@
+#summary A screenlet to display RTorrent and PyroScope status information.
+#labels screenlet,desktop,application
+
+Watch this space for things to come...<br/>
+http://i.imgur.com/TcnSj.png
+
+See the [http://www.screenlets.org/index.php/Information screenlet.org homepage] for more information about screenlets.
