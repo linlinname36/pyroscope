@@ -1,4 +1,4 @@
-#summary How to get started - preparing a Pythjon runtime environment.
+#summary How to get started - preparing a Python runtime environment.
 <wiki:toc max_depth="2" />
 
 = Creating an isolated Python environment in your account =
