@@ -24,4 +24,4 @@ bin/easy_install pyrocore
 ln -nfs $(grep -l 'entry_point.*pyrocore==' ~/lib/pyroscope/bin/*) ~/bin/
 }}}
 
-Now head back to InstallReleaseVersion#Completing_your_setup.
+Now head back to [InstallReleaseVersion#Completing_your_setup].
