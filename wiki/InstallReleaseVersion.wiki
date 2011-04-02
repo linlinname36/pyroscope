@@ -37,7 +37,7 @@ In case you followed InstallToPythonVirtualenv, use this instead:
 = Special considerations for different platforms =
 
 == Machines you have no adminstration (root) rights for ==
-If you miss the right to globally install any software, there's still hope, as long as any version of Python 2.5, 2.6 or 2.7 is installed already.
+If you miss the right to globally install any software, there's still hope, as long as any version of Python 2.5, 2.6 or 2.7 is installed already (call the command `python --version` to check).
 
 In such a case, just follow InstallToPythonVirtualenv to add everything else that you need to your own account.
 
