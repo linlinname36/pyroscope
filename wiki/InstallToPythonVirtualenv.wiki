@@ -22,7 +22,7 @@ Now, continue to either install a release version as described in the next secti
 
 If you want to install a release version, the next step is all you need for success:
 {{{
-bin/easy_install pyrocore
+~/lib/pyroscope/bin/easy_install pyrocore
 ln -nfs $(grep -l 'entry_point.*pyrocore==' ~/lib/pyroscope/bin/*) ~/bin/
 }}}
 
