@@ -32,6 +32,7 @@ sudo easy_install --prefix /usr/local -U pyrocore
 In case you followed InstallToPythonVirtualenv, use this instead:
 {{{
 ~/lib/pyroscope/bin/easy_install -U pyrocore
+ln -nfs $(grep -l 'entry_point.*pyrocore==' ~/lib/pyroscope/bin/*) ~/bin/
 }}}
 
 = Special considerations for different platforms =
