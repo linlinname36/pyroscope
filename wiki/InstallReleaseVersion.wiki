@@ -13,16 +13,9 @@ On Debian, Ubuntu, and other Debian-derived distributions, do this (tested on Ha
 sudo apt-get install python-setuptools
 sudo easy_install --prefix /usr/local pyrocore
 }}}
-After that, the CommandLineTools should be immediately available in your shell prompt. In case `easy_install` prints a message containing »`error: bad install directory or PYTHONPATH`«, try to use the following commands instead:
-{{{
-sudo bash <<'EOF'
-export PYTHONPATH=/usr/local/lib/python$(python -c "import sys; print sys.version[:3]")/site-packages
-easy_install --prefix /usr/local pyrocore
-EOF
+After that, the CommandLineTools should be immediately available in your shell prompt. 
 
-# ... and only if that also doesn't succeed...
-sudo easy_install pyrocore
-}}}
+In case you have no `root` rights, or `easy_install` prints a message containing »`error: bad install directory or PYTHONPATH`«, try to InstallToPythonVirtualenv instead, and after having done so, return to this page and read on.
 
 To complete your setup, you *must change your `rtorrent.rc`* using the instructions on the UserConfiguration page, else many features of `rtcontrol` won't work as expected. You should at least *create a configuration* as described there, using the `pyroadmin --create-config` command. If you encounter any problems during installation not covered by the documentation, subscribe to the [http://groups.google.com/group/pyroscope-users pyroscope-users] mailing list to get help from the community, or join the inofficial <a href="irc://irc.freenode.net/rtorrent">`#rtorrent`</a> channel on `irc.freenode.net`.
 
@@ -36,7 +29,17 @@ Then to *update* an existing installation, use this command:
 sudo easy_install --prefix /usr/local -U pyrocore
 }}}
 
+In case you followed InstallToPythonVirtualenv, use this instead:
+{{{
+~/lib/pyroscope/bin/easy_install -U pyrocore
+}}}
+
 = Special considerations for different platforms =
+
+== Machines you have no adminstration (root) rights for ==
+If you miss the right to globally install any software, there's still hope, as long as any version of Python 2.5, 2.6 or 2.7 is installed already.
+
+In such a case, just follow InstallToPythonVirtualenv to add everything else that you need to your own account.
 
 == Debian, Ubuntu, and other Debian-derived distributions ==
 
