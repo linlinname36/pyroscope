@@ -1,0 +1,27 @@
+#summary How to get started - preparing a Pythjon runtime environment.
+<wiki:toc max_depth="2" />
+
+= Creating an isolated Python environment in your account =
+If you lack the right for global installing, or just wish to keep things separate and limited to your account, the following will allow you to do just that.
+
+*⚠ NOTE:* This assumes that any version of Python 2.5, 2.6 or 2.7 is already installed on the machine — call the command `python --version` to check.
+
+First, we create the Python virtual environment:
+{{{
+mkdir -p ~/bin ~/lib/pyroscope
+cd ~/lib/pyroscope
+wget --no-check-certificate https://github.com/pypa/virtualenv/raw/master/virtualenv.py
+python virtualenv.py --no-site-packages .
+}}}
+
+Now, continue to either install a release version as described in the next section, or from source as shown on the InstallFromSource page. The QuickStartGuide helps you to decide what's the right way for you.
+
+= Installing a release version =
+
+If you want to install a release version, the next step is all you need for success:
+{{{
+bin/easy_install pyrocore
+ln -nfs $(grep -l 'entry_point.*pyrocore==' ~/lib/pyroscope/bin/*) ~/bin/
+}}}
+
+Now head back to InstallReleaseVersion and read the "Completing your setup" section.
