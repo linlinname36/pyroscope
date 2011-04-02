@@ -42,6 +42,7 @@ Then to *update* an existing installation, use these commands:
 cd ~/lib/pyroscope
 source bin/activate
 svn update
-( cd pyrobase && git pull && paver develop -U )
+( cd pyrobase && git pull )
 ( cd pyrocore && source bootstrap.sh )
+ln -nfs $(grep -l 'entry_point.*pyrocore==' ~/lib/pyroscope/bin/*) ~/bin/
 }}}
