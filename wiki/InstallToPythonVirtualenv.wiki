@@ -10,8 +10,9 @@ First, we create the Python virtual environment:
 {{{
 mkdir -p ~/bin ~/lib/pyroscope
 cd ~/lib/pyroscope
-wget --no-check-certificate https://github.com/pypa/virtualenv/raw/master/virtualenv.py
-python virtualenv.py --no-site-packages .
+venv='https://github.com/pypa/virtualenv/raw/master/virtualenv.py'
+python -c "import urllib2; open('venv.py','w').write(urllib2.urlopen('$venv').read())"
+python venv.py --no-site-packages .
 }}}
 
 Now, continue to either install a release version as described in the next section, or from source as shown on the InstallFromSource page. The QuickStartGuide helps you to decide what's the right way for you.
