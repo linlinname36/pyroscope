@@ -221,6 +221,5 @@ cd ~/lib/pyroscope
 source bin/activate
 svn update
 git clone git://github.com/pyroscope/pyrobase.git pyrobase
-( cd pyrobase && paver develop -U )
 ( cd pyrocore && source bootstrap.sh )
 }}}
