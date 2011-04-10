@@ -12,7 +12,7 @@ Starting with version 0.4.1, you can use `scgi+ssh://[«user»@]«host»[:«port
 You also need to extend the `rtorrent.rc` of the remote instance with this snippet:
 {{{
 # COMMAND: Return startup time (can be used to calculate uptime)
-system.method.insert = startup_time,simple,"execute_capture_nothrow=stat,--printf,%Y,\"$cat=$get_session=,/rtorrent.lock\""
+system.method.insert = startup_time,value,$system.time=
 }}}
 
 For example, the following queries the remote instance ID using `rtxmlrpc`:

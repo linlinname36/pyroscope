@@ -183,7 +183,7 @@ system.method.set_key = event.download.finished,log,"print=\"COMPLETED \",$d.get
 system.method.set_key = event.download.closed,log,"print=\"CLOSED \",$d.get_name=,\" [\",$to_date=$system.time=,\"]\""
 
 # COMMAND: Return startup time (can be used to calculate uptime)
-system.method.insert = startup_time,simple,"execute_capture_nothrow=stat,--printf,%Y,\"$cat=$get_session=,/rtorrent.lock\""
+system.method.insert = startup_time,value,$system.time=
 
 
 #

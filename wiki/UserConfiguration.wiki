@@ -93,7 +93,7 @@ system.method.set_key = event.download.paused,activations,"pyro.activations.appe
 system.method.set_key = event.download.resumed,activations,"pyro.activations.append=R"
 
 # COMMAND: Return startup time (can be used to calculate uptime)
-system.method.insert = startup_time,simple,"execute_capture_nothrow=stat,--printf,%Y,\"$cat=$get_session=,/rtorrent.lock\""
+system.method.insert = startup_time,value,$system.time=
 
 # COMMAND: Remove current item and its data
 system.method.insert = cull,simple,"execute_nothrow=rtcontrol,-q,--detach,--cull,--yes,\"$cat=hash=,$d.get_hash=\""
