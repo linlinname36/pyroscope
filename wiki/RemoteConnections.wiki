@@ -9,6 +9,12 @@ Starting with version 0.4.1, you can use `scgi+ssh://[«user»@]«host»[:«port
  * you have to use either public key authentication via `authorized_keys`, or a SSH agent that holds your password.
  * the remote host needs to have the `socat` executable available (on Debian/Ubuntu, install the `socat` package).
 
+You also need to extend the `rtorrent.rc` of the remote instance with this snippet:
+{{{
+# COMMAND: Return startup time (can be used to calculate uptime)
+system.method.insert = startup_time,simple,"execute_capture_nothrow=stat,--printf,%Y,\"$cat=$get_session=,/rtorrent.lock\""
+}}}
+
 For example, the following queries the remote instance ID using `rtxmlrpc`:
 {{{
 rtxmlrpc -v -Dscgi_url=scgi+ssh://user@example.com/~/rtorrent/.scgi_local get_name
