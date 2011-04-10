@@ -91,6 +91,12 @@ system.method.set_key = event.download.finished,time_stamp,"d.set_custom=tm_comp
 system.method.insert = pyro.activations.append,simple|private,"d.set_custom=activations,\"$cat=$d.get_custom=activations,$argument.0=,$system.time=\" ;d.save_session="
 system.method.set_key = event.download.paused,activations,"pyro.activations.append=P"
 system.method.set_key = event.download.resumed,activations,"pyro.activations.append=R"
+
+# COMMAND: Return startup time (can be used to calculate uptime)
+system.method.insert = startup_time,simple,"execute_capture_nothrow=stat,--printf,%Y,\"$cat=$get_session=,/rtorrent.lock\""
+
+# COMMAND: Remove current item and its data
+system.method.insert = cull,simple,"execute_nothrow=rtcontrol,-q,--detach,--cull,--yes,\"$cat=hash=,$d.get_hash=\""
 }}}
 
 *Note that if you just freshly installed PyroScope into an existing rTorrent installation, you must also follow the "migration" instructions below to add missing data to your already loaded downloads. Else, those items will NOT be filtered correctly.*
