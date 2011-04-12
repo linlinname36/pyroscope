@@ -24,7 +24,7 @@ In time filtering conditions (e.g. for the `completed` and `loaded` fields), you
 The following conditions give you a hint on what you can do, and some building blocks for more complex conditions.
 
 || *Condition(s)*     || *Description* ||
-|| `*HDTV*`           || Anything with "HTDV" in its name||
+|| `*HDTV*`           || Anything with "HDTV" in its name||
 || `/s\d+e\d+/`       || Anything with typical TV episode numbering in its name (regex match) ||
 || `ratio=+1`         || All downloads seeded to at least 1:1 ||
 || `xfer=+0`          || All active torrents (transferring data) ||
