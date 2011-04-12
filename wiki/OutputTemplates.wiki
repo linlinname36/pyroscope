@@ -33,7 +33,7 @@ This example shows the output of such a template that resembles the `rtorstat` o
 To generate a similar result with your installation, follow these steps after updating it:
  1. Call `pyroadmin --create-config` to copy the builtin `rtorstat.html` template to your configuration.
  1. Call `rtcontrol -qO rtorstat.html done=-100 OR xfer=+0 -sdone >/var/www/cron/rtorrent.html` to create a HTML page.
- 1. Open that pages in your browser.
+ 1. Open that page in your browser.
 
 You can add the command from step #2 as a cronjob and always have a current status display; instead of copying to the local web server space, you could also put the output into your Dropbox folder to have a status display on your mobile gear.
 
