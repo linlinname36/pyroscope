@@ -88,9 +88,9 @@ alias rt2days="rtcontrol -scompleted -ocompleted,is_open,up.sz,ratio,alias,name 
 
 Before describing the possible options for output formatting in more details below, here's a short overview of the possible methods, each with an example:
  * `size.sz,name` — simple field lists, possibly with format specifiers; the fields are separated by a TAB character.
- * `'%(size.sz)s %(name)s` — string interpolation, i.e. like the above lists, but interspersed with literal text.
- * `{{d.size|sz}} {{d.name}}` — Tempitae templates, see OutputTemplates for more details.
- * `file:template.tmpl` — File URLs that point to a template file, which is especially useful for more complicated templates.
+ * `%(size.sz)s %(name)s` — string interpolation, i.e. like the above lists, but interspersed with literal text.
+ * `{{d.size|sz}} {{d.name}}` — Tempita templates, see OutputTemplates for more details.
+ * `file:template.tmpl` — File URLs that point to a template file, which is especially useful for more complicated templates. The filenames can be absolute (starting with a `/`), relative to your home (starting with a `~`), or relative to the configuration directory (anything else).
  * `«formatname»` — A name of a predefined format from the `[FORMATS]` configuration section, see `~/.pyroscope/config.ini.default` for the predefined ones (including the special `default` format).
 
 Starting with version 0.3.5, you can define custom output formats and print column headers, the `rt2days` example from the previous section becomes this:
