@@ -61,3 +61,11 @@ This will only work if permissions are given to the webserver user (normally `ww
 That can be done by making all things group-readable, and add `www-data` to the `bt` group. Also, the socket file must be group-writeable when you use one (TCP sockets are available to all users on the machine anyway).
 
 Finally, you can put a `<meta http-equiv="refresh" content="60">` into the template to automatically refresh the page every minute.
+
+
+= Listing all orphans in your download directory =
+This example shows how easily you can use templates to extract some information out of the client that is otherwise not directly available. 
+The [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/orphans.txt orphans.txt] template lists all paths in the download directory _not_ loaded into the client, and can be called like this:
+{{{
+rtcontrol -qO orphans.txt \*
+}}}
