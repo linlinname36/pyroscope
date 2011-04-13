@@ -1,4 +1,5 @@
 #summary Tempita templating for output formatting.
+<wiki:toc />
 
 = Introduction =
 One of the output formatting options described on the RtControlExamples page are Tempita templates. Compared to the other options, they offer more versatile formatting because you can use conditionals and loops, e.g. coloring the output based on some value thresholds (see the example below). A full description of the Tempita language can be found in its [http://pythonpaste.org/tempita/#the-language documentation].
