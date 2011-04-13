@@ -40,7 +40,24 @@ You can add the command from step #2 as a cronjob and always have a current stat
 
 The namespace of these templates is populated with the following objects:
  * `version` = the version of PyroScope
- * `proxy` = the client proxy
- * `view` = the view that was queried
+ * `proxy` = the client proxy (you can call any XMLRPC method on that)
+ * `view` = the [http://packages.python.org/pyrocore/apidocs/pyrocore.torrent.engine.TorrentView-class.html view] that was queried
  * `query` = the query conditions
- * `matches` = the query result
+ * `matches` = the query result (a list of [http://packages.python.org/pyrocore/apidocs/pyrocore.torrent.rtorrent.RtorrentItem-class.html item]s)
+
+
+= Running a rtorstat-like template as a cgi-bin =
+To get the output of the above example template on-demand, which likely puts less stress on the system and also gives you current information, you can add a cgi-bin wrapper to your webserver. We assume a Debian or Ubuntu Apache standard installation here, and put the cgi-bin into the file `/usr/lib/cgi-bin/rtorstat` with the following content:
+{{{
+#! /bin/bash
+echo "Content-Type: text/html; charset=UTF-8"
+echo
+
+export HOME=/home/bt
+$HOME/bin/rtcontrol -qO rtorstat.html done=-100 OR xfer=+0 -sdone
+}}}
+This will only work if permissions are given to the webserver user (normally `www-data`) to access the configuration files belonging to the `bt` user. In case you use a `scgi_local` connection (i.e. a UNIX domain socket), this also applies the the XMLRPC socket file.
+
+That can be done by making all things group-readable, and add `www-data` to the `bt` group. Also, the socket file must be group-writeable when you use one (TCP sockets are available to all users on the machine anyway).
+
+Finally, you can put a `<meta http-equiv="refresh" content="60">` into the template to automatically refresh the page every minute.
