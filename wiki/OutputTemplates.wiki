@@ -28,7 +28,7 @@ Notable here is also the use of a named default value `ESC`, and using template 
 = Using Tempita for full output control =
 If you use the `--output-template` option of `rtcontrol`, flow control of presenting the query result is passed fully to a Tempita template. That means that in addition to iterating over the query result, you can also show any value available via the RTorrent XMLRPC connection, since the proxy object that allows access to the client is passed to the template.
 
-This example shows the output of such a template that resembles the `rtorstat` output:
+This example shows the output of such a [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/rtorstat.html template that resembles the `rtorstat` output]:
 || https://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/rtorstat.png ||
 
 To generate a similar result with your installation, follow these steps after updating it:
