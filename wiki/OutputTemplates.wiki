@@ -21,6 +21,8 @@ colored     = {{default ESC = '\x1B'}}{{d.size|sz}} {{d.uploaded|sz}} {{#
 The main reason to use Tempita here are the if conditions that color the output depending on threshold values, for the ratio and seed time columns. 
 Additionally to what Tempita provides, the global namespace of the template contains the usual format specifiers (see the output of the `--help-fields` option), and the current result item as `d` (think *`d`*ownload item).
 
+If you look at some of the if conditions, you might find them peculiar, especially the `{{if type(d.ratio) is float}}` one. This is so that the column headers, which are obviously not the usual float values but strings, are exempt from any special coloring. Similarly, the `{{d.name or ''}}` caters for the fact that when you use `rtcontrol`'s `--summary` option, fields that could normally never be `None` suddenly are — because what's the average of a string, really?
+
 Notable here is also the use of a named default value `ESC`, and using template comments `{{#}}` to escape the line endings we don't want to have in the final output, which looks like this:
  http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/rtcontrol-colors.png
 
