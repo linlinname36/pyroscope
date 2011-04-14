@@ -7,7 +7,7 @@
 
 After you installed the software as outlined on QuickStartGuide, you need to add personal configuration that is loaded from the directory `~/.pyroscope` containing the files `config.ini` and `config.py`. A default set can be automatically created for you, see below for details.
 
-*IMPORTANT: For a fresh installation in addition to an older rTorrent one, you will also need to follow the "migration" instructions further below, which fill in some data your already running rTorrent instance is missing otherwise.*
+*IMPORTANT: For a fresh installation in addition to an existing rTorrent one, you will also need to follow the "migration" instructions further below, which fill in some data your already running rTorrent instance is missing otherwise.*
 
 For simple setups, you only need to edit the plain text file `config.ini`. The script `config.py` allows much more detailed control over complex setups, at the price of you knowing at least the basics of the Python programming language.
 
