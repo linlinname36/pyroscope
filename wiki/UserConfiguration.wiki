@@ -219,7 +219,7 @@ tar cvfz ~/session-backup-0.3.6.tgz $(echo $(rtxmlrpc get_session)/ | tr -s / /)
 
 
 == Migrating to version 0.4.1 ==
-There is a new dependency on the `pyrobase` package, and for *release version installations*, it will be managed transparently — you have nothing to worry about, just follow the updating instructions from InstallReleaseVersion.
+There is a new dependency on the `pyrobase` package, and for *release version installations*, it will be managed transparently — you have nothing to worry about, just follow the updating instructions from InstallReleaseVersion, and then see below for the required steps after updating.
 
 On the other hand, if you have an *installation from source*, it's important that you add the new dependency _also_ from source, because otherwise your installation will break during further development (since then, you'd remain on the _released_ version of `pyrobase`). So, call these commands (assuming the standard installation paths):
 {{{
