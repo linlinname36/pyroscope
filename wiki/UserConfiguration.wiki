@@ -233,3 +233,4 @@ git clone git://github.com/pyroscope/pyrobase.git pyrobase
 In addition, follow these steps:
  # You *must* add the new `startup_time` command, and you _should_ add the `cull` command (see "Extending your `.rtorrent.rc`" above).
  # Call `pyroadmin --create-config` to add the new builtin [OutputTemplates Tempita templates] to your configuration.
+ # To get bash completion for the PyroScope commands, source the file `~/.pyroscope/bash-completion` in your `~./bashrc`, or copy it to `/etc/bash_completion.d/pyrocore`.
