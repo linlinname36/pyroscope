@@ -73,6 +73,8 @@ To display the example, run these commands, assuming you have conky already inst
  # `pyroadmin --create-config`
  # `conky -c ~/.pyroscope/templates/conky/conkyrc`
 
+If you change the `execpi` in the conky configuration to call a remotely installed `rtcontrol` via `ssh`, you can also beam the status of a remote RTorrent instance onto your desktop. It is advisable to increase the poll intervall to at least 15 seconds in that case. Note that this setup means you have the `.conkyrc` on your local host, but the template used is on the remote host!
+
 
 = Listing all orphans in your download directory =
 This example shows how easily you can use templates to extract some information out of the client that is otherwise not directly available. 
