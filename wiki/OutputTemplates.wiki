@@ -66,7 +66,7 @@ Finally, you can put a `<meta http-equiv="refresh" content="60">` into the templ
 
 
 = Adding a RTorrent status display to `conky` =
-You can add a status display to the well-known `conky` system monitor tool by using the [http://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/templates/rtorstat.html conky rtorstat template]:
+You can add a status display to the well-known `conky` system monitor tool by using the [http://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/templates/conky/rtorstat.txt conky rtorstat template]:
 || http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/conky-rtorstat.png ||
 
 To display the example, run these commands, assuming you have conky already installed:
