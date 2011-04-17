@@ -25,6 +25,4 @@ If you want to install a release version, the next step is all you need for succ
 ~/lib/pyroscope/bin/easy_install pyrocore
 ln -nfs $(grep -l 'entry_point.*pyrocore==' ~/lib/pyroscope/bin/*) ~/bin/
 }}}
-And yes, this requires you to [http://linux.about.com/od/linux101/l/blnewbie3_1_4.htm add ~/bin to your PATH].
-
-Now head back to [InstallReleaseVersion#Completing_your_setup].
+And yes, this requires you to [http://linux.about.com/od/linux101/l/blnewbie3_1_4.htm add ~/bin to your PATH], if you didn't do that yet. Now head back to [InstallReleaseVersion#Completing_your_setup].
