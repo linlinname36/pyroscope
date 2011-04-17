@@ -58,20 +58,11 @@ https://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/videos/rtcontrol-curses
 Just add this to your `.rtorrent.rc`:
 {{{
 # VIEW: Use rtcontrol filter (^X s=KEYWORD, ^X t=TRACKER, ^X f="FILTER")
-system.method.insert = s,simple,"execute_nothrow=rt-search,\"$cat=*,$argument.0=,*\""
-system.method.insert = t,simple,"execute_nothrow=rt-search,\"$cat=\\\"alias=\\\",$argument.0=\""
-system.method.insert = f,simple,"execute_nothrow=rt-search,$argument.0="
+system.method.insert = s,simple,"execute_nothrow=rtcontrol,--detach,-qV,\"$cat=*,$argument.0=,*\""
+system.method.insert = t,simple,"execute_nothrow=rtcontrol,--detach,-qV,\"$cat=\\\"alias=\\\",$argument.0=\""
+system.method.insert = f,simple,"execute_nothrow=rtcontrol,--detach,-qV,$argument.0="
 }}}
-You can of course add as many commands as you like, and include sorting options and whatever else rtcontrol offers.
-To make it work, you'll also need a helper script, create it like this:
-{{{
-cat >~/bin/rt-search <<'EOF'
-#! /bin/bash
-# Helper to call rtcontrol filtering from within the rtorrent curses UI
-( set +x && sleep .05 && rtcontrol -q -V "$@" ) &
-EOF
-chmod a+x ~/bin/rt-search
-}}}
+You can of course add as many commands as you like, and include sorting options and whatever else `rtcontrol` offers.
 
 
 = Reports =
