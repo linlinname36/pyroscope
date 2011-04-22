@@ -1,5 +1,5 @@
 #summary How to get started - installation and first steps.
-#labels installation,configuration,cli
+#labels installation,configuration,cli,Featured
 
 = Installing the command line tools =
 
