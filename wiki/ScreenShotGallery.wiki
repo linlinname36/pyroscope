@@ -1,4 +1,5 @@
 #summary Screenshots of template examples and typical commands
+#labels Featured
 <wiki:toc/>
 
 == Conky status display ==
