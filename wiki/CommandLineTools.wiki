@@ -1,5 +1,5 @@
 #summary PyroScope CLI Tools Overview.
-#labels cli,shell
+#labels cli,shell,Featured
 <wiki:toc max_depth="2" />
 
 See QuickStartGuide on how to install these commands on your computer.
