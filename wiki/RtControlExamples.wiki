@@ -1,5 +1,5 @@
 #summary Real-world use-cases for rtcontrol.
-#labels shell,cron
+#labels shell,cron,Featured
 See also RtXmlRpcExamples.
 
 _Contents_ <wiki:toc max_depth="2" />
