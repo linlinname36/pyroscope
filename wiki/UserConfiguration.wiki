@@ -1,5 +1,5 @@
 #summary PyroScope configuration.
-#labels configuration,installation,cli
+#labels configuration,installation,cli,Featured
 
 <wiki:toc />
 
