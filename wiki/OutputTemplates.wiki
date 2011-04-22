@@ -28,7 +28,7 @@ Notable here is also the use of a named default value `ESC`, and using template 
 
 
 = Using Tempita for full output control =
-If you use the `--output-template` option of `rtcontrol`, flow control of presenting the query result is passed fully to a Tempita template. That means that in addition to iterating over the query result, you can also show any value available via the RTorrent XMLRPC connection, since the proxy object that allows access to the client is passed to the template.
+If you use the `--output-template` option of `rtcontrol`, flow control of presenting the query result is passed fully to a Tempita template. That means that in addition to iterating over the query result, you can also show any value available via the rTorrent XMLRPC connection, since the proxy object that allows access to the client is passed to the template.
 
 This example shows the output of such a [http://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/templates/rtorstat.html template that resembles the rtorstat output]:
 || http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/rtorstat.png ||
@@ -65,7 +65,7 @@ That can be done by making all things group-readable, and add `www-data` to the 
 Finally, you can put a `<meta http-equiv="refresh" content="60">` into the template to automatically refresh the page every minute.
 
 
-= Adding a RTorrent status display to `conky` =
+= Adding a rTorrent status display to `conky` =
 You can add a status display to the well-known `conky` system monitor tool by using the [http://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/templates/conky/rtorstat.txt conky rtorstat template]:
 || http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/conky-rtorstat.png ||
 
@@ -73,7 +73,7 @@ To display the example, run these commands, assuming you have conky already inst
  # `pyroadmin --create-config`
  # `conky -c ~/.pyroscope/templates/conky/conkyrc`
 
-If you change the `execpi` in the conky configuration to call a remotely installed `rtcontrol` via `ssh`, you can also beam the status of a remote RTorrent instance onto your desktop. It is advisable to increase the poll intervall to at least 15 seconds in that case. Note that this setup means you have the `.conkyrc` on your local host, but the template used is on the remote host!
+If you change the `execpi` in the conky configuration to call a remotely installed `rtcontrol` via `ssh`, you can also beam the status of a remote rTorrent instance onto your desktop. It is advisable to increase the poll intervall to at least 15 seconds in that case. Note that this setup means you have the `.conkyrc` on your local host, but the template used is on the remote host!
 
 
 = Listing all orphans in your download directory =

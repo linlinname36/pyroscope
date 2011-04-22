@@ -1,4 +1,4 @@
-#summary A screenlet to display RTorrent and PyroScope status information.
+#summary A screenlet to display rTorrent and PyroScope status information.
 #labels screenlet,desktop,application
 
 Watch this space for things to come...<br/>
