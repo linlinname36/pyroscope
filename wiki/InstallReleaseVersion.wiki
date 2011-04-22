@@ -64,4 +64,4 @@ Then use the `easy_install` command shown in the first section to download and i
 
 On Windows, just use `easy_install pyrocore` in `cmd.exe` after [http://www.python.org/download/ installing Python] and `setuptools` as [http://pypi.python.org/pypi/setuptools/ described here].
 
-Note that on Windows, you are limited to using the tools that allow the handling of torrent files. There seems to be a Cygwin port of RTorrent for Windows, but there are no reports of any such installation working together with PyroScope.
+Note that on Windows, you are limited to using the tools that allow the handling of torrent files. There seems to be a Cygwin port of rTorrent for Windows, but there are no reports of any such installation working together with PyroScope.
