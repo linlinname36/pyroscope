@@ -220,6 +220,10 @@ system.method.insert = s,simple,"execute_nothrow=RT_HOME/rt-search,\"$cat=*,$arg
 system.method.insert = t,simple,"execute_nothrow=RT_HOME/rt-search,\"$cat=\\\"alias=\\\",$argument.0=\""
 system.method.insert = f,simple,"execute_nothrow=RT_HOME/rt-search,$argument.0="
 
+# COMMAND: Housekeeping (delete item + data)
+system.method.insert = purge,simple,"execute_nothrow=rtcontrol,-q,--detach,--purge,--yes,\"$cat=hash=,$d.get_hash=\""
+system.method.insert = cull,simple,"execute_nothrow=rtcontrol,-q,--detach,--cull,--yes,\"$cat=hash=,$d.get_hash=\""
+
 ### END rtorrent.rc #########################################################
 EOF
 }}}
