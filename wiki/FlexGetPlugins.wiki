@@ -4,7 +4,7 @@
 = Configuration steps to activate the rTorrent plugins =
 *TODO:* Describe how to activate it.
 
-*⚠ IMPORTANT:* Note that you need to run a reasonably recent FlexGet 1.0 beta installation to successfully use these plugins. More on setting up Flexget can be found on its [http://flexget.com/wiki/Install homepage].
+*⚠ IMPORTANT:* Note that you need to run a reasonably recent FlexGet 1.0 beta installation to successfully use these plugins. More on setting up FlexGet can be found on its [http://flexget.com/wiki/Install homepage].
 
 
 = Loading accepted items directly into rTorrent =
