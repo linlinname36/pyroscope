@@ -38,14 +38,14 @@ The `rtorrent` plugin is probably the one most useful to people that use both rT
 The following options can be used to configure the plugin's behaviour. Many of them have semantics identical to that of the [http://flexget.com/wiki/Plugins/deluge#Options Deluge plugin], making it easier to share configurations.
 
 || *Name* || *Default* || *Description* ||
-|| `connection` || from `rtorrent.rc` || The SCGI connection URL to the client ||
+|| `connection` || from `rtorrent.rc` || The SCGI connection URL for the client. ||
 || `path` || from `rtorrent.rc` || The download location (directory). ||
 || `movedone` || Don't move (unset) || The location the downloaded data will be moved to on completion. The rules regarding target paths as described for [CommandLineTools#rtmv rtmv] do apply. *TODO: find out where rutorrent stores this* ||
 || `start` || `yes` || Start items immediately? ||
 || `ignore` || `no` || Set item to ignore commands? ||
 || `label` || `???` || Set custom field "`label`". *TODO: find out where rutorrent stores this* ||
 || `custom` || No custom fields || List of custom fields to set. *TODO: Details / Examples* ||
-|| `throttle` || `none` || Name of throttle group to put items into (`null` = unlimited, `none` = global) ||
+|| `throttle` || `none` || Name of throttle group to put items into (`null` = unlimited, `none` = global). ||
 || `` || `` || ... more? *TODO* ||
 
 Note that many of the above settings can be used on a per-entry basis, if you add them e.g. via the `settings` plugin. *NOT IMPLEMENTED YET / LIST THEM*
