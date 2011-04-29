@@ -23,7 +23,7 @@ The following options can be used to configure the plugin's behaviour. Many of t
 || *Name* || *Default* || *Description* ||
 || `connection` || from `rtorrent.rc` || The SCGI connection URL to the client ||
 || `path` || from `rtorrent.rc` || The download location (directory). ||
-|| `movedone` || Don't move (unset) || The location files will be moved when torrent finishes. *TODO: find out where rutorrent stores this* ||
+|| `movedone` || Don't move (unset) || The location the downloaded data will be moved to on completion. The rules regarding target paths as described for [CommandLineTools#rtmv rtmv] do apply. *TODO: find out where rutorrent stores this* ||
 || `start` || `yes` || Start items immediately? ||
 || `ignore` || `no` || Set item to ignore commands? ||
 || `label` || `???` || Set custom field "`label`". *TODO: find out where rutorrent stores this* ||
