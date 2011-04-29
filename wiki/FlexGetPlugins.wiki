@@ -18,20 +18,21 @@ The `rtorrent` plugin is probably the one most useful to people that use both rT
 
 
 == `rtorrent` options ==
-The following options can be used to configure the plugin's behaviour:
-|| *Name* || *Default* || *Description* ||
-|| `start` || `yes` || Start items immediately? ||
-|| `` || `` || ||
-|| `` || `` || ||
-|| `` || `` || ||
-|| `` || `` || ||
-|| `` || `` || ||
-|| `` || `` || ||
-|| `` || `` || ||
-|| `throttle` || `none` || Name of throttle group to put items into (`null` = unlimited, `none` = global) ||
-|| `` || ... more? *TODO* ||
+The following options can be used to configure the plugin's behaviour. Many of them have semantics identical to that of the [http://flexget.com/wiki/Plugins/deluge#Options Deluge plugin], making it easier to share configurations.
 
-Note that many of the above settings can be used on a per-entry basis, if you add them e.g. via the `settings` plugin. *NOT IMPLEMENTED YET*
+|| *Name* || *Default* || *Description* ||
+|| `connection` || from `rtorrent.rc` || The SCGI connection URL to the client ||
+|| `path` || from `rtorrent.rc` || The download location (directory). ||
+|| `movedone` || Don't move (unset) || The location files will be moved when torrent finishes. *TODO: find out where rutorrent stores this* ||
+|| `start` || `yes` || Start items immediately? ||
+|| `ignore` || `no` || Set item to ignore commands? ||
+|| `label` || `???` || Set custom field "`label`". *TODO: find out where rutorrent stores this* ||
+|| `custom` || No custom fields || List of custom fields to set. *TODO: Details / Examples* ||
+|| `throttle` || `none` || Name of throttle group to put items into (`null` = unlimited, `none` = global) ||
+|| `` || `` || ... more? *TODO* ||
+
+Note that many of the above settings can be used on a per-entry basis, if you add them e.g. via the `settings` plugin. *NOT IMPLEMENTED YET / LIST THEM*
+
 
 == Advanced usage ==
 As with the Deluge plugin, you can [http://flexget.com/wiki/Cookbook/Series/DelugeMovedone use the settings plugin] to add custom fields to any entry, which are then used by the rTorrent plugin. *NOT IMPLEMENTED YET*
