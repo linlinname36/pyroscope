@@ -1,14 +1,51 @@
 #summary PyroScope Plugins for FlexGet.
+<wiki:toc max_depth="2" />
 
+= Configuration steps to activate the rTorrent plugins =
 *TODO:* Describe how to activate it.
 
-*TODO:* Describe syntax in more detail.
-
-Plugins: rtorrent, pyro_reject_if, pyro_accept_if, pyro_reject_if_download, pyro_accept_if_download
+*⚠ IMPORTANT:* Note that you need to run a reasonably recent FlexGet 1.0 beta installation to successfully use these plugins.
 
 
-== Examples ==
+= Loading accepted items directly into rTorrent =
+The `rtorrent` plugin is probably the one most useful to people that use both rTorrent and FlexGet. It's a FlexGet output plugin that ...
 
+*TODO:* More details...
+ * Connection settings
+ * Custom fields
+ * Defaults
+
+Recommended configuration: *TODO*
+{{{
+feeds:
+  using_defaults:
+    rtorrent: yes
+    ...
+}}}
+
+More examples: *TODO*
+{{{
+feeds:
+  using_defaults:
+    rtorrent: yes
+    ...
+}}}
+
+
+= Using items loaded into rTorrent as a feed =
+
+*TODO:* More details...
+
+
+= Using filter expressions =
+
+*TODO:* Describe syntax extensions in more detail.
+Link to FlexGet page with fields listing.
+
+Plugins: pyro_reject_if, pyro_accept_if, pyro_reject_if_download, pyro_accept_if_download
+
+
+Examples:
 {{{
 feeds:
   good_movies:
