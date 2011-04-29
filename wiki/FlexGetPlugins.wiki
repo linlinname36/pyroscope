@@ -8,17 +8,28 @@
 
 
 = Loading accepted items directly into rTorrent =
-The `rtorrent` plugin is probably the one most useful to people that use both rTorrent and FlexGet. It's a FlexGet output plugin that ...
+== Introduction to the `rtorrent` plugin ==
+The `rtorrent` plugin is probably the one most useful to people that use both rTorrent and FlexGet. It's a FlexGet output plugin similar to the [http://flexget.com/wiki/Plugins/deluge Deluge one] that ...
 
 *TODO:* More details...
  * Connection settings
  * Custom fields
  * Defaults
 
+
+== Advanced usage ==
+As with the Deluge plugin, you can [http://flexget.com/wiki/Cookbook/Series/DelugeMovedone use the settings plugin] to add custom fields to any entry, which are then used by the rTorrent plugin. *NOT IMPLEMENTED YET*
+
+== Configuration examples ==
+
 Recommended configuration: *TODO*
 {{{
+presets:
+  global:
+    torrent_scrub: rtorrent
+
 feeds:
-  using_defaults:
+  recommended:
     rtorrent: yes
     ...
 }}}
@@ -28,6 +39,21 @@ More examples: *TODO*
 feeds:
   using_defaults:
     rtorrent: yes
+    ...
+}}}
+
+
+= Filtering entries based on rTorrent's status =
+
+The `rtorrent_filter` plugin allows you to reject items based on what's already loaded into your client.
+
+*TODO:* More details...
+
+Examples: *TODO*
+{{{
+feeds:
+  using_defaults:
+    rtorrent_filter: yes
     ...
 }}}
 
