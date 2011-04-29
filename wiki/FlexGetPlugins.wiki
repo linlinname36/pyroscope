@@ -2,9 +2,26 @@
 <wiki:toc max_depth="2" />
 
 = Configuration steps to activate the rTorrent plugins =
-*TODO:* Describe how to activate it.
+To add the PyroScope plugins to your FlexGet installation, you just need to execute the following commands:
+{{{
+mkdir -p ~/.flexget/plugins
+cat <<'EOF' >~/.flexget/plugins/pyroflex.py
+from pyrocore.flexget import *
+EOF
+}}}
+Check whether this worked by running the command `flexget --doc rtorrent`. 
 
 *⚠ IMPORTANT:* Note that you need to run a reasonably recent FlexGet 1.0 beta installation to successfully use these plugins. More on setting up FlexGet can be found on its [http://flexget.com/wiki/Install homepage].
+Also, both FlexGet and PyroScope need to be installed into the system Python interpreter, or alternatively the same virtualenv.
+In case you have different environments set up for FlexGet and PyroScope (via InstallToPythonVirtualenv), you can easily add that existing installation to a different FlexGet virtualenv, like this:
+{{{
+. ~/lib/flexget/bin/activate 
+easy_install -U "setuptools>=0.6c11"
+easy_install -U "paver>=1.0"
+cd ~/lib/pyroscope
+( cd pyrobase && paver develop -U )
+( cd pyrocore && paver develop -U )
+}}}
 
 
 = Loading accepted items directly into rTorrent =
