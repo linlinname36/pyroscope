@@ -187,8 +187,12 @@ Just select the item you want to annihilate and enter `cull=` into the command p
 Starting with version 0.3.10, the `--purge` option (a/k/a `--delete-partial`) allows you to not only delete the selected items from the client, but at the same time delete any incomplete files contained in them (i.e. files that are part of an incomplete chunk).
 
 For technical reasons, rTorrent has to create files that you have deselected from download to save data of chunks that border selected files, and this option can be a great time saver, especially on large torrents containing hundreds of files.
-
 So, unless you have filtered out incomplete items by the appropriate conditions, using `--purge` instead of `--delete` is always the better option.
+
+As with `--cull`, a shortcut command to call this from the curses UI is useful:
+{{{
+system.method.insert = purge,simple,"execute_nothrow=rtcontrol,-q,--detach,--purge,--yes,\"$cat=hash=,$d.get_hash=\""
+}}}
 
 
 = Performing periodic tasks (cron jobs) =
