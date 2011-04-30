@@ -33,6 +33,10 @@
    * [http://libtorrent.rakshasa.no/ rTorrent Homepage]
 
 *Wiki Navigation*
+ * [WikiSideBar Index]
  * [http://code.google.com/p/pyroscope/w/list?can=1&q=&sort=-changed+pagename Recent changes]
  * [http://code.google.com/p/pyroscope/w/list?can=3 Featured pages]
- * [WikiSideBar Index]
+ * Topics
+   * [http://code.google.com/p/pyroscope/w/list?can=2&q=label%3Ainstallation Installation]
+   * [http://code.google.com/p/pyroscope/w/list?can=2&q=label%3Aconfiguration Configuration]
+   * [http://code.google.com/p/pyroscope/w/list?can=2&q=label%3Acli Command line]
