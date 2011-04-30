@@ -11,9 +11,7 @@
 To add the PyroScope plugins to your FlexGet installation, you just need to execute the following commands:
 {{{
 mkdir -p ~/.flexget/plugins
-cat <<'EOF' >~/.flexget/plugins/pyroflex.py
-from pyrocore.flexget import *
-EOF
+echo "from pyrocore.flexget import *" >~/.flexget/plugins/pyroflex.py
 }}}
 Check whether this worked by running the command `flexget --doc rtorrent`. 
 
