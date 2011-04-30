@@ -1,4 +1,5 @@
 #summary Tempita templating for output formatting.
+#labels configuration,cli
 <wiki:toc />
 
 = Introduction =

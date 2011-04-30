@@ -1,5 +1,5 @@
 #summary Real-world use-cases for rtxmlrpc.
-#labels shell,cli,xmlrpc
+#labels configuration,shell,cli,xmlrpc
 See also RtControlExamples and RtXmlRpcReference.
 
 _Contents_ <wiki:toc max_depth="2" />
