@@ -49,7 +49,7 @@ The following options can be used to configure the plugin's behaviour. Many of t
 || `start` || `yes` || Start items immediately? ||
 || `ignore` || `no` || Set item to ignore commands? ||
 || `label` || `???` || Set custom field "`label`". *TODO: find out where rutorrent stores this* ||
-|| `custom` || No custom fields || List of custom fields to set. *TODO: Details / Examples* ||
+|| `fields` || No custom fields || List of custom fields to set. *TODO: Details / Examples* ||
 || `throttle` || `none` || Name of throttle group to put items into (`null` = unlimited, `none` = global). ||
 || `` || `` || ... more? *TODO* ||
 
