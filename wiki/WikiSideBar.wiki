@@ -4,33 +4,27 @@
 
  * [PyroScope Introduction]
  * [ScreenShotGallery Screenshots]
-
  * [QuickStartGuide Installation Guide]
    * [InstallReleaseVersion Official release]
    * [InstallToPythonVirtualenv Isolated runtime environment]
    * [InstallFromSource Development version]
    * [DebianInstallFromSource Linux setup from scratch]
-
  * [UserConfiguration Configuration]
-
  * Usage
    * [CommandLineTools CLI Tools Overview]
    * [RtControlExamples Using rtcontrol]
    * [OutputTemplates Templating]
    * [FlexGetPlugins FlexGet plugins]
    * [PyroScopeScreenlet Desktop screenlet]
-
  * Advanced Concepts
    * [RtXmlRpcExamples Using rtxmlrpc]
    * [WriteYourOwnScripts Python scripts]
    * [RemoteConnections Connecting via SSH]
    * [ExperimentalStuff Experimental features]
-
  * Reference
    * [http://packages.python.org/pyrocore/apidocs/ pyrocore API]
    * [RtXmlRpcReference rTorrent XMLRPC]
    * [BitTorrent BitTorrent protocol]
-
  * Links
    * [https://www.ohloh.net/p/pyroscope/ ohloh]
    * [http://freshmeat.net/projects/pyrocore freshmeat]
