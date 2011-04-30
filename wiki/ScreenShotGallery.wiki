@@ -11,6 +11,9 @@
 == Searching in the curses interface ==
 || https://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/videos/rtcontrol-curses.gif||
 
+== Bash completion ==
+|| https://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/videos/bash-completion.gif ||
+
 == Colored rtcontrol output ==
 || http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/rtcontrol-colors.png ||
 
