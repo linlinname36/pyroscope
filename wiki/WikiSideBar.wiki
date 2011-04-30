@@ -1,5 +1,7 @@
 #summary A map of the wiki content.
 
+= Wiki Contents =
+
  * [QuickStartGuide Installation Guide]
    * [InstallReleaseVersion Install an official release]
    * [InstallToPythonVirtualenv Create an isolated runtime environment]
