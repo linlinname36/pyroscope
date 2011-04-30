@@ -15,6 +15,7 @@
    * [CommandLineTools CLI Tools Overview]
    * [RtControlExamples Using rtcontrol]
    * [OutputTemplates Templating]
+   * [BashCompletion Bash completion]
    * [FlexGetPlugins FlexGet plugins]
    * [PyroScopeScreenlet Desktop screenlet]
  * Advanced Concepts
