@@ -30,3 +30,8 @@
    * [http://freshmeat.net/projects/pyrocore freshmeat]
    * [http://groups.google.com/group/pyroscope-users User Mailing List]
    * [http://libtorrent.rakshasa.no/ rTorrent Homepage]
+
+*Wiki Navigation*
+ * [http://code.google.com/p/pyroscope/w/list?can=1&q=&sort=-changed+pagename Recent changes]
+ * [http://code.google.com/p/pyroscope/w/list?can=3 Featured pages]
+ * [WikiSideBar Index]
