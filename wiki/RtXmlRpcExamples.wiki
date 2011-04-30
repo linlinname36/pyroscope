@@ -168,3 +168,6 @@ if test $(rtxmlrpc get_download_rate) -ne $down; then
 fi
 }}}
 Add it to your crontab and run it every few minutes.
+
+
+<iframe src="http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/rt-backseat" width="600" height="300"/>
