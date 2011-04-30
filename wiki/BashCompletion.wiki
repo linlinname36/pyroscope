@@ -16,7 +16,7 @@ To add `pyrocore`'s completion definitions to your shell, call these commands:
 {{{
 pyroadmin --create-config 
 touch ~/.bash_completion
-grep /\.pyroscope/ .bash_completion >/dev/null || \
+grep /\.pyroscope/ ~/.bash_completion >/dev/null || \
     echo >>.bash_completion ". ~/.pyroscope/bash-completion.default"
 . /etc/bash_completion
 }}}
