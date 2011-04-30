@@ -1,11 +1,38 @@
 #summary A map of the wiki content.
 
-= Wiki Contents =
+*Documentation Index*
+
+ * [PyroScope Introduction]
+ * [ScreenShotGallery Screenshots]
 
  * [QuickStartGuide Installation Guide]
-   * [InstallReleaseVersion Install an official release]
-   * [InstallToPythonVirtualenv Create an isolated runtime environment]
-   * [InstallFromSource Install current development version]
-   * [DebianInstallFromSource Install rTorrent and PyroScope from scratch]
- * Miscellaneous
+   * [InstallReleaseVersion Official release]
+   * [InstallToPythonVirtualenv Isolated runtime environment]
+   * [InstallFromSource Development version]
+   * [DebianInstallFromSource Linux setup from scratch]
+
+ * [UserConfiguration Configuration]
+
+ * Usage
+   * [CommandLineTools CLI Tools Overview]
+   * [RtControlExamples Using rtcontrol]
+   * [OutputTemplates Templating]
+   * [FlexGetPlugins FlexGet plugins]
+   * [PyroScopeScreenlet Desktop screenlet]
+
+ * Advanced Concepts
+   * [RtXmlRpcExamples Using rtxmlrpc]
+   * [WriteYourOwnScripts Python scripts]
+   * [RemoteConnections Connecting via SSH]
+   * [ExperimentalStuff Experimental features]
+
+ * Reference
+   * [http://packages.python.org/pyrocore/apidocs/ pyrocore API]
+   * [RtXmlRpcReference rTorrent XMLRPC]
    * [BitTorrent BitTorrent protocol]
+
+ * Links
+   * [https://www.ohloh.net/p/pyroscope/ ohloh]
+   * [http://freshmeat.net/projects/pyrocore freshmeat]
+   * [http://groups.google.com/group/pyroscope-users User Mailing List]
+   * [http://libtorrent.rakshasa.no/ rTorrent Homepage]
