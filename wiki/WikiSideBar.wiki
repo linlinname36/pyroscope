@@ -1,5 +1,5 @@
 #summary A map of the wiki content.
-#sidebar 
+#sidebar ,
 
 *Documentation Index*
 
