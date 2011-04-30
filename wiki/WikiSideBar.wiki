@@ -6,7 +6,7 @@
  * [ScreenShotGallery Screenshots]
  * [QuickStartGuide Installation Guide]
    * [InstallReleaseVersion Official release]
-   * [InstallToPythonVirtualenv Isolated runtime environment]
+   * [InstallToPythonVirtualenv Virtual environment]
    * [InstallFromSource Development version]
    * [DebianInstallFromSource Linux setup from scratch]
  * [UserConfiguration Configuration]
