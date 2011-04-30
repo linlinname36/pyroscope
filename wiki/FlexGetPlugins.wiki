@@ -1,6 +1,11 @@
 #summary PyroScope Plugins for FlexGet.
 <wiki:toc max_depth="2" />
 
+*⚠ IMPLEMENTATION STATUS:* In SVN head, the following is implemented:
+ * the "filter" plugins, but docs need to be written
+ * "torrent_view" needs some refactoring for better configuration (no globals)
+
+
 = Configuration steps to activate the rTorrent plugins =
 To add the PyroScope plugins to your FlexGet installation, you just need to execute the following commands:
 {{{
@@ -38,9 +43,10 @@ The `rtorrent` plugin is probably the one most useful to people that use both rT
 The following options can be used to configure the plugin's behaviour. Many of them have semantics identical to that of the [http://flexget.com/wiki/Plugins/deluge#Options Deluge plugin], making it easier to share configurations.
 
 || *Name* || *Default* || *Description* ||
-|| `connection` || from `rtorrent.rc` || The SCGI connection URL for the client. ||
-|| `path` || from `rtorrent.rc` || The download location (directory). ||
+|| `connection` || from `~/.rtorrent.rc` || The SCGI connection URL for the client. ||
+|| `path` || from `~/.rtorrent.rc` || The download location (directory). ||
 || `movedone` || Don't move (unset) || The location the downloaded data will be moved to on completion. The rules regarding target paths as described for [CommandLineTools#rtmv rtmv] do apply. *TODO: find out where rutorrent stores this* ||
+|| `cmd_done` || None || A specific command that will be executed on completion. ||
 || `start` || `yes` || Start items immediately? ||
 || `ignore` || `no` || Set item to ignore commands? ||
 || `label` || `???` || Set custom field "`label`". *TODO: find out where rutorrent stores this* ||
@@ -51,8 +57,16 @@ The following options can be used to configure the plugin's behaviour. Many of t
 Note that many of the above settings can be used on a per-entry basis, if you add them e.g. via the `settings` plugin. *NOT IMPLEMENTED YET / LIST THEM*
 
 
+== Necessary `~/.rtorrent.rc` extensions ==
+For the `movedone` and `cmd_done` options to work as expected, you need some additions to your `~/.rtorrent.rc` of course. The easiest way to achieve that is adding these lines: *TODO*
+{{{
+...
+}}}
+
+
 == Advanced usage ==
 As with the Deluge plugin, you can [http://flexget.com/wiki/Cookbook/Series/DelugeMovedone use the settings plugin] to add custom fields to any entry, which are then used by the rTorrent plugin. *NOT IMPLEMENTED YET*
+
 
 == Configuration examples ==
 
