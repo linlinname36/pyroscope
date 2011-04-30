@@ -46,7 +46,7 @@ The following options can be used to configure the plugin's behaviour. Many of t
 || `connection` || from `~/.rtorrent.rc` || The SCGI connection URL for the client. ||
 || `path` || from `~/.rtorrent.rc` || The download location (directory). ||
 || `movedone` || Don't move (unset) || The location the downloaded data will be moved to on completion. The rules regarding target paths as described for [CommandLineTools#rtmv rtmv] do apply. *TODO: find out where rutorrent stores this* ||
-|| `cmd_done` || None || A specific command that will be executed on completion. ||
+|| `cmd_done` || None || A specific command that will be executed on completion. See the following section for details. ||
 || `start` || `yes` || Start items immediately? ||
 || `ignore` || `no` || Set item to ignore commands? ||
 || `label` || `???` || Set custom field "`label`". *TODO: find out where rutorrent stores this* ||
@@ -62,6 +62,7 @@ For the `movedone` and `cmd_done` options to work as expected, you need some add
 {{{
 ...
 }}}
+Note that the support for `cmd_done` needs to be enabled explicitely, since it can pose a security risk, especially when you're not the only one with access to your FlexGet configuration (e.g. via the web UI). In such cases, you're better off with setting some custom value, on which a statically configured script can react accordingly. (*TODO* how enable it?)
 
 
 == Advanced usage ==
