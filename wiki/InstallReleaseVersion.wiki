@@ -1,5 +1,5 @@
 #summary How to get started - installation and first steps.
-#labels installation,configuration,cli
+#labels installation
 <wiki:toc max_depth="2" />
 
 = Installing a release version =

@@ -1,5 +1,5 @@
 #summary How to get started - preparing a Python runtime environment.
-#labels installation,configuration
+#labels installation
 <wiki:toc max_depth="2" />
 
 = Creating an isolated Python environment in your account =
