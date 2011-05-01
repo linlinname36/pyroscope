@@ -74,14 +74,6 @@ cd $(dirname $0)
 rtorrent -n -o import=$PWD/rtorrent.rc 
 EOF
 chmod a+x ./start
-
-# make helper script
-cat >./rt-search <<'EOF'
-#! /bin/bash
-# Helper to call rtcontrol filtering from within the rtorrent curses UI
-( set +x && sleep .05 && rtcontrol -q -V "$@" ) &
-EOF
-chmod a+x ./rt-search
 }}}
 
 Next, a not-so-simple `rtorrent.rc` is created, it already contains everything needed to use all features of PyroScope — you should check at least the first section and adapt the values to your environment.
@@ -134,19 +126,23 @@ port_range = 64000-64042
 port_random = no
 
 
-# SCHEDULE: watch directories
+# SCHEDULE: Watch directories
 schedule = watch_start_directory,10,10,load_start=RT_HOME/watch/start/*.torrent
 schedule = watch_load_directory,15,20,load=RT_HOME/watch/load/*.torrent
 schedule = untied_closing,30,30,close_untied=
 
-# SCHEDULE: watch disk space
+# SCHEDULE: Watch disk space
 schedule = low_diskspace,15,60,close_low_diskspace=1000M
+
+# SCHEDULE: Make SCGI socket group-writable
+schedule = scgi_permission,0,0,"execute=chmod,g+w,RT_HOME/.scgi_local"
 
 # VIEW: Sort "seeding" by ratio
 view_sort_current = seeding,greater=d.get_ratio= 
 
-# VIEW: Show active torrents (in view #9) and update every 20 seconds
-schedule = filter_active,20,20,"view_filter = active,\"or={d.get_up_rate=,d.get_down_rate=}\""
+# VIEW: Show active and incomplete torrents sorted by upload rate (in view #9) and update every 20 seconds
+view_sort_current = active,greater=d.get_up_rate=
+schedule = filter_active,20,20,"view_filter = active,\"or={d.get_up_rate=,d.get_down_rate=,not=$d.get_complete=}\" ;view_sort=active"
 
 # VIEW: Show current messages (^X m=)
 view_add = messages
@@ -193,9 +189,9 @@ view_sort_current = main,greater=d.get_custom=tm_completed
 view_filter_on = main,event.download.finished
 
 # VIEW: Use rtcontrol filter (^X s=KEYWORD, ^X t=TRACKER, ^X f="FILTER")
-system.method.insert = s,simple,"execute_nothrow=RT_HOME/rt-search,\"$cat=*,$argument.0=,*\""
-system.method.insert = t,simple,"execute_nothrow=RT_HOME/rt-search,\"$cat=\\\"alias=\\\",$argument.0=\""
-system.method.insert = f,simple,"execute_nothrow=RT_HOME/rt-search,$argument.0="
+system.method.insert = s,simple,"execute_nothrow=~/bin/rtcontrol,--detach,-qV,\"$cat=*,$argument.0=,*\""
+system.method.insert = t,simple,"execute_nothrow=~/bin/rtcontrol,--detach,-qV,\"$cat=\\\"alias=\\\",$argument.0=\""
+system.method.insert = f,simple,"execute_nothrow=~/bin/rtcontrol,--detach,-qV,$argument.0="
 
 # COMMAND: Housekeeping (delete item + data)
 system.method.insert = purge,simple,"execute_nothrow=rtcontrol,-q,--detach,--purge,--yes,\"$cat=hash=,$d.get_hash=\""
