@@ -56,6 +56,12 @@ chmod a+x ./build-rtorrent.sh
 ./build-rtorrent.sh all
 }}}
 
+If you want an extended version with some patches applied, call this command in addition:
+{{{
+./build-rtorrent.sh extend
+}}}
+Note that the unpatched version is still available as `rtorrent-vanilla`, and you can simply switch by changing the symlink in `~/bin`, or by calling either version with its full path. 
+
 
 = rTorrent configuration =
 To be able to use several different instances of rTorrent (e.g. a second one for experimental configuration changes), this setup doesn't use `~/.rtorrent.rc` at all, but keeps everything in one place under the `~/rtorrent` directory. If you change the assignment to `RT_HOME`, you can place it anywhere you like, or create alternate instances with ease.
