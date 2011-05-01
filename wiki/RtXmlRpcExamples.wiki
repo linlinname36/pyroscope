@@ -172,5 +172,4 @@ Add it to your crontab and run it every few minutes.
 
 = Throttling rTorrent for a limited time =
 If you want to slow down rTorrent to use your available bandwidth on foreground tasks like browsing, but usually forget to return the throttle settings back to normal, then you can use the provided [http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/rt-backseat rt-backseat] script.
-
 It will register a job via `at`, so that command must be installed on the machine for it to work. The default throttle speed and timeout can be set at the top of the script.
