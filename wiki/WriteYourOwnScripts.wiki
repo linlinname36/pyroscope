@@ -84,6 +84,8 @@ def my_rtorrent_plugin():
 plugin.register(my_rtorrent_plugin)
 }}}
 
+You can also take a look at the [http://code.google.com/p/pyroscope/source/browse/trunk#trunk%2Fpyrocore%2Fsrc%2Fpyrocore%2Fflexget FlexGet plugins] for concrete examples.
+
 
 = Code snippets =
 _Note that the following snippets are meant to be placed and executed within the `mainloop` of the above script skeleton._
