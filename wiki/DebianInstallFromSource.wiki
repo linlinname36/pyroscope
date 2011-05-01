@@ -46,19 +46,18 @@ chmod a+x /usr/local/sbin/load-domain-certificate
 
 
 = rTorrent installation =
-Download the [http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/build-rtorrent.sh build script] to a location of your choosing and then call it with the `all` parameter; the script will then download, build, and install all necessary components, storing temporary files in the current directory. You can pass the `clean_all` parameter to remove those temporary files later on, after everything works.
+Download the [http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/rtorrent-extended/build.sh build script] to a location of your choosing and then call it with the `all` parameter; the script will then download, build, and install all necessary components, storing temporary files in the current directory. You can pass the `clean_all` parameter to remove those temporary files later on, after everything works.
 
 {{{
-mkdir -p ~/src/rtorrent
-cd ~/src/rtorrent
-wget http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/build-rtorrent.sh
-chmod a+x ./build-rtorrent.sh
-./build-rtorrent.sh all
+mkdir -p ~/src/; cd ~/src/
+svn co http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/rtorrent-extended
+cd rtorrent-extended
+./build.sh all
 }}}
 
 If you want an extended version with some patches applied, call this command in addition:
 {{{
-./build-rtorrent.sh extend
+./build.sh extend
 }}}
 Note that the unpatched version is still available as `rtorrent-vanilla`, and you can simply switch by changing the symlink in `~/bin`, or by calling either version with its full path. 
 
