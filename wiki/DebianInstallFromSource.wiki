@@ -46,7 +46,7 @@ chmod a+x /usr/local/sbin/load-domain-certificate
 
 
 = rTorrent installation =
-Download the build script to a location of your choosing and then call it with the `all` parameter; the script will then download, build, and install all necessary components, storing temporary files in the current directory. You can pass the `clean_all` parameter to remove those temporary files later on, after everything works.
+Download the [http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/build-rtorrent.sh build script] to a location of your choosing and then call it with the `all` parameter; the script will then download, build, and install all necessary components, storing temporary files in the current directory. You can pass the `clean_all` parameter to remove those temporary files later on, after everything works.
 
 {{{
 mkdir -p ~/src/rtorrent
