@@ -6,7 +6,7 @@
 
 The following shows installation instructions for a working rTorrent instance in combination with PyroScope, on Debian Server 5.0 (Lenny). While the package names and the use of `aptitude` are somewhat dependant on (that version of) Debian, the commands for other distributions are similar, and the compilation instructions should work as-is on practically any Linux.
 
-Non-packaged software is installed exclusively into your normal user account, i.e. this description works OK for non-root users as long as the required packages are installed before-hand.
+Non-packaged software is installed exclusively into your normal user account, i.e. this description works OK for non-root users as long as the required packages are installed before-hand. The default install location is `~/lib/rtorrent-«version»`, which means you can easily delete any installed software, and also run several versions concurrently.
 
 Most of the command blocks can be cut & pasted wholesale into a terminal. Note that `bash` _here documents_ (`... <<'EOF'`) *MUST* be pasted at once.
 
@@ -46,39 +46,15 @@ chmod a+x /usr/local/sbin/load-domain-certificate
 
 
 = rTorrent installation =
-You need to set up a few environment variables so that compilation and installation into your user account works;
-{{{
-export CFLAGS="-I $HOME/include"
-export CXXFLAGS="$CFLAGS"
-export LDFLAGS="-L$HOME/lib"
-export PKG_CONFIG_PATH="$HOME/lib/pkgconfig"
-}}}
-These can be added permanently to your `~/.bashrc`, so that you don't forget them when you install an update.
+Download the build script to a location of your choosing and then call it with the `all` parameter; the script will then download, build, and install all necessary components, storing temporary files in the current directory. You can pass the `clean_all` parameter to remove those temporary files later on, after everything works.
 
-Next, download and unpack the sources:
 {{{
-mkdir ~/src; cd ~/src
-svn checkout https://xmlrpc-c.svn.sourceforge.net/svnroot/xmlrpc-c/advanced@1971 xmlrpc-c-advanced
-wget http://c-ares.haxx.se/c-ares-1.7.3.tar.gz
-wget http://curl.haxx.se/download/curl-7.21.1.tar.gz 
-wget http://libtorrent.rakshasa.no/downloads/libtorrent-0.12.6.tar.gz
-wget http://libtorrent.rakshasa.no/downloads/rtorrent-0.8.6.tar.gz
-ls -1 *.tar.gz | xargs -n1 tar xfz
+mkdir -p ~/src/rtorrent
+cd ~/src/rtorrent
+wget http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/build-rtorrent.sh
+chmod a+x ./build-rtorrent.sh
+./build-rtorrent.sh all
 }}}
-
-After that, compile and install `c-ares`, `curl`, `xmlrpc-c`, `libtorrent` and `rtorrent`, in that order:
-{{{
-( cd c-ares-*[0-9] && ./configure && make && make prefix=$HOME install )
-sed -ie s:/usr/local:$HOME: ~/lib/pkgconfig/*.pc ~/lib/*.la
-( cd curl-*[0-9] && ./configure --enable-ares && make && make prefix=$HOME install )
-sed -ie s:/usr/local:$HOME: ~/lib/pkgconfig/*.pc ~/lib/*.la 
-( cd xmlrpc-c-advanced && ./configure --with-libwww-ssl && make && make install PREFIX=$HOME )
-sed -ie s:/usr/local:$HOME: ~/bin/xmlrpc-c-config
-( cd libtorrent-*[0-9] && ./configure && make && make prefix=$HOME install )
-sed -ie s:/usr/local:$HOME: ~/lib/pkgconfig/*.pc ~/lib/*.la 
-( cd rtorrent-*[0-9] && ./configure --with-xmlrpc-c=$HOME/bin/xmlrpc-c-config && make && make prefix=$HOME install )
-}}}
-Now you should have a working `rtorrent` executable in your `~/bin`. You can make sure everything worked so far by using the command `ldd ~/bin/rtorrent | egrep "lib(cares|curl|xmlrpc|torrent)"` — check that all the libraries are indeed loaded from you home directory.
 
 
 = rTorrent configuration =
