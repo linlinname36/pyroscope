@@ -1,0 +1,14 @@
+#summary Changes to the rTorrent XMLRPC interface
+#labels reference,xmlrpc,rtorrent
+<wiki:toc max_depth="2" />
+
+= Changes after 0.8.7 =
+Version 0.8.7 is the last version that supports the "old" command set.
+
+The following is a mapping table from old to new commands, which can be added to the `[XMLRPC]` section of the configuration file:
+
+{{{
+d.save_session = d.save_full_session
+}}}
+
+Please add any commands you needed to map in your installation as a comment to this page, and also provide version information if possible (SVN revision).
