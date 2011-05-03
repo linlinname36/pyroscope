@@ -42,7 +42,7 @@ schedule = filter_active,12,20,"view_filter = active,\"or={d.get_up_rate=,d.get_
 
 <dt>*`ui.bind_key=display,key,"command1=[,...]"`*</dt>
 <dd>
-<br /> *⚠ WARNING: This currently can NOT be used in `rtorrent.rc`, but only after startup via ^X or XMLRPC; otherwise rTorrent crashes.*
+<br /> *⚠ WARNING: This currently can NOT be used immediately when `rtorrent.rc` is parsed, so it has to be scheduled once shortly after startup (see below example).*
 
 Binds the given key on a specified display to execute the commands when pressed.
 
@@ -52,7 +52,7 @@ Binds the given key on a specified display to execute the commands when pressed.
 Configuration example:
 {{{
 # VIEW: Bind view #7 to the "rtcontrol" result
-ui.bind_key=download_list,7,ui.current_view.set=rtcontrol
+schedule = bind_7,1,0,"ui.bind_key=download_list,7,ui.current_view.set=rtcontrol"
 }}}
 </dd>
 
