@@ -52,7 +52,7 @@ Binds the given key on a specified display to execute the commands when pressed.
 Configuration example:
 {{{
 # VIEW: Bind view #7 to the "rtcontrol" result
-schedule = bind_7,1,0,"ui.bind_key=download_list,7,ui.current_view.set=rtcontrol"
+schedule = bind_7,0,0,"ui.bind_key=download_list,7,ui.current_view.set=rtcontrol"
 }}}
 </dd>
 
