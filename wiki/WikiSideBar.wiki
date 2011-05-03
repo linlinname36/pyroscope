@@ -17,7 +17,7 @@
    * [OutputTemplates Templating]
    * [BashCompletion Bash completion]
    * [RtorrentExtended rTorrent extensions]
- * 3<sup>rd</sup> Party Add-ons
+ * 3rd Party Add-ons
    * [FlexGetPlugins FlexGet plugins]
    * [PyroScopeScreenlet Desktop screenlet]
  * Advanced Concepts
