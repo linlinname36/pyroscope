@@ -1,0 +1,59 @@
+#summary Patched and extended rTorrent version.
+<wiki:toc max_depth="2" />
+
+= Introduction =
+
+If you follow the [DebianInstallFromSource#rTorrent_installation build instructions] for the extended version, you'll get an alternative rTorrent exectuable with the following changes:
+ # extended command set (exclusive PyroScope patches):
+   * sort views by more than one value, and set the sort direction for each of these.
+   * bind keys in the root view to any command, e.g. change the built-in views.
+ # the "karabaja4" interface patch (colors, and more compact item display).
+ # show number of downloads on the tracker info panel.
+
+Note that some of these patches are taken from the [https://aur.archlinux.org/packages/rtorrent-extended/ AUR package] provided for [http://www.archlinux.org/ Arch Linux].
+
+= Command extensions =
+The following new commands are available.
+
+<dl>
+<dt>*`compare=order,command1=[,...]`*</dt>
+<dd>
+Compares two items like `less=` or `greater=`, but allows to compare
+by several different sort criteria, and ascending or descending
+order per given field. 
+
+The first parameter is a string of order
+indicators, either `aA+` for ascending or `dD-` for descending. 
+The default, i.e. when there's more fields than indicators, is
+ascending. Field types other than value or string are treated
+as equal (or in other words, they're ignored).
+If all fields are equal, then items are ordered in a random, but
+stable fashion.
+
+Configuration example:
+{{{
+# VIEW: Show active and incomplete torrents (in view #9) and update every 20 seconds
+#       Items are grouped into complete, incomplete, and queued, in that order.
+#       Within each group, they're sorted by upload and then download speed.
+view_sort_current = active,"compare=----,d.is_open=,d.get_complete=,d.get_up_rate=,d.get_down_rate="
+schedule = filter_active,12,20,"view_filter = active,\"or={d.get_up_rate=,d.get_down_rate=,not=$d.get_complete=}\" ;view_sort=active"
+}}}
+</dd>
+
+<dt>*`ui.bind_key=display,key,"command1=[,...]"`*</dt>
+<dd>
+<br /> *⚠ WARNING: This currently can NOT be used in `rtorrent.rc`, but only after startup via ^X or XMLRPC; otherwise rTorrent crashes.*
+
+Binds the given key on a specified display to execute the commands when pressed.
+
+ * `display` must be equal to `download_list` (currently, no other displays are supported).
+ * `key` can be either a single character for normal keys, or `^` plus a character for control keys.
+
+Configuration example:
+{{{
+# VIEW: Bind view #7 to the "rtcontrol" result
+ui.bind_key=download_list,7,ui.current_view.set=rtcontrol
+}}}
+</dd>
+
+</dl>
