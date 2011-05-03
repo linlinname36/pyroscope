@@ -6,7 +6,7 @@
 If you follow the [DebianInstallFromSource#rTorrent_installation build instructions] for the extended version, you'll get an alternative rTorrent exectuable with the following changes:
  # extended command set (exclusive PyroScope patches):
    * sort views by more than one value, and set the sort direction for each of these.
-   * bind keys in the root view to any command, e.g. change the built-in views.
+   * bind keys in the root display to any command, e.g. change the built-in views.
  # the "karabaja4" interface patch (colors, and more compact item display).
  # show number of downloads on the tracker info panel.
 
