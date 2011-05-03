@@ -149,11 +149,13 @@ view_sort_current = seeding,greater=d.get_ratio=
 view_sort_current = active,greater=d.get_up_rate=
 schedule = filter_active,20,20,"view_filter = active,\"or={d.get_up_rate=,d.get_down_rate=,not=$d.get_complete=}\" ;view_sort=active"
 
-# VIEW: Show current messages (^X m=)
+# VIEW: Show current messages
 view_add = messages
 view_filter = messages,d.get_message=
 view_sort_current = messages,less=d.get_message= 
-system.method.insert = m,simple,"ui.current_view.set=messages ;view_filter=messages,d.get_message= ;view_sort=messages ;print=$view.size=messages,\" messages!\""
+##view_sort_current = messages,"compare=,d.get_message=,d.get_name="
+system.method.insert = ui.messages.show,simple,"ui.current_view.set=messages ;view_filter=messages,d.get_message= ;view_sort=messages ;print=$view.size=messages,\" messages!\""
+##schedule = bind_8,0,0,"ui.bind_key=download_list,8,ui.messages.show="
 
 # EVENTS: Logging (don't log "opened", or you get swamped at startup)
 system.method.set_key = event.download.inserted_new,log,"print=\"LOADED \",$d.get_name=,\" [\",$to_date=$system.time=,\"]\""
@@ -184,6 +186,8 @@ system.method.set_key = event.download.resumed,activations,"pyro.activations.app
 
 # VIEW: Default view for filtering results
 view_add = rtcontrol
+view_filter = rtcontrol,false=
+##schedule = bind_7,0,0,"ui.bind_key=download_list,7,ui.current_view.set=rtcontrol"
 
 # VIEW: Sort incomplete by date added
 view_sort_current = incomplete,greater=d.get_custom=tm_loaded
