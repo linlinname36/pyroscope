@@ -16,6 +16,7 @@
    * [RtControlExamples Using rtcontrol]
    * [OutputTemplates Templating]
    * [BashCompletion Bash completion]
+   * [RtorrentExtended rTorrent extensions]
    * [FlexGetPlugins FlexGet plugins]
    * [PyroScopeScreenlet Desktop screenlet]
  * Advanced Concepts
