@@ -26,6 +26,7 @@
  * Reference
    * [http://packages.python.org/pyrocore/apidocs/ pyrocore API]
    * [RtXmlRpcReference rTorrent XMLRPC]
+   * [RtXmlRpcMigration XMLRPC Migration]
    * [BitTorrent BitTorrent protocol]
  * Links
    * [https://www.ohloh.net/p/pyroscope/ ohloh]
