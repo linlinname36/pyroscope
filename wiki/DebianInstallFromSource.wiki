@@ -122,7 +122,6 @@ use_udp_trackers = no
 directory = RT_HOME/work
 session = RT_HOME/.session
 scgi_local = RT_HOME/.scgi_local
-##schedule = scgi_permissions,0,0,"execute=chmod,660,RT_HOME/.scgi_local"
 ##scgi_port = localhost:5099
 log.execute = RT_HOME/log/execute.log
 
