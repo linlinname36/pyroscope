@@ -228,6 +228,7 @@ source bootstrap.sh
 ln -nfs $(grep -l 'entry_point.*pyrocore==' ~/lib/pyroscope/bin/*) ~/bin/
 cd
 }}}
+If your machine has no `virtualenv` command (i.e. no package that provides it), see [InstallToPythonVirtualenv this page] on how to work around that.
 
 
 = !PyroScope configuration =
