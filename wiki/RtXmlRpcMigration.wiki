@@ -3,12 +3,11 @@
 <wiki:toc max_depth="2" />
 
 = Changes after 0.8.7 =
-Version 0.8.7 is the last version that supports the "old" command set.
+Version 0.8.7 is the last version that supports the "old" command set, see http://community.rutorrent.org/RtorrentMigration#Version_0.8.6_to_0.8.7 for more.
 
-The following is a mapping table from old to new commands, which can be added to the `[XMLRPC]` section of the configuration file:
+PyroScope reasonably supports version 0.8.7 starting with *revision 1367*, though in that revision not all functions are tested yet (basic selection and the default output format works).
+Please use the `-D -K` command line switches to start rTorrent.
+Also, for the release version of 0.8.7, you have to apply [https://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/rtorrent-extended/patches/fix_2411_threading.patch this patch taken from the rTorrent SVN].
 
-{{{
-d.save_session = d.save_full_session
-}}}
-
-Please add any commands you needed to map in your installation as a comment to this page, and also provide version information if possible (SVN revision).
+Also, call `pyroadmin --create-config` and look into `~/.pyroscope/config.ini.default` to see how to map commands (in the `[XMLRPC*]` sections).
+Please add any additional commands you need to map in your installation as a comment to this page, and also provide the command you callled and some version information if possible (SVN revision).
