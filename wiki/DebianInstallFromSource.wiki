@@ -188,14 +188,6 @@ view_add = rtcontrol
 view_filter = rtcontrol,false=
 ##schedule = bind_7,0,0,"ui.bind_key=download_list,7,ui.current_view.set=rtcontrol"
 
-# VIEW: Sort incomplete by date added
-view_sort_current = incomplete,greater=d.get_custom=tm_loaded
-view_filter_on = incomplete,event.download.inserted_new
-
-# VIEW: Show recently completed top-most in "main"
-view_sort_current = main,greater=d.get_custom=tm_completed
-view_filter_on = main,event.download.finished
-
 # VIEW: Use rtcontrol filter (^X s=KEYWORD, ^X t=TRACKER, ^X f="FILTER")
 system.method.insert = s,simple,"execute_nothrow=~/bin/rtcontrol,--detach,-qV,\"$cat=*,$argument.0=,*\""
 system.method.insert = t,simple,"execute_nothrow=~/bin/rtcontrol,--detach,-qV,\"$cat=\\\"alias=\\\",$argument.0=\""
@@ -204,6 +196,14 @@ system.method.insert = f,simple,"execute_nothrow=~/bin/rtcontrol,--detach,-qV,$a
 # COMMAND: Housekeeping (delete item + data)
 system.method.insert = purge,simple,"execute_nothrow=rtcontrol,-q,--detach,--purge,--yes,\"$cat=hash=,$d.get_hash=\""
 system.method.insert = cull,simple,"execute_nothrow=rtcontrol,-q,--detach,--cull,--yes,\"$cat=hash=,$d.get_hash=\""
+
+# UI/VIEW: Sort incomplete by date added
+view_sort_current = incomplete,greater=d.get_custom=tm_loaded
+view_filter_on = incomplete,event.download.inserted_new
+
+# UI/VIEW: Show recently completed top-most in "main"
+view_sort_current = main,greater=d.get_custom=tm_completed
+view_filter_on = main,event.download.finished
 
 ### END rtorrent.rc #########################################################
 EOF
