@@ -1,4 +1,5 @@
 #summary PyroScope software update procedures.
+#labels installation,configuration
 
 <wiki:toc />
 
