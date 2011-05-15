@@ -10,7 +10,8 @@
    * [InstallToPythonVirtualenv Virtual environment]
    * [InstallFromSource Development version]
    * [DebianInstallFromSource Linux setup from scratch]
- * [UserConfiguration Configuration & Update]
+ * [UserConfiguration Configuration Guide]
+ * [MigrationGuide Updating Guide]
  * Usage
    * [CommandLineTools CLI Tools Overview]
    * [RtControlExamples Using rtcontrol]
