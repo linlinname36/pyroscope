@@ -81,4 +81,4 @@ In addition, follow these steps:
  # *TODO* config include
  # *TODO* new `update-to-head.sh` script
  # *TODO* extended version
- # *TODO* 0.8.7 support
+ # *TODO* 0.8.7 support, RtXmlRpcMigration
