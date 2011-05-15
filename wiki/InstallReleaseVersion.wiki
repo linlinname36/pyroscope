@@ -24,7 +24,7 @@ To complete your setup, you *must change your `rtorrent.rc`* using the instructi
 
 = Updating to a new release version =
 
-Remember to *read any [http://code.google.com/p/pyroscope/wiki/UserConfiguration#Updating_your_existing_configuration_for_a_new_software_version migration instructions], and the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog], BEFORE installing any new version*.
+Remember to *read any [http://code.google.com/p/pyroscope/wiki/MigrationGuide migration instructions], and the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog], BEFORE installing any new version*.
 
 Then to *update* an existing installation, use this command:
 {{{
