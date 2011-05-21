@@ -4,7 +4,7 @@
 
 = Changes after 0.8.7 =
 Version 0.8.7 is the last version that supports the "old" command set, see the [http://community.rutorrent.org/RtorrentMigration#Version_0.8.6_to_0.8.7 rTorrent community wiki] for more.
-PyroScope reasonably supports version 0.8.7 starting with *revision 1367*, though in that revision not all functions are tested yet (basic selection and the default output format works).
+PyroScope reasonably supports version 0.8.7 starting with *revision 1407*, though in that revision not all functions are tested yet (basic selection and the default output format works).
 Please use the `-D -K` command line switches to start rTorrent.
 Also, for the release version of 0.8.7, you have to apply [https://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/rtorrent-extended/patches/fix_2411_threading.patch this patch taken from the rTorrent SVN].
 
