@@ -188,6 +188,8 @@ view_filter_on = main,event.download.finished
 EOF
 }}}
 
+If you intend to use rTorrent version 0.8.7 and up, you also need to [RtXmlRpcMigration run the migration script] on that configuration now.
+
 
 = !PyroScope installation =
 The installation of `pyrocore` is done from source, see InstallFromSource for more details.
