@@ -16,4 +16,4 @@ A backup of your old configuration is created automatically.
 
 
 Also, call `pyroadmin --create-config` and look into `~/.pyroscope/config.ini.default` to see how to map commands (in the `[XMLRPC*]` sections).
-Please add any additional commands you need to map in your installation as a comment to this page, and also provide the command you callled and some version information if possible (SVN revision).
+Please add any additional commands you need to map in your installation as a comment to this page, and also provide the command you called and some version information if possible (SVN revision).
