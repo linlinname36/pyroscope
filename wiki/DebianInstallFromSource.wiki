@@ -15,7 +15,7 @@ Most of the command blocks can be cut & pasted wholesale into a terminal. Note t
 First, you need to install a few needed packages, these are the only steps that need to be done as the `root` user:
 {{{
 aptitude install screen wget build-essential subversion git-core \
-    python-setuptools python-virtualenv \
+    python-setuptools python-virtualenv python-dev \
     libsigc++-2.0-dev libssl-dev \
     libncurses-dev libncursesw5-dev libcppunit-dev
 }}}
