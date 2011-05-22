@@ -231,7 +231,7 @@ EOF
 
 You're now ready to start your rtorrent, so just do it:
 {{{
-screen -S rtorrent $PWD/start
+screen -S rtorrent $RT_HOME/start
 }}}
 You can of course add more elaborate start scripts, like a cron watchdog or init.d scripts, see the rTorrent wiki for examples.
 After that, test the XMLRPC connection by using this command:
