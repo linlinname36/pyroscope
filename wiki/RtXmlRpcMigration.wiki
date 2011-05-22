@@ -21,3 +21,5 @@ Please add any additional commands you need to map in your installation as a com
 = Bits & pieces from the mailing list =
 
 `execute2`, when called through XMLRPC, requires a target as the first argument, while the old `execute` doesn't. In the future, all XMLRPC commands will require them for consistency, so once clients have had time to move to the new syntax the old one will be disabled by default, except for config files (and the new ones renamed).
+
+On completion moving and order of steps: The official way is that a call to `d.close.directly` (will be in SVN next commit) must precede any commands that move around files, and since setting a new directory does that it is safe to call set new directory before move. However the reverse will cause problems.
