@@ -3,6 +3,22 @@
 
 <wiki:toc />
 
+= Making backups =
+Since repairing broken files resulting from faulty updates usually is either a lot of work or simply impossible, always *make a backup*. Backups should be made when _either_ PyroScope or rTorrent is changed to a new version or SVN revision.
+
+These steps should make a copy of pretty much anything important:
+ 1. Copy your rTorrent session data (rTorrent needs to be running): 
+{{{
+rtxmlrpc -q session_save
+tar cvfz /tmp/session-backup-$(date +'%Y-%m-%d').tgz $(echo $(rtxmlrpc get_session)/ | tr -s / /)*.torrent
+}}}
+ 1. Backup your current PyroScope virtualenv and configuration:
+{{{
+tar cvfz /tmp/pyroscope-$(date +'%Y-%m-%d').tgz  ~/.pyroscope/ ~/lib/pyroscope/
+}}}
+ 1. Depending on how you install rTorrent, make a copy of the rTorrent executable. Note that the `rTorrent-PS` build script installs into versioned directories, i.e. using that you don't have to worry if changing the rTorrent version ­— the old one is still available.
+
+
 = Updating the software =
 Before adapting and extending your configuration to make use of new features, you first have to update the software itself. How to do that depends on the way you initially installed it, so consult the relevant section on either the InstallReleaseVersion or the InstallFromSource page.
 
