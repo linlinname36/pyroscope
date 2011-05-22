@@ -20,4 +20,4 @@ Please add any additional commands you need to map in your installation as a com
 
 = Bits & pieces from the mailing list =
 
-`execute2`, when called through XMLRPC, requires a target as the first argument, while the old `execute` doesn't. In the future, all XMLRPC commands will require them for consistency, so once webui's and such have had time to move to the new syntax the old one will be disabled by default, except for config files (and the new ones renamed).
+`execute2`, when called through XMLRPC, requires a target as the first argument, while the old `execute` doesn't. In the future, all XMLRPC commands will require them for consistency, so once clients have had time to move to the new syntax the old one will be disabled by default, except for config files (and the new ones renamed).
