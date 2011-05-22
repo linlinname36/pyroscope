@@ -49,6 +49,7 @@ chmod a+x /usr/local/sbin/load-domain-certificate
 Download the [http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/rtorrent-extended/build.sh build script] to a location of your choosing and then call it with the `all` parameter; the script will then download, build, and install all necessary components, storing temporary files in the current directory. You can pass the `clean_all` parameter to remove those temporary files later on, after everything works.
 
 {{{
+# Run this in your NORMAL user account!
 mkdir -p ~/src/; cd ~/src/
 svn co http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/rtorrent-extended
 cd rtorrent-extended
