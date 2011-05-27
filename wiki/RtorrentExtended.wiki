@@ -21,7 +21,9 @@ Note that some of these patches are taken from the [https://aur.archlinux.org/pa
 The following new commands are available.
 
 <dl>
-<dt>*`compare=order,command1=[,...]`*  <a name="compare"></a></dt>
+<dt>
+== `compare=order,command1=[,...]` ==
+</dt>
 <dd>
 Compares two items like `less=` or `greater=`, but allows to compare
 by several different sort criteria, and ascending or descending
@@ -45,7 +47,9 @@ schedule = filter_active,12,20,"view_filter = active,\"or={d.get_up_rate=,d.get_
 }}}
 </dd>
 
-<dt>*`ui.bind_key=display,key,"command1=[,...]"`* <a name="bind_key"></a></dt>
+<dt>
+== `ui.bind_key=display,key,"command1=[,...]"` ==
+</dt>
 <dd>
 <br /> *⚠ WARNING: This currently can NOT be used immediately when `rtorrent.rc` is parsed, so it has to be scheduled once shortly after startup (see below example).*
 
@@ -61,7 +65,9 @@ schedule = bind_7,0,0,"ui.bind_key=download_list,7,ui.current_view.set=rtcontrol
 }}}
 </dd>
 
-<dt>*`ui.color.«TYPE».set="«COLOR DEF»"`* <a name="color"></a></dt>
+<dt>
+== `ui.color.«TYPE».set="«COLOR DEF»"` ==
+</dt>
 <dd>
 These commands allow you to set colors for selected elements of the user interface, in some cases depending on their status. The possible color names are "black", "red", "green", "yellow", "blue", "magenta", "cyan", and "white"; you can use them for both text and background color, in the form "«fg» on «bg»". If you don't specify a color, the default of your terminal is used.
 
