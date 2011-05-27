@@ -13,7 +13,9 @@ If you follow the [DebianInstallFromSource#rTorrent_installation build instructi
  # the "karabaja4" interface patch (colors, and more compact item display).
  # show number of downloads on the tracker info panel.
 
-Both rTorrent 0.8.6 and 0.8.7 are supported, but not all patches are applied to both (depending on whether they're needed, or applicable at all).
+http://i.imgur.com/OKaUR.png
+
+rTorrent 0.8.6 to 0.8.8 are supported, but not all patches are applied equally (depending on whether they're needed, or applicable at all).
 Note that some of these patches are taken from the [https://aur.archlinux.org/packages/rtorrent-extended/ AUR package] provided for [http://www.archlinux.org/ Arch Linux].
 
 
