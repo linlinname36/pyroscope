@@ -61,4 +61,21 @@ schedule = bind_7,0,0,"ui.bind_key=download_list,7,ui.current_view.set=rtcontrol
 }}}
 </dd>
 
+<dt>*`ui.color.«TYPE».set="«COLOR DEF»"`*</dt>
+<dd>
+These commands allow you to set colors for selected elements of the user interface, in some cases depending on their status.
+
+Configuration example showing all the commands and their defaults:
+{{{
+# UI/VIEW: Colors
+ui.color.alarm.set = "bold yellow on red"
+ui.color.complete.set = green
+ui.color.focus.set = standout
+ui.color.incomplete.set = cyan
+ui.color.leeching.set = "bold cyan"
+ui.color.seeding.set = "bold green"
+ui.color.title.set = bold
+}}}
+</dd>
+
 </dl>
