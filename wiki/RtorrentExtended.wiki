@@ -63,9 +63,11 @@ schedule = bind_7,0,0,"ui.bind_key=download_list,7,ui.current_view.set=rtcontrol
 
 <dt>*`ui.color.«TYPE».set="«COLOR DEF»"`*</dt>
 <dd>
-These commands allow you to set colors for selected elements of the user interface, in some cases depending on their status.
+These commands allow you to set colors for selected elements of the user interface, in some cases depending on their status. The possible color names are "black", "red", "green", "yellow", "blue", "magenta", "cyan", and "white"; you can use them for both text and background color, in the form "«fg» on «bg»". If you don't specify a color, the default of your terminal is used.
 
-Configuration example showing all the commands and their defaults:
+Also, these additional modifiers can be placed in the color definitions, but it depends on the terminal you're using whether they have an effect: "bold", "standout", "underline", "reverse", "blink", and "dim".
+
+Here's a configuration example showing all the commands and their defaults:
 {{{
 # UI/VIEW: Colors
 ui.color.alarm.set = "bold yellow on red"
