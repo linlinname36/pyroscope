@@ -70,13 +70,15 @@ Also, these additional modifiers can be placed in the color definitions, but it 
 Here's a configuration example showing all the commands and their defaults:
 {{{
 # UI/VIEW: Colors
-ui.color.alarm.set = "bold yellow on red"
-ui.color.complete.set = green
-ui.color.focus.set = standout
-ui.color.incomplete.set = cyan
-ui.color.leeching.set = "bold cyan"
+ui.color.alarm.set = "bold white on red"
+ui.color.complete.set = "green"
+ui.color.focus.set = "standout"
+ui.color.incomplete.set = "magenta"
+ui.color.info.set = "bold cyan"
+ui.color.label.set = "blue"
+ui.color.leeching.set = "bold magenta"
 ui.color.seeding.set = "bold green"
-ui.color.title.set = bold
+ui.color.title.set = "bold"
 }}}
 </dd>
 
