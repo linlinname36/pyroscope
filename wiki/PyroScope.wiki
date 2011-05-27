@@ -11,7 +11,7 @@ PyroScope is a collection of tools for the BitTorrent protocol and especially th
 
 See the ScreenShotGallery if you want to get a first impression without installing the software.
 
-https://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/rtorrent-ex.png
+http://i.imgur.com/OKaUR.png
 
 To get started right away, see the QuickStartGuide. It's also very easy to WriteYourOwnScripts to automate anything that the standard commands can't do. To get in contact and share your experiences with other users of PyroScope, join the [http://groups.google.com/group/pyroscope-users pyroscope-users] mailing list or the inofficial <a href="irc://irc.freenode.net/rtorrent">`#rtorrent`</a> channel on `irc.freenode.net`.
 
