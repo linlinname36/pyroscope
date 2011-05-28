@@ -76,6 +76,7 @@ These commands allow you to set colors for selected elements of the user interfa
 Also, these additional modifiers can be placed in the color definitions, but it depends on the terminal you're using whether they have an effect: "bold", "standout", "underline", "reverse", "blink", and "dim".
 
 Here's a configuration example showing all the commands and their defaults:
+
 {{{
 # UI/VIEW: Colors
 ui.color.alarm.set = "bold white on red"
@@ -92,7 +93,13 @@ ui.color.seeding.set = "bold bright green"
 ui.color.title.set = "bold bright white on blue"
 }}}
 
-Note that you might need to enable supporet for 256 colors in your terminal, see [http://askubuntu.com/questions/67/how-do-i-enable-full-color-support-in-terminal this article] for a description. In a nutshell, you need to install the `ncurses-term` package if you don't have it already, and also add "`export TERM=screen-256color`" to your rTorrent start script.
+Note that you might need to enable supporet for 256 colors in your terminal, see [http://askubuntu.com/questions/67/how-do-i-enable-full-color-support-in-terminal this article] for a description. In a nutshell, you need to install the `ncurses-term` package if you don't have it already, and also add these commands to your rTorrent start script:
+
+{{{
+if [ "$TERM" = "${TERM%-256color}" ]; then
+    export TERM="$TERM-256color"
+fi
+}}}
 
 The [http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/rtorrent-extended/term-256color.py term-256color] script can help you with showing the colors your terminal supports, an example output using Gnome's terminal looks like the following...
 
