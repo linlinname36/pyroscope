@@ -67,7 +67,9 @@ If you want an extended version with some patches applied, call this command in 
 
   http://i.imgur.com/xCd8z.png
 
-Note that the unpatched version is still available as `rtorrent-vanilla`, and you can simply switch by changing the symlink in `~/bin`, or by calling either version with its full path. See RtorrentExtended for more details on the changes applied.
+Note that the unpatched version is still available as `rtorrent-vanilla`, and you can simply switch by changing the symlink in `~/bin`, or by calling either version with its full path. See RtorrentExtended for more details on the changes applied. 
+
+ ✪ _If you use the configuration as outlined in the next section, do not forget to set the value of `pyro.extended` to 1!_
 
 
 = rTorrent configuration =
