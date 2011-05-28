@@ -93,6 +93,10 @@ ui.color.title.set = "bold bright white on gray"
 
 Note that you might need to enable supporet for 256 colors in your terminal, see [http://askubuntu.com/questions/67/how-do-i-enable-full-color-support-in-terminal this article] for a description. In a nutshell, you need to install the `ncurses-term` package if you don't have it already, and also add "`export TERM=screen-256color`" to your rTorrent start script.
 
+The [http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/rtorrent-extended/term-256color.py term-256color] script can help you with showing the colors your terminal supports, an example output using Gnome's terminal looks like the following...
+
+http://i.imgur.com/iu8nY.png
+
 </dd>
 
 </dl>
