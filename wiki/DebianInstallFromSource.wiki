@@ -79,9 +79,13 @@ cd $RT_HOME
 # make simple start script
 cat >./start <<'EOF'
 #! /bin/bash
+if [ "$TERM" = "${TERM%-256color}" ]; then
+    export TERM="$TERM-256color"
+fi
 umask 0027
 cd $(dirname $0)
-rtorrent -n -o import=$PWD/rtorrent.rc 
+rtorrent -n -o import=$PWD/rtorrent.rc
+stty sane
 EOF
 chmod a+x ./start
 }}}
