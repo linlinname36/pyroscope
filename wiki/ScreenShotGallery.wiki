@@ -5,6 +5,9 @@
 == Conky status display ==
 || http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/conky-rtorstat.png ||
 
+== rTorrent-PS colorized canvas ==
+|| http://i.imgur.com/C5j8Z.png ||
+
 == HTML status display ==
 || http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/rtorstat.png ||
 
