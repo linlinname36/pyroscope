@@ -13,7 +13,7 @@ If you follow the [DebianInstallFromSource#rTorrent_installation build instructi
    * interface patches adding easily customizable colors, displaying the _tracker domain_, and some more minor modifications to the download list view.
  # show number of registered downloads on the tracker info panel.
 
-http://i.imgur.com/OKaUR.png
+http://i.imgur.com/2INFf.png
 
 rTorrent 0.8.6 to 0.8.8 are supported, but not all patches are applied equally (depending on whether they're needed, or applicable at all).
 Note that some of these patches are taken from the [https://aur.archlinux.org/packages/rtorrent-extended/ AUR package] provided for [http://www.archlinux.org/ Arch Linux].
