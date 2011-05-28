@@ -88,6 +88,9 @@ ui.color.leeching.set = "bold magenta"
 ui.color.seeding.set = "bold green"
 ui.color.title.set = "bold"
 }}}
+
+Note that you might need to enable supporet for 256 colors in your terminal, see [http://askubuntu.com/questions/67/how-do-i-enable-full-color-support-in-terminal this article] for a description. In a nutshell, you need to install the `ncurses-term` package if you don't have it already, and also add "`export TERM=screen-256color`" to your rTorrent start script.
+
 </dd>
 
 </dl>
