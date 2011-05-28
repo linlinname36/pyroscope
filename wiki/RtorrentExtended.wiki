@@ -10,8 +10,8 @@ If you follow the [DebianInstallFromSource#rTorrent_installation build instructi
  # extended command set (exclusive PyroScope patches):
    * sort views by more than one value, and set the sort direction for each of these.
    * bind keys in the root display to any command, e.g. change the built-in views.
- # the "karabaja4" interface patch (colors, and more compact item display).
- # show number of downloads on the tracker info panel.
+   * interface patches adding easily customizable colors, and some minor modifications to the download list view.
+ # show number of registered downloads on the tracker info panel.
 
 http://i.imgur.com/OKaUR.png
 
