@@ -82,13 +82,14 @@ ui.color.alarm.set = "bold white on red"
 ui.color.complete.set = "green"
 ui.color.even.set = ""
 ui.color.focus.set = "reverse"
+ui.color.footer.set = "bold bright cyan on blue"
 ui.color.incomplete.set = "yellow"
 ui.color.info.set = "white"
 ui.color.label.set = "gray"
 ui.color.leeching.set = "bold bright yellow"
 ui.color.odd.set = ""
 ui.color.seeding.set = "bold bright green"
-ui.color.title.set = "bold bright white on gray"
+ui.color.title.set = "bold bright white on blue"
 }}}
 
 Note that you might need to enable supporet for 256 colors in your terminal, see [http://askubuntu.com/questions/67/how-do-i-enable-full-color-support-in-terminal this article] for a description. In a nutshell, you need to install the `ncurses-term` package if you don't have it already, and also add "`export TERM=screen-256color`" to your rTorrent start script.
