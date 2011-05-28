@@ -93,13 +93,21 @@ ui.color.seeding.set = "bold bright green"
 ui.color.title.set = "bold bright white on blue"
 }}}
 
-Note that you might need to enable supporet for 256 colors in your terminal, see [http://askubuntu.com/questions/67/how-do-i-enable-full-color-support-in-terminal this article] for a description. In a nutshell, you need to install the `ncurses-term` package if you don't have it already, and also add these commands to your rTorrent start script:
+Note that you might need to enable support for 256 colors in your terminal, see [http://askubuntu.com/questions/67/how-do-i-enable-full-color-support-in-terminal this article] for a description. In a nutshell, you need to install the `ncurses-term` package if you don't have it already, and also add these commands to your rTorrent start script:
 
 {{{
 if [ "$TERM" = "${TERM%-256color}" ]; then
     export TERM="$TERM-256color"
 fi
 }}}
+
+If everything worked so far, and you now want to find you own coloring theme, the easiest way is to use a second shell and `rtxmlrpc`. Try out some colors, and add the combinations you like to your `~/.rtorrent.rc`.
+
+{{{
+# For people liking candy stores...
+rtxmlrpc ui.color.title.set "bold magenta on bright cyan"
+}}}
+
 
 The [http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/rtorrent-extended/term-256color.py term-256color] script can help you with showing the colors your terminal supports, an example output using Gnome's terminal looks like the following...
 
