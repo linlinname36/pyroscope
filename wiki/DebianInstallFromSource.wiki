@@ -12,7 +12,7 @@ Most of the command blocks can be cut & pasted wholesale into a terminal. Note t
 
 
 = Preparatory steps =
-First, you need to install a few needed packages, these are the only steps that need to be done as the `root` user:
+First, you need to install a few required packages — these are the only steps that must be performed by the `root` user:
 {{{
 aptitude install screen wget build-essential subversion git-core \
     python-setuptools python-virtualenv python-dev \
