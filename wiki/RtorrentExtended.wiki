@@ -68,6 +68,18 @@ schedule = bind_7,0,0,"ui.bind_key=download_list,7,ui.current_view.set=rtcontrol
 </dd>
 
 <dt>
+== `view.collapsed.toggle=«VIEW NAME»` ==
+</dt>
+<dd>
+This command changes between the normal item display where each item takes up three lines to a more condensed form where each item only takes up one line. Note that each view has its own state, and that if the view name is empty, the current view is toggled. You can set the default state in your configuration, by adding a toggle command for each view you want collapsed after startup (the default is expanded).
+
+Also, you should bind the current view toggle to a key, like this:
+{{{
+schedule = bind_collapse,0,0,"ui.bind_key=download_list,*,view.collapsed.toggle="
+}}}
+</dd>
+
+<dt>
 == `ui.color.«TYPE».set="«COLOR DEF»"` ==
 </dt>
 <dd>
