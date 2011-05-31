@@ -82,7 +82,7 @@ As a result, you'll get a display like this...
 
 http://i.imgur.com/ul4Pq.png
 
-The font used in this exyample is `Inconsolata`, and whatever font you use in your terminal profile, it of course has to support the characters used in the status columns. Also, you terminal *must* be set to use UTF-8 (which nowadays usually is the default anyway).
+The font used in this example is `Inconsolata`, and whatever font you use in your terminal profile, it of course has to support the characters used in the status columns. Also, your terminal *must* be set to use UTF-8 (which nowadays usually is the default anyway).
 
 </dd>
 
