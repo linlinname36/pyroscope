@@ -77,6 +77,11 @@ Also, you should bind the current view toggle to a key, like this:
 {{{
 schedule = bind_collapse,0,0,"ui.bind_key=download_list,*,view.collapsed.toggle="
 }}}
+
+As a result, you'll get a display like this...
+
+http://i.imgur.com/ul4Pq.png
+
 </dd>
 
 <dt>
