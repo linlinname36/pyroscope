@@ -15,8 +15,10 @@ If you follow the [DebianInstallFromSource#rTorrent_installation build instructi
 
 http://i.imgur.com/xVSmh.png
 
-rTorrent 0.8.6 to 0.8.8 are supported, but not all patches are applied equally (depending on whether they're needed, or applicable at all).
+rTorrent 0.8.6 and 0.8.8 are supported, but not all patches are applied equally (depending on whether they're needed, or applicable at all).
 Note that some of these patches are taken from the [https://aur.archlinux.org/packages/rtorrent-extended/ AUR package] provided for [http://www.archlinux.org/ Arch Linux].
+
+ ➽ _Note that you need to read *all* of the following explanations of the user-interface related new commands to get the visual changes set up correctly, since this requires some special setup of your terminal on many machines!_
 
 
 = Command extensions =
@@ -82,6 +84,8 @@ As a result, you'll get a display like this...
 
 http://i.imgur.com/ul4Pq.png
 
+Further explanations on what the columns show and what forms of abbreviations are used, to get a display as compact as possible while still showing all the important stuff, can be found on RtorrentExtendedCanvas.
+
 The font used in this example is `Inconsolata`, and whatever font you use in your terminal profile, it of course has to support the characters used in the status columns. Also, your terminal *must* be set to use UTF-8 (which nowadays usually is the default anyway).
 
 </dd>
@@ -135,3 +139,7 @@ http://i.imgur.com/iu8nY.png
 </dd>
 
 </dl>
+
+
+= Backports of 0.8.8 features =
+*TBD*
