@@ -1,7 +1,7 @@
 #summary Details on the collapsed download list display.
 <wiki:toc max_depth="2" />
 
-http://i.imgur.com/ul4Pq.png
+http://i.imgur.com/zbAT9.png
 
 || *Column* || *Description* ||
 || ☢ || Item state (▹ = started, ╍ = paused, ▪ = stopped) ||
