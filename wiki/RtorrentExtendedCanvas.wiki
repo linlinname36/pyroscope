@@ -1,6 +1,8 @@
 #summary Details on the collapsed download list display.
 <wiki:toc max_depth="2" />
 
+The following is an explanation of the collaped display of [Rtorrentextended rTorrent-PS] — remember that you need to bind a key to the `view.collapsed.toggle` command, or set the default of a view by calling that command in the configuration, else you won't ever see it.
+
 http://i.imgur.com/zbAT9.png
 
 || *Column* || *Description* ||
