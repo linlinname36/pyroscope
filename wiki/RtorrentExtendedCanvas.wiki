@@ -26,3 +26,8 @@ http://i.imgur.com/zbAT9.png
 The scrape info numbers are exact only for values < 100, 
 else they indicate the order of magnitude using roman numerals 
 (c = 10², m = 10³, X = 10⁴, C = 10⁵, M = 10⁶).
+
+For the completion time display to work, you need the following in your `.rtorrent.rc`, which you already do if you installed PyroScope correctly:
+{{{
+system.method.set_key = event.download.finished,time_stamp,"d.set_custom=tm_completed,$cat=$system.time= ;d.save_session="
+}}}
