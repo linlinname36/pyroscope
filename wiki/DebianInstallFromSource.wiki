@@ -136,8 +136,8 @@ min_peers_seed = -1
 max_peers_seed = -1
 
 # resource usage
-max_memory_usage = 734003200
-xmlrpc_size_limit = 1048576
+max_memory_usage = 768M
+xmlrpc_size_limit = 2M
 
 
 #
