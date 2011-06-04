@@ -9,6 +9,8 @@ Choose your preferred way of how to install PyroScope ►
 || ✔ For normal users <br/>✔ Hassle-free <br/>✔ Easy download and update || ✔ For power users and developers <br/>✔ All the new features <br/>✔ Get fixes immediately || ✔ For users that start out with rTorrent <br/>✔ For Debian and other Linux distributions <br/>✔ Compile rTorrent yourself, get a current version ||
 || *➫ InstallReleaseVersion* || *➫ InstallFromSource* || *➫ DebianInstallFromSource* ||
 
+ ➽ _If you want to *update* your already installed software, go to the MigrationGuide instead!_
+
 If you like PyroScope after using it for a while, click on the following button to show your support.
 <wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_users_logo.xml" height="43"  border="0" />
 
