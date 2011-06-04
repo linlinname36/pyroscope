@@ -38,7 +38,7 @@ sudo easy_install --prefix /usr/local -U pyrocore
 ln -nfs $(grep -l 'entry_point.*pyrocore==' ~/lib/pyroscope/bin/*) ~/bin/
 }}}
 
-Now *skip* the next section describing a source installtion upgrade, and go to the configuration update further below.
+Now *skip* the next section describing a source installation upgrade, and go to the configuration update further below.
 
 
 == How to update a source installation to the newest code ==
