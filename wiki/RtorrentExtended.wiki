@@ -26,7 +26,7 @@ If you followed the instructions in the _Extending your `.rtorrent.rc`_ section 
  # the `t` key is bound to a `trackers` view that shows all items sorted by tracker and then by name.
  # the `!` key is bound to a `messages` view, listing all items that currently have a non-empty message in order of the messages.
  # the `^` key is bound to the `rtcontrol` search result view, so you can easily return to your last search.
- # `*` toggles between the collapsed and the expanded display of the current view.
+ # `*` toggles between the collapsed (as described on RtorrentExtendedCanvas) and the expanded display of the current view. <br /><br /> http://i.imgur.com/zbAT9.png
  # The `active` view groups the list into complete, incomplete, and queued items, in that order. Within each group, they're sorted by download and then upload speed.
  # The commands `s=«keyword»`, `t=«tracker_alias»`, and `f=«filter_condition»` are pre-defined for searching using a Ctrl-X prompt. 
  # You can use the `purge=` and `cull=` commands (on a Ctrl-X prompt) for deleting the current item and its (incomplete) data.
@@ -92,10 +92,6 @@ Also, you should bind the current view toggle to a key, like this:
 {{{
 schedule = bind_collapse,0,0,"ui.bind_key=download_list,*,view.collapsed.toggle="
 }}}
-
-As a result, you'll get a display like this...
-
-http://i.imgur.com/zbAT9.png
 
 Further explanations on what the columns show and what forms of abbreviations are used, to get a display as compact as possible while still showing all the important stuff, can be found on RtorrentExtendedCanvas.
 
