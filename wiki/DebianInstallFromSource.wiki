@@ -200,6 +200,13 @@ view_filter_on = incomplete,event.download.inserted_new
 view_sort_current = main,greater=d.get_custom=tm_completed
 view_filter_on = main,event.download.finished
 
+
+#
+# LOCAL settings
+#
+
+# Add anything of your own here...
+
 ### END rtorrent.rc #########################################################
 EOF
 }}}
