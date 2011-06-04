@@ -2,6 +2,8 @@
 #labels installation
 <wiki:toc max_depth="2" />
 
+ ➽ _If you want to *update* your already installed software, go to the MigrationGuide instead!_
+
 = Installing a release version =
 For a working installation, you have to meet these requirements first:
  * Python 2.5 or a higher 2.x version (2.5 is recommended); go to http://www.python.org/download/ if you're on an OS that doesn't have Python out of the box.
@@ -15,27 +17,12 @@ sudo easy_install --prefix /usr/local pyrocore
 }}}
 After that, the CommandLineTools should be immediately available in your shell prompt. 
 
-In case you have no `root` rights, or `easy_install` prints a message containing »`error: bad install directory or PYTHONPATH`«, try to InstallToPythonVirtualenv instead, and after having done so, return to this page and read on.
+In case you have no `root` rights, or `easy_install` prints a message containing »`error: bad install directory or PYTHONPATH`«, try to InstallToPythonVirtualenv instead, and after having done so, return to this page and read on. Do *not* try to repeat the above commands.
 
 
 = Completing your setup =
 To complete your setup, you *must change your `rtorrent.rc`* using the instructions on the UserConfiguration page, else many features of `rtcontrol` won't work as expected. You should at least *create a configuration* as described there, using the `pyroadmin --create-config` command. If you encounter any problems during installation not covered by the documentation, subscribe to the [http://groups.google.com/group/pyroscope-users pyroscope-users] mailing list to get help from the community, or join the inofficial <a href="irc://irc.freenode.net/rtorrent">`#rtorrent`</a> channel on `irc.freenode.net`.
 
-
-= Updating to a new release version =
-
-Remember to *read any [http://code.google.com/p/pyroscope/wiki/MigrationGuide migration instructions], and the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog], BEFORE installing any new version*.
-
-Then to *update* an existing installation, use this command *if* you used the instructions on *this* page:
-{{{
-sudo easy_install --prefix /usr/local -U pyrocore
-}}}
-
-*Otherwise*, in case you followed InstallToPythonVirtualenv, use this *instead*:
-{{{
-~/lib/pyroscope/bin/easy_install -U pyrocore
-ln -nfs $(grep -l 'entry_point.*pyrocore==' ~/lib/pyroscope/bin/*) ~/bin/
-}}}
 
 = Special considerations for different platforms =
 
@@ -46,22 +33,22 @@ In such a case, just follow InstallToPythonVirtualenv to add everything else tha
 
 == Debian, Ubuntu, and other Debian-derived distributions ==
 
-See the first section of this page.
+Nothing special, just see the first section of this page.
 
 == Arch Linux ==
 
-See this [https://aur.archlinux.org/packages.php?ID=47197 AUR package] and take note of the hints regarding configuration, in the first section of this page.
+See this [https://aur.archlinux.org/packages.php?ID=47197 AUR package] and take note of the hints regarding configuration, in the "_Completing your setup_" section of this page.
 
 
 == Other Linux variants and Mac OSX ==
 
 For non-Debian distributions, use the appropriate package management tools to install the aforementioned prerequisites — the package names should be similar (contain the word "`setuptools`"). If you're unable to find a `setuptools` package for your distribution, download it [http://pypi.python.org/pypi/setuptools/ from here] and install it according to the given instructions. 
 
-Then use the `easy_install` command shown in the first section to download and install the `pyrocore` package, and take note of the hints regarding configuration.
+Then use the `easy_install` command shown in the first section to download and install the `pyrocore` package, and take note of the hints regarding configuration in the "_Completing your setup_" section of this page..
 
 
 == Windows ==
 
 On Windows, just use `easy_install pyrocore` in `cmd.exe` after [http://www.python.org/download/ installing Python] and `setuptools` as [http://pypi.python.org/pypi/setuptools/ described here].
 
-Note that on Windows, you are limited to using the tools that allow the handling of torrent files. There seems to be a Cygwin port of rTorrent for Windows, but there are no reports of any such installation working together with PyroScope.
+Note that on Windows, you are limited to using the tools that allow the handling of torrent files. There seems to be a Cygwin port of rTorrent for Windows, but there are no reports yet of any such installation working together with PyroScope.
