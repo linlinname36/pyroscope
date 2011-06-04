@@ -36,7 +36,7 @@
    * [http://freshmeat.net/projects/pyrocore freshmeat]
    * [http://groups.google.com/group/pyroscope-users User Mailing List]
    * [http://libtorrent.rakshasa.no/ rTorrent Homepage]
-   * [http://community.rutorrent.org/ rTorrent Community]
+   * [http://wiki.rtorrent.org/ rTorrent Community Wiki]
 
 *Wiki Navigation*
  * [WikiSideBar Index]
