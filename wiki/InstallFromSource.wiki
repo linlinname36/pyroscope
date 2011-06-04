@@ -2,6 +2,9 @@
 #labels installation
 <wiki:toc max_depth="2" />
 
+ ➽ _If you want to *update* your already installed software, go to the MigrationGuide instead!_
+
+
 = Installing from source =
 If you have experience with the shell prompt and possibly a bit of Python you might want to install the development version to gain early access to new features. Since that version is constantly used in cron jobs, chances that it is unstable at any point in time are slim. Please *monitor the [http://code.google.com/p/pyroscope/source/list SVN log] and the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog]* if you run from source.
 
@@ -32,15 +35,3 @@ After that, the CommandLineTools are available in the `~/lib/pyroscope/bin` dire
 
 = Completing your setup =
 After installation, you *must change your `rtorrent.rc`* using the instructions on the UserConfiguration page, else many features of `rtcontrol` won't work as expected. You should at least *create a configuration* as described there, using the `pyroadmin --create-config` command. If you encounter any problems during installation not covered by the documentation, subscribe to the [http://groups.google.com/group/pyroscope-users pyroscope-users] mailing list to get help from the community, or join the inofficial <a href="irc://irc.freenode.net/rtorrent">`#rtorrent`</a> channel on `irc.freenode.net`.
-
-
-= Updating to the newest code =
-
-*BEFORE any update, read the relevant [http://code.google.com/p/pyroscope/wiki/MigrationGuide migration instructions], the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog] and the [http://code.google.com/p/pyroscope/source/list SVN log].*
-
-Then to *update* an existing installation, use these commands:
- {{{
-cd ~/lib/pyroscope
-svn update
-./update-to-head.sh
-}}}
