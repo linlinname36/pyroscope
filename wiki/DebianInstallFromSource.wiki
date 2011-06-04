@@ -4,7 +4,7 @@
 
 = Introduction =
 
-The following shows installation instructions for a working rTorrent instance in combination with PyroScope, on Debian Server 5.0 (Lenny). While the package names and the use of `aptitude` are somewhat dependant on (that version of) Debian, the commands for other distributions are similar, and the compilation instructions should work as-is on practically any Linux.
+The following shows installation instructions for a working rTorrent instance in combination with PyroScope *from scratch*, on Debian Server 5.0 (Lenny). While the package names and the use of `aptitude` are somewhat dependant on (that version of) Debian, the commands for other distributions are similar, and the compilation instructions should work as-is on practically any Linux.
 
 Non-packaged software is installed exclusively into your normal user account, i.e. this description works OK for non-root users as long as the required packages are installed before-hand. The default install location is `~/lib/rtorrent-«version»`, which means you can easily delete any installed software, and also run several versions concurrently.
 
