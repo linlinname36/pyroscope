@@ -21,7 +21,7 @@ Now, continue to install a release version *as described in the next section*.
 
 = Installing a release version =
 
-If you want to install a release version, the next step is all you need for success:
+To install a release version into your virtualenv, the next step is all you need for success:
 {{{
 ~/lib/pyroscope/bin/easy_install pyrocore
 ln -nfs $(grep -l 'entry_point.*pyrocore==' ~/lib/pyroscope/bin/*) ~/bin/
