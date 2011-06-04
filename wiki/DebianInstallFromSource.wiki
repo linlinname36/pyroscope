@@ -211,13 +211,8 @@ The installation of `pyrocore` is done from source, see InstallFromSource for mo
 {{{
 mkdir -p ~/bin ~/lib
 svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
-git clone git://github.com/pyroscope/pyrobase.git ~/lib/pyroscope/pyrobase
-cd ~/lib/pyroscope/pyrocore
-source bootstrap.sh
-ln -nfs $(grep -l 'entry_point.*pyrocore==' ~/lib/pyroscope/bin/*) ~/bin/
-cd
+~/lib/pyroscope/update-to-head.sh
 }}}
-If your machine has no `virtualenv` command (i.e. no package that provides it), see [InstallToPythonVirtualenv this page] on how to work around that.
 
 
 = !PyroScope configuration =
