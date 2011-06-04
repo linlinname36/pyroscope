@@ -21,6 +21,19 @@ Note that some of these patches are taken from the [https://aur.archlinux.org/pa
  ➽ _Note that you need to read *all* of the following explanations of the user-interface related new commands to get the visual changes set up correctly, since this requires some special setup of your terminal on many machines!_
 
 
+= Additional features in the standard configuration =
+If you followed the instructions in the _Extending your `.rtorrent.rc`_ section of the UserConfiguration page, you will get the following additional features in your `rTorrent-PS` installation:
+ # the `t` key is bound to a `trackers` view that shows all items sorted by tracker and then by name.
+ # the `!` key is bound to a `messages` view, listing all items that currently have a non-empty message in order of the messages.
+ # the `^` key is bound to the `rtcontrol` search result view, so you can easily return to your last search.
+ # `*` toggles between the collapsed and the expanded display of the current view.
+ # The `active` view groups the list into complete, incomplete, and queued items, in that order. Within each group, they're sorted by download and then upload speed.
+ # The commands `s=«keyword»`, `t=«tracker_alias»`, and `f=«filter_condition»` are pre-defined for searching using a Ctrl-X prompt. 
+ # You can use the `purge=` and `cull=` commands (on a Ctrl-X prompt) for deleting the current item and its (incomplete) data.
+
+ ✪ _Do not forget to set the value of `pyro.extended` to 1!_
+
+
 = Command extensions =
 The following new commands are available.
 
