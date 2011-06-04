@@ -43,7 +43,7 @@ Now *skip* the next section describing a source installtion upgrade, and go to t
 
 == How to update a source installation to the newest code ==
 
-*BEFORE any update, remember to read the *migration instructions* further below, the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog] and the [http://code.google.com/p/pyroscope/source/list SVN log].*
+*BEFORE* any update, remember to read the *migration instructions* further below, the *[http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog]* and the *[http://code.google.com/p/pyroscope/source/list SVN log].*
 
 Then to *update* an existing installation, use these commands:
  {{{
