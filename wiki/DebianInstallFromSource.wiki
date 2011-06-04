@@ -152,6 +152,9 @@ scgi_local = RT_HOME/.scgi_local
 ##scgi_port = localhost:5099
 log.execute = RT_HOME/log/execute.log
 
+# SCHEDULE: Make SCGI socket group-writable
+schedule = scgi_permission,0,0,"execute_nothrow=chmod,g+w,RT_HOME/.scgi_local"
+
 # SCHEDULE: Watch directories
 schedule = watch_start_directory,10,10,load_start=RT_HOME/watch/start/*.torrent
 schedule = watch_load_directory,15,20,load=RT_HOME/watch/load/*.torrent
@@ -159,9 +162,6 @@ schedule = untied_closing,30,30,close_untied=
 
 # SCHEDULE: Watch disk space
 schedule = low_diskspace,15,60,close_low_diskspace=1000M
-
-# SCHEDULE: Make SCGI socket group-writable
-schedule = scgi_permission,0,0,"execute=chmod,g+w,RT_HOME/.scgi_local"
 
 # UI/VIEW: Sort "seeding" by ratio
 view_sort_current = seeding,greater=d.get_ratio= 
