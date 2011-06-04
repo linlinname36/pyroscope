@@ -192,6 +192,10 @@ system.method.insert = pyro.extended,value|const,0
 system.method.insert = pyro.rtorrent_rc, string|const|private, "$cat=~/.pyroscope/rtorrent-,\"$system.client_version=\",.rc.default"
 import = $pyro.rtorrent_rc=
 
+# CURL options
+branch=pyro.extended=,"network.http.ssl_verify_peer.set=0"
+branch=pyro.extended=,"network.http.dns_cache_timeout.set=25"
+
 # UI/VIEW: Sort incomplete by date added
 view_sort_current = incomplete,greater=d.get_custom=tm_loaded
 view_filter_on = incomplete,event.download.inserted_new
