@@ -20,14 +20,44 @@ tar cvfz /tmp/pyroscope-$(date +'%Y-%m-%d').tgz  ~/.pyroscope/ ~/lib/pyroscope/
 
 
 = Updating the software =
-Before adapting and extending your configuration to make use of new features, you first have to update the software itself. How to do that depends on the way you initially installed it, so consult the relevant section on either the InstallReleaseVersion or the InstallFromSource page.
+*Before* adapting and extending your configuration to make use of new features, you first have to update the software itself. How to do that depends on the way you initially installed it, so follow *one* of the following sections, depending on whether you did a release installation or one from source.
+
+
+== How to do a release version software update ==
+
+Remember to read the *migration instructions* further below, and the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog], BEFORE installing any new version*.
+
+Then to *update* an existing installation, use this command *if* you used the instructions on the InstallReleaseVersion page:
+{{{
+sudo easy_install --prefix /usr/local -U pyrocore
+}}}
+
+*Otherwise*, in case you followed InstallToPythonVirtualenv, use this *instead*:
+{{{
+~/lib/pyroscope/bin/easy_install -U pyrocore
+ln -nfs $(grep -l 'entry_point.*pyrocore==' ~/lib/pyroscope/bin/*) ~/bin/
+}}}
+
+Now *skip* the next section describing a source installtion upgrade, and go to the configuration update further below.
+
+
+== How to update a source installation to the newest code ==
+
+*BEFORE any update, remember to read the *migration instructions* further below, the [http://code.google.com/p/pyroscope/source/browse/trunk/debian/changelog changelog] and the [http://code.google.com/p/pyroscope/source/list SVN log].*
+
+Then to *update* an existing installation, use these commands:
+ {{{
+cd ~/lib/pyroscope
+svn update
+./update-to-head.sh
+}}}
 
 
 = Updating your existing configuration for a new software version =
 
 After you installed a new version of the software, you can easily check whether the default configuration files changed by calling the `pyroadmin --create-config` command. Since this will never overwrite existing configuration files, the files `config.ini.default` and `config.py.default` will be created instead.
 
-You can then use the `diff` tool to check for the differences between your current configuration and the new default one, and add any changes you want to adopt.
+You can then use the `diff` tool to check for the differences between your current configuration and the new default one, and add any changes you want to adopt. Also note that sections of the configuration you leave out, and keys that you do not overwrite, are automatically taken from the defaults, which greatly simplifies any update — so having a minimal configuration with just the changes and additions you actually want is recommended.
 
 And remember to *always read the [http://pyroscope.googlecode.com/svn/trunk/debian/changelog changelog]*!
 
