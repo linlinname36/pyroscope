@@ -12,9 +12,6 @@ To convert your configuration in `~/.rtorrent.rc` to the new commands, there is 
 {{{
 bash migrate_rtorrent_rc.sh ~/.rtorrent.rc
 pyroadmin --create-config 
-cp ~/.pyroscope/rtorrent-0.8.6.rc.default ~/.pyroscope/rtorrent-0.8.8.rc.default
-bash migrate_rtorrent_rc.sh ~/.pyroscope/rtorrent-0.8.8.rc.default >/dev/null
-rm ~/.pyroscope/rtorrent-0.8.8.rc.default{?0.8.6,-????-??-??-??-??-??}
 }}}
 A backup of your old configuration is created automatically.
 
