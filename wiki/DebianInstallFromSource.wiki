@@ -185,11 +185,12 @@ system.method.set_key = event.download.closed,log,"print=\"CLOSED \",$d.get_name
 #
 
 # Set "pyro.extended" to 1 to activate rTorrent-PS features!
-system.method.insert = pyro.extended,value,0
+system.method.insert = pyro.extended,value|const,0
 
 # Remove the ".default" if you want to change something (else your 
 # changes get over-written on update).
-import = ~/.pyroscope/rtorrent-086.rc.default
+system.method.insert = pyro.rtorrent_rc, string|const|private, "$cat=~/.pyroscope/rtorrent-,\"$system.client_version=\",.rc.default"
+import = $pyro.rtorrent_rc=
 
 # UI/VIEW: Sort incomplete by date added
 view_sort_current = incomplete,greater=d.get_custom=tm_loaded
