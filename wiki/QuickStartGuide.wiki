@@ -10,6 +10,8 @@ Choose your preferred way of how to install PyroScope ►
 || *➫ InstallReleaseVersion* || *➫ InstallFromSource* || *➫ DebianInstallFromSource* ||
 
  ➽ _If you want to *update* your already installed software, go to the MigrationGuide instead!_
+ <br />
+ ➽ _For details on the extended *`rTorrent-PS`* distribution including build instructions, consult the RtorrentExtended page!_
 
 If you like PyroScope after using it for a while, click on the following button to show your support.
 <wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_users_logo.xml" height="43"  border="0" />
