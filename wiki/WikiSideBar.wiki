@@ -22,6 +22,7 @@
    * [FlexGetPlugins FlexGet plugins]
    * [PyroScopeScreenlet Desktop screenlet]
  * Advanced Concepts
+   * [CustomFields Defining custom fields]
    * [RtXmlRpcExamples Using rtxmlrpc]
    * [WriteYourOwnScripts Python scripts]
    * [RemoteConnections Connecting via SSH]
