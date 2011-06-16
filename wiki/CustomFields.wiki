@@ -77,6 +77,7 @@ In place of the `# PUT CUSTOM FIELD CODE HERE` comment you can add any combinati
 
 
 == Calculating information about partial downloads ==
+Note that the `partial_done` value can be a little lower than it actually should be, when chunks shared by different files are not yet complete; but it will eventually reach `100` when all selected chunks are downloaded in full.
 {{{
     # Fields for partial downloads
     def partial_info(obj, name):
