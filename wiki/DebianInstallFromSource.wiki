@@ -12,7 +12,7 @@ Most of the command blocks can be cut & pasted wholesale into a terminal. Note t
 
 
 = Preparatory steps =
-First, you need to install a few required packages — these are the only steps that must be performed by the `root` user:
+First, you need to install a few required packages — these are the only steps that must be performed by the `root` user (i.e. in a root shell, or by writing `sudo` before the actual command):
 {{{
 aptitude install screen wget build-essential subversion git-core \
     python-setuptools python-virtualenv python-dev \
@@ -221,6 +221,8 @@ mkdir -p ~/bin ~/lib
 svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
 ~/lib/pyroscope/update-to-head.sh
 }}}
+
+Make sure `~/bin` is on your `PATH`, and if not, close and then reopen your shell.
 
 
 = !PyroScope configuration =
