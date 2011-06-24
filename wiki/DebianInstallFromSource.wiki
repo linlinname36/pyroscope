@@ -222,7 +222,7 @@ svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
 ~/lib/pyroscope/update-to-head.sh
 }}}
 
-Make sure `~/bin` is on your `PATH`, and if not, close and then reopen your shell.
+Make sure `~/bin` is on your `PATH`, and if not, close and then reopen your shell. Check again, and if it's still not in there, fix your broken `.bashrc`.
 
 
 = !PyroScope configuration =
