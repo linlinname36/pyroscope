@@ -96,7 +96,7 @@ EOF
 chmod a+x ./start
 }}}
 
-Next, a not-so-simple `rtorrent.rc` is created, it already contains everything needed to use all features of PyroScope — you should check at least the first section and adapt the values to your environment. Note that most of the settings specific to PyroScope are read from a [http://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/rtorrent-086.rc provided include file].
+Next, a not-so-simple `rtorrent.rc` is created, it already contains everything needed to use all features of PyroScope — you should check at least the first section and adapt the values to your environment. Note that most of the settings specific to PyroScope are read from a [http://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/rtorrent-0.8.6.rc provided include file].
 
 {{{
 sed -e "s:RT_HOME:$RT_HOME:" >$RT_HOME/rtorrent.rc <<'EOF'
