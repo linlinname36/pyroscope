@@ -83,12 +83,12 @@ if test -n "$(echo $1 | tr -d 0-9)"; then
 fi
 
 if test -z "$1"; then
-    echo >&2 "Usage: $0 [-d] [<throttle-name=$throttle_name>] <rate>"
+    echo >&2 "Usage: ${0/$HOME/~} [-d] [<throttle-name=$throttle_name>] <rate>"
 
     rtorrent_rc=~/.rtorrent.rc
     test -e "$rtorrent_rc" || rtorrent_rc="$(rtxmlrpc system.get_cwd)/rtorrent.rc"
     if test -e "$rtorrent_rc"; then
-        throttles="$(grep ^throttle_ $rtorrent_rc | tr _=, ' ' | cut -f3 -d" " | sort | uniq)"
+        throttles="$(egrep '^throttle[._](up|down)' $rtorrent_rc | tr ._=, ' ' | cut -f3 -d" " | sort | uniq)"
         echo
         echo "CURRENT THROTTLE SETTINGS"
         for throttle in $throttles; do
