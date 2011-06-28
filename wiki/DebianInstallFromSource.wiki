@@ -90,6 +90,9 @@ if [ "$TERM" = "${TERM%-256color}" ]; then
 fi
 umask 0027
 cd $(dirname $0)
+RT_SOCKET=$PWD/.scgi_local
+test -S $RT_SOCKET && lsof $RT_SOCKET >/dev/null && { echo "rTorrent already running"; exit 1; }
+test ! -e $RT_SOCKET || rm $RT_SOCKET 
 rtorrent -n -o import=$PWD/rtorrent.rc
 stty sane
 EOF
