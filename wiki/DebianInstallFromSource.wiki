@@ -197,7 +197,7 @@ branch=pyro.extended=,"network.http.dns_cache_timeout.set=25"
 
 # UI/VIEW: Sort incomplete by date added
 view_sort_current = incomplete,greater=d.get_custom=tm_loaded
-view_filter_on = incomplete,event.download.inserted_new
+view_sort_new     = incomplete,greater=d.get_custom=tm_loaded
 
 # UI/VIEW: Show recently completed top-most in "main"
 view_sort_current = main,greater=d.get_custom=tm_completed
