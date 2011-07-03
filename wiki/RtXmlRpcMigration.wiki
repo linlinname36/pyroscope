@@ -6,7 +6,7 @@
 Version 0.8.7 is the last version that supports the "old" command set, see the [http://wiki.rtorrent.org/RtorrentMigration#Version_0.8.6_to_0.8.7 rTorrent community wiki] for more.
 PyroScope reasonably supports version 0.8.7 starting with *revision 1407*, though in that revision not all functions are tested yet (basic selection and the default output format works).
 Please use the `-D -K` command line switches to start rTorrent.
-Also, for the release version of 0.8.7, you have to apply [https://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/rtorrent-extended/patches/fix_2411_threading.patch this patch taken from the rTorrent SVN].
+Also take into account that any web interfaces like ruTorrent need to be updated at the same time as the rest of your installation, refer to their documentation on how to do that and which version to choose.
 
 To convert your configuration in `~/.rtorrent.rc` to the new commands, there is a *[https://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/rtorrent-extended/migrate_rtorrent_rc.sh migration script]* available that mostly automates the process. Just download it and call it like this:
 {{{
