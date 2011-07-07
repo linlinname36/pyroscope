@@ -97,6 +97,10 @@ Further explanations on what the columns show and what forms of abbreviations ar
 
 The font used in this example is `Inconsolata`, and whatever font you use in your terminal profile, it of course has to support the characters used in the status columns. Also, your terminal *must* be set to use UTF-8 (which nowadays usually is the default anyway).
 
+On Windows using PuTTY (version 0.60), change the settings for font and character set as follows:
+ * `DejaVu Sans Mono` in `Window / Appearance`
+ * `UTF-8` in `Window / Translation`
+
 </dd>
 
 <dt>
