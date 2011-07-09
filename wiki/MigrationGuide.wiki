@@ -132,4 +132,4 @@ But first, to upgrade your existing installation, follow these steps:
  # Read the section _Extending your `.rtorrent.rc`_ on the UserConfiguration page again! There is a new standard configuration include, which greatly simplifies integrating additional PyroScope settings into your main configuration. Add that include as shown there, and take care to remove anything from the main `.rtorrent.rc` that's already added by the include, else you get error messages on startup, or worse, inconsistent behaviour.
  # Restart rTorrent and try to do a search using `^X s=x264` or another keyword you expect some hits on. If that works, you can be pretty sure everything's OK
 
-Version 0.8.8 of rTorrent is now supported by the new release, see RtXmlRpcMigration for details. Note that 0.8.8 is still officially marked as _unstable_, and PyroScope is *not* intensively tested with it.
+The new stable version 0.8.9 of rTorrent is now supported by this release, see RtXmlRpcMigration for details.
