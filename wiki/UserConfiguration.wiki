@@ -66,7 +66,7 @@ _For advanced users:_ Values can contain format strings of the form `%(name)s` w
 
 You need either a `scgi_local` or `scgi_port` specification in your rTorrent configuration; `scgi_local` is preferable since more secure. Furthermore, you need to provide the path to a `session` directory. See the [http://libtorrent.rakshasa.no/rtorrent/rtorrent.1.html rTorrent man page] for details.
 
-For the `loaded` and `completed` fields to work (added in version 0.3.4), as well as the `started`, `leechtime` and `seedtime` ones, you also have to add this:
+For the `loaded` and `completed` fields to work, as well as the `started`, `leechtime` and `seedtime` ones, you also have to add these commands (note that most settings actually reside in an [http://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/rtorrent-0.8.6.rc included file]):
 {{{
 #
 # PyroScope SETTINGS
