@@ -88,6 +88,7 @@ cat >./start <<'EOF'
 if [ "$TERM" = "${TERM%-256color}" ]; then
     export TERM="$TERM-256color"
 fi
+export LANG=en_US.UTF-8
 umask 0027
 cd $(dirname $0)
 RT_SOCKET=$PWD/.scgi_local
