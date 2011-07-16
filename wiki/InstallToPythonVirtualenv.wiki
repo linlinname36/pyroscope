@@ -7,7 +7,7 @@ If you lack the right for global installing, or just wish to keep things separat
 
 *⚠ NOTE:* This assumes that any version of Python 2.5, 2.6 or 2.7 is already installed on the machine — call the command `python --version` to check.
 
-First, we create the Python virtual environment:
+First, we create the Python virtual environment (do *NOT* do this as `root` or using `sudo`):
 {{{
 mkdir -p ~/bin ~/lib/pyroscope
 cd ~/lib/pyroscope
@@ -21,7 +21,7 @@ Now, continue to install a release version *as described in the next section*.
 
 = Installing a release version =
 
-To install a release version into your virtualenv, the next step is all you need for success:
+To install a release version into your virtualenv, the next step is all you need for success (do *NOT* do this as `root` or using `sudo`):
 {{{
 ~/lib/pyroscope/bin/easy_install pyrocore
 ln -nfs $(grep -l 'entry_point.*pyrocore==' ~/lib/pyroscope/bin/*) ~/bin/
