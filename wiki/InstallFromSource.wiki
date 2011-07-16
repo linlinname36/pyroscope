@@ -18,7 +18,7 @@ aptitude install build-essential devtools subversion git-core
  * For `rtcontrol` and `rtxmlrpc`, an existing rTorrent installation, _with the xmlrpc option compiled in_ and the `scgi_local` or `scgi_port` command added to your `~/.rtorrent.rc`.
  * Using rTorrent *0.8.6* is recommended — PyroScope _should_ work together with older versions though, up to a point.
 
-Initial installation to `~/lib/pyroscope` is as follows:
+Initial installation to `~/lib/pyroscope` is as follows (do *NOT* do this as `root` or using `sudo`):
 {{{
 mkdir -p ~/bin ~/lib
 svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
