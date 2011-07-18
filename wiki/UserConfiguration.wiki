@@ -99,7 +99,7 @@ view_filter_on = main,event.download.finished
 
 *Note that if you just freshly installed PyroScope into an existing rTorrent installation, you must also follow the [MigrationGuide "migration" instructions] to add missing data to your already loaded downloads. Else, those items will NOT be filtered correctly.*
 
-If you run rTorrent 0.8.8, you *must* read RtXmlRpcMigration.
+If you run rTorrent 0.8.7 and up, you *must* read RtXmlRpcMigration.
 
 
 = Modifying and extending your configuration via `config.py` =
