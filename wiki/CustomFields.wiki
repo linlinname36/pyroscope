@@ -32,18 +32,19 @@ In place of the `# PUT CUSTOM FIELD CODE HERE` comment you can add any combinati
 == Adding rTorrent fields not supported by default ==
 {{{
     # Add rTorrent attributes not available by default
-    def get_tracker_field(obj, name):
-        "Get a field from tracker in focus."
-        idx = obj.fetch("tracker_focus") % obj._fields["tracker_size"]
-        return getattr(obj._engine._rpc.t, name)(obj._fields["hash"], idx)
+    def get_tracker_field(obj, name, aggregator=sum):
+        "Get an aggregated tracker field."
+        return aggregator(obj._engine._rpc.t.multicall(obj._fields["hash"], 0, "t.%s=" % name)[0])
 
     yield engine.OnDemandField(int, "peers_connected", "number of connected peers", matcher=matching.FloatFilter)
+    yield engine.DynamicField(int, "downloaders", "number of completed downloads", matcher=matching.FloatFilter,
+        accessor=lambda o: get_tracker_field(o, "get_scrape_downloaded"))
     yield engine.DynamicField(int, "seeds", "number of seeds", matcher=matching.FloatFilter,
         accessor=lambda o: get_tracker_field(o, "get_scrape_complete"))
     yield engine.DynamicField(int, "leeches", "number of leeches", matcher=matching.FloatFilter,
         accessor=lambda o: get_tracker_field(o, "get_scrape_incomplete"))
     yield engine.DynamicField(engine.untyped, "lastscraped", "time of last scrape", matcher=matching.TimeFilter,
-        accessor=lambda o: get_tracker_field(o, "get_scrape_time_last"), 
+        accessor=lambda o: get_tracker_field(o, "get_scrape_time_last", max), 
         formatter=lambda dt: fmt.human_duration(float(dt), precision=2, short=True))
 }}}
 
