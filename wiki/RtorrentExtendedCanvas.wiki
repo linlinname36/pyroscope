@@ -32,7 +32,7 @@ For the completion time display to work, you need the following in your `.rtorre
 system.method.set_key = event.download.finished,time_stamp,"d.set_custom=tm_completed,$cat=$system.time= ;d.save_session="
 }}}
 
-The font used in the above example is `Inconsolata`, and whatever font you use in your terminal profile, it of course has to support the characters used in the status columns. Also, your terminal *must* be set to use UTF-8 (which nowadays usually is the default anyway).
+The font used in the above example is `Inconsolata`, and whatever font you use in your terminal profile, it of course has to support the characters used in the status columns. Also, your terminal *must* be set to use UTF-8 (which nowadays usually is the default anyway), that means `LANG` should be something like `en_US.UTF-8`, and `LC_ALL` and `LC_CTYPE` should *not* bet set at all!
 
 On Windows using PuTTY (version 0.60), change the settings for font and character set as follows:
  * `DejaVu Sans Mono` in `Window / Appearance`
