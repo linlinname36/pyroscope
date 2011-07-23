@@ -93,7 +93,7 @@ Also, you should bind the current view toggle to a key, like this:
 schedule = bind_collapse,0,0,"ui.bind_key=download_list,*,view.collapsed.toggle="
 }}}
 
-Further explanations on what the columns show and what forms of abbreviations are used, to get a display as compact as possible while still showing all the important stuff, can be found on RtorrentExtendedCanvas. That page also contains hints on *hwo to correctly setup your terminal*.
+Further explanations on what the columns show and what forms of abbreviations are used, to get a display as compact as possible while still showing all the important stuff, can be found on RtorrentExtendedCanvas. That page also contains hints on *how to correctly setup your terminal*.
 
 </dd>
 
