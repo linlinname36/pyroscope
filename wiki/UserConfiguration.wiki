@@ -73,6 +73,7 @@ For the `loaded` and `completed` fields to work, as well as the `started`, `leec
 #
 
 # Set "pyro.extended" to 1 to activate rTorrent-PS features!
+# LEAVE THIS AT 0 IF YOU RUN A VANILLA rTorrent!
 system.method.insert = pyro.extended, value|const, 0
 
 # Set "pyro.bin_dir" to the "bin" directory where you installed the pyrocore tools!
