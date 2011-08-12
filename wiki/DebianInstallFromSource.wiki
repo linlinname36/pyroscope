@@ -113,10 +113,10 @@ sed -e "s:RT_HOME:$RT_HOME:" >$RT_HOME/rtorrent.rc <<'EOF'
 # general
 upload_rate = 12000
 download_rate = 12000
-max_uploads = 50
-max_uploads_global = 200
-max_open_files = 512
-max_open_sockets = 384
+max_uploads = 100
+max_uploads_global = 250
+max_open_files = 600
+max_open_sockets = 300
 encryption = allow_incoming,try_outgoing,enable_retry
 umask = 0027
 key_layout = qwertz
@@ -135,9 +135,9 @@ use_udp_trackers = no
 
 # peer settings
 min_peers = 20
-max_peers = 200
-min_peers_seed = -1
-max_peers_seed = -1
+max_peers = 60
+min_peers_seed = 30
+max_peers_seed = 80
 
 # resource usage
 max_memory_usage = 768M
