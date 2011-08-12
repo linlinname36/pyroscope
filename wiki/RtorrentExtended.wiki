@@ -157,6 +157,13 @@ http://i.imgur.com/iu8nY.png
 </dl>
 
 
-= Backports of 0.8.8 features =
+= Backports of 0.8.8 features to 0.8.6 =
 The following features of newer versions are patched into the 0.8.6 version of rTorrent-PS:
  * [http://libtorrent.rakshasa.no/changeset/1206 Changeset #1206]: `network.http.ssl_verify_peer.set` used to disable checking of self-signed SSL certificates.
+
+= Backports of SVN HEAD fixes and features to 0.8.9 =
+The following fixes and features of the development version are patched into the 0.8.9 version of rTorrent-PS:
+
+ * a fix in libtorrent for a problem located in the epoll event handling code (#1246).
+ * fixed check of the XML-RPC task queue length (#1246).
+ * a possible busy loop when trying to interrupt the main loop (#1263).
