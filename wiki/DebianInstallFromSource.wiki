@@ -115,6 +115,7 @@ upload_rate = 12000
 download_rate = 12000
 max_uploads = 100
 max_uploads_global = 250
+max_open_http = 99
 max_open_files = 600
 max_open_sockets = 300
 encryption = allow_incoming,try_outgoing,enable_retry
