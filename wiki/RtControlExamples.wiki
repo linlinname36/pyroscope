@@ -55,7 +55,7 @@ Anyone who ever dreamt about a _[http://www.youtube.com/watch?v=y8gHEfA1w3Y sear
 
 https://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/videos/rtcontrol-curses.gif
 
-Just add this to your `.rtorrent.rc`:
+Just add this to your `.rtorrent.rc` (note that you already have these if you followed the [UserConfiguration configuration guide]):
 {{{
 # VIEW: Use rtcontrol filter (^X s=KEYWORD, ^X t=TRACKER, ^X f="FILTER")
 system.method.insert = s,simple,"execute_nothrow=rtcontrol,--detach,-qV,\"$cat=*,$argument.0=,*\""
