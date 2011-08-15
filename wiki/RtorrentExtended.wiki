@@ -23,12 +23,13 @@ Note that some of these patches are taken from the [https://aur.archlinux.org/pa
 
 = Additional features in the standard configuration =
 If you followed the instructions in the _Extending your `.rtorrent.rc`_ section of the UserConfiguration page, you will get the following additional features in your `rTorrent-PS` installation:
- # the `t` key is bound to a `trackers` view that shows all items sorted by tracker and then by name.
- # the `!` key is bound to a `messages` view, listing all items that currently have a non-empty message, sorted in order of the message text.
- # the `^` key is bound to the `rtcontrol` search result view, so you can easily return to your last search.
- # `*` toggles between the collapsed (as described on RtorrentExtendedCanvas) and the expanded display of the current view. <br /><br /> http://i.imgur.com/zbAT9.png
+ # the »`t`« key is bound to a `trackers` view that shows all items sorted by tracker and then by name.
+ # the »`!`« key is bound to a `messages` view, listing all items that currently have a non-empty message, sorted in order of the message text.
+ # the »`^`« key is bound to the `rtcontrol` search result view, so you can easily return to your last search.
+ # »`*`« toggles between the collapsed (as described on RtorrentExtendedCanvas) and the expanded display of the current view. <br /><br /> http://i.imgur.com/zbAT9.png
  # The `active` view groups the list into complete, incomplete, and queued items, in that order. Within each group, they're sorted by download and then upload speed.
  # The commands `s=«keyword»`, `t=«tracker_alias»`, and `f=«filter_condition»` are pre-defined for searching using a Ctrl-X prompt. 
+ # The »`.`« key toggles the membership in the `tagged` view for the item in focus, »`:`« shows the `tagged` view, and »`T`« clears that view (i.e. removes the tagged state on all items). This can be very useful to manually select a few items and then run `rtcontrol` on them, or alternatively use »`--to-view tagged`« to populate the `tagged` view, then deselect some items interactively with the »`.`« key, and finally mass-control the rest.
  # You can use the `purge=` and `cull=` commands (on a Ctrl-X prompt) for deleting the current item and its (incomplete) data.
 
  ✪ _Do not forget to set the value of `pyro.extended` to 1!_
@@ -167,3 +168,4 @@ The following fixes and features of the development version are patched into the
  * a fix in libtorrent for a problem located in the epoll event handling code (#1246).
  * fixed check of the XML-RPC task queue length (#1246).
  * a possible busy loop when trying to interrupt the main loop (#1263).
+ 
