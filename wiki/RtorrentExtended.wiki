@@ -27,7 +27,7 @@ If you followed the instructions in the _Extending your `.rtorrent.rc`_ section 
  # the »`!`« key is bound to a `messages` view, listing all items that currently have a non-empty message, sorted in order of the message text.
  # the »`^`« key is bound to the `rtcontrol` search result view, so you can easily return to your last search.
  # »`*`« toggles between the collapsed (as described on RtorrentExtendedCanvas) and the expanded display of the current view. <br /><br /> http://i.imgur.com/zbAT9.png
- # The `active` view groups the list into complete, incomplete, and queued items, in that order. Within each group, they're sorted by download and then upload speed.
+ # The `active` view is changed to include all incomplete items regardless of whether they have any traffic, and then groups the list into complete, incomplete, and queued items, in that order. Within each group, they're sorted by download and then upload speed.
  # The commands `s=«keyword»`, `t=«tracker_alias»`, and `f=«filter_condition»` are pre-defined for searching using a Ctrl-X prompt. 
  # The »`.`« key toggles the membership in the `tagged` view for the item in focus, »`:`« shows the `tagged` view, and »`T`« clears that view (i.e. removes the tagged state on all items). This can be very useful to manually select a few items and then run `rtcontrol` on them, or alternatively use »`--to-view tagged`« to populate the `tagged` view, then deselect some items interactively with the »`.`« key, and finally mass-control the rest.
  # You can use the `purge=` and `cull=` commands (on a Ctrl-X prompt) for deleting the current item and its (incomplete) data.
