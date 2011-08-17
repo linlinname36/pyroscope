@@ -168,4 +168,4 @@ The following fixes and features of the development version are patched into the
  * a fix in libtorrent for a problem located in the epoll event handling code (#1246).
  * fixed check of the XML-RPC task queue length (#1246).
  * a possible busy loop when trying to interrupt the main loop (#1263).
- 
+ * `log.execute` is fixed, and stays open.
