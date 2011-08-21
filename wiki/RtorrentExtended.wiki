@@ -152,9 +152,15 @@ rtxmlrpc ui.color.title.set "bold magenta on bright cyan"
 The [http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/rtorrent-extended/term-256color.py term-256color] script can help you with showing the colors your terminal supports, an example output using Gnome's terminal looks like the following...
 
 http://i.imgur.com/iu8nY.png
-
 </dd>
 
+<dt>
+== `d.tracker_domain=` ==
+</dt>
+<dd>
+
+</dd>
+Returns the (shortened) _tracker domain_ of the given download item. The chosen tracker is the first HTTP one with active peers (seeders or leechers), or else the first one.
 </dl>
 
 
