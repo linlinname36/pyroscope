@@ -158,9 +158,17 @@ http://i.imgur.com/iu8nY.png
 == `d.tracker_domain=` ==
 </dt>
 <dd>
-
-</dd>
 Returns the (shortened) _tracker domain_ of the given download item. The chosen tracker is the first HTTP one with active peers (seeders or leechers), or else the first one.
+</dd>
+
+<dt>
+== `log.messages=«path»` (0.8.9 only) ==
+</dt>
+<dd>
+(Re-)opens a log file that contains the messages normally only visible on the main panel and via the `l` key. Each line is prefixed with the current date and time in ISO8601 format.
+If an empty path is passed, the file is closed.
+</dd>
+
 </dl>
 
 
