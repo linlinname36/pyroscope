@@ -216,8 +216,6 @@ view_filter_on = main,event.download.finished
 EOF
 }}}
 
-If you intend to use rTorrent version 0.8.7 and up, you also need to [RtXmlRpcMigration run the migration script] on that configuration now.
-
 
 = !PyroScope installation =
 The installation of `pyrocore` is done from source, see InstallFromSource for more details.
@@ -228,6 +226,12 @@ svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
 }}}
 
 Make sure `~/bin` is on your `PATH`, and if not, close and then reopen your shell. Check again, and if it's still not in there, [http://linux.about.com/od/linux101/l/blnewbie3_1_4.htm fix your broken `.bashrc`].
+
+Also, if you compiled rTorrent version 0.8.9 (which is the default), you need to [RtXmlRpcMigration run the migration script] on the configuration now:
+{{{
+~/lib/pyroscope/pyrocore/docs/rtorrent-extended/migrate_rtorrent_rc.sh $RT_HOME/rtorrent.rc
+}}}
+That converts it from the old 0.8.6 syntax to the new one.
 
 
 = !PyroScope configuration =
