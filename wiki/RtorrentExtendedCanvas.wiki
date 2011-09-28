@@ -18,7 +18,7 @@ http://i.imgur.com/zbAT9.png
 || ⤴ || Number of seeds from last scrape info ||
 || ⤵ || Number of leeches from last scrape info ||
 || ∆ || Upload rate ||
-|| ⌚ ≀∇ || Approximate time since completion (units are «”’hdwmy» from seconds to years), or download rate for incomplete items ||
+|| ⌚ ≀∇ || Approximate time since completion (units are «”’hdwmy» from seconds to years); for incomplete items the download rate or, if there's no traffic, the time since the item was loaded ||
 || ✇ || Data size ||
 || Name || Name of the download item ||
 || Tracker Domain || Domain of the first HTTP tracker with seeds or leeches, or else the first one altogether ||
