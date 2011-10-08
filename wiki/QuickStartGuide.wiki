@@ -13,8 +13,10 @@ Choose your preferred way of how to install PyroScope ►
  <br />
  ➽ _For details on the extended *`rTorrent-PS`* distribution including build instructions, consult the RtorrentExtended page!_
 
-If you like PyroScope after using it for a while, click on the following button to show your support.
-<wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_users_logo.xml" height="43"  border="0" />
+If you like PyroScope after using it for a while, click on these buttons to show your support.
+<table border="0"><tr valign="middle">
+<td><g:plusone size="standard" href="http://code.google.com/p/pyroscope/"></g:plusone></td>
+<td><wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_users_logo.xml" height="43"  border="0" /></td>
+</tr></table>
 
-<br/>
 *⚠ WARNING:* `xmlrpc-c` libraries on Ubuntu tend to have a bug regarding integer overflows, causing bigger data sizes like those of Linux distribution DVDs to be misreported. If your installation has that problem, the `rtxmlrpc` and `rtcontrol` commands will emit a warning every time you start them. In that case follow DebianInstallFromSource or [http://code.google.com/p/rtgui/wiki/CompilingRtorrent the rtgui instructions] to compile your own correct version.
