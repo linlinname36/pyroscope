@@ -3,7 +3,14 @@
 
 = Introduction =
 
-https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/img/rt-logo.png <br />
+<table border="0"><tr valign="middle">
+<td>https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/img/rt-logo.png</td>
+<td width="30px"></td>
+<td><g:plusone size="tall" href="http://code.google.com/p/pyroscope/"></g:plusone><br />http://i.imgur.com/hAdjM.gif</td>
+<td width="10px"></td>
+<td><wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_users.xml?style=red" height="100"  border="0" /></td>
+</tr></table>
+
 If you follow the [DebianInstallFromSource#rTorrent_installation build instructions] for the extended rTorrent variant `rTorrent-PS`, you'll get an alternative rTorrent executable with the following changes:
  # self-contained install into any location of your choosing, including your home directory, offering the ability to run several versions at once (in different client instances).
  # _rpath-linked_ to the major dependencies, so you can upgrade those independently from your OS distribution's versions.
