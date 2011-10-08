@@ -16,8 +16,13 @@ http://i.imgur.com/UALM1.png
 
 To get started right away, see the QuickStartGuide. It's also very easy to WriteYourOwnScripts to automate anything that the standard commands can't do. To get in contact and share your experiences with other users of PyroScope, join the [http://groups.google.com/group/pyroscope-users pyroscope-users] mailing list or the inofficial <a href="irc://irc.freenode.net/rtorrent">`#rtorrent`</a> channel on `irc.freenode.net`.
 
-If you like PyroScope, click on the following button to support it.
+If you like PyroScope, click on these buttons to support it.
+<table border="0"><tr valign="middle"><td>
+<g:plusone size="tall" href="http://code.google.com/p/pyroscope/"></g:plusone><br /> http://i.imgur.com/hAdjM.gif
+</td><td>
 <wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_users.xml?style=red" height="100"  border="0" />
+</td>
+</tr></table>
 
 
 = Project Status =
