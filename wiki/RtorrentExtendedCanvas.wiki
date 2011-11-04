@@ -67,5 +67,5 @@ ui.color.progress40.set=213
 ui.color.progress60.set=214
 ui.color.progress80.set=226
 ui.color.progress100.set=41
-ui.color.progress120.set=bold bright green
+ui.color.progress120.set="bold bright green"
 }}}
