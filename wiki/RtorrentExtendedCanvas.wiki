@@ -73,3 +73,5 @@ ui.color.progress80.set=226
 ui.color.progress100.set=41
 ui.color.progress120.set="bold bright green"
 }}}
+
+|| http://i.imgur.com/CZ71l.png ||
