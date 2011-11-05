@@ -61,8 +61,8 @@ The following color settings for `tmux` work better than the default ones, for m
 ui.color.complete.set=41
 ui.color.stopped.set=33       
 
-ui.color.even.set=234
-ui.color.odd.set=232
+ui.color.even.set="on 234"
+ui.color.odd.set="on 232"
 
 ui.color.progress0.set=196
 ui.color.progress20.set=202
