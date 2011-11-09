@@ -55,7 +55,7 @@ python -c 'print u"\u22c5 \u22c5\u22c5 \u201d \u2019 \u266f \u2622 \u260d \u2318
 
 == Using the extended canvas with tmux / screen and 256 colors ==
 
-To enable 256 colors, your terminal must obviously be able to support them at all (i.e. have a =xterm-256color= terminfo entry, or similar). But even if that is the case, you often need to give a little nudge to the terminal multiplexers; namely start `tmux` with the `-2` switch (that forces 256 color mode), or for `screen` start it with the terminal already set to 256 color mode so it can sense the underlying terminal supports them, i.e. use this in your startup script:
+To enable 256 colors, your terminal must obviously be able to support them at all (i.e. have a `xterm-256color` terminfo entry, or similar). But even if that is the case, you often need to give a little nudge to the terminal multiplexers; namely start `tmux` with the `-2` switch (that forces 256 color mode), or for `screen` start it with the terminal already set to 256 color mode so it can sense the underlying terminal supports them, i.e. use this in your startup script:
 {{{
 if [ "$TERM" = "${TERM%-256color}" ]; then
     export TERM="$TERM-256color"
