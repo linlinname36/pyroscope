@@ -78,6 +78,7 @@ To be able to use several different instances of rTorrent (e.g. a second one for
 
 First, create the instance directories and a simple start script:
 {{{
+# Run this in your NORMAL user account!
 export RT_HOME=$HOME/rtorrent
 mkdir -p $RT_HOME/{.session,work,done,log,watch/start,watch/load}
 cd $RT_HOME
@@ -110,6 +111,7 @@ chmod a+x ./start
 Next, a not-so-simple `rtorrent.rc` is created, it already contains everything needed to use all features of PyroScope — you should check at least the first section and adapt the values to your environment. Note that most of the settings specific to PyroScope are read from a [http://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/rtorrent-0.8.6.rc provided include file].
 
 {{{
+# Run this in your NORMAL user account!
 sed -e "s:RT_HOME:$RT_HOME:" >$RT_HOME/rtorrent.rc <<'EOF'
 ### rtorrent settings #######################################################
 
@@ -227,6 +229,7 @@ EOF
 = !PyroScope installation =
 The installation of `pyrocore` is done from source, see InstallFromSource for more details.
 {{{
+# Run this in your NORMAL user account!
 mkdir -p ~/bin ~/lib
 svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
 ~/lib/pyroscope/update-to-head.sh
@@ -236,6 +239,7 @@ Make sure `~/bin` is on your `PATH`, and if not, close and then reopen your shel
 
 Also, if you compiled rTorrent version 0.8.9 (which is the default), you need to [RtXmlRpcMigration run the migration script] on the configuration now:
 {{{
+# Run this in your NORMAL user account!
 ~/lib/pyroscope/pyrocore/docs/rtorrent-extended/migrate_rtorrent_rc.sh $RT_HOME/rtorrent.rc
 }}}
 That converts it from the old 0.8.6 syntax to the new one.
@@ -244,6 +248,7 @@ That converts it from the old 0.8.6 syntax to the new one.
 = !PyroScope configuration =
 This adds a minimal configuration, so that the defaults are taken from the installed software, which makes later updates a lot easier.
 {{{
+# Run this in your NORMAL user account!
 pyroadmin --create-config
 
 cat >~/.pyroscope/config.ini <<EOF
@@ -267,6 +272,7 @@ EOF
 
 You're now ready to start your rtorrent, so just do it:
 {{{
+# Run this in your NORMAL user account!
 screen -S rtorrent $RT_HOME/start
 }}}
 You can of course add more elaborate start scripts, like a cron watchdog or init.d scripts, see the rTorrent wiki for examples.
