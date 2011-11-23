@@ -298,7 +298,7 @@ EOF
 You're now ready to start your rTorrent, so just do it:
 {{{
 # Run this in your NORMAL user account!
-tmux -2u new -n rT-PS -s rtorrent "$RT_HOME/start; exec bash"
+tmux -2u new -n rT-PS -s rtorrent "~/rtorrent/start; exec bash"
 }}}
 The `exec bash` keeps your `tmux` window open if rTorrent exits, which allows you to actually read any error messages in case rTorrent ends _unexpectedly_.
 
