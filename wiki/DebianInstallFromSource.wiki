@@ -61,7 +61,7 @@ cd rtorrent-extended
 ./build.sh all
 }}}
 
-If you want an extended version with some stability fixes and extension patches applied, call this command in addition:
+If you want an extended version with some stability fixes and extension patches applied, call this command *in addition*:
 {{{
 ./build.sh extend
 }}}
