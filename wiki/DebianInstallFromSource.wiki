@@ -300,7 +300,7 @@ You're now ready to start your rTorrent, so just do it:
 # Run this in your NORMAL user account!
 tmux -2u new -n rT-PS -s rtorrent "$RT_HOME/start; exec bash"
 }}}
-The `exec bash` keeps your `tmux` window open if rTorrent exits, which allow you to actually read any error messages in case rTorrent ends _unexpectedly_.
+The `exec bash` keeps your `tmux` window open if rTorrent exits, which allows you to actually read any error messages in case rTorrent ends _unexpectedly_.
 
 You can of course add more elaborate start scripts, like a cron watchdog or init.d scripts, see the rTorrent wiki for examples.
 After that, test the XMLRPC connection by using this command:
