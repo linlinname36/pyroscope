@@ -14,7 +14,7 @@ Most of the command blocks can be cut & pasted wholesale into a terminal. Note t
 = Preparatory steps =
 First, you need to install a few required packages — these are the only steps that must be performed by the `root` user (i.e. in a root shell, or by writing `sudo` before the actual command):
 {{{
-aptitude install screen wget build-essential subversion git-core \
+aptitude install tmux wget build-essential subversion git-core \
     python-setuptools python-virtualenv python-dev \
     libsigc++-2.0-dev libssl-dev \
     libncurses-dev libncursesw5-dev libcppunit-dev \
@@ -270,14 +270,42 @@ EOF
 
 = First start and testing =
 
-You're now ready to start your rtorrent, so just do it:
+We spruce up `tmux` a bit before we start it the first time:
 {{{
 # Run this in your NORMAL user account!
-screen -S rtorrent $RT_HOME/start
+cat >~/.tmux.conf <<'EOF'
+# Rebind to Ctrl-a
+set -g prefix C-a
+unbind C-b
+bind a send-prefix
+bind C-a last-window
+
+# Rebind pane splitting
+unbind %
+bind - split-window -v
+bind _ split-window -h
+
+# Set status bar
+set -g status-bg colour236
+set -g status-fg white
+set -g status-left '#[fg=green]#H'
+
+# Highlight active window
+set-window-option -g window-status-current-bg colour164
+EOF
 }}}
+
+You're now ready to start your rTorrent, so just do it:
+{{{
+# Run this in your NORMAL user account!
+tmux -2u new -n rT-PS -s rtorrent "$RT_HOME/start; exec bash"
+}}}
+The `exec bash` keeps your `tmux` window open if rTorrent exits, which allow you to actually read any error messages in case rTorrent ends _unexpectedly_.
+
 You can of course add more elaborate start scripts, like a cron watchdog or init.d scripts, see the rTorrent wiki for examples.
 After that, test the XMLRPC connection by using this command:
 {{{
+# Open a new tmux terminal window by pressing "Ctrl-a" and then "c"
 rtxmlrpc system.time_usec
 }}}
 
