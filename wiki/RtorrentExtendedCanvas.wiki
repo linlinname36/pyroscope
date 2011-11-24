@@ -39,6 +39,8 @@ Add these lines to your configuration:
 # Show traffic of the last hour
 network.history.depth.set = 112
 schedule = network_history_sampling,1,32, network.history.sample=
+method.insert = network.history.auto_scale.toggle, simple, "branch=network.history.auto_scale=,\"network.history.auto_scale.set=0\",\"network.history.auto_scale.set=1\""
+schedule = bind_auto_scale,0,0,"ui.bind_key=download_list,=,network.history.auto_scale.toggle="
 }}}
 
 And you'll get this in your terminal:
