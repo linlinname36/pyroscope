@@ -33,6 +33,17 @@ For the completion time display to work, you need the following in your `.rtorre
 system.method.set_key = event.download.finished,time_stamp,"d.set_custom=tm_completed,$cat=$system.time= ;d.save_session="
 }}}
 
+== Adding traffic graphs ==
+Add these lines to your configuration:
+{{{
+network.history.depth.set = 100
+schedule = network_history_sampling,0,5, network.history.sample=
+}}}
+
+And you'll get this in your terminal:
+
+http://i.imgur.com/RUj91.png
+
 
 == Setting up your terminal ==
 
