@@ -36,8 +36,9 @@ system.method.set_key = event.download.finished,time_stamp,"d.set_custom=tm_comp
 == Adding traffic graphs ==
 Add these lines to your configuration:
 {{{
-network.history.depth.set = 100
-schedule = network_history_sampling,0,5, network.history.sample=
+# Show traffic of the last hour
+network.history.depth.set = 112
+schedule = network_history_sampling,1,32, network.history.sample=
 }}}
 
 And you'll get this in your terminal:
