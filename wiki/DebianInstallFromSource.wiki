@@ -132,6 +132,7 @@ encryption = allow_incoming,try_outgoing,enable_retry
 umask = 0027
 key_layout = qwertz
 check_hash = no
+# default is 2 ms and 5 tries
 hash_interval = 50
 hash_max_tries = 2
 
