@@ -16,6 +16,9 @@ All commands share some common options:
 --config-dir=DIR   configuration directory [~/.pyroscope]
 }}}
 
+Also see the CliUsage page for an automatically generated and thus comprehensive listing of all the current options.
+
+
 = Commands =
 
 == mktor ==
