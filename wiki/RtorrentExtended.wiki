@@ -23,7 +23,7 @@ If you follow the [DebianInstallFromSource#rTorrent_installation build instructi
 http://i.imgur.com/xVSmh.png
 
 The new stable rTorrent version 0.8.9 is built by default, but 0.8.6 is also supported — not all patches are applied equally (depending on whether they're needed, or applicable at all).
-Note that some of these patches are taken from the [https://aur.archlinux.org/packages/rtorrent-extended/ AUR package] provided for [http://www.archlinux.org/ Arch Linux].
+Note that some of these patches are taken from the [https://aur.archlinux.org/packages/rtorrent-extended/ AUR package] provided for [http://www.archlinux.org/ Arch Linux]. Also, there is now a [https://aur.archlinux.org/packages.php?ID=54763 rtorrent-pyro] AUR package.
 
  ➽ _Note that you need to read *all* of the following explanations of the user-interface related new commands to get the visual changes set up correctly, since this requires some special setup of your terminal on many machines!_
 
