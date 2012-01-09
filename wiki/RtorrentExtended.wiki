@@ -176,6 +176,15 @@ Returns the (shortened) _tracker domain_ of the given download item. The chosen 
 If an empty path is passed, the file is closed.
 </dd>
 
+<dt>
+== `network.history.*=` (0.8.9 only) ==
+</dt>
+<dd>
+Commands to add network traffic charts to the bottom of the collapsed download display.
+The commands added are `network.history.depth[.set]=`,  `network.history.sample=`,  `network.history.refresh=`, and `network.history.auto_scale=`.
+See the RtorrentExtendedCanvas page on how to use them.
+</dd>
+
 </dl>
 
 
