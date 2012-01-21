@@ -8,7 +8,7 @@ The following shows installation instructions for a working rTorrent instance in
 
 Non-packaged software is installed exclusively into your normal user account, i.e. this description works OK for non-root users as long as the required packages are installed before-hand. The default install location is `~/lib/rtorrent-«version»`, which means you can easily delete any installed software, and also run several versions concurrently.
 
-Most of the command blocks can be cut & pasted wholesale into a terminal. Note that `bash` _here documents_ (`... <<'EOF'`) *MUST* be pasted at once.
+Most of the command blocks can be cut & pasted wholesale into a terminal. Note that `bash` _here documents_ (`... <<'EOF'`) *MUST* be pasted at once, up to and including the line having a single `EOF` on it.
 
 
 = Preparatory steps =
