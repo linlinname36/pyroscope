@@ -26,7 +26,7 @@ Note that you can always show Debian's current build dependencies for rTorrent u
 echo $(apt-cache showsrc rtorrent libtorrent-dev | grep Build-Depends: | cut -f2 -d: | tr ",)" " \\n" | cut -f1 -d"(")
 }}}
 
-If you later want to use trackers with `https` announce URLs in combination with rTorrent 0.8.6 (later versions have `network.http.ssl_verify_peer.set=0`), this script is useful to easily add the needed certificates to the system:
+If you later want to use trackers with `https` announce URLs in combination with rTorrent 0.8.6 (higher versions have `network.http.ssl_verify_peer.set=0`), this script is useful to easily add the needed certificates to the system:
 {{{
 cat >/usr/local/sbin/load-domain-certificate <<'EOF'
 #! /bin/bash
