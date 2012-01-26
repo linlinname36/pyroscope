@@ -10,6 +10,8 @@ Non-packaged software is installed exclusively into your normal user account, i.
 
 Most of the command blocks can be cut & pasted wholesale into a terminal. Note that `bash` _here documents_ (`... <<'EOF'`) *MUST* be pasted at once, up to and including the line having a single `EOF` on it.
 
+*⚠ If you have an existing `/usr/local` installation of rTorrent, it is _very_ prudent to `make uninstall` that before compiling another version. In the same vein, remove any packages of `libtorrent` and `rtorrent` you have on your machine. The build instructions on this page then ensure that it is _no_ problem to have several versions concurrently on your machine.*
+
 
 = Preparatory steps =
 First, you need to install a few required packages — these are the only steps that must be performed by the `root` user (i.e. in a root shell, or by writing `sudo` before the actual command):
