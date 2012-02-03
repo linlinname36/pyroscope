@@ -16,6 +16,8 @@
    * [CommandLineTools CLI Tools Overview]
    * [RtControlExamples Using rtcontrol]
    * [OutputTemplates Templating]
+   * [QueueManager Queue Manager]
+   * [EventHandling Event Handling]
    * [BashCompletion Bash completion]
    * [RtorrentExtended rTorrent extensions]
  * 3rd Party Add-ons
