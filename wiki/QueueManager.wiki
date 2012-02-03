@@ -1,0 +1,22 @@
+#summary Queue management.
+#labels daemon,queue,Featured,cli
+<wiki:toc />
+
+= Introduction =
+The queue manager is controlled by the `pyrotorque` daemon command.
+
+*At the moment, run `pyrotorque` manually in a `tmux` or `screen` session _after_ starting rTorrent. There will be some form of auto-start/watchdog later on to run it and keep it alive.*
+
+
+= Initial setup =
+
+The queue manager needs additional configuration, but there are defaults in place, so the following explanation can be skipped if you are OK with these.
+
+If you followed the UserConfiguration instructions, the necessary commands are added automatically to your `.rtorrent.rc` using the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/rtorrent-0.8.6.rc configuration include]. Look for the section starting with a `# QUEUE MANAGER` comment near the end, if for whatever reason you need to add these manually.
+
+Also, the PyroScope configuration (located in `~/.pyroscope/config.ini`) needs some additions, namely in the new `[TORQUE]` section. Again, this is covered by [http://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/rtorrent-0.8.6.rc defaults], so you only need to take care of that if you want to make any changes.
+
+
+= Configuration =
+
+*TODO* Number of simultaneous items to start, etc.
