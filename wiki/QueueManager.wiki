@@ -14,7 +14,7 @@ The queue manager needs additional configuration, but there are defaults in plac
 
 If you followed the UserConfiguration instructions, the necessary commands are added automatically to your `.rtorrent.rc` using the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/rtorrent-0.8.6.rc configuration include]. Look for the section starting with a `# QUEUE MANAGER` comment near the end, if for whatever reason you need to add these manually.
 
-Also, the PyroScope configuration (located in `~/.pyroscope/config.ini`) needs some additions, namely in the new `[TORQUE]` section. Again, this is covered by [http://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/rtorrent-0.8.6.rc defaults], so you only need to take care of that if you want to make any changes.
+Also, the PyroScope configuration (located in `~/.pyroscope/config.ini`) needs some additions, namely in the new `[TORQUE]` section. Again, this is covered by [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/config.ini defaults], so you only need to take care of that if you want to make any changes.
 
 
 = Configuration =
