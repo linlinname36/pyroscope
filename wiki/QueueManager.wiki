@@ -20,3 +20,16 @@ Also, the PyroScope configuration (located in `~/.pyroscope/config.ini`) needs s
 = Configuration =
 
 *TODO* Number of simultaneous items to start, etc.
+
+
+= Maintenance jobs =
+The QueueManager is just one kind of job that can be run by `pyrotorque`. It has a built-in scheduler that can run any number of additional jobs, the following sections explain the built-in ones. Since these jobs can be loaded from any available Python package, you can also easily write your own.
+
+== ItemPoller ==
+*TODO* Maintains an updated copy of all rTorrent items, as a service for the other jobs.
+
+== ActionRule ==
+*TODO* This is `rtcontrol` in form of a house-keeping job, and using this is way more efficient than an equivalent `rtcontrol` cron job; due to this, they can be run a lot more frequently.
+
+== ... ==
+*TODO* 
