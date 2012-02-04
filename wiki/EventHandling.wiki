@@ -1,0 +1,6 @@
+#summary Event handling.
+<wiki:toc />
+
+= Introduction =
+*TODO*
+`rtevent` stuff
