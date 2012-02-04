@@ -32,7 +32,7 @@ job.queue.schedule = second=*/15
 
 
 = Maintenance jobs =
-The QueueManager is just one kind of job that can be run by `pyrotorque`. It has a built-in scheduler that can run any number of additional jobs, the following sections explain the built-in ones. Since these jobs can be loaded from any available Python package, you can also easily [#Writing_custom_jobs write your own].
+The `QueueManager` is just one kind of job that can be run by `pyrotorque`. It has a built-in scheduler that can run any number of additional jobs, the following sections explain the built-in ones. Since these jobs can be loaded from any available Python package, you can also easily [#Writing_custom_jobs write your own].
 
 Jobs are added in the `[TORQUE]` section, by providing at least the parameters `job.«NAME».handler` and `job.«NAME».schedule`. Depending on the handler, additional parameters can/must be provided (see below for a list of handlers and what they do).
 
@@ -40,7 +40,7 @@ Details on the `schedule` parameter can be found [http://readthedocs.org/docs/ap
 The `handler` parameter tells the system where to look for the job implementation, see the handler descriptions below for the correct values.
 
 == `QueueManager` ==
-This is described in detail [QueueManager#Configuration further up on this page].
+This is described in detail [#Configuration further up on this page].
 
 == `ItemPoller` ==
 *TODO* Maintains an updated copy of all rTorrent items, as a service for the other jobs.
