@@ -1,4 +1,5 @@
-#summary Event handling.
+#summary Event handling using `rtevent`.
+#labels cli,event
 <wiki:toc />
 
 = Introduction =
