@@ -2,6 +2,8 @@
 #labels daemon,queue,cli,Featured
 <wiki:toc />
 
+*❢YOU NEED TO RUN SVN HEAD FOR THIS! See InstallFromSource❢*
+
 = Introduction =
 The queue manager is controlled by the `pyrotorque` daemon command.
 
