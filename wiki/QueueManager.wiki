@@ -36,3 +36,7 @@ The QueueManager is just one kind of job that can be run by `pyrotorque`. It has
 
 == `...` ==
 *TODO* 
+
+
+= Writing custom jobs =
+*TODO* 
