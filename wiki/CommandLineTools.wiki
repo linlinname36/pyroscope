@@ -248,4 +248,4 @@ You can use `rtmv` in combination with `rtcontrol` for very flexible completion 
 Future modes of operation will include copying instead of moving, moving and fixing the download directory in rTorrent (like classical rtorrent completion event handling), and moving across devices (i.e. copying and then deleting).
 
 == rtevent ==
-`rtevent` handles rTorrent events and provides common implementations for them, like completion moving. *Not yet implemented.*
+`rtevent` handles rTorrent events and provides common implementations for them, like completion moving. See EventHandling for details on using it. *Not yet implemented*
