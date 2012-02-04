@@ -1,4 +1,4 @@
-#summary Queue management.
+#summary Queue management and house-keeping.
 #labels daemon,queue,Featured,cli
 <wiki:toc />
 
