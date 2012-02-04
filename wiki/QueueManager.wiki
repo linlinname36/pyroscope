@@ -1,5 +1,5 @@
 #summary Queue management and house-keeping.
-#labels daemon,queue,Featured,cli
+#labels daemon,queue,cli,Featured
 <wiki:toc />
 
 = Introduction =
@@ -21,9 +21,24 @@ Also, the PyroScope configuration (located in `~/.pyroscope/config.ini`) needs s
 
 *TODO* Number of simultaneous items to start, etc.
 
+Example (run it every 15 seconds):
+{{{
+# Queue manager job
+job.queue.handler = pyrocore.torrent.queue:QueueManager
+job.queue.schedule = second=*/15
+}}}
+
 
 = Maintenance jobs =
-The QueueManager is just one kind of job that can be run by `pyrotorque`. It has a built-in scheduler that can run any number of additional jobs, the following sections explain the built-in ones. Since these jobs can be loaded from any available Python package, you can also easily write your own.
+The QueueManager is just one kind of job that can be run by `pyrotorque`. It has a built-in scheduler that can run any number of additional jobs, the following sections explain the built-in ones. Since these jobs can be loaded from any available Python package, you can also easily [#Writing_custom_jobs write your own].
+
+Jobs are added in the `[TORQUE]` section, by providing at least the parameters `job.«NAME».handler` and `job.«NAME».schedule`. Depending on the handler, additional parameters can/must be provided (see below for a list of handlers and what they do).
+
+Details on the `schedule` parameter can be found [http://readthedocs.org/docs/apscheduler/en/latest/cronschedule.html here]. Multiple fields must be separated by spaces, so if a field value contains a space, it must be quoted, e.g. «`hour=12 "day=3rd sun"`».
+The `handler` parameter tells the system where to look for the job implementation, see the handler descriptions below for the correct values.
+
+== `QueueManager` ==
+This is described in detail [QueueManager#Configuration further up on this page].
 
 == `ItemPoller` ==
 *TODO* Maintains an updated copy of all rTorrent items, as a service for the other jobs.
