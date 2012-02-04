@@ -133,3 +133,13 @@ But first, to upgrade your existing installation, follow these steps:
  # Restart rTorrent and try to do a search using `^X s=x264` or another keyword you expect some hits on. If that works, you can be pretty sure everything's OK
 
 The new stable version 0.8.9 of rTorrent is now supported by this release, see RtXmlRpcMigration for details.
+
+
+== Migrating to version 0.4.3 ==
+
+The 0.4.3 release adds a QueueManager and (possibly) EventHandling.
+
+To upgrade your existing installation, follow these steps:
+ # For people that run a source code installation. use the `update-to-head.sh` script as usual, outlined further up on this page.
+ # Call `pyroadmin --create-config` to update the `.default` configuration examples.
+ # Read the QueueManager and EventHandling pages if you plan to use these features; both are inactive by default and  need to be enabled.
