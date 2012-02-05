@@ -45,6 +45,7 @@ The `handler` parameter tells the system where to look for the job implementatio
 == `QueueManager` ==
 This is described in detail [#Configuration further up on this page].
 
+
 == `EngineStats` ==
 Runs once per minute, checks the connection to rTorrent, and logs some statistical information.
 
@@ -52,11 +53,24 @@ Runs once per minute, checks the connection to rTorrent, and logs some statistic
 == `ItemPoller` ==
 *TODO* Maintains an updated copy of all rTorrent items, as a service for the other jobs.
 
+
 == `ActionRule` ==
 *TODO* This is `rtcontrol` in form of a house-keeping job, and using this is way more efficient than an equivalent `rtcontrol` cron job; due to that, they can be run a lot more frequently.
 
+
+== `FolderWatch` ==
+*TODO* Watches a folder tree, which can also be nested. Loading of new `.torrent` files is immediate (using `libnotify`). Works together with `CompletionHandler` to move data to the partial path the torrent file was loaded from, relative to the tree root.
+
+Each sub-directory can contain a `watch.ini` configuration file for parameters like whether to start new items imemdiately, and for overriding the completion path.
+
+
+== `CompletionHandler` ==
+*TODO* Moves completed data to a target directory, according to flexible rules.
+
+
 == `StatsArchiver` ==
 *TODO* Keeps a continuous archive of some statistical values (like bandwidth) so they can later be rendered into graphs.
+
 
 == `...` ==
 *TODO* 
