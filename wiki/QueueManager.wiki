@@ -45,6 +45,10 @@ The `handler` parameter tells the system where to look for the job implementatio
 == `QueueManager` ==
 This is described in detail [#Configuration further up on this page].
 
+== `EngineStats` ==
+Runs once per minute, checks the connection to rTorrent, and logs some statistical information.
+
+
 == `ItemPoller` ==
 *TODO* Maintains an updated copy of all rTorrent items, as a service for the other jobs.
 
