@@ -59,7 +59,7 @@ Runs once per minute, checks the connection to rTorrent, and logs some statistic
 
 
 == `FolderWatch` ==
-*TODO* Watches a folder tree, which can also be nested. Loading of new `.torrent` files is immediate (using `libnotify`). Works together with `CompletionHandler` to move data to the partial path the torrent file was loaded from, relative to the tree root.
+*TODO* Watches a folder tree, which can be nested arbitrarily. Loading of new `.torrent` files is immediate (using `libnotify`). Works together with `CompletionHandler` to move data to the partial path the torrent file was loaded from, relative to the tree root.
 
 Each sub-directory can contain a `watch.ini` configuration file for parameters like whether to start new items imemdiately, and for overriding the completion path.
 
