@@ -77,8 +77,10 @@ Note that the unpatched version is still available as `rtorrent-vanilla`, and yo
  ✪ _If you use the configuration as outlined in the next section, do not forget to change the value of `pyro.extended` to 1 in case you built the extended version!_
 
 
-= rTorrent configuration =
+= rTorrent instance setup =
 To be able to use several different instances of rTorrent (e.g. a second one for experimental configuration changes), this setup doesn't use `~/.rtorrent.rc` at all, but keeps everything in one place under the `~/rtorrent` directory. If you change the assignment to `RT_HOME`, you can place it anywhere you like, or create alternate instances with ease.
+
+== rTorrent startup script ==
 
 First, create the instance directories and a simple start script:
 {{{
@@ -112,6 +114,8 @@ rtorrent -n -o import=$PWD/rtorrent.rc
 EOF
 chmod a+x ./start
 }}}
+
+== rTorrent configuration ==
 
 Next, a not-so-simple `rtorrent.rc` is created, it already contains everything needed to use all features of PyroScope — you should check at least the first section and adapt the values to your environment. Note that most of the settings specific to PyroScope are read from a [http://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/rtorrent-0.8.6.rc provided include file].
 
@@ -212,6 +216,9 @@ import = $pyro.rtorrent_rc=
 branch=pyro.extended=,"network.http.ssl_verify_peer.set=0"
 branch=pyro.extended=,"network.http.dns_cache_timeout.set=25"
 
+# The following view changes rely on additional fields available with PyroScope added,
+# but are a matter of preference, so you may comment them out
+
 # UI/VIEW: Sort incomplete by date added
 view_sort_current = incomplete,greater=d.get_custom=tm_loaded
 view_sort_new     = incomplete,greater=d.get_custom=tm_loaded
@@ -219,6 +226,13 @@ view_sort_new     = incomplete,greater=d.get_custom=tm_loaded
 # UI/VIEW: Show recently completed top-most in "main"
 view_sort_current = main,greater=d.get_custom=tm_completed
 view_filter_on = main,event.download.finished
+
+# UI/VIEW: Show active and incomplete torrents (in view #9) and update every 20 seconds
+#   Items are grouped into complete, incomplete, and queued, in that order (rT-PS only).
+#   Within each group, they're sorted by download and then upload speed.
+branch=pyro.extended=,false=,"view_sort_current = active,greater=d.get_up_rate="
+branch=pyro.extended=,"view_sort_current = active,\"compare=----,d.is_open=,d.get_complete=,d.get_down_rate=,d.get_up_rate=\""
+schedule = filter_active,12,20,"view_filter = active,\"or={d.get_up_rate=,d.get_down_rate=,not=$d.get_complete=}\" ;view_sort=active"
 
 
 #
