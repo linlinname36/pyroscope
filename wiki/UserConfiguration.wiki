@@ -84,19 +84,8 @@ system.method.insert = pyro.bin_dir, string|const,
 # changes get over-written on update).
 system.method.insert = pyro.rtorrent_rc, string|const|private, "$cat=~/.pyroscope/rtorrent-,\"$system.client_version=\",.rc.default"
 import = $pyro.rtorrent_rc=
-
-# CURL options
-branch=pyro.extended=,"network.http.ssl_verify_peer.set=0"
-branch=pyro.extended=,"network.http.dns_cache_timeout.set=25"
-
-# UI/VIEW: Sort incomplete by date added
-view_sort_current = incomplete,greater=d.get_custom=tm_loaded
-view_sort_new     = incomplete,greater=d.get_custom=tm_loaded
-
-# UI/VIEW: Show recently completed top-most in "main"
-view_sort_current = main,greater=d.get_custom=tm_completed
-view_filter_on = main,event.download.finished
 }}}
+See DebianInstallFromSource#rTorrent_configuration for a complete `rtorrent.rc` example, including some view changes made possible by the additional custom fields.
 
 *Note that if you just freshly installed PyroScope into an existing rTorrent installation, you must also follow the [MigrationGuide "migration" instructions] to add missing data to your already loaded downloads. Else, those items will NOT be filtered correctly.*
 
