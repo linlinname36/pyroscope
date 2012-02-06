@@ -227,7 +227,7 @@ view_sort_new     = incomplete,greater=d.get_custom=tm_loaded
 view_sort_current = main,greater=d.get_custom=tm_completed
 view_filter_on = main,event.download.finished
 
-# UI/VIEW: Show active and incomplete torrents (in view #9) and update every 20 seconds
+# UI/VIEW: Show active and incomplete torrents (in view #0) and update every 20 seconds
 #   Items are grouped into complete, incomplete, and queued, in that order (rT-PS only).
 #   Within each group, they're sorted by download and then upload speed.
 branch=pyro.extended=,false=,"view_sort_current = active,greater=d.get_up_rate="
