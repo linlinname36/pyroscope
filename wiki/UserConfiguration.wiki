@@ -85,7 +85,7 @@ system.method.insert = pyro.bin_dir, string|const,
 system.method.insert = pyro.rtorrent_rc, string|const|private, "$cat=~/.pyroscope/rtorrent-,\"$system.client_version=\",.rc.default"
 import = $pyro.rtorrent_rc=
 }}}
-See DebianInstallFromSource#rTorrent_configuration for a complete `rtorrent.rc` example, including some view changes made possible by the additional custom fields.
+See this [DebianInstallFromSource#rTorrent_configuration rtorrent.rc] for a complete example, including some view changes made possible by the additional custom fields.
 
 *Note that if you just freshly installed PyroScope into an existing rTorrent installation, you must also follow the [MigrationGuide "migration" instructions] to add missing data to your already loaded downloads. Else, those items will NOT be filtered correctly.*
 
