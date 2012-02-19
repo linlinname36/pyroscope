@@ -20,6 +20,7 @@ If you like PyroScope, click on these buttons to support it.
 <table border="0"><tr valign="middle">
 <td><g:plusone size="tall" href="http://code.google.com/p/pyroscope/"></g:plusone><br />http://i.imgur.com/hAdjM.gif</td>
 <td><wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_users.xml?style=red" height="100"  border="0" /></td>
+<td align="center">[http://youtu.be/Bv-oajBgsSU http://i.imgur.com/5FPx5.png]<br />  Demo Video</td>
 </tr></table>
 
 
