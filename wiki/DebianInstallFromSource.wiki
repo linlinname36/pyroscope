@@ -189,7 +189,7 @@ schedule = low_diskspace,15,60,close_low_diskspace=1000M
 
 # EVENTS: Logging (don't log "opened", or you get swamped at startup)
 system.method.set_key = event.download.inserted_new,log,"print=\"LOADED \",$d.get_name=,\" [\",$to_date=$system.time=,\"]\""
-system.method.set_key = event.download.finished,log,"print=\"COMPLETED \",$d.get_name=,\"  [R=\",$d.get_ratio=,\", \",$to_date=$system.time=,\"]\""
+system.method.set_key = event.download.finished,log,"print=\"COMPLETED \",$d.get_name=,\" [R=\",$d.get_ratio=,\", \",$to_date=$system.time=,\"]\""
 system.method.set_key = event.download.closed,log,"print=\"CLOSED \",$d.get_name=,\" [R=\",$d.get_ratio=,\", \",$to_date=$system.time=,\"]\""
 
 # UI/VIEW: Sort "seeding" by ratio
