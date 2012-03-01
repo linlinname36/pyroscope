@@ -21,17 +21,14 @@ Also, the PyroScope configuration (located in `~/.pyroscope/config.ini`) needs s
 
 = Configuration =
 
-The following is a minimal configuration example, only changing a few values from the default:
+The following is a minimal `~/.pyroscope/torque.ini` configuration example, only changing a few values from the default:
 {{{
-...
 [TORQUE]
 # Queue manager job
 job.queue.active = True
 job.queue.downloading_max = 3
-
-...
 }}}
-Note that `downloading_max` counts started but incomplete items including those that ignore commands. See the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/config.ini default configuration] for more parameters and what they mean.
+Note that `downloading_max` counts started but incomplete items including those that ignore commands. See the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/torque.ini default configuration] for more parameters and what they mean.
  
 
 = Built-in jobs =
