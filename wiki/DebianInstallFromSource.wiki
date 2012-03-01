@@ -70,7 +70,11 @@ If you want an extended version with some stability fixes and extension patches 
 ./build.sh extend # "in addition" means AFTER the commands further above
 }}}
 
-  http://i.imgur.com/xCd8z.png
+<table border="0"><tr valign="middle">
+<td>http://i.imgur.com/xCd8z.png</td>
+<td width="50"></td>
+<td align="center">[http://youtu.be/Bv-oajBgsSU http://i.imgur.com/5FPx5.png]<br />rT-PS Demo Video</td>
+</tr></table>
 
 Note that the unpatched version is still available as `rtorrent-vanilla`, and you can simply switch by changing the symlink in `~/bin`, or by calling either version with its full path. See RtorrentExtended for more details on the changes applied. 
 
