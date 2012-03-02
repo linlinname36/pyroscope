@@ -4,7 +4,7 @@
 
 This page is automatically generated and shows the options available in the *development* version of the code (SVN head).
 See CommandLineTools for more details on how to use these commands.
-The help output presented here applies to version `0.4.3dev-r1733` of the tools.
+The help output presented here applies to version `0.4.3dev-r1832` of the tools.
 
 = chtor =
 {{{
@@ -21,6 +21,7 @@ Options:
   --cron                run in cron mode (with different logging
                         configuration)
   --config-dir=DIR      configuration directory [~/.pyroscope]
+  --config-file=PATH    additional config file(s) to read
   -D KEY=VAL [-D ...], --define=KEY=VAL [-D ...]
                         override configuration attributes
   -n, --dry-run         don't write changes to disk, just tell what would
@@ -33,6 +34,9 @@ Options:
   -P, --make-public     make torrent public (DHT/PEX enabled)
   -s KEY=VAL [-s ...], --set=KEY=VAL [-s ...]
                         set a specific key to the given value
+  -r KEYcREGEXcSUBSTc [-r ...], --regex=KEYcREGEXcSUBSTc [-r ...]
+                        replace pattern in a specific key by the given
+                        substitution
   -C, --clean           remove all non-standard data from metafile outside the
                         info dict
   -A, --clean-all       remove all non-standard data from metafile including
@@ -41,7 +45,8 @@ Options:
                         information
   -R, --clean-rtorrent  remove all rTorrent session data from metafile
   -H DATAPATH, --hashed=DATAPATH, --fast-resume=DATAPATH
-                        add libtorrent fast-resume information
+                        add libtorrent fast-resume information (use {} in
+                        place of the torrent's name in DATAPATH)
   -a URL, --reannounce=URL
                         set a new announce URL, but only if the old announce
                         URL matches the new one
@@ -68,6 +73,7 @@ Options:
   --cron                run in cron mode (with different logging
                         configuration)
   --config-dir=DIR      configuration directory [~/.pyroscope]
+  --config-file=PATH    additional config file(s) to read
   -D KEY=VAL [-D ...], --define=KEY=VAL [-D ...]
                         override configuration attributes
 }}}
@@ -97,9 +103,14 @@ Options:
 }}}
 = mktor =
 {{{
-Usage: mktor [options] <dir-or-file> <tracker-url-or-alias>...
+Usage: mktor [options] <dir-or-file> <tracker-url-or-alias>... | <magnet-uri>
 
 Create a bittorrent metafile.
+
+If passed a magnet URI as the only argument, a metafile is created 
+in the directory specified via the configuration value 'magnet_watch',
+loadable by rTorrent. Which means you can register 'mktor' as a magnet:
+URL handler in Firefox.
 
 Options:
   --version             show program's version number and exit
@@ -110,6 +121,7 @@ Options:
   --cron                run in cron mode (with different logging
                         configuration)
   --config-dir=DIR      configuration directory [~/.pyroscope]
+  --config-file=PATH    additional config file(s) to read
   -D KEY=VAL [-D ...], --define=KEY=VAL [-D ...]
                         override configuration attributes
   -p, --private         disallow DHT and PEX
@@ -148,6 +160,7 @@ Options:
   --cron                run in cron mode (with different logging
                         configuration)
   --config-dir=DIR      configuration directory [~/.pyroscope]
+  --config-file=PATH    additional config file(s) to read
   -D KEY=VAL [-D ...], --define=KEY=VAL [-D ...]
                         override configuration attributes
   --create-config       create default configuration
@@ -158,6 +171,29 @@ Options:
   --reveal              show config internals and full announce URL including
                         keys
   --screenlet           create screenlet stub
+}}}
+= pyrotorque =
+{{{
+Usage: pyrotorque [options] 
+
+rTorrent queue manager & daemon.
+
+Options:
+  --version             show program's version number and exit
+  -h, --help            show this help message and exit
+  -q, --quiet           omit informational logging
+  -v, --verbose         increase informational logging
+  --debug               always show stack-traces for errors
+  --cron                run in cron mode (with different logging
+                        configuration)
+  --config-dir=DIR      configuration directory [~/.pyroscope]
+  --config-file=PATH    additional config file(s) to read
+  -D KEY=VAL [-D ...], --define=KEY=VAL [-D ...]
+                        override configuration attributes
+  -n, --dry-run         advise jobs not to do any real work, just tell what
+                        would happen
+  --no-fork, --fg       Don't fork into background (stay in foreground and log
+                        to console)
 }}}
 = rtcontrol =
 {{{
@@ -195,6 +231,7 @@ Options:
   --cron                run in cron mode (with different logging
                         configuration)
   --config-dir=DIR      configuration directory [~/.pyroscope]
+  --config-file=PATH    additional config file(s) to read
   -D KEY=VAL [-D ...], --define=KEY=VAL [-D ...]
                         override configuration attributes
   --help-fields         show available fields and their description
@@ -202,6 +239,7 @@ Options:
   --detach              run the process in the background
   -i, --interactive     interactive mode (prompt before changing things)
   --yes                 positively answer all prompts (e.g. --delete --yes)
+  -S, --shell           escape output following shell rules
   -0, --nul, --print0   use a NUL character instead of a linebreak after items
   -c, --column-headers  print column headers
   -+, --stats           add sum / avg / median of numerical fields
@@ -311,6 +349,7 @@ Options:
   --cron                run in cron mode (with different logging
                         configuration)
   --config-dir=DIR      configuration directory [~/.pyroscope]
+  --config-file=PATH    additional config file(s) to read
   -D KEY=VAL [-D ...], --define=KEY=VAL [-D ...]
                         override configuration attributes
   --no-fork, --fg       Don't fork into background (stay in foreground,
@@ -331,6 +370,7 @@ Options:
   --cron                run in cron mode (with different logging
                         configuration)
   --config-dir=DIR      configuration directory [~/.pyroscope]
+  --config-file=PATH    additional config file(s) to read
   -D KEY=VAL [-D ...], --define=KEY=VAL [-D ...]
                         override configuration attributes
   -n, --dry-run         don't move data, just tell what would happen
@@ -353,6 +393,7 @@ Options:
   --cron                run in cron mode (with different logging
                         configuration)
   --config-dir=DIR      configuration directory [~/.pyroscope]
+  --config-file=PATH    additional config file(s) to read
   -D KEY=VAL [-D ...], --define=KEY=VAL [-D ...]
                         override configuration attributes
   -r, --repr            show Python pretty-printed response
