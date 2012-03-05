@@ -296,7 +296,7 @@ EOF
 
 == tmux Configuration ==
 
-We spruce up `tmux` a bit before we start it the first time:
+We spruce up `tmux` a bit before we start it the first time, and make it more homey for long-time `screen` users:
 {{{
 # Run this in your NORMAL user account!
 cat >~/.tmux.conf <<'EOF'
