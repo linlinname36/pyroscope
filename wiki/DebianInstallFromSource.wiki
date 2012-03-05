@@ -294,6 +294,8 @@ EOF
 
 = First start and testing =
 
+== tmux Configuration ==
+
 We spruce up `tmux` a bit before we start it the first time:
 {{{
 # Run this in your NORMAL user account!
@@ -303,6 +305,7 @@ set -g prefix C-a
 unbind C-b
 bind a send-prefix
 bind C-a last-window
+bind '"' choose-window
 
 # Rebind pane splitting
 unbind %
@@ -318,6 +321,8 @@ set -g status-left '#[fg=green]#H'
 set-window-option -g window-status-current-bg colour164
 EOF
 }}}
+
+== Starting a tmux Session ==
 
 You're now ready to start your rTorrent, so just do it:
 {{{
