@@ -16,7 +16,7 @@ The queue manager daemon needs additional settings, but there are defaults in pl
 
 If you followed the UserConfiguration instructions, the necessary commands are added automatically to your `.rtorrent.rc` using the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/rtorrent-0.8.6.rc configuration include]. Look for the section starting with a `# QUEUE MANAGER` comment near the end, if for whatever reason you need to add these manually.
 
-Also, the PyroScope configuration (located in `~/.pyroscope/config.ini`) needs some additions, namely in the new `[TORQUE]` section. Again, this is covered by [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/config.ini defaults], so you only need to take care of that if you want to make any changes.
+The daemon itself is configured by an additional configuration file `~/.pyroscope/torque.ini` containing the `[TORQUE]` section. Again, this is covered by [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/torque.ini defaults], so you only need to take care of that if you want to make any changes.
 
 
 = Configuration =
@@ -28,7 +28,9 @@ The following is a minimal `~/.pyroscope/torque.ini` configuration example, only
 job.queue.active = True
 job.queue.downloading_max = 3
 }}}
-Note that `downloading_max` counts started but incomplete items including those that ignore commands. See the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/torque.ini default configuration] for more parameters and what they mean.
+Having a minimal configuration with just your changes is recommended, so you get new defaults in later releases automatically.
+
+Note that in the above example, `downloading_max` counts started but incomplete items including those that ignore commands. See the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/torque.ini default configuration] for more parameters and what they mean.
  
 
 = Built-in jobs =
@@ -39,38 +41,46 @@ Jobs are added in the `[TORQUE]` section, by providing at least the parameters `
 Details on the `schedule` parameter can be found [http://readthedocs.org/docs/apscheduler/en/latest/cronschedule.html here]. Multiple fields must be separated by spaces, so if a field value contains a space, it must be quoted, e.g. «`hour=12 "day=3rd sun"`».
 The `handler` parameter tells the system where to look for the job implementation, see the handler descriptions below for the correct values.
 
-== `QueueManager` ==
+== `QueueManager` (beta) ==
 This is described in detail [#Configuration further up on this page].
 
 
+== `TreeWatch` (beta) ==
+*TODO* `pyrocore.torrent.watch.TreeWatch` watches a folder tree, which can be nested arbitrarily. Loading of new `.torrent` files is immediate (using `libnotify`). Works together with `CompletionHandler` to move data to the partial path the torrent file was loaded from, relative to the tree root.
+
+Each sub-directory can contain a `watch.ini` configuration file for parameters like whether to start new items immediately, and for overriding the completion path.
+
+
 == `EngineStats` ==
-Runs once per minute, checks the connection to rTorrent, and logs some statistical information.
+`pyrocore.torrent.jobs.EngineStats` runs once per minute, checks the connection to rTorrent, and logs some statistical information.
 
 
-== `ItemPoller` ==
-*TODO* Maintains an updated copy of all rTorrent items, as a service for the other jobs.
+== `RemoteWatch` (planned) ==
+*TODO* `pyrocore.torrent.watch.RemoteWatch` pools a (S)FTP source for new `.torrent` files, creates a local copy, and loads that into the client.
 
 
-== `ActionRule` ==
-*TODO* This is `rtcontrol` in form of a house-keeping job, and using this is way more efficient than an equivalent `rtcontrol` cron job; due to that, they can be run a lot more frequently.
+== `ItemPoller` (planned) ==
+*TODO* `pyrocore.torrent.` maintains an updated copy of all rTorrent items, as a service for the other jobs.
 
 
-== `FolderWatch` ==
-*TODO* Watches a folder tree, which can be nested arbitrarily. Loading of new `.torrent` files is immediate (using `libnotify`). Works together with `CompletionHandler` to move data to the partial path the torrent file was loaded from, relative to the tree root.
-
-Each sub-directory can contain a `watch.ini` configuration file for parameters like whether to start new items imemdiately, and for overriding the completion path.
+== `ActionRule` (planned) ==
+*TODO* `pyrocore.torrent.filter.ActionRule` is `rtcontrol` in form of a house-keeping job, and using this is way more efficient than an equivalent `rtcontrol` cron job; due to that, they can be run a lot more frequently.
 
 
-== `CompletionHandler` ==
-*TODO* Moves completed data to a target directory, according to flexible rules.
+== `TorrentMirror` (planned) ==
+*TODO* `pyrocore.torrent.filter.TorrentMirror` allows you to transfer a torrent's data from the local client to other remote clients using a specified tracker (at the start, a locally running "bttrack"). In a nutshell, it allows you to transfer any filtered item automatically to a remote location via bittorrent.
 
 
-== `StatsArchiver` ==
-*TODO* Keeps a continuous archive of some statistical values (like bandwidth) so they can later be rendered into graphs.
+== `CompletionHandler` (planned) ==
+*TODO* `pyrocore.torrent.` moves completed data to a target directory, according to flexible rules.
+
+
+== `StatsArchiver` (planned) ==
+*TODO*  `pyrocore.torrent.` keeps a continuous archive of some statistical values (like bandwidth) so they can later be rendered into graphs.
 
 
 == `...` ==
-*TODO* 
+*TODO*  `pyrocore.torrent.` ...
 
 
 = Writing custom jobs =
