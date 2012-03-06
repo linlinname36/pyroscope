@@ -5,7 +5,7 @@
 *❢YOU NEED TO RUN SVN HEAD FOR THIS! See InstallFromSource❢*
 
 = Introduction =
-The queue manager is controlled by the `pyrotorque` daemon command.
+The queue manager, and other background jobs you can activate, are controlled by the `pyrotorque` daemon command.
 
 *At the moment, run `pyrotorque` manually in a `tmux` or `screen` session _after_ starting rTorrent. There will be some form of auto-start/watchdog later on to run it and keep it alive.*
 
