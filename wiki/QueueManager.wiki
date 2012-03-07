@@ -62,7 +62,7 @@ After having completed your configuration, you're ready to test it, by following
  # Wait up to 300 seconds, and if your configuration has the `pyro_watchdog` schedule as it should by now, `pyrotorque --status` will show that a daemon process was automatically started by rTorrent.
  # Enjoy, and check `~/.pyroscope/run/torque.log` for feedback from the daemon process.
 
-If you want to restart the daemon running in the background immediately, e.g. after a software update, use `pyrotorque --cron --restart`.
+If you want to restart the daemon running in the background immediately, e.g. to reload `torque.ini` or after a software update, use `pyrotorque --cron --restart`.
 
 
 = Built-in jobs =
