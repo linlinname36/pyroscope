@@ -5,9 +5,9 @@
 = Introduction =
 The queue manager, and other background jobs you can activate, are controlled by the `pyrotorque` daemon command.
 
-<table border=3>
+<table border="3"><tr><td>
 *❢YOU NEED TO RUN SVN HEAD FOR THIS! See InstallFromSource❢*
-</table><br />
+</td></tr></table><br />
 
 
 = Initial setup =
