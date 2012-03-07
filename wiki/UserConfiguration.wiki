@@ -84,6 +84,10 @@ system.method.insert = pyro.bin_dir, string|const,
 # changes get over-written on update).
 system.method.insert = pyro.rtorrent_rc, string|const|private, "$cat=~/.pyroscope/rtorrent-,\"$system.client_version=\",.rc.default"
 import = $pyro.rtorrent_rc=
+
+# TORQUE: Daemon watchdog schedule
+# Must be activated by touching the "~/.pyroscope/run/pyrotorque" file!
+schedule = pyro_watchdog,30,30,"pyro.watchdog=~/.pyroscope,-v"
 }}}
 See this [DebianInstallFromSource#rTorrent_configuration rtorrent.rc] for a complete example, including some view changes made possible by the additional custom fields.
 
