@@ -143,3 +143,4 @@ To upgrade your existing installation, follow these steps:
  # For people that run a source code installation. use the `update-to-head.sh` script as usual, outlined further up on this page.
  # Call `pyroadmin --create-config` to update the `.default` configuration examples.
  # Read the QueueManager and EventHandling pages if you plan to use these features; both are inactive by default and  need to be enabled.
+   * You need to add the new `pyro_watchdog` schedule into your configuration, as shown on the UserConfiguration page.
