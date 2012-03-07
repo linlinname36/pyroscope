@@ -88,7 +88,7 @@ import = $pyro.rtorrent_rc=
 # TORQUE: Daemon watchdog schedule
 # Must be activated by touching the "~/.pyroscope/run/pyrotorque" file!
 # Set the second argument to "-v" or "-q" to change log verbosity.
-schedule = pyro_watchdog,30,30,"pyro.watchdog=~/.pyroscope,"
+schedule = pyro_watchdog,30,300,"pyro.watchdog=~/.pyroscope,"
 }}}
 See this [DebianInstallFromSource#rTorrent_configuration rtorrent.rc] for a complete example, including some view changes made possible by the additional custom fields.
 
