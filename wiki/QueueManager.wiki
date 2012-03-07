@@ -14,6 +14,8 @@ The queue manager, and other background jobs you can activate, are controlled by
 
 The queue manager daemon needs additional settings, but there are defaults in place, so the detailed explanation in this section can be skipped, if you are OK with these. Go directly to the [#Configuration configuration] in that case.
 
+*➽ IMPORTANT: Remember to follow the MigrationGuide#Migrating_to_version_0.4.3 in case you're upgrading an existing installation.*
+
 If you followed the UserConfiguration instructions, the necessary commands are added automatically to your `.rtorrent.rc` using the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/rtorrent-0.8.6.rc configuration include]. Look for the sections starting with a `# TORQUE` comment near the end, if for whatever reason you need to add these manually.
 
 The daemon itself is configured by an additional configuration file `~/.pyroscope/torque.ini` containing the `[TORQUE]` section. Again, this is covered by [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/torque.ini defaults], so you only need to take care of that if you want to make any changes.
