@@ -2,10 +2,12 @@
 #labels daemon,queue,cli,Featured
 <wiki:toc />
 
-*❢YOU NEED TO RUN SVN HEAD FOR THIS! See InstallFromSource❢*
-
 = Introduction =
 The queue manager, and other background jobs you can activate, are controlled by the `pyrotorque` daemon command.
+
+<table border=3>
+*❢YOU NEED TO RUN SVN HEAD FOR THIS! See InstallFromSource❢*
+</table><br />
 
 
 = Initial setup =
