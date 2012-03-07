@@ -36,6 +36,7 @@ Note that in the above example, `downloading_max` counts started but incomplete 
 
 After having completed your configuration, you're ready to test it, by following these steps:
  # Execute `rm ~/.pyroscope/run/pyrotorque` to prevent the watchdog from starting the manager in the background.
+ # Stop any running daemon process using `pyrotorque --stop`, just in case.
  # Run `pyrotorque --fg -v` in a terminal, this will start the job scheduler in the foreground with verbose logging directly to that terminal, exactly what you need to check out if your configuration does what you intended. It also helps you to understand what goes on "under the hood".
  # If you changed your configuration, stop the running scheduler by pressing CTRL-C, then restart it. Wash, rinse, repeat.
  # Press CTRL-C for the last time and call `pyrotorque --status`, it should show that no scheduler process is running.
