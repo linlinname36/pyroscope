@@ -32,7 +32,10 @@ job.queue.downloading_max = 3
 }}}
 Having a minimal configuration with just your changes is recommended, so you get new defaults in later releases automatically.
 
-Note that in the above example, `downloading_max` counts started but incomplete items including those that ignore commands. See the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/torque.ini default configuration] for more parameters and what they mean.
+Note that in the above example, `downloading_max` counts started-but-incomplete items including those that ignore commands. 
+Other queue parameters are the minimum number of items in 'downloading' state (`downloading_min`, which trumps `start_at_once`), and the maximum number of items to start in one run (`start_at_once`).
+See the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/torque.ini default configuration] for more parameters and what they mean.
+
 
 After having completed your configuration, you're ready to test it, by following these steps:
  # Execute `rm ~/.pyroscope/run/pyrotorque` to prevent the watchdog from starting the manager in the background.
@@ -54,7 +57,7 @@ Details on the `schedule` parameter can be found [http://readthedocs.org/docs/ap
 The `handler` parameter tells the system where to look for the job implementation, see the handler descriptions below for the correct values.
 
 == `QueueManager` (beta) ==
-This is described in detail [#Configuration further up on this page].
+`pyrocore.torrent.queue:QueueManager` manages queued downloads (i.e. starts them in a controlled manner), it is described in detail [#Configuration further up on this page].
 
 
 == `TreeWatch` (beta) ==
