@@ -73,7 +73,7 @@ Each sub-directory can contain a `watch.ini` configuration file for parameters l
 == `ExecCommand` (planned) ==
 *TODO* `pyrocore.torrent.jobs:ExecCommand` runs an external command in a shell, i.e. it simply runs cron jobs. The reasons for not using cron instead are these:
  # You can have all your rTorrent-related background processing at one place, and the commands see the same environment as `pyrotorque`.
- # The `pyrotorque` scheduler has more flexible scheduling, including the ability to run jobs at sub-minute intervals.
+ # `pyrotorque` offers more flexible scheduling, including the ability to run jobs at sub-minute intervals.
 
 
 == `RemoteWatch` (planned) ==
