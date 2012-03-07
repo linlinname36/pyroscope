@@ -38,7 +38,7 @@ After having completed your configuration, you're ready to test it, by following
  # If you changed your configuration, stop the running scheduler by pressing CTRL-C, then restart it. Wash, rinse, repeat.
  # Press CTRL-C for the last time and call `pyrotorque --status`, it should show that no scheduler process is running.
  # Execute `touch ~/.pyroscope/run/pyrotorque` — this creates the guard file again, which must always exist if you want `pyrotorque` to run in the background (otherwise you'll just get an error message on the console or in the log, if you try to launch it).
- # Wait 30 seconds, and if your configuration has the `pyro_watchdog` schedule as it should by now, `pyrotorque --status` will show that a scheduler process was automatically started by rTorrent.
+ # Wait up to 300 seconds, and if your configuration has the `pyro_watchdog` schedule as it should by now, `pyrotorque --status` will show that a scheduler process was automatically started by rTorrent.
  # Enjoy, and check `~/.pyroscope/run/torque.log` for feedback from the daemon process.
 
 
