@@ -216,6 +216,11 @@ system.method.insert = pyro.bin_dir, string|const, ~/bin/
 system.method.insert = pyro.rtorrent_rc, string|const|private, "$cat=~/.pyroscope/rtorrent-,\"$system.client_version=\",.rc.default"
 import = $pyro.rtorrent_rc=
 
+# TORQUE: Daemon watchdog schedule
+# Must be activated by touching the "~/.pyroscope/run/pyrotorque" file!
+# Set the second argument to "-v" or "-q" to change log verbosity.
+schedule = pyro_watchdog,30,30,"pyro.watchdog=~/.pyroscope,"
+
 # CURL options
 branch=pyro.extended=,"network.http.ssl_verify_peer.set=0"
 branch=pyro.extended=,"network.http.dns_cache_timeout.set=25"
