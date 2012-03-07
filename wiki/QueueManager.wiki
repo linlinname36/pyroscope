@@ -23,17 +23,32 @@ The daemon itself is configured by an additional configuration file `~/.pyroscop
 
 = Configuration =
 
-The following is a minimal `~/.pyroscope/torque.ini` configuration example, only changing a few values from the default:
+The following is a minimal `~/.pyroscope/torque.ini` configuration example, only changing a few values from the defaults:
 {{{
+# "pyrotorque" configuration file
+#
+# For details, see http://code.google.com/p/pyroscope/wiki/QueueManager#Configuration
+#
+
 [TORQUE]
-# Queue manager job
-job.queue.active = True
-job.queue.downloading_max = 3
+# Queue manager
+job.queue.active            = True
+job.queue.downloading_max   = 3
+job.queue.startable         = is_ignored=0 prio>0 
+        [ NOT [ traits=audio kind_25=jpg,png,tif,bmp ] ]
+
+# Tree watch (works together with the queue)
+job.treewatch.active        = True
+job.treewatch.load_mode     = normal
+job.treewatch.queued        = True
+job.treewatch.path          = /var/torrent/watch/tmp
 }}}
 Having a minimal configuration with just your changes is recommended, so you get new defaults in later releases automatically.
 
 Note that in the above example, `downloading_max` counts started-but-incomplete items including those that ignore commands. 
 Other queue parameters are the minimum number of items in 'downloading' state (`downloading_min`, which trumps `start_at_once`), and the maximum number of items to start in one run (`start_at_once`).
+And the `startable` condition adds the extra hurdle that audio downloads that don't stay below a 25% threshold regarding contained images are *not* started automatically — go do that with a plain rTorrent watch dir.
+
 See the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/torque.ini default configuration] for more parameters and what they mean.
 
 
