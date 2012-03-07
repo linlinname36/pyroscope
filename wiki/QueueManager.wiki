@@ -7,14 +7,12 @@
 = Introduction =
 The queue manager, and other background jobs you can activate, are controlled by the `pyrotorque` daemon command.
 
-*At the moment, run `pyrotorque` manually in a `tmux` or `screen` session _after_ starting rTorrent. There will be some form of auto-start/watchdog later on to run it and keep it alive.*
-
 
 = Initial setup =
 
 The queue manager daemon needs additional settings, but there are defaults in place, so the detailed explanation in this section can be skipped, if you are OK with these. Go directly to the [#Configuration configuration] in that case.
 
-*➽ IMPORTANT: Remember to follow the MigrationGuide#Migrating_to_version_0.4.3 in case you're upgrading an existing installation.*
+*➽ IMPORTANT: Remember to follow the [MigrationGuide#Migrating_to_version_0.4.3 migration guide] in case you're upgrading an existing installation.*
 
 If you followed the UserConfiguration instructions, the necessary commands are added automatically to your `.rtorrent.rc` using the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/rtorrent-0.8.6.rc configuration include]. Look for the sections starting with a `# TORQUE` comment near the end, if for whatever reason you need to add these manually.
 
@@ -33,7 +31,16 @@ job.queue.downloading_max = 3
 Having a minimal configuration with just your changes is recommended, so you get new defaults in later releases automatically.
 
 Note that in the above example, `downloading_max` counts started but incomplete items including those that ignore commands. See the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/torque.ini default configuration] for more parameters and what they mean.
- 
+
+After having completed your configuration, you're ready to test it, by following these steps:
+ # Execute `rm ~/.pyroscope/run/pyrotorque` to prevent the watchdog from starting the manager in the background.
+ # Run `pyrotorque --fg -v` in a terminal, this will start the job scheduler in the foreground with verbose logging directly to that terminal, exactly what you need to check out if your configuration does what you intended. It also helps you to understand what goes on "under the hood".
+ # If you changed your configuration, stop the running scheduler by pressing CTRL-C, then restart it. Wash, rinse, repeat.
+ # Press CTRL-C for the last time and call `pyrotorque --status`, it should show that no scheduler process is running.
+ # Execute `touch ~/.pyroscope/run/pyrotorque` — this creates the guard file again, which must always exist if you want `pyrotorque` to run in the background (otherwise you'll just get an error message on the console or in the log, if you try to launch it).
+ # Wait 30 seconds, and if your configuration has the `pyro_watchdog` schedule as it should by now, `pyrotorque --status` will show that a scheduler process was automatically started by rTorrent.
+ # Enjoy, and check `~/.pyroscope/run/torque.log` for feedback from the daemon process.
+
 
 = Built-in jobs =
 The `QueueManager` is just one kind of job that can be run by `pyrotorque`. It has an embedded scheduler that can run any number of additional jobs, the following sections explain the built-in ones. Since these jobs can be loaded from any available Python package, you can also easily [#Writing_custom_jobs write your own].
