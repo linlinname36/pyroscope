@@ -23,7 +23,7 @@ The daemon itself is configured by an additional configuration file `~/.pyroscop
 
 = Configuration =
 
-The following is a minimal `~/.pyroscope/torque.ini` configuration example, only changing a few values from the defaults:
+The following is a *minimal `~/.pyroscope/torque.ini` configuration example*, only changing a few values from the defaults:
 {{{
 # "pyrotorque" configuration file
 #
@@ -49,20 +49,20 @@ Note that in the above example, `downloading_max` counts started-but-incomplete 
 Other queue parameters are the minimum number of items in 'downloading' state (`downloading_min`, which trumps `start_at_once`), and the maximum number of items to start in one run (`start_at_once`).
 And the `startable` condition adds the extra hurdle that audio downloads that don't stay below a 25% threshold regarding contained images are *not* started automatically — go do that with a plain rTorrent watch dir.
 
-See the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/torque.ini default configuration] for more parameters and what they mean.
+See the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/torque.ini default configuration] for *more parameters and what they mean*.
 
 
-After having completed your configuration, you're ready to test it, by following these steps:
- # Execute `rm ~/.pyroscope/run/pyrotorque` to prevent the watchdog from starting the manager in the background.
- # Stop any running daemon process using `pyrotorque --stop`, just in case.
- # Run `pyrotorque --fg -v` in a terminal, this will start the job scheduler in the foreground with verbose logging directly to that terminal, exactly what you need to check out if your configuration does what you intended. It also helps you to understand what goes on "under the hood".
- # If you changed your configuration, stop the running scheduler by pressing CTRL-C, then restart it. Wash, rinse, repeat.
+After having completed your configuration, you're ready to *test it, by following these steps*:
+ # Execute `rm ~/.pyroscope/run/pyrotorque` to *prevent the watchdog from starting the manager* in the background.
+ # *Stop any running daemon* process using `pyrotorque --stop`, just in case.
+ # Run `pyrotorque --fg -v` in a terminal, this will *start the job scheduler in the foreground* with verbose logging directly to that terminal, exactly what you need to check out if your configuration does what you intended. It also helps you to understand what goes on "under the hood".
+ # If you applied *changes to your configuration*, stop the running scheduler by pressing CTRL-C, then *restart it*. Wash, rinse, repeat.
  # Press CTRL-C for the last time and call `pyrotorque --status`, it should show that no daemon process is running.
- # Execute `touch ~/.pyroscope/run/pyrotorque` — this creates the guard file again, which must always exist if you want `pyrotorque` to run in the background (otherwise you'll just get an error message on the console or in the log, if you try to launch it).
- # Wait up to 300 seconds, and if your configuration has the `pyro_watchdog` schedule as it should by now, `pyrotorque --status` will show that a daemon process was automatically started by rTorrent.
- # Enjoy, and check `~/.pyroscope/run/torque.log` for feedback from the daemon process.
+ # Execute `touch ~/.pyroscope/run/pyrotorque` — this does *create the guard file again*, which must always exist if you want `pyrotorque` to run in the background (otherwise you'll just get an error message on the console or in the log, if you try to launch it).
+ # *Wait up to 300 seconds*, and if your configuration has the `pyro_watchdog` schedule as it should by now, `pyrotorque --status` will show that a daemon process was automatically started by rTorrent.
+ # Enjoy, and *check `~/.pyroscope/run/torque.log`* for feedback from the daemon process.
 
-If you want to restart the daemon running in the background immediately, e.g. to reload `torque.ini` or after a software update, use `pyrotorque --cron --restart`.
+If you want to restart the daemon running in the background immediately, e.g. to *reload `torque.ini`* or after a software update, use *`pyrotorque --cron --restart`*.
 
 
 = Built-in jobs =
