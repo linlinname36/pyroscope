@@ -39,9 +39,9 @@ job.queue.startable         = is_ignored=0 prio>0
 
 # Tree watch (works together with the queue)
 job.treewatch.active        = True
-job.treewatch.load_mode     = normal
+job.treewatch.load_mode     = start
 job.treewatch.queued        = True
-job.treewatch.path          = /var/torrent/watch/tmp
+job.treewatch.path          = /var/torrent/watch
 }}}
 Having a minimal configuration with just your changes is recommended, so you get new defaults in later releases automatically.
 
