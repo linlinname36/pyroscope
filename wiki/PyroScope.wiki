@@ -31,7 +31,7 @@ This is the status of various parts of the project:
 || *ohloh.net Statistics* || <wiki:gadget url="http://www.ohloh.net/p/346666/widgets/project_thin_badge.xml" height="36"  border="0" /> ||
 || *CommandLineTools* || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png mktor, lstor, chtor, rtcontrol, rtxmlrpc, rtmv, pyroadmin ||
 || *UserConfiguration* || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png loaded from `config.ini` and `config.py` ||
-|| *QueueManager* || _not yet implemented_ ||
+|| *QueueManager* || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png Working job scheduler, with queue manager and inotify watcher implemented ||
 || *Web Interface* || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png usable alpha ||
 || _Torrents List_ || http://pyroscope.googlecode.com/svn/trunk/pyroscope/docs/media/img/box-check.png all rTorrent views plus active torrents & messages view ||
 || _Torrent Control_ || _not yet implemented_ ||
