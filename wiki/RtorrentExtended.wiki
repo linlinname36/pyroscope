@@ -170,6 +170,13 @@ Returns the (shortened) _tracker domain_ of the given download item. The chosen 
 </dd>
 
 <dt>
+== `ui.current_view=` ==
+</dt>
+<dd>
+Returns the currently selected view, the official release only has a setter. Needed if you want to use »`-`« as a view name in `rtcontrol`.
+</dd>
+
+<dt>
 == `log.messages=«path»` (0.8.9 only) ==
 </dt>
 <dd>
