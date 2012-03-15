@@ -17,7 +17,8 @@ Most of the command blocks can be cut & pasted wholesale into a terminal. Note t
 
 = Preparatory steps =
 == Installing build dependencies ==
-First, you need to install a few required packages — these are the only steps that must be performed by the `root` user (i.e. in a root shell, or by writing `sudo` before the actual command):
+First, you need to install a few *required* packages — *and no, this is not optional in any way*.
+These are the only steps that must be performed by the `root` user (i.e. in a root shell, or by writing `sudo` before the actual command):
 {{{
 aptitude install tmux wget build-essential subversion git-core \
     python-setuptools python-virtualenv python-dev \
