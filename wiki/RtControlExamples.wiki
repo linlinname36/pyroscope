@@ -217,7 +217,7 @@ export rt_max_start=6; rtcontrol -q --start --yes hash=$(echo $( \
 }}}
 It works by listing all incomplete downloads that heed commands and sorting the already active ones to the top. Then it looks at the first `rt_max_start` entries and starts any closed ones. 
 
-Note that this means you can exempt items from queue management easily by using the `I` key in the curses interface.
+Note that this means you can exempt items from queue management easily by using the `I` key in the curses interface. See QueueManager for a much better solution.
 
 
 == Move on Completion ==
