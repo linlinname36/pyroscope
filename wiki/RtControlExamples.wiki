@@ -36,6 +36,7 @@ The following conditions give you a hint on what you can do, and some building b
 || `is_open=y is_active=n` || Paused items ||
 || `is_ghost=yes`     || Torrents that have no data (were never started or lost their data; _since v0.3.3_) ||
 || `alias=obt`        || Torrents tracked by `openbittorrent.com` (see UserConfiguration on how to add aliases for trackers) ||
+|| `'path=!'`         || Has a non-empty `path` ||
 || `ratio=+1 realpath=\!/mnt/*` || 1:1 seeds not on a mounted path (i.e. likely on localhost) ||
 || `completed=+2w`    || Completed more than 2 weeks ago (_since v0.3.4_) ||
 || `tagged=`          || Not tagged at all (_since v0.3.5_) ||
