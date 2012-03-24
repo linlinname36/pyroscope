@@ -86,6 +86,11 @@ Each sub-directory can contain a `watch.ini` configuration file for parameters l
 == `EngineStats` ==
 `pyrocore.torrent.jobs:EngineStats` runs once per minute, checks the connection to rTorrent, and logs some statistical information.
 
+You can change it to run only hourly by adding this to the configuration:
+{{{
+job.connstats.schedule      = hour=*
+}}}
+
 
 == `ExecCommand` (planned) ==
 *TODO* `pyrocore.torrent.jobs:ExecCommand` runs an external command in a shell, i.e. it simply runs cron jobs. The reasons for not using cron instead are these:
