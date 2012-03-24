@@ -34,7 +34,7 @@ The following is a *minimal `~/.pyroscope/torque.ini` configuration example*, on
 # Queue manager
 job.queue.active            = True
 job.queue.downloading_max   = 3
-job.queue.startable         = is_ignored=0 prio>0 
+job.queue.startable         = is_ignored=0 message= prio>0 
         [ NOT [ traits=audio kind_25=jpg,png,tif,bmp ] ]
 
 # Tree watch (works together with the queue)
