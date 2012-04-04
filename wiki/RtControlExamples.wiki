@@ -9,8 +9,9 @@ _Contents_ <wiki:toc max_depth="2" />
 
 All given conditions must be met (AND), and if a field name is omitted, "`name`" is assumed. Multiple values separated by a comma indicate several possible choices (OR). "`!`" in front of a filter value negates it (NOT). Use uppercase `OR` to combine multiple alternative sets of conditions. And finally brackets can be used to group conditions and alter the default "AND before OR" behaviour; be sure to separate both the opening and closing bracket by white space from surrounding text.
 
-For numeric fields, a leading "`+`" means greater than, a leading "`-`" means less 
-than (just like with the standard `find` command). For string fields, the value is a glob pattern which you are used to from shell filename patterns (`*`, `?`, `[a-z]`, `[!a-z]`).
+For string fields, the value is a [http://docs.python.org/library/fnmatch.html glob pattern] which you are used to from shell filename patterns (`*`, `?`, `[a-z]`, `[!a-z]`); glob patterns must match the whole field value, i.e. use `*...*` for 'contains' type searches. To use [http://docs.python.org/howto/regex.html regex matches] instead of globbing, enclose the pattern in slashes (`/regex/`). Since regex can express anchoring the match at the head (`^`) or tail (`$`), they're by default of the 'contains' type.
+
+For numeric fields, a leading "`+`" means greater than, a leading "`-`" means less than (just like with the standard `find` command). 
 
 Selection on fields that are lists of tags or names (e.g. `tagged` and `views`) works by just providing the tags you want to search for. The difference to the glob patterns for string fields is that tagged search respects word boundaries (whitespace), and to get a match the given tag just has to appear anywhere in the list (`bar` matches on `foo bar baz`).
 
