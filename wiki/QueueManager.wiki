@@ -42,12 +42,17 @@ job.treewatch.active        = True
 job.treewatch.load_mode     = start
 job.treewatch.queued        = True
 job.treewatch.path          = /var/torrent/watch
+job.treewatch.cmd.jpg       = f.multicall=*.jpg,f.set_priority=2
+job.treewatch.cmd.png       = f.multicall=*.png,f.set_priority=2
+job.treewatch.cmd.tif       = f.multicall=*.tif,f.set_priority=0
 }}}
 Having a minimal configuration with just your changes is recommended, so you get new defaults in later releases automatically.
 
 Note that in the above example, `downloading_max` counts started-but-incomplete items including those that ignore commands. 
 Other queue parameters are the minimum number of items in 'downloading' state (`downloading_min`, which trumps `start_at_once`), and the maximum number of items to start in one run (`start_at_once`).
 And the `startable` condition adds the extra hurdle that audio downloads that don't stay below a 25% threshold regarding contained images are *not* started automatically — go do that with a plain rTorrent watch dir.
+
+Also, the "`cmd.«name»`" settings can be used to provide additional load commands, executed _before_ the item is started (in case it is). They're added in the alphabetic order of their names. The above example shows how to set any JPG and PNG images to high priority, and prevent downloading any TIF images by default.
 
 See the [https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/torque.ini default configuration] for *more parameters and what they mean*.
 
