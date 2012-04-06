@@ -200,7 +200,7 @@ See the RtorrentExtendedCanvas page on how to use them.
 The following features of newer versions are patched into the 0.8.6 version of rTorrent-PS:
  * [http://libtorrent.rakshasa.no/changeset/1206 Changeset #1206]: `network.http.ssl_verify_peer.set` used to disable checking of self-signed SSL certificates.
 
-= Backports of SVN HEAD fixes and features to 0.8.9 =
+= Backports of git `master` fixes and features to 0.8.9 =
 The following fixes and features of the development version are patched into the 0.8.9 version of rTorrent-PS:
 
  * a fix in libtorrent for a problem located in the epoll event handling code (#1246).
