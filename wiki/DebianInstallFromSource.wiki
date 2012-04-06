@@ -27,7 +27,7 @@ aptitude install tmux wget build-essential subversion git-core \
     autoconf automake libtool
 }}}
 
-If you're security-conscious, you can create a `rtorrent` user and do all the following setup steps under that new account. Doing that ensures that there is _no way_, on a properly maintained *nix system, for the build and setup scripts to break either your machine or your normal user account.
+If you're security-conscious, you can create a `rtorrent` user and do all the following setup steps under that new account. Doing that ensures that there is _no way_, on a properly maintained ∗nix system, for the build and setup scripts to break either your machine or your normal user account.
 {{{
 groupadd rtorrent
 useradd -g rtorrent -G rtorrent,users -c "rTorrent client" --create-home rtorrent
