@@ -208,3 +208,4 @@ The following fixes and features of the development version are patched into the
  * a possible busy loop when trying to interrupt the main loop (#1263).
  * `log.execute` is fixed, and stays open.
  * no more zombies with `execute.*.bg`.
+ * backports of these new commands: `d.chunks_seen`, `t.is_usable`, and `t.is_busy`.
