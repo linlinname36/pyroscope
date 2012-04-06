@@ -78,11 +78,11 @@ Jobs and their configuration are added in the `[TORQUE]` section, by providing a
 Details on the `schedule` parameter can be found [http://readthedocs.org/docs/apscheduler/en/latest/cronschedule.html here]. Multiple fields must be separated by spaces, so if a field value contains a space, it must be quoted, e.g. «`hour=12 "day=3rd sun"`».
 The `handler` parameter tells the system where to look for the job implementation, see the handler descriptions below for the correct values.
 
-== `QueueManager` (beta) ==
+== `QueueManager` ==
 `pyrocore.torrent.queue:QueueManager` manages queued downloads (i.e. starts them in a controlled manner), it is described in detail [#Configuration further up on this page].
 
 
-== `TreeWatch` (beta) ==
+== `TreeWatch` (beta, not feature-complete) ==
 *TODO* `pyrocore.torrent.watch:TreeWatch` watches a folder tree, which can be nested arbitrarily. Loading of new `.torrent` files is immediate (using `libnotify`). Works together with `CompletionHandler` to move data to the partial path the torrent file was loaded from, relative to the tree root.
 
 Each sub-directory can contain a `watch.ini` configuration file for parameters like whether to start new items immediately, and for overriding the completion path.
