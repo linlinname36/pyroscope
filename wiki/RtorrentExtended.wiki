@@ -149,7 +149,7 @@ if [ "$TERM" = "${TERM%-256color}" ]; then
 fi
 }}}
 
-Also consider the hints at the end of the of RtorrentExtendedCanvas page.
+Also consider the hints at the end of the RtorrentExtendedCanvas page.
 
 If everything worked so far, and you now want to find you own coloring theme, the easiest way is to use a second shell and `rtxmlrpc`. Try out some colors, and add the combinations you like to your `~/.rtorrent.rc`.
 
