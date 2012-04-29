@@ -3,6 +3,8 @@
 
 <wiki:toc />
 
+*➽ IMPORTANT: For a fresh installation in addition to an existing rTorrent one, you will also need to follow the instructions here, which fill in some data your already running rTorrent instance is missing otherwise!*
+
 = Making backups =
 Since repairing broken files resulting from faulty updates usually is either a lot of work or simply impossible, always *make a backup*. Backups should be made when _either_ PyroScope or rTorrent is changed to a new version or SVN revision.
 
