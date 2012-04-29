@@ -25,4 +25,6 @@ If you like PyroScope after using it for a while, click on these buttons to show
 
 
 = Installing the extended rTorrent-PS distribution =
+`rTorrent-PS` is an alternative rTorrent executable with some changes to the user interface (colors, on line per torrent display) and other additions, plus stability patches applied. While there is some small interaction with the PyroScope command line tools (especially `rtcontrol`), both things are _independant_.
+
  ➽ _For details on the extended *`rTorrent-PS`* distribution including build instructions, consult the RtorrentExtended page!_
