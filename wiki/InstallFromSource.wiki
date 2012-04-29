@@ -19,6 +19,7 @@ aptitude install python python-dev build-essential subversion git
 
 Initial installation to `~/lib/pyroscope` is as follows (do *NOT* do this as `root` or using `sudo`):
 {{{
+# To be executed in a shell with your normal user account!
 mkdir -p ~/bin ~/lib
 svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
 ~/lib/pyroscope/update-to-head.sh
