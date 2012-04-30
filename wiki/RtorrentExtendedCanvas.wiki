@@ -2,7 +2,7 @@
 <wiki:toc max_depth="2" />
 
 == Extended canvas explained ==
-The following is an explanation of the collaped display of [RtorrentExtended rTorrent-PS] — remember that you need to bind a key to the `view.collapsed.toggle` command, or set the default of a view by calling that command in the configuration, else you won't ever see it.
+The following is an explanation of the collapsed display of [RtorrentExtended rTorrent-PS] — remember that you need to bind a key to the `view.collapsed.toggle` command, or set the default of a view by calling that command in the configuration, else you won't ever see it.
 
 http://i.imgur.com/B9qll.png
 
@@ -11,9 +11,9 @@ http://i.imgur.com/B9qll.png
 || ☍ || Tied item? [⚯] ||
 || ⌘ || Command lock-out? (⚒ = heed commands, ◌ = ignore commands) ||
 || ✰ || Priority (✖ = off, ⇣ = low, nothing for normal, ⇡ = high) ||
-|| ⣿ || Completion status (✔ = done; else up to 8 dots [⣿], i.e. 9 levels of 11% each) ||
+|| ⣿ || Completion status (✔ = done; else up to 8 dots [⣿], i.e. 9 levels of 11% each); change to bar style using `ui.style.progress.set=1` ||
 || ⚡ || Transfer direction indicator [⇅ ↡ ↟] ||
-|| ☯ || Ratio (☹  plus color indication for < 1, ➀  — ➉ : >= the number, ⊛ : >= 11) ||
+|| ☯ || Ratio (☹  plus color indication for < 1, ➀  — ➉ : >= the number, ⊛ : >= 11); change to a different set of number glyphs using `ui.style.ratio.set=1` (or 2) ||
 || ⚑ || Message (♺ = Tracker cycle complete, i.e. "Tried all trackers"; ⚡ = establishing connection; ↯ = data transfer problem; ◔ = timeout; ¿? = unknown torrent / info hash; ⨂ = authorization problem (possibly temporary); ⚠ = other; ⚑ = on the `tagged` view) ||
 || ↺ || Number of completions from last scrape info ||
 || ⤴ || Number of seeds from last scrape info ||
