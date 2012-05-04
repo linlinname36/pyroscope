@@ -23,6 +23,7 @@ Initial installation to `~/lib/pyroscope` is as follows (do *NOT* do this as `ro
 mkdir -p ~/bin ~/lib
 svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
 ~/lib/pyroscope/update-to-head.sh
+# pass "/usr/bin/python2" or whatever to the script, if "/usr/bin/python" is not a suitable version
 }}}
 
 After that, the CommandLineTools are available in the `~/lib/pyroscope/bin` directory, and also added to your user's bin directory. And yes, this requires you to [http://linux.about.com/od/linux101/l/blnewbie3_1_4.htm add ~/bin to your PATH], if you didn't do that yet. To finish installation, read the next section.
