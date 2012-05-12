@@ -6,13 +6,15 @@
 
 The following shows installation instructions for a working rTorrent instance in combination with PyroScope *from scratch*, on Debian Server 6.0 (Squeeze). While the package names and the use of `aptitude` are somewhat dependant on (that version of) Debian, the "_Preparatory steps_" commands which are executed under `root` are similar for other distributions, and the compilation instructions should work as-is on practically any Linux and (F)BSD.
 
+  ✪ *If you don't understand a word of what follows, hit [http://static.debian-handbook.info/browse/stable/short-remedial-course.html The Debian Administrator's Handbook] so then you do.*
+
 Non-packaged software is installed exclusively into your normal user account, i.e. this description works OK for non-root users as long as the required packages are installed before-hand. The default install location is `~/lib/rtorrent-«version»`, which means you can easily delete any installed software, and also run several versions concurrently.
 
 For shared multi-user setups, this works fine also — just add a "rt" user or similar, compile and install under it, then provide access to the other users (e.g. by adding them to the "rt" group). Perform the steps from "rTorrent configuration" onwards for each user repeatedly, so they get their own instance. Call "`ln -nfs ~rt/bin/rtorrent ~/bin`" to link to the central software installation (different users can have different versions and flavours active, just by changing the link target).
 
 Most of the command blocks further below can be cut & pasted wholesale into a terminal. Note that `bash` _here documents_ (`... <<'EOF'`) *MUST* be pasted at once, up to and including the line having a single `EOF` on it.
 
-*⚠ If you have an existing `/usr/local` installation of rTorrent, it is _very_ prudent to `make uninstall` that before compiling another version. In the same vein, remove any packages of `libtorrent` and `rtorrent` you have on your machine. The build instructions on this page then ensure that it is _no_ problem to have several versions concurrently on your machine.*
+  ⚠ *If you have an existing `/usr/local` installation of rTorrent, it is _very_ prudent to `make uninstall` that before compiling another version. In the same vein, remove any packages of `libtorrent` and `rtorrent` you have on your machine. The build instructions on this page then ensure that it is _no_ problem to have several versions concurrently on your machine.*
 
 
 = Preparatory steps =
