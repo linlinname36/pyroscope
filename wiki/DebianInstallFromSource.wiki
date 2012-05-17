@@ -280,7 +280,7 @@ svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
 
 Make sure `~/bin` is on your `PATH`, and if not, close and then reopen your shell. Check again, and if it's still not in there, [http://linux.about.com/od/linux101/l/blnewbie3_1_4.htm fix your broken `.bashrc`].
 
-Also, if you compiled rTorrent version *0.9.2* (which is the default) or *0.8.9*, you need to [RtXmlRpcMigration run the migration script] on the configuration now:
+Also, if you compiled rTorrent version *0.9.2* (which is the default) or *0.8.9*, you *MUST [RtXmlRpcMigration run the migration script]* on the configuration now:
 {{{
 # Run this in your NORMAL user account!
 ~/lib/pyroscope/pyrocore/docs/rtorrent-extended/migrate_rtorrent_rc.sh $RT_HOME/rtorrent.rc
