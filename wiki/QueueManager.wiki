@@ -104,7 +104,7 @@ job.connstats.schedule      = hour=*
 
 
 == `RemoteWatch` (planned) ==
-*TODO* `pyrocore.torrent.watch:RemoteWatch` pools a (S)FTP source for new `.torrent` files, creates a local copy, and loads that into the client.
+*TODO* `pyrocore.torrent.watch:RemoteWatch` polls a (S)FTP source for new `.torrent` files, creates a local copy, and loads that into the client.
 
 
 == `ItemPoller` (planned) ==
