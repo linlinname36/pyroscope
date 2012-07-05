@@ -157,9 +157,11 @@ encryption = allow_incoming,try_outgoing,enable_retry
 umask = 0027
 key_layout = qwertz
 check_hash = no
+
+# rTorrent 0.8.9 and older only
 # default is 2 ms and 5 tries
-hash_interval = 50
-hash_max_tries = 2
+#hash_interval = 50
+#hash_max_tries = 2
 
 # range for listening port
 port_range = 64000-64042
