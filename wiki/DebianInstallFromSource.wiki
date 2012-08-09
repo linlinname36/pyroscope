@@ -22,7 +22,7 @@ Most of the command blocks further below can be cut & pasted wholesale into a te
 First, you need to install a few *required* packages — *and no, this is not optional in any way*.
 These are the only steps that must be performed by the `root` user (i.e. in a root shell, or by writing `sudo` before the actual command):
 {{{
-aptitude install tmux wget build-essential subversion git-core \
+aptitude install tmux wget build-essential subversion git \
     python-setuptools python-virtualenv python-dev \
     libsigc++-2.0-dev libssl-dev \
     libncurses-dev libncursesw5-dev locales libcppunit-dev \
