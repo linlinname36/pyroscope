@@ -61,7 +61,7 @@ Another full example is the [https://pyroscope.googlecode.com/svn/trunk/pyrocore
 
 For simple calls, you can also use the `rtxmlrpc` command on a shell prompt, see RtXmlRpcExamples for that.
 For a reference of the rTorrent XMLRPC interface, see RtXmlRpcReference.
-
+Another common way to add your own extensions is to define CustomFields, usable by `rtcontrol` just like built-in ones.
 
 = Using `pyrocore` as a library in other projects =
 The example in the first section is an easy way to create user-defined scripts. If you want to use `pyrocore`'s features in another runtime environment, you just have to load the configuration manually (what [http://packages.python.org/pyrocore/apidocs/pyrocore.scripts.base.ScriptBaseWithConfig-class.html ScriptBaseWithConfig] does for you otherwise).
