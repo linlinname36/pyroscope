@@ -125,3 +125,37 @@ Note that the `partial_done` value can be a little lower than it actually should
         matcher=matching.FloatFilter,
         accessor=lambda o: partial_info(o, "partial_done"))
 }}}
+
+
+== Extract TV data from item name ==
+This defines the `tv_series` and `tv_episode` fields, that are non-empty when the item name follows the "usual" naming conventions. Try it using something like «`rtcontrol loaded=-2w traits=tv -co tv_series,tv_episode,name`».
+
+{{{
+    # Map name field to TV series name, if applicable, else an empty string
+    from pyrocore.util import traits
+
+    def tv_mapper(obj, name, templ):
+        "Helper for TV name mapping"
+        try:
+            return obj._fields[name]
+        except KeyError:
+            itemname = obj.name
+            result = ""
+
+            kind, info = traits.name_trait(itemname, add_info=True)
+            if kind == "tv":
+                try:
+                    info["show"] = ' '.join([i.capitalize() for i in info["show"].replace('.',' ').replace('_',' ').split()])
+                    result = templ % info
+                except KeyError, exc:
+                    #print exc
+                    pass
+
+            obj._fields[name] = result
+            return result
+
+    yield engine.DynamicField(fmt.to_unicode, "tv_series", "series name of a TV item", 
+        matcher=matching.PatternFilter, accessor= lambda o: tv_mapper(o, "tv_series", "%(show)s"))
+    yield engine.DynamicField(fmt.to_unicode, "tv_episode", "series name and episode number of a TV item", 
+        matcher=matching.PatternFilter, accessor= lambda o: tv_mapper(o, "tv_episode", "%(show)s.S%(season)sE%(episode)s"))
+}}}
