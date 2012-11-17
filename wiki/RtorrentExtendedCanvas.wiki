@@ -48,6 +48,8 @@ And you'll get this in your terminal:
 
 http://i.imgur.com/RUj91.png
 
+As you can see, you get the upper and lower bounds of traffic within your configured time window, and each bar of the graph represents an interval determined by the sampling schedule. Pressing »`=`« toggles between a graph display with base line 0, and a zoomed view that scales it to the current bounds.
+
 
 == Setting up your terminal ==
 
