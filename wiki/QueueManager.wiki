@@ -12,6 +12,13 @@ The queue manager, and other background jobs you can activate, are controlled by
 
 = Initial setup =
 
+Before you start configuring the daemon, you have to install some additional Python dependencies it needs to do its work, also depending on what jobs you activate in your configuration. You need at least `APScheduler>=2.0.2`, and the following is how to install the _full_ set of dependencies:
+{{{
+. ~/lib/pyroscope/bin/activate
+pip install APScheduler
+pip install pyinotify
+}}}
+
 The queue manager daemon needs additional settings, but there are defaults in place, so the detailed explanation in this section can be skipped, if you are OK with these. Go directly to the [#Configuration configuration] in that case.
 
 *➽ IMPORTANT: Remember to follow the [MigrationGuide#Migrating_to_version_0.4.3 migration guide] in case you're upgrading an existing installation.*
