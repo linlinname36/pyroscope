@@ -6,11 +6,11 @@
 
 = Installing a release version =
 For a working installation, you have to meet these requirements first:
- * Python 2.5 or a higher 2.x version (2.5 is recommended); go to http://www.python.org/download/ if you're on an OS that doesn't have Python out of the box.
+ * Python 2.5 or a higher 2.x version (2.6 is recommended); go to http://www.python.org/download/ if you're on an OS that doesn't have Python out of the box.
  * for `rtcontrol` and `rtxmlrpc`, an existing rTorrent installation, _with the xmlrpc option compiled in_ and the `scgi_local` or `scgi_port` command added to your `~/.rtorrent.rc`.
  * Using rTorrent *0.9.2*, *0.8.9* or *0.8.6* is recommended — PyroScope _should_ work together with older versions though, up to a point.
 
-On Debian, Ubuntu, and other Debian-derived distributions, do this (tested on Hardy 8.04 LTS):
+On Debian, Ubuntu, and other Debian-derived distributions, do this:
 {{{
 sudo apt-get install python-setuptools
 sudo easy_install --prefix /usr/local pyrocore
