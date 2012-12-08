@@ -63,6 +63,22 @@ For simple calls, you can also use the `rtxmlrpc` command on a shell prompt, see
 For a reference of the rTorrent XMLRPC interface, see RtXmlRpcReference.
 Another common way to add your own extensions is to define CustomFields, usable by `rtcontrol` just like built-in ones.
 
+
+= Interactive use in a Python shell =
+
+You can also access rTorrent interactively, like this:
+{{{
+>>> from pyrocore import connect
+>>> rt = connect()
+>>> len(set(i.tracker for i in rt.items()))
+2
+>>> rt.engine_software
+'rTorrent 0.9.2/0.13.2'
+>>> rt.uptime
+1325.6771779060364
+}}}
+
+
 = Using `pyrocore` as a library in other projects =
 The example in the first section is an easy way to create user-defined scripts. If you want to use `pyrocore`'s features in another runtime environment, you just have to load the configuration manually (what [http://packages.python.org/pyrocore/apidocs/pyrocore.scripts.base.ScriptBaseWithConfig-class.html ScriptBaseWithConfig] does for you otherwise).
 {{{
