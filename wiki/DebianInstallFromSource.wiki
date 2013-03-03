@@ -102,7 +102,7 @@ To be able to use several different instances of rTorrent (e.g. a second one for
 First, create the instance directories and a simple start script:
 {{{
 # Run this in your NORMAL user account!
-export RT_HOME=$HOME/rtorrent
+export RT_HOME="${RT_HOME:-$HOME/rtorrent}"
 mkdir -p $RT_HOME/{.session,work,done,log,watch/start,watch/load}
 cd $RT_HOME
 
@@ -138,6 +138,7 @@ Next, a not-so-simple `rtorrent.rc` is created, it already contains everything n
 
 {{{
 # Run this in your NORMAL user account!
+export RT_HOME="${RT_HOME:-$HOME/rtorrent}"
 sed -e "s:RT_HOME:$RT_HOME:" >$RT_HOME/rtorrent.rc <<'EOF'
 ### rtorrent settings #######################################################
 
@@ -285,6 +286,7 @@ Make sure `~/bin` is on your `PATH`, and if not, close and then reopen your shel
 <font face="Impact,Verdana,sans" color="#f22" size="4">Also, if you compiled rTorrent version *0.9.2* (which is the default) or *0.8.9*, you *MUST [RtXmlRpcMigration run the migration script]* on the configuration now!</font>
 {{{
 # Run this in your NORMAL user account!
+export RT_HOME="${RT_HOME:-$HOME/rtorrent}"
 ~/lib/pyroscope/pyrocore/docs/rtorrent-extended/migrate_rtorrent_rc.sh $RT_HOME/rtorrent.rc
 }}}
 That converts it from the old 0.8.6 syntax to the new one.
