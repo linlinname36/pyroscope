@@ -133,6 +133,7 @@ job.connstats.schedule      = hour=*
 == `StatsArchiver` (planned) ==
 *TODO*  `pyrocore.torrent.:` keeps a continuous archive of some statistical values (like bandwidth) so they can later be rendered into graphs.
 
+See RtorrentMonitoring for more details.
 
 == `...` ==
 *TODO*  `pyrocore.torrent.:` ...
