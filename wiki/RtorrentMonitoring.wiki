@@ -1,0 +1,37 @@
+#summary rTorrent monitoring and statistics.
+#labels Phase-Design
+<wiki:toc />
+
+<table border="3"><tr><td>
+*❢This is currently in the planning stage❢*
+</td></tr></table><br />
+
+
+= Overview =
+
+The `StatsArchiver` job of the `pyrotorque` demon writes a lot of statistical data to RRD archives (_round robin database_) in 1 minute intervals. See http://oss.oetiker.ch/rrdtool/doc/rrdtool.en.html for the theory behind RRD, and the standard implementation used in a lot of systems.
+
+
+= Sensors =
+
+The following values are gathered. Most (_all?_) of them are also available per tracker (_and per media type?_).
+
+|| *Entity* || *Data Sources* || *Comment* ||
+|| Item Numbers || `d.total`, `d.started`, `d.stopped`, `d.complete`, `d.incomplete`, `d.seeding`, `d.leeching`, `d.active`, `d.message` || These are the associated view sizes; could be sampled more often, and the average values taken ||
+|| Item Size || `d.size_bytes`, `d.left_bytes`, `d.size_files` ||  ||
+|| Traffic || `d.up_rate`, `d.down_rate`, `d.skip_rate` ||  ||
+|| Resources || `open_sockets`, `cputime`, `pcpu`, `pmem`, `sz`, `rsz`, `vsz` || See `man ps` for most of these ||
+
+Also, the usual machine statistics (CPU load, disk usage and I/O, network traffic) are sampled (by `collectd`, or using `collectd` plugins, or some system stats package?).
+
+
+= Later extensions =
+These are probably not sampled that often, or we need to define an extra view to allow efficient sampling.
+
+|| *Entity* || *Data Sources* || *Comment* ||
+|| Ratios || … || _As histogram counters?_ ||
+|| Events || `event_closed`, … || Counters for all `event.download.*` events ||
+|| Peers || `peers_total`, `peers_encrypted`, `peers_incoming`, `peers_obfuscated`, `peers_preferred`, peers_snubbed`, `peers_unwanted` ||  ||
+|| Files || … ||  ||
+
+With some patches compiled into rTorrent, the additional values `network.http.open`, and `network.open_files` are available.
