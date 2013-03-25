@@ -26,7 +26,8 @@ aptitude install tmux wget build-essential subversion git \
     python-setuptools python-virtualenv python-dev \
     libsigc++-2.0-dev libssl-dev \
     libncurses-dev libncursesw5-dev locales libcppunit-dev \
-    autoconf automake libtool
+    autoconf automake libtool \
+    libxml2-dev libxslt1-dev
 }}}
 
 Note that you can always show Debian's current build dependencies for rTorrent using the command
