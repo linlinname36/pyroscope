@@ -3,13 +3,40 @@
 <wiki:toc />
 
 <table border="3"><tr><td>
-*❢This is currently in the planning stage❢*
+*❢This is currently in the alpha stage❢*
 </td></tr></table><br />
 
 
 = Overview =
 
 The `StatsArchiver` job of the `pyrotorque` demon writes a lot of statistical data to RRD archives (_round robin database_) in 1 minute intervals. See http://oss.oetiker.ch/rrdtool/doc/rrdtool.en.html for the theory behind RRD, and the standard implementation used in a lot of systems.
+
+
+= Installation & Configuration =
+The web service that creates the monitoring pages is an optional part of `pyrotorque`, see QueueManager on how to set it up. _After_ `pyrotorque` is successfully running, follow these additional steps to activate the web server. Also, make sure you run the newest code by calling `~/lib/pyroscope/update-to-head.sh` beforehand.
+
+First, activate the web server option by adding this to your `~/.pyroscope/torque.ini`:
+{{{
+httpd.active = True
+}}}
+
+Next, a few additional Python libraries and external CSS/Javascript resources need to be installed, which are not part of the core distribution:
+{{{
+# Install dependencies
+. ~/lib/pyroscope/bin/activate
+pip install waitress
+pip install WebOb
+
+# Download resources to "~/.pyroscope/htdocs"
+pyroadmin --create-config
+}}}
+
+Finally, restart the demon:
+{{{
+pyrotorque --cron --restart
+}}}
+
+If you didn't change the defaults, the web interface is now available using the URL http://localhost:8042/.
 
 
 = Sensors =
