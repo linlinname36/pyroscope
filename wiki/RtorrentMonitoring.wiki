@@ -3,7 +3,7 @@
 <wiki:toc />
 
 <table border="3"><tr><td>
-*❢This is currently in the alpha stage❢*
+*❢This is currently in the beta stage❢*
 </td></tr></table><br />
 
 
