@@ -45,7 +45,7 @@ If you didn't change the defaults, the web interface is now available using the 
 The following values are gathered. Most (_all?_) of them are also available per tracker (_and per media type?_).
 
 || *Entity* || *Data Sources* || *Comment* ||
-|| Item Numbers || `d.total`, `d.started`, `d.stopped`, `d.complete`, `d.incomplete`, `d.seeding`, `d.leeching`, `d.active`, `d.message` || These are the associated view sizes; could be sampled more often, and the average values taken ||
+|| Item Numbers || `d.total`, `d.started`, `d.stopped`, `d.complete`, `d.incomplete`, `d.seeding`, `d.leeching`, `d.active`, `d.messages` || These are the associated view sizes; could be sampled more often, and the average values taken ||
 || Item Size || `d.size_bytes`, `d.left_bytes`, `d.size_files` ||  ||
 || Traffic || `d.up_rate`, `d.down_rate`, `d.skip_rate` ||  ||
 || Resources || `open_sockets`, `cputime`, `pcpu`, `pmem`, `sz`, `rsz`, `vsz` || See `man ps` for most of these ||
