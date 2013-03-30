@@ -37,7 +37,9 @@ Finally, restart the demon:
 pyrotorque --cron --restart
 }}}
 
-If you didn't change the defaults, the web interface is now available using the URL http://localhost:8042/.
+If you didn't change the defaults, the web interface is now available using the URL http://localhost:8042/, which will show you something similar to this:
+
+http://i.imgur.com/ZAtTeci.png
 
 
 = Sensors =
