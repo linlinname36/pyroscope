@@ -13,7 +13,7 @@ The `StatsArchiver` job of the `pyrotorque` demon writes a lot of statistical da
 
 
 = Installation & Configuration =
-The web service that creates the monitoring pages is an optional part of `pyrotorque`, see QueueManager on how to set it up. _After_ `pyrotorque` is successfully running, follow these additional steps to activate the web server. Also, make sure you run the newest code by calling `~/lib/pyroscope/update-to-head.sh` beforehand.
+The web service that creates the monitoring pages is an optional part of `pyrotorque`, see QueueManager on how to set it up. _After_ `pyrotorque` is successfully running, follow these additional steps to activate the web server.
 
 First, activate the web server option by adding this to your `~/.pyroscope/torque.ini`:
 {{{
@@ -22,7 +22,8 @@ httpd.active = True
 
 Next, a few additional Python libraries and external CSS/Javascript resources need to be installed, which are not part of the core distribution:
 {{{
-# Install dependencies
+# Install current code and dependencies
+~/lib/pyroscope/update-to-head.sh
 . ~/lib/pyroscope/bin/activate
 pip install psutil
 pip install waitress
