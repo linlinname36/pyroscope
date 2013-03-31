@@ -69,6 +69,7 @@ python -c 'print u"\u22c5 \u22c5\u22c5 \u201d \u2019 \u266f \u2622 \u260d \u2318
     u"\u21c5 \u21a1 \u219f \u229b \u267a ".encode("utf8")'
 }}}
 
+Also see this [http://superuser.com/questions/393834/how-to-configure-putty-to-display-these-characters superuser Q&A] for some tips.
 
 == Using the extended canvas with tmux / screen and 256 colors ==
 
