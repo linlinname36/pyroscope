@@ -35,6 +35,8 @@ pyroadmin --create-config
 Finally, restart the demon:
 {{{
 pyrotorque --cron --restart
+# use "pyrotorque --fg --restart -v" instead, in case something doesn't work,
+# so you can directly read the log
 }}}
 
 If you didn't change the defaults, the web interface is now available using the URL http://localhost:8042/, which will show you something similar to this:
