@@ -9,11 +9,13 @@
 
 = Overview =
 
-The `StatsArchiver` job of the `pyrotorque` demon writes a lot of statistical data to RRD archives (_round robin database_) in 1 minute intervals. See http://oss.oetiker.ch/rrdtool/doc/rrdtool.en.html for the theory behind RRD, and the standard implementation used in a lot of systems.
+The monitoring subsystem is an optional part of `pyrotorque` and includes a web service that creates the monitoring pages which can be viewed in your browser. There is a live view that continuously updates current performance indicators of rTorrent and the host it runs on.
+
+_(This is not yet implemented…)_ Also, the `StatsArchiver` job of the `pyrotorque` demon writes a lot of statistical data to RRD archives (_round robin database_) in 1 minute intervals. See http://oss.oetiker.ch/rrdtool/doc/rrdtool.en.html for the theory behind RRD, and the standard implementation used in a lot of systems.
 
 
 = Installation & Configuration =
-The web service that creates the monitoring pages is an optional part of `pyrotorque`, see QueueManager on how to set it up. _After_ `pyrotorque` is successfully running, follow these additional steps to activate the web server.
+As previously mentioned, monitoring is an optional part of `pyrotorque`, so _first_ see QueueManager on how to set it up in case you didn't do that already. _After_ `pyrotorque` is successfully running, follow these additional steps to activate the web server.
 
 First, activate the web server option by adding this to your `~/.pyroscope/torque.ini`:
 {{{
@@ -43,6 +45,15 @@ pyrotorque --cron --restart
 If you didn't change the defaults, the web interface is now available using the URL http://localhost:8042/, which will show you something similar to this:
 
 http://i.imgur.com/ZAtTeci.png
+
+
+= Additional configuration options =
+As with other config files, `~/.pyroscope/torque.ini.default` list all the available options and a short description. The following just lists those that are quite often changed from the defaults.
+
+|| *Setting* || *Description* ||
+|| `httpd.waitress.host` || The address the web server listens on. The default is `127.0.0.1` (i.e. `localhost`), and can be changed to `0.0.0.0` to listen to _any_ interface. Note that the latter is only safe in your home LAN, behind a firewall or NAT. Add a _reverse proxy_ to your Apache/nginx/… for exposing the web service to the internet, ideally adding password protection and using SSL. ||
+|| `httpd.waitress.port` || TCP port the web server listens on, default is `8042`. ||
+|| `httpd.json.disk_usage_path` || Path used to get disk used/total, this can also be a list of paths to different partitions, separated by “`:`”. The default is your home directory “`~`”. ||
 
 
 = Sensors =
