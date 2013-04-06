@@ -1,5 +1,5 @@
 #summary rTorrent monitoring and statistics.
-#labels Phase-Design
+#labels Featured
 <wiki:toc />
 
 <table border="3"><tr><td>
@@ -50,7 +50,7 @@ http://i.imgur.com/ZAtTeci.png
 
 
 = Additional configuration options =
-As with other config files, `~/.pyroscope/torque.ini.default` list all the available options and a short description. The following just lists those that are quite often changed from the defaults.
+As with other config files, `~/.pyroscope/torque.ini.default` lists all the available options and a short description. The following just lists those that are quite often changed from the defaults.
 
 || *Setting* || *Description* ||
 || `httpd.waitress.host` || The address the web server listens on. The default is `127.0.0.1` (i.e. `localhost`), and can be changed to `0.0.0.0` to listen to _any_ interface. Note that the latter is only safe in your home LAN, behind a firewall or NAT. Add a _reverse proxy_ to your Apache/nginx/… for exposing the web service to the internet, ideally adding password protection and using SSL. ||
