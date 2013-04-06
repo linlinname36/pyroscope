@@ -9,7 +9,9 @@
 
 = Overview =
 
-The monitoring subsystem is an optional part of `pyrotorque` and includes a web service that creates the monitoring pages which can be viewed in your browser. There is a live view that continuously updates current performance indicators of rTorrent and the host it runs on.
+The monitoring subsystem is an optional part of `pyrotorque` and includes a web service that creates the monitoring pages which can be viewed in your browser. There is a live view that continuously updates current performance indicators of rTorrent and the host it runs on, something similar to this:
+
+http://i.imgur.com/ZAtTeci.png
 
 The web interface follows _responsive web design_ ([https://en.wikipedia.org/wiki/Responsive_web_design RWD]) principles, which means it'll adapt to different devices and their display size.
 
@@ -44,9 +46,7 @@ pyrotorque --cron --restart
 # so you can directly read the log
 }}}
 
-If you didn't change the defaults, the web interface is now available using the URL http://localhost:8042/, which will show you something similar to this:
-
-http://i.imgur.com/ZAtTeci.png
+If you didn't change the defaults, the web interface is now available using the URL http://localhost:8042/, which will show you something similar to the screen shot further above,
 
 
 = Additional configuration options =
