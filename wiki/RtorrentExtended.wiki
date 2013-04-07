@@ -12,7 +12,7 @@
 <td align="center">[http://youtu.be/Bv-oajBgsSU http://i.imgur.com/5FPx5.png]<br />  Demo Video</td>
 </tr></table>
 
-If you follow the [DebianInstallFromSource#rTorrent_installation build instructions] for the extended rTorrent variant `rTorrent-PS`, you'll get an alternative rTorrent executable with the following changes:
+By installing the extended rTorrent distribution `rTorrent-PS`, you'll get an alternative rTorrent executable with the following changes:
  # self-contained install into any location of your choosing, including your home directory, offering the ability to run several versions at once (in different client instances).
  # _rpath-linked_ to the major dependencies, so you can upgrade those independently from your OS distribution's versions.
  # extended command set (exclusive PyroScope patches):
@@ -20,6 +20,8 @@ If you follow the [DebianInstallFromSource#rTorrent_installation build instructi
    * bind keys in the root display to any command, e.g. change the built-in views.
    * interface patches adding easily customizable colors, displaying the _tracker domain_, and some more minor modifications to the download list view.
  # show number of registered downloads on the tracker info panel.
+
+You just need to either follow the [DebianInstallFromSource#rTorrent_installation build instructions], or download and install a package from [https://bintray.com/pkg/show/general/pyroscope/rtorrent-ps/rtorrent-ps Bintray] — assuming one is available for your platform.
 
 http://i.imgur.com/xVSmh.png
 
