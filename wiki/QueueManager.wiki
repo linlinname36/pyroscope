@@ -52,7 +52,8 @@ job.treewatch.path          = /var/torrent/watch
 job.treewatch.cmd.jpg       = f.multicall=*.jpg,f.set_priority=2
 job.treewatch.cmd.png       = f.multicall=*.png,f.set_priority=2
 job.treewatch.cmd.tif       = f.multicall=*.tif,f.set_priority=0
-job.treewatch.cmd.target    = {{# set target path}}d.custom.set=targetdir,/var/torrent/done/{{label}}/{{relpath}}
+job.treewatch.cmd.target    = {{# set target path
+    }}d.custom.set=targetdir,/var/torrent/done/{{label}}/{{relpath}}
 }}}
 Having a minimal configuration with just your changes is recommended, so you get new defaults in later releases automatically.
 
