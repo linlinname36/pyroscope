@@ -4,7 +4,7 @@
 = Introduction =
 As mentioned on the QueueManager page, commands configured to be executed during item loading can be templates. This can be used to support all sorts of tricks, the most common ones are explained here, including fully dynamic completion moving.
 
-So how does this work? When a `.torrent` file is notified for loading, it's parsed and contained data is put into variables that can be used in the command templates. In order to get an idea what variable are available, you can dump to templating namespace for a metafile to the console.
+So how does this work? When a `.torrent` file is notified for loading, it's parsed and contained data is put into variables that can be used in the command templates. In order to get an idea what variables are available, you can dump the templating namespace for a metafile to the console, by calling the `watch` job directly.
 
 Consider this example:
 {{{
