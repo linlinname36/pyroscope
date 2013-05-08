@@ -9,7 +9,7 @@ So how does this work? When a `.torrent` file is notified for loading, it's pars
 Consider this example:
 {{{
 $ date >example.dat
-$ mktor -q example.dat http://tracker,example.com/
+$ mktor -q example.dat http://tracker.example.com/
 $ python -m pyrocore.torrent.watch -v example.dat.torrent
 …
 DEBUG    Tree watcher created with config Bunch(active=False, …
@@ -26,7 +26,7 @@ INFO     Templating values are:
     label=''
     pathname='/var/torrent/pyroscope/example.dat.torrent'
     relpath='pyrocore'
-    tracker_alias='tracker,example.com'
+    tracker_alias='tracker.example.com'
     traits=Bunch(kind=None)
     watch_path=set(['/var/torrent'])
 }}}
