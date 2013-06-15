@@ -13,6 +13,13 @@ The monitoring subsystem is an optional part of `pyrotorque` and includes a web 
 
 http://i.imgur.com/ZAtTeci.png
 
+What can you see here?
+
+ * rTorrent and host uptimes.
+ * rTorrent upload and download activity.
+ * number of rTorrent items in total (♯), active(⚡), having a message (↯), complete (✔), incomplete (◑), seeding (▲), downloading (▼). started (☀), stopped(■).
+ * and key host performance indicators.
+
 The web interface follows _responsive web design_ ([https://en.wikipedia.org/wiki/Responsive_web_design RWD]) principles, which means it'll adapt to different devices and their display size.
 
 _(This is not yet implemented…)_ Also, the `StatsArchiver` job of the `pyrotorque` demon writes a lot of statistical data to RRD archives (_round robin database_) in 1 minute intervals. See http://oss.oetiker.ch/rrdtool/doc/rrdtool.en.html for the theory behind RRD, and the standard implementation used in a lot of systems.
