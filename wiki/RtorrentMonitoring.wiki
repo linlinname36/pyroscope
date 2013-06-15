@@ -17,7 +17,7 @@ What can you see here?
 
  * rTorrent and host uptimes.
  * rTorrent upload and download activity.
- * number of rTorrent items in total (♯), active(⚡), having a message (↯), complete (✔), incomplete (◑), seeding (▲), downloading (▼). started (☀), stopped(■).
+ * number of rTorrent items in total (♯), active (⚡), having a message (↯), complete (✔), incomplete (◑), seeding (▲), downloading (▼). started (☀), stopped (■).
  * and key host performance indicators.
 
 The web interface follows _responsive web design_ ([https://en.wikipedia.org/wiki/Responsive_web_design RWD]) principles, which means it'll adapt to different devices and their display size.
