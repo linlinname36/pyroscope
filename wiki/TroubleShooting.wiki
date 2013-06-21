@@ -1,18 +1,30 @@
 #summary Things you can do in case of problems.
 
-= Python Diagnostics =
+== Python Diagnostics ==
 
 Execute the following command to be able to provide some information on your Python installation:
 
 {{{
 python <<'.'
-import sys, os, pprint
+import sys, os, time, pprint
 pprint.pprint(dict(
     version=sys.version,
     os_uc_names=os.path.supports_unicode_filenames,
     enc_def=sys.getdefaultencoding(),
     maxuchr=sys.maxunicode,
     enc_fs=sys.getfilesystemencoding(),
+    tz=time.tzname,
+    lang=os.getenv("LANG"),
+    term=os.getenv("TERM"),
+    sh=os.getenv("SHELL"),
 ))
 .
+}}}
+
+
+== OS Diagnostics ==
+Similarly, execute this in a shell prompt:
+
+{{{
+uname -a; echo $(lsb_release -as 2>/dev/null); strings $(which rtorrent) | grep "client version"
 }}}
