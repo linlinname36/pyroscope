@@ -27,4 +27,5 @@ Similarly, execute this in a shell prompt:
 
 {{{
 uname -a; echo $(lsb_release -as 2>/dev/null); strings $(which rtorrent) | grep "client version"
+ldd $(which rtorrent) | egrep "lib(curses|curl|xmlrpc.so|cares|ssl|crypto)" 
 }}}
