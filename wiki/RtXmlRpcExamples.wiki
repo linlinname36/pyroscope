@@ -8,7 +8,7 @@ _Contents_ <wiki:toc max_depth="2" />
 The `rtuptime` script shows you essential information about your rTorrent instance:
 {{{
 #! /bin/bash
-SCGI_SOCKET=~/bt/rtorrent/.scgi_local
+SCGI_SOCKET=~/rtorrent/.scgi_local
 
 if test \! -S $SCGI_SOCKET; then
     echo >&2 "rTorrent is not running (no socket $SCGI_SOCKET)"
