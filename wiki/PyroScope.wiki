@@ -10,7 +10,7 @@ PyroScope is a collection of tools for the BitTorrent protocol and especially th
  * rTorrent extensions like a QueueManager and statistics (_work in progress_)
  * a modern and versatile rTorrent web interface (currently on hold)
 
-See the ScreenShotGallery if you want to get a first impression without installing the software.
+See the ScreenShotGallery if you want to get a first impression without [QuickStartGuide installing the software].
 
 http://i.imgur.com/UALM1.png
 
