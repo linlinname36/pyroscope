@@ -1,11 +1,13 @@
 #summary How to get started - installation and first steps.
 #labels installation,configuration,cli,Featured
 
+ ➽ There are *two* parts of this project, the CLI tools and the extend rTorrent-PS distribution. They fit well together, but are *independant* of each other.
+
 = Installing the command line tools =
 
 Choose your preferred way of how to install PyroScope ►
 
-|| *✰ Install an official release* || *✰ Install current development version * || *✰ Install rTorrent and PyroScope from scratch* ||
+|| ✰ Install an official release || *✰ Install current development version * || *✰ Install rTorrent and PyroScope from scratch* ||
 || ✖ Outdated<br/>✔ For normal users <br/>✔ Hassle-free <br/>✔ Easy download and update || ✔ For power users and developers <br/>✔ All the new features <br/>✔ Get fixes immediately || ✔ For users that start out with rTorrent <br/>✔ For Debian and other Linux distributions <br/>✔ Compile rTorrent yourself, get a current version ||
 || *➫ InstallReleaseVersion* || *➫ InstallFromSource* || *➫ DebianInstallFromSource* ||
 
