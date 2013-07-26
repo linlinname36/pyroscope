@@ -10,6 +10,7 @@
    * [InstallToPythonVirtualenv Virtual environment]
    * [InstallFromSource Development version]
    * [DebianInstallFromSource Linux setup from scratch]
+   * TroubleShooting
  * [UserConfiguration Configuration Guide]
  * [MigrationGuide Updating Guide]
  * Usage
