@@ -5,10 +5,11 @@
 Execute the following command to be able to provide some information on your Python installation:
 
 {{{
-python <<'.'
+deactivate 2>/dev/null; /usr/bin/virtualenv --version; python <<'.'
 import sys, os, time, pprint
 pprint.pprint(dict(
     version=sys.version,
+    prefix=sys.prefix,
     os_uc_names=os.path.supports_unicode_filenames,
     enc_def=sys.getdefaultencoding(),
     maxuchr=sys.maxunicode,
