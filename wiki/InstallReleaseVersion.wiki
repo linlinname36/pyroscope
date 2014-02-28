@@ -1,5 +1,10 @@
 #summary How to get started - installation and first steps.
 #labels installation
+
+*Use InstallFromSource, the release version is out of date*
+----
+
+
 <wiki:toc max_depth="2" />
 
  ➽ _If you want to *update* your already installed software, go to the MigrationGuide instead!_
