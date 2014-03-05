@@ -46,4 +46,9 @@ traits=Bunch(aspect=None, codec='x264', episode='06', extension=None, format='72
 = Examples =
 
 == Completion Moving ==
-Since the templating namespace automatically includes the path of a loaded `.torrent` file relative to the watch root (in `relpath`, see above example namespace output), you can set the "move on completion" target using that value.
+Since the templating namespace automatically includes the path of a loaded `.torrent` file relative to the watch root (in `relpath`, see above example namespace output and the config example further down), you can set the "move on completion" target using that value.
+
+{{{
+job.treewatch.cmd.target    = {{# set target path
+    }}d.custom.set=targetdir,/var/torrent/done/{{label}}/{{relpath}}
+}}}
