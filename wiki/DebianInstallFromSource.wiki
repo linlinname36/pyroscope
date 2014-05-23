@@ -89,8 +89,8 @@ Download the [http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/rtorrent-e
 {{{
 # Run this in your NORMAL user account!
 mkdir -p ~/src/; cd ~/src/
-svn co http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/rtorrent-extended
-cd rtorrent-extended
+git clone https://github.com/pyroscope/rtorrent-ps.git
+cd rtorrent-ps
 
 # check the VERSION SELECTION at the top of the script, and edit as needed, then...
 ./build.sh all
