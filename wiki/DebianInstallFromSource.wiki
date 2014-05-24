@@ -75,7 +75,7 @@ For a limited set of platforms, there are packages available that contain pre-co
 ln -s /opt/rtorrent/bin/rtorrent /usr/local/bin
 }}}
 
-Then skip the next section and continue with “rTorrent instance setup”.
+Then skip the next section and continue with “!PyroScope installation”.
 
  ✪ _During rTorrent instance setup, do not forget to change the value of `pyro.extended` to 1 so the extended features are actually activated!_
 
