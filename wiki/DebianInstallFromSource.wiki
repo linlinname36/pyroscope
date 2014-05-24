@@ -109,7 +109,19 @@ If you want an extended version with some stability fixes and extension patches 
 
 Note that the unpatched version is still available as `rtorrent-vanilla`, and you can simply switch by changing the symlink in `~/bin`, or by calling either version with its full path. See RtorrentExtended for more details on the changes applied. 
 
- ✪ _If you use the configuration as outlined in the next section, do not forget to change the value of `pyro.extended` to 1 in case you built the extended version!_
+ ✪ _If you use the configuration as outlined below, do not forget to change the value of `pyro.extended` to 1 in case you built the extended version, to unlock the additional features!_
+
+
+= !PyroScope installation =
+The installation of `pyrocore` is done from source, see InstallFromSource for more details.
+{{{
+# Run this in your NORMAL user account!
+mkdir -p ~/bin ~/lib
+svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
+~/lib/pyroscope/update-to-head.sh
+}}}
+
+Make sure `~/bin` is on your `PATH`, and if not, close and then reopen your shell. Check again, and if it's still not in there, [http://linux.about.com/od/linux101/l/blnewbie3_1_4.htm fix your broken `.bashrc`].
 
 
 = rTorrent instance setup =
@@ -150,19 +162,7 @@ EOF
 chmod a+x ./start
 }}}
 
-= !PyroScope installation =
-The installation of `pyrocore` is done from source, see InstallFromSource for more details.
-{{{
-# Run this in your NORMAL user account!
-mkdir -p ~/bin ~/lib
-svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
-~/lib/pyroscope/update-to-head.sh
-}}}
-
-Make sure `~/bin` is on your `PATH`, and if not, close and then reopen your shell. Check again, and if it's still not in there, [http://linux.about.com/od/linux101/l/blnewbie3_1_4.htm fix your broken `.bashrc`].
-
-
-= rTorrent configuration =
+== rTorrent configuration ==
 
 Next, a not-so-simple [http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/rtorrent.rc rtorrent.rc] is created, it already contains everything needed to use all features of PyroScope — you should check at least the first section and adapt the values to your environment. Note that most of the settings specific to PyroScope are read from a [http://pyroscope.googlecode.com/svn/trunk/pyrocore/src/pyrocore/data/config/rtorrent-0.8.6.rc provided include file].
 
