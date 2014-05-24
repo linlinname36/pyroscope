@@ -157,6 +157,7 @@ Next, a not-so-simple `rtorrent.rc` is created, it already contains everything n
 {{{
 # Run this in your NORMAL user account!
 export RT_HOME="${RT_HOME:-$HOME/rtorrent}"
+
 sed -e "s:RT_HOME:$RT_HOME:" >$RT_HOME/rtorrent.rc <<'EOF'
 ### rtorrent settings #######################################################
 
@@ -234,6 +235,9 @@ system.method.set_key = event.download.closed,log,"print=\"CLOSED \",$d.get_name
 view_sort_current = seeding,greater=d.get_ratio= 
 
 
+EOF
+
+sed -e "s:RT_HOME:$RT_HOME:" >>$RT_HOME/rtorrent.rc <<'EOF'
 #
 # PyroScope SETTINGS
 #
