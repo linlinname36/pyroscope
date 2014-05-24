@@ -129,7 +129,7 @@ To be able to use several different instances of rTorrent (e.g. a second one for
 
 == rTorrent startup script ==
 
-First, create the instance directories and a simple start script:
+First, create the instance directories and a simple [http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/start.sh start script]:
 {{{
 # Run this in your NORMAL user account!
 export RT_HOME="${RT_HOME:-$HOME/rtorrent}"
