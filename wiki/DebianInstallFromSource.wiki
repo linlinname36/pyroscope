@@ -185,30 +185,10 @@ EOF
 
 == tmux Configuration ==
 
-We spruce up `tmux` a bit before we start it the first time, and make it more homey for long-time `screen` users:
+We spruce up `tmux` a bit using a [http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/tmux.conf custom configuration], before we start it the first time. This makes it more homey for long-time `screen` users:
 {{{
 # Run this in your NORMAL user account!
-cat >~/.tmux.conf <<'EOF'
-# Rebind to Ctrl-a
-set -g prefix C-a
-unbind C-b
-bind a send-prefix
-bind C-a last-window
-bind '"' choose-window
-
-# Rebind pane splitting
-unbind %
-bind - split-window -v
-bind _ split-window -h
-
-# Set status bar
-set -g status-bg colour236
-set -g status-fg white
-set -g status-left '#[fg=green]#H'
-
-# Highlight active window
-set-window-option -g window-status-current-bg colour164
-EOF
+cp --no-clobber ~/lib/pyroscope/pyrocore/docs/examples/tmux.conf ~/.tmux.conf
 }}}
 
 == Starting a tmux Session ==
