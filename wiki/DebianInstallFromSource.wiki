@@ -306,7 +306,7 @@ Make sure `~/bin` is on your `PATH`, and if not, close and then reopen your shel
 # Run this in your NORMAL user account!
 export RT_HOME="${RT_HOME:-$HOME/rtorrent}"
 cd /tmp
-wget https://raw.githubusercontent.com/pyroscope/rtorrent-ps/master/migrate_rtorrent_rc.sh
+wget --no-check-certificate https://raw.githubusercontent.com/pyroscope/rtorrent-ps/master/migrate_rtorrent_rc.sh
 ./migrate_rtorrent_rc.sh $RT_HOME/rtorrent.rc
 }}}
 That converts it from the old 0.8.6 syntax to the new one.
