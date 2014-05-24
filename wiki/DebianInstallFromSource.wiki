@@ -82,7 +82,7 @@ Then skip the next section and continue with “rTorrent instance setup”.
 
 == Build `rtorrent` and core dependencies from source ==
 
-Download the [http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/rtorrent-extended/build.sh build script] to a location of your choosing and then call it with the `all` parameter; the script will then download, build, and install all necessary components, storing temporary files in the current directory. You can pass the `clean_all` parameter to remove those temporary files later on, after everything works. Make sure you followed the "Preparatory steps" in the section further up on this page.
+Download the [https://raw.githubusercontent.com/pyroscope/rtorrent-ps/master/build.sh build script] to a location of your choosing and then call it with the `all` parameter; the script will then download, build, and install all necessary components, storing temporary files in the current directory. You can pass the `clean_all` parameter to remove those temporary files later on, after everything works. Make sure you followed the "Preparatory steps" in the section further up on this page.
 
 *⚠ Be sure to select the version of rTorrent you want to compile, as determined by the settings at the start of the script. If you have no preference otherwise, stick to the stable 0.9.2 release, which is the default.*
 
@@ -305,7 +305,9 @@ Make sure `~/bin` is on your `PATH`, and if not, close and then reopen your shel
 {{{
 # Run this in your NORMAL user account!
 export RT_HOME="${RT_HOME:-$HOME/rtorrent}"
-~/lib/pyroscope/pyrocore/docs/rtorrent-extended/migrate_rtorrent_rc.sh $RT_HOME/rtorrent.rc
+cd /tmp
+wget https://raw.githubusercontent.com/pyroscope/rtorrent-ps/master/migrate_rtorrent_rc.sh
+./migrate_rtorrent_rc.sh $RT_HOME/rtorrent.rc
 }}}
 That converts it from the old 0.8.6 syntax to the new one.
 

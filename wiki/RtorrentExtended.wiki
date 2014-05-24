@@ -161,7 +161,7 @@ rtxmlrpc ui.color.title.set "bold magenta on bright cyan"
 }}}
 
 
-The [http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/rtorrent-extended/term-256color.py term-256color] script can help you with showing the colors your terminal supports, an example output using Gnome's terminal looks like the following...
+The [https://raw.githubusercontent.com/pyroscope/rtorrent-ps/master/term-256color.py term-256color] script can help you with showing the colors your terminal supports, an example output using Gnome's terminal looks like the following...
 
 http://i.imgur.com/iu8nY.png
 </dd>
