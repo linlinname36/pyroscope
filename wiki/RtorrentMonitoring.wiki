@@ -28,25 +28,25 @@ _(This is not yet implemented…)_ Also, the `StatsArchiver` job of the `pyrotor
 = Installation & Configuration =
 As previously mentioned, monitoring is an optional part of `pyrotorque`, so _first_ see QueueManager on how to set it up in case you didn't do that already. _After_ `pyrotorque` is successfully running, follow these additional steps to activate the web server.
 
-First, activate the web server option by adding this to your `~/.pyroscope/torque.ini`:
+A few additional Python libraries and external CSS/Javascript resources need to be installed, which are not part of the core distribution.
+
+1. Install current code and dependencies:
+{{{
+~/lib/pyroscope/update-to-head.sh
+~/lib/pyroscope/bin/pip install -r ~/lib/pyroscope/pyrocore/requirements-torque.txt
+}}}
+
+2. Activate the web server option by adding this to your `~/.pyroscope/torque.ini`:
 {{{
 httpd.active = True
 }}}
 
-Next, a few additional Python libraries and external CSS/Javascript resources need to be installed, which are not part of the core distribution:
+3. Download resources to `~/.pyroscope/htdocs`:
 {{{
-# Install current code and dependencies
-~/lib/pyroscope/update-to-head.sh
-. ~/lib/pyroscope/bin/activate
-pip install psutil
-pip install waitress
-pip install WebOb
-
-# Download resources to "~/.pyroscope/htdocs"
 pyroadmin --create-config
 }}}
 
-Finally, restart the demon:
+4. Finally, restart the demon:
 {{{
 pyrotorque --cron --restart
 # use "pyrotorque --fg --restart -v" instead, in case something doesn't work,
