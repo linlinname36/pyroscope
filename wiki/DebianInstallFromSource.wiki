@@ -4,7 +4,7 @@
 
 = Introduction =
 
-The following shows installation instructions for a working rTorrent instance in combination with PyroScope *from scratch*, on Debian Server 6.0 (Squeeze). While the package names and the use of `aptitude` are somewhat dependant on (that version of) Debian, the "_Preparatory steps_" commands which are executed under `root` are similar for other distributions, and the compilation instructions should work as-is on practically any Linux and (F)BSD.
+The following shows installation instructions for a working rTorrent instance in combination with PyroScope *from scratch*, on Debian Server 6.0 (Squeeze). While the package names and the use of `aptitude` are somewhat dependant on (that version of) Debian, the "_Preparatory steps_" commands which are executed under `root` are similar for other distributions, and the compilation instructions should work as-is on practically any Linux and (F)BSD. These instructions are explicitly known to work on Ubuntu Lucid and Precise.
 
   ✪ *If you don't understand a word of what follows, hit [http://static.debian-handbook.info/browse/stable/short-remedial-course.html The Debian Administrator's Handbook] so then you do.*
 
