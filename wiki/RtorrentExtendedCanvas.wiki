@@ -59,6 +59,8 @@ On Windows using PuTTY (version 0.60), change the settings for font and characte
  * `DejaVu Sans Mono` in `Window / Appearance`
  * `UTF-8` in `Window / Translation`
 
+Other fonts that were suggested are `Andale Mono`, `Everson Mono`, and `GNU Unifont`. You have to try out yourself what works with your specific system and terminal emulator.
+
 The following command lets you easily check whether your font supports all the necessary characters and your terminal is configured correctly:
 {{{
 python -c 'print u"\u22c5 \u22c5\u22c5 \u201d \u2019 \u266f \u2622 \u260d \u2318 \u2730 " \
