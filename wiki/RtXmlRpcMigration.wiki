@@ -8,7 +8,7 @@ PyroScope reasonably supports version 0.8.7 starting with *revision 1407*, thoug
 Please use the `-D -K` command line switches to start rTorrent.
 Also take into account that any web interfaces like ruTorrent need to be updated at the same time as the rest of your installation, refer to their documentation on how to do that and which version to choose.
 
-To convert your configuration in `~/.rtorrent.rc` to the new commands, there is a *[https://raw.githubusercontent.com/pyroscope/rtorrent-ps/master/migrate_rtorrent_rc.sh migration script]* available that mostly automates the process. Just download it and call it like this:
+To convert your configuration in `~/.rtorrent.rc` to the new commands, there is a *[https://pyroscope.googlecode.com/svn/trunk/pyrocore/src/scripts/migrate_rtorrent_rc.sh migration script]* available that mostly automates the process. Just download it and call it like this:
 {{{
 bash migrate_rtorrent_rc.sh ~/.rtorrent.rc
 pyroadmin --create-config 
