@@ -159,6 +159,8 @@ bash ~/lib/pyroscope/pyrocore/src/scripts/migrate_rtorrent_rc.sh $RT_HOME/rtorre
 }}}
 That converts it from the old 0.8.6 syntax to the new one.
 
+ ✪ Change the value of `pyro.extended` to 1 so the extended `rTorrent-PS` features are actually activated, in case you plan to use that!_
+
 
 = !PyroScope configuration =
 This adds a minimal configuration, so that the defaults are taken from the installed software, which makes later updates a lot easier.
