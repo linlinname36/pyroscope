@@ -159,3 +159,32 @@ This defines the `tv_series` and `tv_episode` fields, that are non-empty when th
     yield engine.DynamicField(fmt.to_unicode, "tv_episode", "series name and episode number of a TV item", 
         matcher=matching.PatternFilter, accessor= lambda o: tv_mapper(o, "tv_episode", "%(show)s.S%(season)sE%(episode)s"))
 }}}
+
+
+== Only start items that you have disk space for ==
+This works together with QueueManager, so only items that pass a disk space check are actually started.
+
+The first step is to add a custom field that checks whether an item has room on the target device.
+As with the other examples, place this in your `config.py` (read the 1st two sections on this page).
+
+{{{
+    # Disk space check
+    def has_room(obj):
+        "Check disk space."
+        pathname = obj.path
+        if pathname:
+            stats = os.statvfs(pathname)
+            return stats.f_bavail * stats.f_frsize - int(diskspace_threshold_mb) * 1024**2 > obj.size * (1.0 - obj.done / 100.0)
+        else:
+            return None
+
+    yield engine.DynamicField(engine.untyped, "has_room", "check whether the download will fit on its target device",
+        matcher=matching.BoolFilter, accessor=has_room,
+        formatter=lambda val: "OK" if val else "??" if val is None else "NO")
+    globals().setdefault("diskspace_threshold_mb", "500")
+}}}
+
+Note that you can set the threshold of space to keep free (in MiB) in your configuration, and the default is 500MiB.
+You should *keep* your `close_low_diskspace` schedule for rTorrent as a fallback, and set `diskspace_threshold_mb` *higher* than the limit given there (so that normally, it never triggers).
+
+And now, all you need is to add `has_room=y` to your `job.queue.startable` conditions. Done.
