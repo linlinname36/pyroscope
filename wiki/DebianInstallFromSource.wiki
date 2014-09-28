@@ -151,6 +151,7 @@ export RT_HOME="${RT_HOME:-$HOME/rtorrent}"
 sed -e "s:RT_HOME:$RT_HOME:" <~/lib/pyroscope/pyrocore/docs/examples/rtorrent.rc >$RT_HOME/rtorrent.rc
 }}}
 
+http://i.imgur.com/TnR4Rts.gif  
 <font face="Impact,Verdana,sans" color="#f22" size="4">Also, if you compiled rTorrent version *0.9.2* (which is the default) or *0.8.9*, you *MUST [RtXmlRpcMigration run the migration script]* on the configuration now!</font>
 {{{
 # Run this in your NORMAL user account!
