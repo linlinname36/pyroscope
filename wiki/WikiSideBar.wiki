@@ -1,6 +1,11 @@
 #summary A map of the wiki content.
 #sidebar ,
 
+http://i.imgur.com/TnR4Rts.gif
+
+*This repository is frozen, head over to [https://github.com/pyroscope/pyrocore pyroscope/pyrocore] and [https://github.com/pyroscope/rtorrent-ps pyroscope/rtorrent-ps] for the maintained !GitHub repositories!*
+
+
 *Documentation Index*
 
  * [PyroScope Introduction]
