@@ -146,7 +146,7 @@ First, create the instance directories and a simple [http://pyroscope.googlecode
 export RT_HOME="${RT_HOME:-$HOME/rtorrent}"
 mkdir -p $RT_HOME/{.session,work,done,log,watch/start,watch/load}
 cd $RT_HOME
-cp ~/lib/pyroscope/pyrocore/docs/examples/start.sh ./start
+cp ~/lib/pyroscope/docs/examples/start.sh ./start
 chmod a+x ./start
 }}}
 
@@ -157,7 +157,7 @@ Next, a not-so-simple [http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/e
 {{{
 # Run this in your NORMAL user account!
 export RT_HOME="${RT_HOME:-$HOME/rtorrent}"
-sed -e "s:RT_HOME:$RT_HOME:" <~/lib/pyroscope/pyrocore/docs/examples/rtorrent.rc >$RT_HOME/rtorrent.rc
+sed -e "s:RT_HOME:$RT_HOME:" <~/lib/pyroscope/docs/examples/rtorrent.rc >$RT_HOME/rtorrent.rc
 }}}
 
 http://i.imgur.com/TnR4Rts.gif  
@@ -165,7 +165,7 @@ http://i.imgur.com/TnR4Rts.gif  
 {{{
 # Run this in your NORMAL user account!
 export RT_HOME="${RT_HOME:-$HOME/rtorrent}"
-bash ~/lib/pyroscope/pyrocore/src/scripts/migrate_rtorrent_rc.sh $RT_HOME/rtorrent.rc
+bash ~/lib/pyroscope/src/scripts/migrate_rtorrent_rc.sh $RT_HOME/rtorrent.rc
 }}}
 That converts it from the old 0.8.6 syntax to the new one.
 
@@ -202,7 +202,7 @@ EOF
 We spruce up `tmux` a bit using a [http://pyroscope.googlecode.com/svn/trunk/pyrocore/docs/examples/tmux.conf custom configuration], before we start it the first time. This makes it more homey for long-time `screen` users:
 {{{
 # Run this in your NORMAL user account!
-cp --no-clobber ~/lib/pyroscope/pyrocore/docs/examples/tmux.conf ~/.tmux.conf
+cp --no-clobber ~/lib/pyroscope/docs/examples/tmux.conf ~/.tmux.conf
 }}}
 
 == Starting a tmux Session ==
