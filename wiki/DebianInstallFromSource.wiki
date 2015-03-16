@@ -115,12 +115,21 @@ Note that the unpatched version is still available as `rtorrent-vanilla`, and yo
 
 
 = !PyroScope installation =
-The installation of `pyrocore` is done from source, see InstallFromSource for more details.
+The installation of `pyrocore` is done from source, see [https://github.com/pyroscope/pyrocore#installation GitHub] for more details.
+
+*If you want to switch over from an old installation based on subversion source (from Google code), then move that old directory away, before installation!* Like this: `( cd ~/lib && mv pyroscope pyroscope-$(date +'%Y-%m-%d').bak )`
+
 {{{
 # Run this in your NORMAL user account!
 mkdir -p ~/bin ~/lib
-svn checkout http://pyroscope.googlecode.com/svn/trunk/ ~/lib/pyroscope
+git clone "https://github.com/pyroscope/pyrocore.git" ~/lib/pyroscope
+
+# Pass "/usr/bin/python2" or whatever to the script,
+# if "/usr/bin/python" is not a suitable version
 ~/lib/pyroscope/update-to-head.sh
+
+# Check success
+pyroadmin --version
 }}}
 
 Make sure `~/bin` is on your `PATH`, and if not, close and then reopen your shell. Check again, and if it's still not in there, [http://linux.about.com/od/linux101/l/blnewbie3_1_4.htm fix your broken `.bashrc`].
